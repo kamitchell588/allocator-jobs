@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Institutional Allocator Jobs</title>
+<style>
+  /* ── Reset & base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         background: #f0f2f5; color: #1a1a2e; min-height: 100vh; }
+  a { color: #3b82f6; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Header ── */
+  header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1d4ed8 100%);
+    color: #fff;
+    padding: 2rem 2rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  header h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.5px; }
+  header p  { margin-top: .35rem; color: #94a3b8; font-size: .9rem; }
+  .header-inner { max-width: 1400px; margin: 0 auto; }
+
+  /* ── Main container ── */
+  .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem 3rem; }
+
+  /* ── Stat cards ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .stat-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    border-left: 4px solid #3b82f6;
+  }
+  .stat-card .label { font-size: .75rem; text-transform: uppercase;
+                        letter-spacing: .08em; color: #64748b; margin-bottom: .4rem; }
+  .stat-card .value { font-size: 1.75rem; font-weight: 700; color: #1e293b; }
+
+  /* ── Companies section ── */
+  .section { background: #fff; border-radius: 12px; padding: 1.25rem 1.5rem;
+              box-shadow: 0 2px 8px rgba(0,0,0,.07); margin-bottom: 1.5rem; }
+  .section h2 { font-size: 1rem; font-weight: 600; color: #334155;
+                 margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: .6rem; }
+  .companies-wrap { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .company-chip {
+    display: flex; align-items: center; gap: .45rem;
+    background: #f1f5f9; border-radius: 999px;
+    padding: .35rem .85rem; font-size: .82rem;
+  }
+  .chip-name { color: #1e293b; font-weight: 500; }
+  .chip-count {
+    background: #3b82f6; color: #fff;
+    border-radius: 999px; padding: .1rem .55rem;
+    font-size: .72rem; font-weight: 600;
+  }
+
+  /* ── Table section ── */
+  .table-section { background: #fff; border-radius: 12px;
+                    box-shadow: 0 2px 8px rgba(0,0,0,.07); overflow: hidden; }
+  .table-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0;
+  }
+  .table-toolbar h2 { font-size: 1rem; font-weight: 600; color: #334155; }
+  #searchBox {
+    padding: .5rem 1rem; border: 1px solid #cbd5e1; border-radius: 8px;
+    font-size: .875rem; outline: none; width: 280px; max-width: 100%;
+    transition: border-color .2s;
+  }
+  #searchBox:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+  th {
+    background: #f8fafc; color: #475569; font-weight: 600;
+    text-align: left; padding: .75rem 1rem;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap; cursor: pointer; user-select: none;
+  }
+  th:hover { background: #f1f5f9; }
+  th .sort-icon { margin-left: .3rem; opacity: .4; }
+  th.asc .sort-icon::after  { content: " ▲"; }
+  th.desc .sort-icon::after { content: " ▼"; }
+  td { padding: .7rem 1rem; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fafc; }
+  .desc-cell { color: #64748b; font-size: .8rem; max-width: 320px; }
+
+  /* ── Recency colour coding ── */
+  tr.age-fresh td:nth-child(4) { color: #16a34a; font-weight: 600; }
+  tr.age-recent td:nth-child(4) { color: #d97706; }
+  tr.age-old td:nth-child(4) { color: #94a3b8; }
+
+  /* left border accent per row */
+  tr.age-fresh  { border-left: 3px solid #22c55e; }
+  tr.age-recent { border-left: 3px solid #f59e0b; }
+  tr.age-old    { border-left: 3px solid #cbd5e1; }
+
+  /* ── Footer ── */
+  footer { text-align: center; color: #94a3b8; font-size: .8rem; margin-top: 2rem; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    header { padding: 1.25rem 1rem 1rem; }
+    .container { padding: 1rem 1rem 2rem; }
+    #searchBox { width: 100%; }
+  }
+
+  /* ── No results row ── */
+  #noResults { display: none; text-align: center; padding: 2rem; color: #94a3b8; }
+
+  /* ── Source tag ── */
+  .source-tag {
+    display: inline-block; padding: .15rem .5rem;
+    border-radius: 999px; font-size: .7rem; font-weight: 600;
+    background: #e0f2fe; color: #0369a1; white-space: nowrap;
+  }
+
+  /* ── Source filter dropdown in toolbar ── */
+  #sourceFilter {
+    padding: .45rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px;
+    font-size: .875rem; outline: none; color: #334155; background: #fff; cursor: pointer;
+  }
+  #sourceFilter:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+
+  /* ── Region dropdown inside Location th ── */
+  .loc-th { position: relative; }
+  .loc-th select {
+    margin-left: .4rem;
+    padding: .15rem .3rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: .75rem;
+    font-weight: 500;
+    color: #334155;
+    background: #fff;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+  .loc-th select:focus { outline: none; border-color: #3b82f6; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>Institutional Allocator Jobs</h1>
+    <p>Filtered from Apify dataset &mdash; endowments, pensions, family offices, sovereign wealth &amp; more</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Stats cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">Total Roles</div>
+      <div class="value">14</div>
+    </div>
+    <div class="stat-card" style="border-color:#10b981;">
+      <div class="label">Earliest Posted</div>
+      <div class="value" style="font-size:1.1rem;padding-top:.3rem;">2026-01-16</div>
+    </div>
+    <div class="stat-card" style="border-color:#f59e0b;">
+      <div class="label">Latest Posted</div>
+      <div class="value" style="font-size:1.1rem;padding-top:.3rem;">2026-03-16</div>
+    </div>
+    <div class="stat-card" style="border-color:#8b5cf6;">
+      <div class="label">Last Updated</div>
+      <div class="value" style="font-size:.85rem;padding-top:.4rem;line-height:1.4;">March 25, 2026 at 03:03 PM</div>
+    </div>
+  </div>
+
+  <!-- Top companies -->
+  <div class="section">
+    <h2>Top Hiring Organizations</h2>
+    <div class="companies-wrap">
+      <div class="company-chip"><span class="chip-name">CPP Investments | Investissements RPC</span><span class="chip-count">4</span></div><div class="company-chip"><span class="chip-name">Cambridge Associates</span><span class="chip-count">1</span></div><div class="company-chip"><span class="chip-name">Focus Financial Partners</span><span class="chip-count">1</span></div><div class="company-chip"><span class="chip-name">Northern Trust</span><span class="chip-count">1</span></div><div class="company-chip"><span class="chip-name">HOOPP (Healthcare of Ontario Pension Plan)</span><span class="chip-count">1</span></div><div class="company-chip"><span class="chip-name">Rockefeller Capital Management</span><span class="chip-count">1</span></div><div class="company-chip"><span class="chip-name">Soros Fund Management</span><span class="chip-count">1</span></div><div class="company-chip"><span class="chip-name">Dalio Family Office</span><span class="chip-count">1</span></div>
+    </div>
+  </div>
+
+  <!-- Jobs table -->
+  <div class="table-section">
+    <div class="table-toolbar">
+      <h2>All Roles (14)</h2>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;">
+        <input id="searchBox" type="search" placeholder="Search title, company, location …" />
+        <select id="sourceFilter">
+          <option value="all">All sources</option>
+          <option value="Apify">Apify</option>
+          <option value="NCPERS">NCPERS</option>
+          <option value="AllocatorJobs">AllocatorJobs</option>
+          <option value="CFA Institute">CFA Institute</option>
+          <option value="Council on Foundations">Council on Foundations</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table id="jobsTable">
+        <thead>
+          <tr>
+            <th data-col="0">Title <span class="sort-icon"></span></th>
+            <th data-col="1">Company <span class="sort-icon"></span></th>
+            <th data-col="2" class="loc-th">Location <span class="sort-icon"></span><select id="regionFilter" onclick="event.stopPropagation()"><option value="all">All regions</option><option value="us">US</option><option value="emea">EMEA</option><option value="apac">Asia Pac</option></select></th>
+            <th data-col="3">Date Posted <span class="sort-icon"></span></th>
+            <th data-col="4">Type <span class="sort-icon"></span></th>
+            <th data-col="5">Description</th>
+            <th data-col="6">Source <span class="sort-icon"></span></th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr class="age-recent"><td><a href="https://cambridgeassociates.wd5.myworkdayjobs.com/Cambridge_Associates/job/London/Investment-Analyst--Sustainable---Impact-Investing_JR0000177" target="_blank" rel="noopener">Investment Analyst, Sustainable &amp; Impact Investing</a></td><td>Cambridge Associates</td><td>London, England, United Kingdom</td><td data-sort="2026-03-16">2026-03-16</td><td>FULL_TIME</td><td class="desc-cell" title="Firm Overview: Cambridge Associates (“CA”) is a leading global investment firm. CA’s goal is to help endowments &amp; foundations, pension plans, and ultra-high net worth private clients implement and manage custom investment portfolios that generate outperformance so that they can maximize their impact on the world. Cambridge Associates delivers a range of services, including outsourced CIO, non-discretionary portfolio management, and investment consulting. Headquartered in Boston, Massachusetts, C…">Firm Overview: Cambridge Associates (“CA”) is a leading global investment firm. CA’s goal is to help endowments &amp; fo…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-recent"><td><a href="https://job-boards.greenhouse.io/focusfinancialpartners/jobs/5820472004" target="_blank" rel="noopener">Lead Portfolio Manager</a></td><td>Focus Financial Partners</td><td>Stamford, Connecticut, United States</td><td data-sort="2026-03-06">2026-03-06</td><td>FULL_TIME</td><td class="desc-cell" title="Position Summary
+
+NorthCoast Asset Management is a data-driven investment firm specializing in
+dynamic, risk-managed equity and income strategies for high-net-worth investors
+and financial advisors. With more than two decades of applied research and
+market experience, the firm combines macroeconomic analysis, quantitative
+modeling, and disciplined risk controls to actively navigate evolving market
+environments. The firm is headquartered in Stamford, Connecticut and operates as
+a part of the Focu…">Position Summary
+
+NorthCoast Asset Management is a data-driven investment firm specializing in
+dynamic, risk-managed equ…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-recent"><td><a href="https://ntrs.wd1.myworkdayjobs.com/northerntrust/job/Bangalore-India/Associate-Client-Investment-Officer_R151685-1" target="_blank" rel="noopener">Associate Client Investment Officer</a></td><td>Northern Trust</td><td>Bengaluru, Karnataka, India</td><td data-sort="2026-03-04">2026-03-04</td><td>FULL_TIME</td><td class="desc-cell" title="About Northern Trust: Northern Trust, a Fortune 500 company, is a globally
+recognized, award-winning financial institution that has been in continuous
+operation since 1889. Northern Trust is proud to provide innovative financial
+services and guidance to the world’s most successful individuals, families, and
+institutions by remaining true to our enduring principles of service, expertise,
+and integrity. With more than 130 years of financial experience and over 22,000
+partners, we serve the world’s…">About Northern Trust: Northern Trust, a Fortune 500 company, is a globally
+recognized, award-winning financial instituti…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-recent"><td><a href="https://cppib.wd10.myworkdayjobs.com/cppinvestments/job/New-York/Investment-Associate--Equities--Consumer-Discretionary-_JR00172" target="_blank" rel="noopener">Investment Associate, Equities (Consumer Discretionary)</a></td><td>CPP Investments | Investissements RPC</td><td>Toronto, Ontario, Canada</td><td data-sort="2026-03-03">2026-03-03</td><td>FULL_TIME</td><td class="desc-cell" title="Make an impact at a global and dynamic investment organization When you join CPP Investments, you are joining one of the world’s most admired and respected institutional investors. As a professional investment management organization, CPP Investments invests the funds of the Canada Pension Plan (CPP) to help ensure its financial sustainability for generations of working and retired Canadians. CPP Investments invests across regions and asset classes to build a globally diversified portfolio. It h…">Make an impact at a global and dynamic investment organization When you join CPP Investments, you are joining one of the…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-recent"><td><a href="https://cppib.wd10.myworkdayjobs.com/cppinvestments/job/Toronto/Director--Credit-Investments--Alternative-Investments-Technology_JR00120" target="_blank" rel="noopener">Director, Credit Investments, Alternative Investments Technology</a></td><td>CPP Investments | Investissements RPC</td><td>Toronto, Ontario, Canada</td><td data-sort="2026-02-27">2026-02-27</td><td>FULL_TIME</td><td class="desc-cell" title="Make an impact at a global and dynamic investment organization When you join CPP Investments, you are joining one of the world’s most admired and respected institutional investors. As a professional investment management organization, CPP Investments invests the funds of the Canada Pension Plan (CPP) to help ensure its financial sustainability for generations of working and retired Canadians. CPP Investments invests across regions and asset classes to build a globally diversified portfolio. It h…">Make an impact at a global and dynamic investment organization When you join CPP Investments, you are joining one of the…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-recent"><td><a href="https://cppib.wd10.myworkdayjobs.com/cppinvestments/job/Toronto/Principal-Engineer--Alternative-Investments-Technology_JR00270" target="_blank" rel="noopener">Principal Engineer, Alternative Investments Technology</a></td><td>CPP Investments | Investissements RPC</td><td>Toronto, Ontario, Canada</td><td data-sort="2026-02-26">2026-02-26</td><td>FULL_TIME</td><td class="desc-cell" title="Make an impact at a global and dynamic investment organization When you join CPP Investments, you are joining one of the world’s most admired and respected institutional investors. As a professional investment management organization, CPP Investments invests the funds of the Canada Pension Plan (CPP) to help ensure its financial sustainability for generations of working and retired Canadians. CPP Investments invests across regions and asset classes to build a globally diversified portfolio. It h…">Make an impact at a global and dynamic investment organization When you join CPP Investments, you are joining one of the…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-recent"><td><a href="https://cppib.wd10.myworkdayjobs.com/cppinvestments/job/Toronto/Portfolio-Manager--Dynamic-Portfolio-Management_JR00268" target="_blank" rel="noopener">Portfolio Manager, Dynamic Portfolio Management</a></td><td>CPP Investments | Investissements RPC</td><td>Toronto, Ontario, Canada</td><td data-sort="2026-02-25">2026-02-25</td><td>FULL_TIME</td><td class="desc-cell" title="Make an impact at a global and dynamic investment organization When you join CPP Investments, you are joining one of the world’s most admired and respected institutional investors. As a professional investment management organization, CPP Investments invests the funds of the Canada Pension Plan (CPP) to help ensure its financial sustainability for generations of working and retired Canadians. CPP Investments invests across regions and asset classes to build a globally diversified portfolio. It h…">Make an impact at a global and dynamic investment organization When you join CPP Investments, you are joining one of the…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-old"><td><a href="https://hoopp.wd10.myworkdayjobs.com/HOOPP/job/Toronto-Ontario-Canada/Sr-Analyst--Private-Equity---Infrastructure--Valuations--Investment-Operations--P3-_JR102228" target="_blank" rel="noopener">Sr. Analyst, Private Equity &amp; Infrastructure, Valuations, Investment Operations</a></td><td>HOOPP (Healthcare of Ontario Pension Plan)</td><td>Toronto, Ontario, Canada</td><td data-sort="2026-02-19">2026-02-19</td><td>FULL_TIME</td><td class="desc-cell" title="Why you’ll love working here: high-performance, people-focused culture our
+commitment that equity, diversity, and inclusion are fundamental to our work
+environment and business success, which helps employees feel valued and
+empowered to be their authentic selves learning and development initiatives,
+including workshops, Speaker Series events and access to LinkedIn Learning, that
+support employees’ career growth membership in HOOPP’s world class defined
+benefit pension plan, which can serve as an…">Why you’ll love working here: high-performance, people-focused culture our
+commitment that equity, diversity, and inclus…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-old"><td><a href="https://careers.rockco.com/careers-home/jobs/4821" target="_blank" rel="noopener">Investment Analyst</a></td><td>Rockefeller Capital Management</td><td>Atlanta, Georgia, United States</td><td data-sort="2026-02-12">2026-02-12</td><td>FULL_TIME</td><td class="desc-cell" title="About Rockefeller Capital Management 
+
+Rockefeller Capital Management was established in 2018 as a leading independent financial advisory services firm. Originally founded in 1882 as the family office of John D. Rockefeller, the Firm has evolved to offer strategic advice to ultra- and high-net-worth individuals and families, institutions, and corporations from offices in 32 markets throughout the United States, as well as an office in London. The Firm oversees $208 billion in client assets as of…">About Rockefeller Capital Management 
+
+Rockefeller Capital Management was established in 2018 as a leading independent f…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-old"><td><a href="https://job-boards.greenhouse.io/familyoffice/jobs/6587302003" target="_blank" rel="noopener">Research Analyst - Private Credit </a></td><td>Soros Fund Management</td><td>New York, New York, United States</td><td data-sort="2026-02-05">2026-02-05</td><td>FULL_TIME</td><td class="desc-cell" title="[https://sfm2.wpenginepowered.com/wp-content/uploads/2025/03/SOROS.png]
+
+
+COMPANY DESCRIPTION
+
+Soros Fund Management LLC (SFM) is a global asset manager and family office
+founded by George Soros in 1970. With $28 billion in assets under management
+(AUM), SFM serves as the principal asset manager for the Open Society
+Foundations, one of the world’s largest charitable foundations dedicated to
+advancing justice, human rights, and democracy.
+
+Distinct from other investment platforms, SFM thrives on …">[https://sfm2.wpenginepowered.com/wp-content/uploads/2025/03/SOROS.png]
+
+
+COMPANY DESCRIPTION
+
+Soros Fund Management LLC…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-old"><td><a href="https://job-boards.greenhouse.io/marinomanagementllc/jobs/5630121004" target="_blank" rel="noopener">Investment Associate, Global Macro </a></td><td>Dalio Family Office</td><td>New York, New York, United States</td><td data-sort="2026-02-04">2026-02-04</td><td>FULL_TIME</td><td class="desc-cell" title="Investment Associate, Global Macro
+
+Dalio Family Office
+
+Dalio Family Office Overview:
+
+The Dalio Family Office (DFO) supports Barbara and Ray Dalio and their family in
+their ventures, investments, and philanthropic efforts under Dalio
+Philanthropies, which includes OceanX, Dalio Education, Endless Network, and the
+Beijing Dalio Foundation. The core of the DFO’s culture is built around
+meaningful work and meaningful relationships and the family’s commitment to
+giving back. The office is headquar…">Investment Associate, Global Macro
+
+Dalio Family Office
+
+Dalio Family Office Overview:
+
+The Dalio Family Office (DFO) su…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-old"><td><a href="https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional/job/New-York-NY/Private-Markets-Quantitative-Modeler--Vice-President_R260405" target="_blank" rel="noopener">Private Markets Quantitative Modeler, Vice President</a></td><td>BlackRock</td><td>New York, New York, United States</td><td data-sort="2026-02-03">2026-02-03</td><td>FULL_TIME</td><td class="desc-cell" title="About this role The Private Markets SWAT Team: This team provides quantitative modeling solutions for private markets across a wide variety of problems, including nowcasting private asset and fund values, forecasting alpha in private asset deals, and optimizing strategic asset allocation with illiquid assets. The team builds and connects innovative models and methodologies to support investment decision-making in illiquid asset classes. Private Markets SWAT is a Team within Aladdin Financial Eng…">About this role The Private Markets SWAT Team: This team provides quantitative modeling solutions for private markets ac…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-old"><td><a href="https://www.paycomonline.net/v4/ats/web.php/portal/67EEDFE4A70A8BA58D64627B3658C677/jobs/311364" target="_blank" rel="noopener">ASSOCIATE, INVESTMENT ANALYST</a></td><td>Cresset Capital </td><td>West Palm Beach, Florida, United States</td><td data-sort="2026-01-16">2026-01-16</td><td>FULL_TIME</td><td class="desc-cell" title="Job DetailsLevel: ExperiencedJob Location: West Palm Beach Office - West Palm Beach, FL 33401Position Type: Full TimeEducation Level: 4 Year DegreeAbout Cresset Cresset is a firm built by clients, for clients. As an independent, award-winning multi-family office and private investment firm, we are reimagining the way wealth is experienced. Our purpose is to help ensure that both wealth and life are fully optimized—integrated, intentional, and aligned with each client’s vision of success. We prov…">Job DetailsLevel: ExperiencedJob Location: West Palm Beach Office - West Palm Beach, FL 33401Position Type: Full TimeEdu…</td><td><span class="source-tag">Apify</span></td></tr>
+<tr class="age-old"><td><a href="https://allocatorjobs.com/asset-class-head-of-private-equity-comptroller-office/" target="_blank" rel="noopener">Asset Class Head of Private Equity</a></td><td>NYC Comptroller is hiring a Investment Officer</td><td></td><td data-sort=""></td><td></td><td class="desc-cell" title="The Office of the New York City Comptroller’s Bureau of Asset Management (BAM) supports the Comptroller in his role as...">The Office of the New York City Comptroller’s Bureau of Asset Management (BAM) supports the Comptroller in his role as..…</td><td><span class="source-tag">AllocatorJobs</span></td></tr>
+        </tbody>
+      </table>
+      <div id="noResults">No results match your search.</div>
+    </div>
+  </div>
+
+  <footer>
+    <p style="margin-top:1.5rem;">Generated by allocator-jobs scraper &bull; March 25, 2026 at 03:03 PM</p>
+    <p style="margin-top:.4rem;">
+      <span style="color:#22c55e;">&#9632;</span> Posted &le; 7 days &nbsp;
+      <span style="color:#f59e0b;">&#9632;</span> Posted 8–30 days &nbsp;
+      <span style="color:#cbd5e1;">&#9632;</span> Older
+    </p>
+  </footer>
+
+</div>
+
+<script>
+// ── Region classification ──
+const US_KW   = ["united states","new york","new jersey","connecticut","california","illinois",
+                  "texas","massachusetts","florida","georgia","pennsylvania","ohio","virginia",
+                  "washington","boston","chicago","los angeles","san francisco","miami","dallas",
+                  "houston","seattle","denver","charlotte","atlanta"," ny,"," nj,"," ct,",
+                  " ca,"," il,"," tx,"," ma,"," fl,"," ga,"," pa,"," oh,"," va,"," wa,"];
+const EMEA_KW = ["united kingdom","london"," uk","germany","france","netherlands","switzerland",
+                  "sweden","norway","denmark","finland","ireland","spain","italy","luxembourg",
+                  "belgium","austria","dubai","abu dhabi","uae","middle east","africa","israel",
+                  "south africa","europe","amsterdam","frankfurt","paris","zurich","geneva",
+                  "stockholm","oslo","copenhagen","dublin","milan","madrid","lisbon"];
+const APAC_KW = ["australia","sydney","melbourne","singapore","hong kong","japan","tokyo","china",
+                  "beijing","shanghai","south korea","seoul","india","mumbai","new zealand",
+                  "taiwan","thailand","indonesia","malaysia","asia pacific","apac"];
+
+function classifyRegion(loc) {
+  const l = loc.toLowerCase();
+  if (APAC_KW.some(k => l.includes(k))) return "apac";
+  if (EMEA_KW.some(k => l.includes(k))) return "emea";
+  if (US_KW.some(k => l.includes(k)))   return "us";
+  return "other";
+}
+
+// ── Search + Region + Source filter ──
+const searchBox    = document.getElementById("searchBox");
+const regionFilter = document.getElementById("regionFilter");
+const sourceFilter = document.getElementById("sourceFilter");
+const tableBody    = document.getElementById("tableBody");
+const noResults    = document.getElementById("noResults");
+
+function filterTable() {
+  const q      = searchBox.value.toLowerCase().trim();
+  const region = regionFilter.value;
+  const src    = sourceFilter.value;
+  let visible  = 0;
+  Array.from(tableBody.rows).forEach(row => {
+    const text    = row.textContent.toLowerCase();
+    const loc     = row.cells[2] ? row.cells[2].textContent : "";
+    const rowSrc  = row.cells[6] ? row.cells[6].textContent.trim() : "";
+    const matchQ  = !q || text.includes(q);
+    const matchR  = region === "all" || classifyRegion(loc) === region;
+    const matchS  = src === "all" || rowSrc === src;
+    const show    = matchQ && matchR && matchS;
+    row.style.display = show ? "" : "none";
+    if (show) visible++;
+  });
+  noResults.style.display = visible === 0 ? "block" : "none";
+}
+
+searchBox.addEventListener("input", filterTable);
+regionFilter.addEventListener("change", filterTable);
+sourceFilter.addEventListener("change", filterTable);
+
+// ── Column sort ──
+let sortCol = -1, sortAsc = true;
+
+document.querySelectorAll("th[data-col]").forEach(th => {
+  th.addEventListener("click", () => {
+    const col = parseInt(th.dataset.col);
+    if (sortCol === col) {
+      sortAsc = !sortAsc;
+    } else {
+      sortCol = col; sortAsc = true;
+    }
+    document.querySelectorAll("th").forEach(t => t.classList.remove("asc", "desc"));
+    th.classList.add(sortAsc ? "asc" : "desc");
+    sortTableByCol(col, sortAsc);
+  });
+});
+
+function sortTableByCol(col, asc) {
+  const rows = Array.from(tableBody.rows);
+  rows.sort((a, b) => {
+    const ta = (a.cells[col].dataset.sort || a.cells[col].textContent).trim().toLowerCase();
+    const tb = (b.cells[col].dataset.sort || b.cells[col].textContent).trim().toLowerCase();
+    return asc ? ta.localeCompare(tb) : tb.localeCompare(ta);
+  });
+  rows.forEach(r => tableBody.appendChild(r));
+}
+</script>
+
+</body>
+</html>
