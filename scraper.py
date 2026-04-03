@@ -330,7 +330,7 @@ EXCLUDE_TITLE_KEYWORDS = [
     "public health",
     "epidemiolog",
     "biomedical",
-    # Visitor / tours / campus engagement
+    # Visitor / tours / campus / alumni engagement
     "visitor engagement",
     "visitor services",
     "tour guide",
@@ -341,6 +341,43 @@ EXCLUDE_TITLE_KEYWORDS = [
     "event coordinator",
     "event associate",
     "reception",
+    # Customer / client relations (non-investment)
+    "customer relations",
+    "client relations",
+    "client advisor",
+    "client associate",
+    "client engagement",
+    "customer experience",
+    "relationship coordinator",
+    # HR / people / workplace
+    "human capital",
+    "people operations",
+    "workplace experience",
+    "talent acquisition",
+    "talent management",
+    # Tech / engineering (non-investment)
+    "full stack",
+    "software",
+    "engineer",
+    "data governance",
+    "data strategy",
+    "community connect",
+    # Student / intern / academic
+    "student",
+    "coop",
+    "co-op",
+    "post doctoral",
+    "postdoctoral",
+    "post doc",
+    # Operations management (non-investment)
+    "operations unit manager",
+    "operations manager",
+    "coordinator",
+    # Retirement admin (non-investment)
+    "pension administration",
+    "plan administrator",
+    "retirement analyst",
+    "retirement system",
 ]
 
 CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source"]
