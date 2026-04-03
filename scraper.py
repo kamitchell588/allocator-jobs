@@ -304,6 +304,43 @@ EXCLUDE_TITLE_KEYWORDS = [
     # Retail / branch
     "retail",
     "branch",
+    # Medical / clinical / healthcare
+    "clinical",
+    "medical",
+    "physician",
+    "nurse",
+    "nursing",
+    "patient",
+    "healthcare",
+    "health care",
+    "clinical research",
+    "clinical trial",
+    "research coordinator",
+    "laboratory",
+    "lab technician",
+    "radiology",
+    "pharmacy",
+    "pharmacist",
+    "surgical",
+    "dental",
+    "mental health",
+    "social worker",
+    "therapist",
+    "therapy",
+    "public health",
+    "epidemiolog",
+    "biomedical",
+    # Visitor / tours / campus engagement
+    "visitor engagement",
+    "visitor services",
+    "tour guide",
+    "campus tour",
+    "alumni engagement",
+    "program development",
+    "program coordinator",
+    "event coordinator",
+    "event associate",
+    "reception",
 ]
 
 CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source"]
@@ -950,158 +987,202 @@ def generate_html(jobs: list[dict]) -> None:
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Institutional Allocator Jobs</title>
+<title>Institutional Allocator Jobs — FRAM Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* ── FRAM Partners design tokens ── */
+  :root {{
+    --navy:      #1b2232;
+    --burgundy:  #4f1722;
+    --cream:     #f9f5f0;
+    --white:     #ffffff;
+    --border:    #e3e5e8;
+    --muted:     #676f7e;
+    --font-display: "Source Serif 4", Georgia, serif;
+    --font-body:    "Inter", system-ui, sans-serif;
+  }}
+
   /* ── Reset & base ── */
   *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-         background: #f0f2f5; color: #1a1a2e; min-height: 100vh; }}
-  a {{ color: #3b82f6; text-decoration: none; }}
+  body {{ font-family: var(--font-body); background: var(--cream);
+         color: var(--navy); min-height: 100vh; }}
+  a {{ color: var(--burgundy); text-decoration: none; }}
   a:hover {{ text-decoration: underline; }}
 
   /* ── Header ── */
   header {{
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1d4ed8 100%);
-    color: #fff;
-    padding: 2rem 2rem 1.5rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    background: var(--navy);
+    color: var(--white);
+    padding: 2.5rem 2rem 2rem;
+    border-bottom: 3px solid var(--burgundy);
   }}
-  header h1 {{ font-size: 1.75rem; font-weight: 700; letter-spacing: -0.5px; }}
-  header p  {{ margin-top: .35rem; color: #94a3b8; font-size: .9rem; }}
+  header h1 {{
+    font-family: var(--font-display);
+    font-size: 2rem; font-weight: 400; letter-spacing: -.5px;
+  }}
+  header .eyebrow {{
+    font-family: var(--font-body);
+    font-size: .7rem; font-weight: 500; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--burgundy);
+    margin-bottom: .6rem;
+  }}
+  header p {{ margin-top: .4rem; color: rgba(255,255,255,.5); font-size: .85rem;
+              font-weight: 300; }}
   .header-inner {{ max-width: 1400px; margin: 0 auto; }}
 
   /* ── Main container ── */
-  .container {{ max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem 3rem; }}
+  .container {{ max-width: 1400px; margin: 0 auto; padding: 2rem 2rem 4rem; }}
 
   /* ── Stat cards ── */
   .stats-grid {{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 1px; margin-bottom: 2rem;
+    border: 1px solid var(--border); background: var(--border);
   }}
   .stat-card {{
-    background: #fff;
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,.07);
-    border-left: 4px solid #3b82f6;
+    background: var(--white);
+    padding: 1.5rem;
+    border-left: 3px solid transparent;
   }}
-  .stat-card .label {{ font-size: .75rem; text-transform: uppercase;
-                        letter-spacing: .08em; color: #64748b; margin-bottom: .4rem; }}
-  .stat-card .value {{ font-size: 1.75rem; font-weight: 700; color: #1e293b; }}
+  .stat-card:first-child {{ border-left-color: var(--burgundy); }}
+  .stat-card .label {{
+    font-size: .65rem; text-transform: uppercase;
+    letter-spacing: .12em; color: var(--muted);
+    font-weight: 500; margin-bottom: .5rem;
+  }}
+  .stat-card .value {{
+    font-family: var(--font-display);
+    font-size: 1.9rem; font-weight: 400; color: var(--navy);
+  }}
 
   /* ── Companies section ── */
-  .section {{ background: #fff; border-radius: 12px; padding: 1.25rem 1.5rem;
-              box-shadow: 0 2px 8px rgba(0,0,0,.07); margin-bottom: 1.5rem; }}
-  .section h2 {{ font-size: 1rem; font-weight: 600; color: #334155;
-                 margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: .6rem; }}
-  .companies-wrap {{ display: flex; flex-wrap: wrap; gap: .6rem; }}
-  .company-chip {{
-    display: flex; align-items: center; gap: .45rem;
-    background: #f1f5f9; border-radius: 999px;
-    padding: .35rem .85rem; font-size: .82rem;
+  .section {{
+    background: var(--white); border: 1px solid var(--border);
+    padding: 1.5rem; margin-bottom: 1.5rem;
   }}
-  .chip-name {{ color: #1e293b; font-weight: 500; }}
+  .section h2 {{
+    font-family: var(--font-display);
+    font-size: .95rem; font-weight: 400; color: var(--navy);
+    margin-bottom: 1rem; padding-bottom: .6rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: .01em;
+  }}
+  .companies-wrap {{ display: flex; flex-wrap: wrap; gap: .5rem; }}
+  .company-chip {{
+    display: flex; align-items: center; gap: .4rem;
+    background: var(--cream); border: 1px solid var(--border);
+    padding: .3rem .75rem; font-size: .8rem;
+  }}
+  .chip-name {{ color: var(--navy); font-weight: 500; }}
   .chip-count {{
-    background: #3b82f6; color: #fff;
-    border-radius: 999px; padding: .1rem .55rem;
-    font-size: .72rem; font-weight: 600;
+    background: var(--burgundy); color: var(--white);
+    padding: .1rem .45rem; font-size: .68rem; font-weight: 600;
   }}
 
   /* ── Table section ── */
-  .table-section {{ background: #fff; border-radius: 12px;
-                    box-shadow: 0 2px 8px rgba(0,0,0,.07); overflow: hidden; }}
+  .table-section {{ background: var(--white); border: 1px solid var(--border); overflow: hidden; }}
   .table-toolbar {{
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 1rem;
-    padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0;
+    padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+    background: var(--white);
   }}
-  .table-toolbar h2 {{ font-size: 1rem; font-weight: 600; color: #334155; }}
+  .table-toolbar h2 {{
+    font-family: var(--font-display);
+    font-size: .95rem; font-weight: 400; color: var(--navy);
+  }}
   #searchBox {{
-    padding: .5rem 1rem; border: 1px solid #cbd5e1; border-radius: 8px;
-    font-size: .875rem; outline: none; width: 280px; max-width: 100%;
-    transition: border-color .2s;
+    padding: .5rem 1rem; border: 1px solid var(--border);
+    border-radius: 0; font-family: var(--font-body);
+    font-size: .8rem; outline: none; width: 280px; max-width: 100%;
+    transition: border-color .2s; background: var(--white); color: var(--navy);
   }}
-  #searchBox:focus {{ border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }}
+  #searchBox:focus {{ border-color: var(--navy); box-shadow: none; }}
 
   .table-wrap {{ overflow-x: auto; }}
-  table {{ width: 100%; border-collapse: collapse; font-size: .875rem; }}
+  table {{ width: 100%; border-collapse: collapse; font-size: .82rem; }}
   th {{
-    background: #f8fafc; color: #475569; font-weight: 600;
+    background: var(--navy); color: rgba(255,255,255,.8);
+    font-family: var(--font-body); font-weight: 500;
+    font-size: .65rem; text-transform: uppercase; letter-spacing: .1em;
     text-align: left; padding: .75rem 1rem;
-    border-bottom: 2px solid #e2e8f0;
     white-space: nowrap; cursor: pointer; user-select: none;
   }}
-  th:hover {{ background: #f1f5f9; }}
+  th:hover {{ background: #24304a; }}
   th .sort-icon {{ margin-left: .3rem; opacity: .4; }}
   th.asc .sort-icon::after  {{ content: " ▲"; }}
   th.desc .sort-icon::after {{ content: " ▼"; }}
-  td {{ padding: .7rem 1rem; border-bottom: 1px solid #f1f5f9; vertical-align: top; }}
+  td {{ padding: .75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }}
   tr:last-child td {{ border-bottom: none; }}
-  tr:hover td {{ background: #f8fafc; }}
-  .desc-cell {{ color: #64748b; font-size: .8rem; max-width: 320px; }}
+  tr:hover td {{ background: var(--cream); }}
+  .desc-cell {{ color: var(--muted); font-size: .78rem; max-width: 320px; }}
 
   /* ── Recency colour coding ── */
-  tr.age-fresh td:nth-child(4) {{ color: #16a34a; font-weight: 600; }}
-  tr.age-recent td:nth-child(4) {{ color: #d97706; }}
-  tr.age-old td:nth-child(4) {{ color: #94a3b8; }}
+  tr.age-fresh td:nth-child(4) {{ color: #2d6a4f; font-weight: 600; }}
+  tr.age-recent td:nth-child(4) {{ color: #92400e; }}
+  tr.age-old td:nth-child(4) {{ color: var(--muted); }}
 
   /* left border accent per row */
-  tr.age-fresh  {{ border-left: 3px solid #22c55e; }}
-  tr.age-recent {{ border-left: 3px solid #f59e0b; }}
-  tr.age-old    {{ border-left: 3px solid #cbd5e1; }}
+  tr.age-fresh  {{ border-left: 3px solid #2d6a4f; }}
+  tr.age-recent {{ border-left: 3px solid #d97706; }}
+  tr.age-old    {{ border-left: 3px solid var(--border); }}
 
   /* ── Footer ── */
-  footer {{ text-align: center; color: #94a3b8; font-size: .8rem; margin-top: 2rem; }}
+  footer {{
+    text-align: center; color: var(--muted); font-size: .75rem;
+    margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+    font-weight: 300; letter-spacing: .03em;
+  }}
 
   /* ── Responsive ── */
   @media (max-width: 640px) {{
-    header {{ padding: 1.25rem 1rem 1rem; }}
+    header {{ padding: 1.5rem 1rem 1.25rem; }}
     .container {{ padding: 1rem 1rem 2rem; }}
     #searchBox {{ width: 100%; }}
   }}
 
   /* ── No results row ── */
-  #noResults {{ display: none; text-align: center; padding: 2rem; color: #94a3b8; }}
+  #noResults {{ display: none; text-align: center; padding: 2rem; color: var(--muted); }}
 
   /* ── Source tag ── */
   .source-tag {{
     display: inline-block; padding: .15rem .5rem;
-    border-radius: 999px; font-size: .7rem; font-weight: 600;
-    background: #e0f2fe; color: #0369a1; white-space: nowrap;
+    font-size: .68rem; font-weight: 500;
+    background: var(--cream); border: 1px solid var(--border);
+    color: var(--navy); white-space: nowrap; letter-spacing: .03em;
   }}
 
   /* ── Source filter dropdown in toolbar ── */
   #sourceFilter {{
-    padding: .45rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px;
-    font-size: .875rem; outline: none; color: #334155; background: #fff; cursor: pointer;
+    padding: .45rem .8rem; border: 1px solid var(--border); border-radius: 0;
+    font-family: var(--font-body); font-size: .8rem; outline: none;
+    color: var(--navy); background: var(--white); cursor: pointer;
   }}
-  #sourceFilter:focus {{ border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }}
+  #sourceFilter:focus {{ border-color: var(--navy); }}
 
   /* ── Region dropdown inside Location th ── */
   .loc-th {{ position: relative; }}
   .loc-th select {{
-    margin-left: .4rem;
-    padding: .15rem .3rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 5px;
-    font-size: .75rem;
-    font-weight: 500;
-    color: #334155;
-    background: #fff;
-    cursor: pointer;
-    vertical-align: middle;
+    margin-left: .4rem; padding: .15rem .3rem;
+    border: 1px solid rgba(255,255,255,.3); border-radius: 0;
+    font-size: .7rem; font-weight: 500; font-family: var(--font-body);
+    color: var(--white); background: var(--navy);
+    cursor: pointer; vertical-align: middle;
   }}
-  .loc-th select:focus {{ outline: none; border-color: #3b82f6; }}
+  .loc-th select:focus {{ outline: none; border-color: var(--white); }}
+  .loc-th select option {{ background: var(--navy); color: var(--white); }}
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
+    <div class="eyebrow">FRAM Partners</div>
     <h1>Institutional Allocator Jobs</h1>
-    <p>Filtered from Apify dataset &mdash; endowments, pensions, family offices, sovereign wealth &amp; more</p>
+    <p>Endowments, pensions, family offices, sovereign wealth &amp; private markets — US &amp; Canada</p>
   </div>
 </header>
 
@@ -1113,17 +1194,17 @@ def generate_html(jobs: list[dict]) -> None:
       <div class="label">Total Roles</div>
       <div class="value">{stats["total"]}</div>
     </div>
-    <div class="stat-card" style="border-color:#10b981;">
+    <div class="stat-card">
       <div class="label">Earliest Posted</div>
-      <div class="value" style="font-size:1.1rem;padding-top:.3rem;">{stats["date_min"]}</div>
+      <div class="value" style="font-size:1.2rem;padding-top:.2rem;">{stats["date_min"]}</div>
     </div>
-    <div class="stat-card" style="border-color:#f59e0b;">
+    <div class="stat-card">
       <div class="label">Latest Posted</div>
-      <div class="value" style="font-size:1.1rem;padding-top:.3rem;">{stats["date_max"]}</div>
+      <div class="value" style="font-size:1.2rem;padding-top:.2rem;">{stats["date_max"]}</div>
     </div>
-    <div class="stat-card" style="border-color:#8b5cf6;">
+    <div class="stat-card">
       <div class="label">Last Updated</div>
-      <div class="value" style="font-size:.85rem;padding-top:.4rem;line-height:1.4;">{updated}</div>
+      <div class="value" style="font-size:.85rem;padding-top:.4rem;line-height:1.5;font-family:var(--font-body);font-weight:400;">{updated}</div>
     </div>
   </div>
 
@@ -1175,9 +1256,9 @@ def generate_html(jobs: list[dict]) -> None:
   <footer>
     <p style="margin-top:1.5rem;">Generated by allocator-jobs scraper &bull; {updated}</p>
     <p style="margin-top:.4rem;">
-      <span style="color:#22c55e;">&#9632;</span> Posted &le; 7 days &nbsp;
-      <span style="color:#f59e0b;">&#9632;</span> Posted 8–30 days &nbsp;
-      <span style="color:#cbd5e1;">&#9632;</span> Older
+      <span style="color:#2d6a4f;">&#9632;</span> Posted &le; 7 days &nbsp;
+      <span style="color:#d97706;">&#9632;</span> Posted 8–30 days &nbsp;
+      <span style="color:#e3e5e8;">&#9632;</span> Older
     </p>
   </footer>
 

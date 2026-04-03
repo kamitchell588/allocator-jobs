@@ -3,158 +3,202 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Institutional Allocator Jobs</title>
+<title>Institutional Allocator Jobs — FRAM Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* ── FRAM Partners design tokens ── */
+  :root {
+    --navy:      #1b2232;
+    --burgundy:  #4f1722;
+    --cream:     #f9f5f0;
+    --white:     #ffffff;
+    --border:    #e3e5e8;
+    --muted:     #676f7e;
+    --font-display: "Source Serif 4", Georgia, serif;
+    --font-body:    "Inter", system-ui, sans-serif;
+  }
+
   /* ── Reset & base ── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-         background: #f0f2f5; color: #1a1a2e; min-height: 100vh; }
-  a { color: #3b82f6; text-decoration: none; }
+  body { font-family: var(--font-body); background: var(--cream);
+         color: var(--navy); min-height: 100vh; }
+  a { color: var(--burgundy); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
   /* ── Header ── */
   header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1d4ed8 100%);
-    color: #fff;
-    padding: 2rem 2rem 1.5rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    background: var(--navy);
+    color: var(--white);
+    padding: 2.5rem 2rem 2rem;
+    border-bottom: 3px solid var(--burgundy);
   }
-  header h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p  { margin-top: .35rem; color: #94a3b8; font-size: .9rem; }
+  header h1 {
+    font-family: var(--font-display);
+    font-size: 2rem; font-weight: 400; letter-spacing: -.5px;
+  }
+  header .eyebrow {
+    font-family: var(--font-body);
+    font-size: .7rem; font-weight: 500; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--burgundy);
+    margin-bottom: .6rem;
+  }
+  header p { margin-top: .4rem; color: rgba(255,255,255,.5); font-size: .85rem;
+              font-weight: 300; }
   .header-inner { max-width: 1400px; margin: 0 auto; }
 
   /* ── Main container ── */
-  .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem 3rem; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 2rem 2rem 4rem; }
 
   /* ── Stat cards ── */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 1px; margin-bottom: 2rem;
+    border: 1px solid var(--border); background: var(--border);
   }
   .stat-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,.07);
-    border-left: 4px solid #3b82f6;
+    background: var(--white);
+    padding: 1.5rem;
+    border-left: 3px solid transparent;
   }
-  .stat-card .label { font-size: .75rem; text-transform: uppercase;
-                        letter-spacing: .08em; color: #64748b; margin-bottom: .4rem; }
-  .stat-card .value { font-size: 1.75rem; font-weight: 700; color: #1e293b; }
+  .stat-card:first-child { border-left-color: var(--burgundy); }
+  .stat-card .label {
+    font-size: .65rem; text-transform: uppercase;
+    letter-spacing: .12em; color: var(--muted);
+    font-weight: 500; margin-bottom: .5rem;
+  }
+  .stat-card .value {
+    font-family: var(--font-display);
+    font-size: 1.9rem; font-weight: 400; color: var(--navy);
+  }
 
   /* ── Companies section ── */
-  .section { background: #fff; border-radius: 12px; padding: 1.25rem 1.5rem;
-              box-shadow: 0 2px 8px rgba(0,0,0,.07); margin-bottom: 1.5rem; }
-  .section h2 { font-size: 1rem; font-weight: 600; color: #334155;
-                 margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: .6rem; }
-  .companies-wrap { display: flex; flex-wrap: wrap; gap: .6rem; }
-  .company-chip {
-    display: flex; align-items: center; gap: .45rem;
-    background: #f1f5f9; border-radius: 999px;
-    padding: .35rem .85rem; font-size: .82rem;
+  .section {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 1.5rem; margin-bottom: 1.5rem;
   }
-  .chip-name { color: #1e293b; font-weight: 500; }
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: .95rem; font-weight: 400; color: var(--navy);
+    margin-bottom: 1rem; padding-bottom: .6rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: .01em;
+  }
+  .companies-wrap { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .company-chip {
+    display: flex; align-items: center; gap: .4rem;
+    background: var(--cream); border: 1px solid var(--border);
+    padding: .3rem .75rem; font-size: .8rem;
+  }
+  .chip-name { color: var(--navy); font-weight: 500; }
   .chip-count {
-    background: #3b82f6; color: #fff;
-    border-radius: 999px; padding: .1rem .55rem;
-    font-size: .72rem; font-weight: 600;
+    background: var(--burgundy); color: var(--white);
+    padding: .1rem .45rem; font-size: .68rem; font-weight: 600;
   }
 
   /* ── Table section ── */
-  .table-section { background: #fff; border-radius: 12px;
-                    box-shadow: 0 2px 8px rgba(0,0,0,.07); overflow: hidden; }
+  .table-section { background: var(--white); border: 1px solid var(--border); overflow: hidden; }
   .table-toolbar {
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 1rem;
-    padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0;
+    padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+    background: var(--white);
   }
-  .table-toolbar h2 { font-size: 1rem; font-weight: 600; color: #334155; }
+  .table-toolbar h2 {
+    font-family: var(--font-display);
+    font-size: .95rem; font-weight: 400; color: var(--navy);
+  }
   #searchBox {
-    padding: .5rem 1rem; border: 1px solid #cbd5e1; border-radius: 8px;
-    font-size: .875rem; outline: none; width: 280px; max-width: 100%;
-    transition: border-color .2s;
+    padding: .5rem 1rem; border: 1px solid var(--border);
+    border-radius: 0; font-family: var(--font-body);
+    font-size: .8rem; outline: none; width: 280px; max-width: 100%;
+    transition: border-color .2s; background: var(--white); color: var(--navy);
   }
-  #searchBox:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+  #searchBox:focus { border-color: var(--navy); box-shadow: none; }
 
   .table-wrap { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .82rem; }
   th {
-    background: #f8fafc; color: #475569; font-weight: 600;
+    background: var(--navy); color: rgba(255,255,255,.8);
+    font-family: var(--font-body); font-weight: 500;
+    font-size: .65rem; text-transform: uppercase; letter-spacing: .1em;
     text-align: left; padding: .75rem 1rem;
-    border-bottom: 2px solid #e2e8f0;
     white-space: nowrap; cursor: pointer; user-select: none;
   }
-  th:hover { background: #f1f5f9; }
+  th:hover { background: #24304a; }
   th .sort-icon { margin-left: .3rem; opacity: .4; }
   th.asc .sort-icon::after  { content: " ▲"; }
   th.desc .sort-icon::after { content: " ▼"; }
-  td { padding: .7rem 1rem; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  td { padding: .75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
   tr:last-child td { border-bottom: none; }
-  tr:hover td { background: #f8fafc; }
-  .desc-cell { color: #64748b; font-size: .8rem; max-width: 320px; }
+  tr:hover td { background: var(--cream); }
+  .desc-cell { color: var(--muted); font-size: .78rem; max-width: 320px; }
 
   /* ── Recency colour coding ── */
-  tr.age-fresh td:nth-child(4) { color: #16a34a; font-weight: 600; }
-  tr.age-recent td:nth-child(4) { color: #d97706; }
-  tr.age-old td:nth-child(4) { color: #94a3b8; }
+  tr.age-fresh td:nth-child(4) { color: #2d6a4f; font-weight: 600; }
+  tr.age-recent td:nth-child(4) { color: #92400e; }
+  tr.age-old td:nth-child(4) { color: var(--muted); }
 
   /* left border accent per row */
-  tr.age-fresh  { border-left: 3px solid #22c55e; }
-  tr.age-recent { border-left: 3px solid #f59e0b; }
-  tr.age-old    { border-left: 3px solid #cbd5e1; }
+  tr.age-fresh  { border-left: 3px solid #2d6a4f; }
+  tr.age-recent { border-left: 3px solid #d97706; }
+  tr.age-old    { border-left: 3px solid var(--border); }
 
   /* ── Footer ── */
-  footer { text-align: center; color: #94a3b8; font-size: .8rem; margin-top: 2rem; }
+  footer {
+    text-align: center; color: var(--muted); font-size: .75rem;
+    margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+    font-weight: 300; letter-spacing: .03em;
+  }
 
   /* ── Responsive ── */
   @media (max-width: 640px) {
-    header { padding: 1.25rem 1rem 1rem; }
+    header { padding: 1.5rem 1rem 1.25rem; }
     .container { padding: 1rem 1rem 2rem; }
     #searchBox { width: 100%; }
   }
 
   /* ── No results row ── */
-  #noResults { display: none; text-align: center; padding: 2rem; color: #94a3b8; }
+  #noResults { display: none; text-align: center; padding: 2rem; color: var(--muted); }
 
   /* ── Source tag ── */
   .source-tag {
     display: inline-block; padding: .15rem .5rem;
-    border-radius: 999px; font-size: .7rem; font-weight: 600;
-    background: #e0f2fe; color: #0369a1; white-space: nowrap;
+    font-size: .68rem; font-weight: 500;
+    background: var(--cream); border: 1px solid var(--border);
+    color: var(--navy); white-space: nowrap; letter-spacing: .03em;
   }
 
   /* ── Source filter dropdown in toolbar ── */
   #sourceFilter {
-    padding: .45rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px;
-    font-size: .875rem; outline: none; color: #334155; background: #fff; cursor: pointer;
+    padding: .45rem .8rem; border: 1px solid var(--border); border-radius: 0;
+    font-family: var(--font-body); font-size: .8rem; outline: none;
+    color: var(--navy); background: var(--white); cursor: pointer;
   }
-  #sourceFilter:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+  #sourceFilter:focus { border-color: var(--navy); }
 
   /* ── Region dropdown inside Location th ── */
   .loc-th { position: relative; }
   .loc-th select {
-    margin-left: .4rem;
-    padding: .15rem .3rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 5px;
-    font-size: .75rem;
-    font-weight: 500;
-    color: #334155;
-    background: #fff;
-    cursor: pointer;
-    vertical-align: middle;
+    margin-left: .4rem; padding: .15rem .3rem;
+    border: 1px solid rgba(255,255,255,.3); border-radius: 0;
+    font-size: .7rem; font-weight: 500; font-family: var(--font-body);
+    color: var(--white); background: var(--navy);
+    cursor: pointer; vertical-align: middle;
   }
-  .loc-th select:focus { outline: none; border-color: #3b82f6; }
+  .loc-th select:focus { outline: none; border-color: var(--white); }
+  .loc-th select option { background: var(--navy); color: var(--white); }
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
+    <div class="eyebrow">FRAM Partners</div>
     <h1>Institutional Allocator Jobs</h1>
-    <p>Filtered from Apify dataset &mdash; endowments, pensions, family offices, sovereign wealth &amp; more</p>
+    <p>Endowments, pensions, family offices, sovereign wealth &amp; private markets — US &amp; Canada</p>
   </div>
 </header>
 
@@ -164,19 +208,19 @@
   <div class="stats-grid">
     <div class="stat-card">
       <div class="label">Total Roles</div>
-      <div class="value">45</div>
+      <div class="value">41</div>
     </div>
-    <div class="stat-card" style="border-color:#10b981;">
+    <div class="stat-card">
       <div class="label">Earliest Posted</div>
-      <div class="value" style="font-size:1.1rem;padding-top:.3rem;">2026-04-02</div>
+      <div class="value" style="font-size:1.2rem;padding-top:.2rem;">2026-04-02</div>
     </div>
-    <div class="stat-card" style="border-color:#f59e0b;">
+    <div class="stat-card">
       <div class="label">Latest Posted</div>
-      <div class="value" style="font-size:1.1rem;padding-top:.3rem;">2026-04-03</div>
+      <div class="value" style="font-size:1.2rem;padding-top:.2rem;">2026-04-03</div>
     </div>
-    <div class="stat-card" style="border-color:#8b5cf6;">
+    <div class="stat-card">
       <div class="label">Last Updated</div>
-      <div class="value" style="font-size:.85rem;padding-top:.4rem;line-height:1.4;">April 03, 2026 at 01:38 PM</div>
+      <div class="value" style="font-size:.85rem;padding-top:.4rem;line-height:1.5;font-family:var(--font-body);font-weight:400;">April 03, 2026 at 02:33 PM</div>
     </div>
   </div>
 
@@ -184,14 +228,14 @@
   <div class="section">
     <h2>Top Hiring Organizations</h2>
     <div class="companies-wrap">
-      <div class="company-chip"><span class="chip-name">Fidelity Investments</span><span class="chip-count">8</span></div><div class="company-chip"><span class="chip-name">Mass General Brigham</span><span class="chip-count">4</span></div><div class="company-chip"><span class="chip-name">Wisconsin Foundation and Alumni Association</span><span class="chip-count">3</span></div><div class="company-chip"><span class="chip-name">Northern Trust</span><span class="chip-count">3</span></div><div class="company-chip"><span class="chip-name">Rockefeller Capital Management</span><span class="chip-count">2</span></div><div class="company-chip"><span class="chip-name">City of Austin Employees’ Retirement System (COAERS)</span><span class="chip-count">2</span></div><div class="company-chip"><span class="chip-name">Montgomery County Employee Retirement Plans</span><span class="chip-count">2</span></div><div class="company-chip"><span class="chip-name">Cerity Partners</span><span class="chip-count">1</span></div>
+      <div class="company-chip"><span class="chip-name">Fidelity Investments</span><span class="chip-count">8</span></div><div class="company-chip"><span class="chip-name">Northern Trust</span><span class="chip-count">3</span></div><div class="company-chip"><span class="chip-name">Wisconsin Foundation and Alumni Association</span><span class="chip-count">2</span></div><div class="company-chip"><span class="chip-name">Rockefeller Capital Management</span><span class="chip-count">2</span></div><div class="company-chip"><span class="chip-name">City of Austin Employees’ Retirement System (COAERS)</span><span class="chip-count">2</span></div><div class="company-chip"><span class="chip-name">Montgomery County Employee Retirement Plans</span><span class="chip-count">2</span></div><div class="company-chip"><span class="chip-name">Cerity Partners</span><span class="chip-count">1</span></div><div class="company-chip"><span class="chip-name">Mass General Brigham</span><span class="chip-count">1</span></div>
     </div>
   </div>
 
   <!-- Jobs table -->
   <div class="table-section">
     <div class="table-toolbar">
-      <h2>All Roles (45)</h2>
+      <h2>All Roles (41)</h2>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;">
         <input id="searchBox" type="search" placeholder="Search title, company, location …" />
         <select id="sourceFilter">
@@ -226,18 +270,12 @@ The Wisconsin Foundation and Alumni Association (WFAA)*, the private fundraising
 The Wisconsin Foundation and Alumni Association (WFAA)*, the private fundraising and alumni relations organization for the UW-Madison, is seeking a dynamic Customer Relations Coordinator! 
 The Customer Relations Coordinator provides exceptional customer service at the reception desk at the Below Alumni Center. Serve as the first point of contact for alumni, constituents, and customers in person, via telephone, email, and website live chat. Manage inventory of organizational and division…">Overview
 The Wisconsin Foundation and Alumni Association (WFAA)*, the private fundraising and alumni relations organizat…</td><td><span class="source-tag">Apify</span></td></tr>
-<tr class="age-fresh"><td><a href="https://careers-supportuw.icims.com/jobs/1590/assistant-director-of-medical-community-fundraising/job" target="_blank" rel="noopener">Assistant Director of Medical Community Fundraising</a></td><td>Wisconsin Foundation and Alumni Association</td><td>Madison, Wisconsin, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>FULL_TIME</td><td class="desc-cell" title="Overview
-The Wisconsin Foundation and Alumni Association (WFAA)*, the private fundraising and alumni relations organization for the University of Wisconsin-Madison is seeking a Assistant Director of Medical Community Fundraising. 
-The Assistant Director of Medical Community Fundraising supports individuals, families, and community partners who independently raise funds for Wisconsin Medicine priority areas. This role ensures medical community fundraising activities align with UW Foundation polic…">Overview
-The Wisconsin Foundation and Alumni Association (WFAA)*, the private fundraising and alumni relations organizat…</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://wd1.myworkdaysite.com/recruiting/fmr/FidelityCareers/job/Westlake-TX/Director--Data-Analytics-and-Insights_2125976-1" target="_blank" rel="noopener">Director, Data Analytics and Insights</a></td><td>Fidelity Investments</td><td>Westlake, Texas, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>FULL_TIME</td><td class="desc-cell" title="Job Description: As a critical member of the People Analytics Decision Support team, the Director, HR Analytics and Insights role will lead the development of Human Resources (HR) data foundations, analytic solutions and prioritized research requests that inform strategic workforce decisions for our key stakeholder groups. This role is responsible for advancing Fidelity’s use of HR data and tools to advance our people-related strategies and decision-making processes. The Experience and Skills Yo…">Job Description: As a critical member of the People Analytics Decision Support team, the Director, HR Analytics and Insi…</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://ntrs.wd1.myworkdayjobs.com/northerntrust/job/Los-Angeles-CA/Senior-Investment-Officer_R152791" target="_blank" rel="noopener">Senior Investment Officer</a></td><td>Northern Trust</td><td>Los Angeles, California, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>FULL_TIME</td><td class="desc-cell" title="About Northern Trust: Northern Trust, a Fortune 500 company, is a globally recognized, award-winning financial institution that has been in continuous operation since 1889. Northern Trust is proud to provide innovative financial services and guidance to the world’s most successful individuals, families, and institutions by remaining true to our enduring principles of service, expertise, and integrity. With more than 130 years of financial experience and over 22,000 partners, we serve the world’s…">About Northern Trust: Northern Trust, a Fortune 500 company, is a globally recognized, award-winning financial instituti…</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://ntrs.wd1.myworkdayjobs.com/northerntrust/job/Chicago-IL/Senior-Consultant-Implementation--Portfolio-Solutions_R148580" target="_blank" rel="noopener">Senior Consultant, Implementation Portfolio Solutions</a></td><td>Northern Trust</td><td>Chicago, Illinois, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>FULL_TIME</td><td class="desc-cell" title="About Northern Trust: Northern Trust, a Fortune 500 company, is a globally recognized, award-winning financial institution that has been in continuous operation since 1889. Northern Trust is proud to provide innovative financial services and guidance to the world’s most successful individuals, families, and institutions by remaining true to our enduring principles of service, expertise, and integrity. With more than 130 years of financial experience and over 22,000 partners, we serve the world’s…">About Northern Trust: Northern Trust, a Fortune 500 company, is a globally recognized, award-winning financial instituti…</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://ceritypartners.wd12.myworkdayjobs.com/ceritypartnerscareers/job/Seattle-Office/Investment-Analyst_R612" target="_blank" rel="noopener">Investment Analyst</a></td><td>Cerity Partners</td><td>Seattle, Washington, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>FULL_TIME</td><td class="desc-cell" title="Primary Responsibilities Track and monitor the investment performance of client portfolios: Enter client investments’ data using bank and manager statements or verify imported data into Performance Measurement System. Verify current and historical work for correct entry, accuracy, and proper codes. Produce quarterly and monthly performance reports for client meetings. Produce private markets-focused reports for subset of clients. Create custom spreadsheets and analysis. Keep Consultants, researc…">Primary Responsibilities Track and monitor the investment performance of client portfolios: Enter client investments’ da…</td><td><span class="source-tag">Apify</span></td></tr>
-<tr class="age-fresh"><td><a href="https://massgeneralbrigham.wd1.myworkdayjobs.com/MGBExternal/job/Boston-MA/Patient-Service-Coordinator-II_RQ4054278" target="_blank" rel="noopener">Patient Service Coordinator II</a></td><td>Mass General Brigham</td><td>Boston, Massachusetts, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>PART_TIME</td><td class="desc-cell" title="Site: The General Hospital Corporation Mass General Brigham relies on a wide range of professionals, including doctors, nurses, business people, tech experts, researchers, and systems analysts to advance our mission. As a not-for-profit, we support patient care, research, teaching, and community service, striving to provide exceptional care. We believe that high-performing teams drive groundbreaking medical discoveries and invite all applicants to join us and experience what it means to be part …">Site: The General Hospital Corporation Mass General Brigham relies on a wide range of professionals, including doctors, …</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://massgeneralbrigham.wd1.myworkdayjobs.com/MGBExternal/job/Brookline-MA/MA-Student-COOP_RQ4058110" target="_blank" rel="noopener">MA Student COOP</a></td><td>Mass General Brigham</td><td>Brookline, Massachusetts, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>PART_TIME</td><td class="desc-cell" title="Site: The Brigham and Women&#x27;s Hospital, Inc. Mass General Brigham relies on a wide range of professionals, including doctors, nurses, business people, tech experts, researchers, and systems analysts to advance our mission. As a not-for-profit, we support patient care, research, teaching, and community service, striving to provide exceptional care. We believe that high-performing teams drive groundbreaking medical discoveries and invite all applicants to join us and experience what it means to be…">Site: The Brigham and Women&#x27;s Hospital, Inc. Mass General Brigham relies on a wide range of professionals, includin…</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://ntrs.wd1.myworkdayjobs.com/northerntrust/job/Chicago-IL/Consultant--Global-Fee-Management_R149594" target="_blank" rel="noopener">Specialist, Business Management - Investment Operations</a></td><td>Northern Trust</td><td>Chicago, Illinois, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>FULL_TIME</td><td class="desc-cell" title="About Northern Trust: Northern Trust, a Fortune 500 company, is a globally recognized, award-winning financial institution that has been in continuous operation since 1889. Northern Trust is proud to provide innovative financial services and guidance to the world’s most successful individuals, families, and institutions by remaining true to our enduring principles of service, expertise, and integrity. With more than 130 years of financial experience and over 22,000 partners, we serve the world’s…">About Northern Trust: Northern Trust, a Fortune 500 company, is a globally recognized, award-winning financial instituti…</td><td><span class="source-tag">Apify</span></td></tr>
-<tr class="age-fresh"><td><a href="https://massgeneralbrigham.wd1.myworkdayjobs.com/MGBExternal/job/Salem-MA/Nurse-Director---Endoscopy_RQ4058874" target="_blank" rel="noopener">Nurse Director - Endoscopy</a></td><td>Mass General Brigham</td><td>Salem, Massachusetts, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>FULL_TIME</td><td class="desc-cell" title="Site: North Shore Medical Center, Inc. Mass General Brigham relies on a wide range of professionals, including doctors, nurses, business people, tech experts, researchers, and systems analysts to advance our mission. As a not-for-profit, we support patient care, research, teaching, and community service, striving to provide exceptional care. We believe that high-performing teams drive groundbreaking medical discoveries and invite all applicants to join us and experience what it means to be part …">Site: North Shore Medical Center, Inc. Mass General Brigham relies on a wide range of professionals, including doctors, …</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://wd1.myworkdaysite.com/recruiting/fmr/FidelityCareers/job/Boston-MA/Senior-Analyst--Custom-SMA-Investment-Services_2126437-1" target="_blank" rel="noopener">Senior Analyst, Custom SMA Investment Services</a></td><td>Fidelity Investments</td><td>Boston, Massachusetts, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>FULL_TIME</td><td class="desc-cell" title="Job Description: The Role The Senior Analyst, Custom SMA Investment Services will help support the VP of Custom SMA Investment Services on Fidelity’s Custom SMA offering for intermediaries. The position will play a critical role engaging with key business partners across Custom SMA Portfolio Management, Portfolio Engineering, Platform Enablement, Technology, Investment Product, and our Fidelity Institutional partners to understand and define the business requirements and processes supporting the…">Job Description: The Role The Senior Analyst, Custom SMA Investment Services will help support the VP of Custom SMA Inve…</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://wd1.myworkdaysite.com/recruiting/fmr/targeted/job/Boston-MA/Team-Lead--Investment-Risk-Technology_2103297" target="_blank" rel="noopener">Team Lead, Investment Risk Technology</a></td><td>Fidelity Investments</td><td>San Francisco, California, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>FULL_TIME</td><td class="desc-cell" title="Job Description: Team Lead, Investment Risk Technology The Role We are seeking an experienced and dynamic leader to head the development of our Investment Risk Platform for Asset Management at Fidelity. This individual will play a pivotal role in designing, building, and scaling a cutting-edge risk management system that empowers investment teams with actionable insights into factor models, risk exposures, and portfolio performance. The ideal candidate will have a proven track record of successf…">Job Description: Team Lead, Investment Risk Technology The Role We are seeking an experienced and dynamic leader to head…</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://wd1.myworkdaysite.com/recruiting/fmr/targeted/job/Boston-MA/VP--WAMS-Data-Strategy_2123173-2" target="_blank" rel="noopener">VP, WAMS Data Strategy</a></td><td>Fidelity Investments</td><td>Boston, Massachusetts, United States</td><td data-sort="2026-04-03">2026-04-03</td><td>FULL_TIME</td><td class="desc-cell" title="Job Description: The Role The Vice President of Wealth Advisory Managed
@@ -307,7 +345,6 @@ Application deadline: March 25, 2026
 The team you’ll join
 The Portfolio Management team at StepStone serves as a central resource for the firm&#x27;s e…">We are global private markets specialists delivering tailored investment solutions, advisory services, and impactful, da…</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://cppib.wd10.myworkdayjobs.com/cppinvestments/job/Toronto/Senior-Coordinator--Workplace-Experience_JR00365" target="_blank" rel="noopener">Senior Coordinator, Workplace Experience</a></td><td>CPP Investments | Investissements RPC</td><td>Toronto, Ontario, Canada</td><td data-sort="2026-04-02">2026-04-02</td><td>FULL_TIME</td><td class="desc-cell" title="Purpose. Performance. People. Joining CPP Investments means joining one of the world’s most admired and respected institutional investors to drive a single mandate: to deliver strong, sustainable returns for generations of Canadians. With a long-term horizon and global reach, we deploy capital at scale across public and private markets. Our size, stability, and disciplined investment philosophy allow us to pursue complex opportunities and build enduring partnerships worldwide. For our people, th…">Purpose. Performance. People. Joining CPP Investments means joining one of the world’s most admired and respected instit…</td><td><span class="source-tag">Apify</span></td></tr>
-<tr class="age-fresh"><td><a href="https://massgeneralbrigham.wd1.myworkdayjobs.com/MGBExternal/job/Boston-MA/Clinical-Research-Coordinator-I--Infectious-Disease_RQ4058809" target="_blank" rel="noopener">Clinical Research Coordinator I, Infectious Disease</a></td><td>Mass General Brigham</td><td>Boston, Massachusetts, United States</td><td data-sort="2026-04-02">2026-04-02</td><td>FULL_TIME</td><td class="desc-cell" title="Site: Brigham and Women&#x27;s Physicians Organization, Inc. Mass General Brigham relies on a wide range of professionals, including doctors, nurses, business people, tech experts, researchers, and systems analysts to advance our mission. As a not-for-profit, we support patient care, research, teaching, and community service, striving to provide exceptional care. We believe that high-performing teams drive groundbreaking medical discoveries and invite all applicants to join us and experience what it …">Site: Brigham and Women&#x27;s Physicians Organization, Inc. Mass General Brigham relies on a wide range of professional…</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-fresh"><td><a href="https://phsorg.wd1.myworkdayjobs.com/Careers/job/Reverend-Hugh-Cooper-Administrative-Center/Director-EPIC-Community-Connect-ABQ_R-2601" target="_blank" rel="noopener">Director-EPIC Community Connect-ABQ</a></td><td>Presbyterian Healthcare Services</td><td>United States</td><td data-sort="2026-04-02">2026-04-02</td><td>FULL_TIME</td><td class="desc-cell" title="Location Address: 9521 San Mateo NE Albuquerque, NM 87113-2237 Summary: The Epic Community Connect Program Director is responsible for providing strategic leadership and operational oversight of Presbyterian Healthcare Services’ Epic Community Connect program. This role oversees the Epic EHR Community Connect offering for affiliated customers, ensuring alignment with clinical, operational, and business needs. The Director understands the healthcare technology and business landscape and aligns sy…">Location Address: 9521 San Mateo NE Albuquerque, NM 87113-2237 Summary: The Epic Community Connect Program Director is r…</td><td><span class="source-tag">Apify</span></td></tr>
 <tr class="age-old"><td><a href="https://www.coaers.org/director-of-private-equity" target="_blank" rel="noopener">Director of Private Equity (PE)</a></td><td>City of Austin Employees’ Retirement System (COAERS)</td><td></td><td data-sort=""></td><td></td><td class="desc-cell" title=""></td><td><span class="source-tag">NCPERS</span></td></tr>
 <tr class="age-old"><td><a href="https://www.coaers.org/investment-analyst" target="_blank" rel="noopener">Investment Analyst</a></td><td>City of Austin Employees’ Retirement System (COAERS)</td><td></td><td data-sort=""></td><td></td><td class="desc-cell" title=""></td><td><span class="source-tag">NCPERS</span></td></tr>
@@ -332,11 +369,11 @@ The Portfolio Management team at StepStone serves as a central resource for the 
   </div>
 
   <footer>
-    <p style="margin-top:1.5rem;">Generated by allocator-jobs scraper &bull; April 03, 2026 at 01:38 PM</p>
+    <p style="margin-top:1.5rem;">Generated by allocator-jobs scraper &bull; April 03, 2026 at 02:33 PM</p>
     <p style="margin-top:.4rem;">
-      <span style="color:#22c55e;">&#9632;</span> Posted &le; 7 days &nbsp;
-      <span style="color:#f59e0b;">&#9632;</span> Posted 8–30 days &nbsp;
-      <span style="color:#cbd5e1;">&#9632;</span> Older
+      <span style="color:#2d6a4f;">&#9632;</span> Posted &le; 7 days &nbsp;
+      <span style="color:#d97706;">&#9632;</span> Posted 8–30 days &nbsp;
+      <span style="color:#e3e5e8;">&#9632;</span> Older
     </p>
   </footer>
 
