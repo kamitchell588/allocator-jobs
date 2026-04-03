@@ -26,7 +26,7 @@ import pathlib, re as _re
 _env = pathlib.Path(__file__).parent / ".env"
 _env_vars = dict(_re.findall(r'^([A-Z_]+)=(.+)$', _env.read_text(), _re.M)) if _env.exists() else {}
 APIFY_TOKEN = _env_vars.get("APIFY_TOKEN", os.environ.get("APIFY_TOKEN", ""))
-DATASET_ID  = "EFCRnigmbzvW2bFsM"
+DATASET_ID  = "Spx0hrdq5LxnMFSEb"
 BASE_URL    = f"https://api.apify.com/v2/datasets/{DATASET_ID}/items"
 OUTPUT_DIR  = os.path.dirname(os.path.abspath(__file__))
 CSV_PATH    = os.path.join(OUTPUT_DIR, "allocator_jobs.csv")
