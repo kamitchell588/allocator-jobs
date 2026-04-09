@@ -1380,12 +1380,6 @@ def generate_html(jobs: list[dict]) -> None:
           <option value="UTIMCO">UTIMCO</option>
           <option value="Manual">Manually Added</option>
         </select>
-        <a href="{MANUAL_SHEET_URL}" target="_blank" rel="noopener"
-           style="padding:.45rem 1rem;background:var(--burgundy);color:#fff;font-size:.8rem;
-                  font-weight:500;letter-spacing:.04em;text-decoration:none;white-space:nowrap;
-                  border:none;font-family:var(--font-body);">
-          + Add a Job
-        </a>
       </div>
     </div>
     <div class="table-wrap">
@@ -1571,14 +1565,15 @@ def main():
     print(f"\n  Supplemental raw: {len(supp_raw)}  →  after filter: {len(supp_jobs)}")
 
     # ── 3. Merge + dedup ──────────────────────────────────────────
-    all_jobs  = _dedup(apify_jobs + supp_jobs)
-    # Sort by date descending (blank dates go last)
-    # Manual jobs always sort to top, then by date descending
-    all_jobs.sort(key=lambda j: (0 if j.get("source") == "Manual" else 1, -(j["date_posted"] or "0000").__len__()), reverse=False)
-    all_jobs.sort(key=lambda j: j["date_posted"] or "0000", reverse=True)
-    manual_jobs = [j for j in all_jobs if j.get("source") == "Manual"]
-    other_jobs  = [j for j in all_jobs if j.get("source") != "Manual"]
-    all_jobs = manual_jobs + other_jobs
+    # Separate manual jobs so they are never dropped by dedup
+    manual_jobs = [j for j in supp_jobs if j.get("source") == "Manual"]
+    non_manual  = [j for j in supp_jobs if j.get("source") != "Manual"]
+
+    deduped = _dedup(apify_jobs + non_manual)
+    # Sort non-manual jobs by date descending (blank dates go last)
+    deduped.sort(key=lambda j: j["date_posted"] or "0000", reverse=True)
+    # Manual jobs always pinned to top
+    all_jobs = manual_jobs + deduped
 
     print(f"\n  Total unique jobs: {len(all_jobs)}")
 
