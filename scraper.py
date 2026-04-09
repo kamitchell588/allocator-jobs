@@ -862,11 +862,11 @@ def scrape_manual_sheet() -> list[dict]:
     jobs = []
     reader = csv.DictReader(resp.text.splitlines())
     for row in reader:
-        title      = (row.get("Title") or row.get("title") or "").strip()
-        company    = (row.get("Company") or row.get("company") or "").strip()
+        title      = (row.get("Job Title") or row.get("Title") or row.get("title") or "").strip()
+        company    = (row.get("Company Name") or row.get("Company") or row.get("company") or "").strip()
         location   = (row.get("Location") or row.get("location") or "").strip()
         url        = (row.get("URL") or row.get("url") or "").strip()
-        date_posted = (row.get("Date_Posted") or row.get("date_posted") or "").strip()
+        date_posted = (row.get("Date_Posted") or row.get("Date posted") or row.get("date_posted") or "").strip()
 
         if not title and not url:
             continue  # skip empty rows
