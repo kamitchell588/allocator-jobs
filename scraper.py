@@ -1104,7 +1104,6 @@ def _rows_html(jobs: list[dict]) -> str:
             f'<td>{escape(j["location"])}</td>'
             f'<td data-sort="{escape(raw_date)}">{escape(raw_date)}</td>'
             f'<td>{escape(j["job_type"])}</td>'
-            f'<td class="desc-cell" title="{desc}">{desc[:120]}{"…" if len(desc) > 120 else ""}</td>'
             f'<td><span class="source-tag{" manual" if j.get("source") == "Manual" else ""}">{source}</span></td>'
             f'</tr>'
         )
@@ -1388,11 +1387,10 @@ def generate_html(jobs: list[dict]) -> None:
           <tr>
             <th data-col="0">Title <span class="sort-icon"></span></th>
             <th data-col="1">Company <span class="sort-icon"></span></th>
-            <th data-col="2" class="loc-th">Location <span class="sort-icon"></span><select id="regionFilter" onclick="event.stopPropagation()"><option value="all">All regions</option><option value="us">US</option><option value="emea">EMEA</option><option value="apac">Asia Pac</option></select></th>
+            <th data-col="2" class="loc-th">Location <span class="sort-icon"></span><select id="regionFilter" onclick="event.stopPropagation()"><option value="all">All regions</option><option value="us">United States</option><option value="canada">Canada</option></select></th>
             <th data-col="3">Date Posted <span class="sort-icon"></span></th>
             <th data-col="4">Type <span class="sort-icon"></span></th>
-            <th data-col="5">Description</th>
-            <th data-col="6">Source <span class="sort-icon"></span></th>
+            <th data-col="5">Source <span class="sort-icon"></span></th>
           </tr>
         </thead>
         <tbody id="tableBody">
@@ -1453,7 +1451,7 @@ function filterTable() {{
   Array.from(tableBody.rows).forEach(row => {{
     const text    = row.textContent.toLowerCase();
     const loc     = row.cells[2] ? row.cells[2].textContent : "";
-    const rowSrc  = row.cells[6] ? row.cells[6].textContent.trim() : "";
+    const rowSrc  = row.cells[5] ? row.cells[5].textContent.trim() : "";
     const matchQ  = !q || text.includes(q);
     const matchR  = region === "all" || classifyRegion(loc) === region;
     const matchS  = src === "all" || rowSrc === src;
