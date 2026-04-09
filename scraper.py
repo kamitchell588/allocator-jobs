@@ -884,6 +884,70 @@ def scrape_manual_sheet() -> list[dict]:
     return jobs
 
 
+def scrape_ultipro(board_url: str, board_id: str, company: str, location: str) -> list[dict]:
+    """
+    Generic scraper for UltiPro/UKG job boards using the LoadSearchResults API.
+    board_url: base URL e.g. https://recruiting2.ultipro.com/UNI1086TAMIM/JobBoard/36bde31a-...
+    board_id:  the GUID in the URL path
+    """
+    SOURCE   = company
+    api_url  = f"{board_url}/JobBoardView/LoadSearchResults"
+    print(f"\n[{SOURCE}] Fetching via UltiPro API …")
+
+    order_by = [{"Value": "postedDateDesc", "PropertyName": "PostedDate", "Ascending": False}]
+    payload = {
+        "opportunitySearch": {
+            "QueryString": "",
+            "Filters": [],
+            "Top": 100,
+            "Skip": 0,
+            "OrderBy": order_by,
+        }
+    }
+
+    try:
+        post_headers = {**HEADERS, "Content-Type": "application/json", "Referer": board_url}
+        resp = requests.post(api_url, json=payload, headers=post_headers, timeout=30)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as e:
+        print(f"  [{SOURCE}] Failed: {{e}}")
+        return []
+
+    opportunities = data.get("opportunities", [])
+    jobs = []
+    for opp in opportunities:
+        title       = (opp.get("Title") or opp.get("title") or "").strip()
+        opp_id      = opp.get("Id") or opp.get("id") or ""
+        job_url     = f"{{board_url}}/OpportunityDetail?opportunityId={{opp_id}}" if opp_id else board_url
+        date_raw    = opp.get("PostedDate") or opp.get("postedDate") or ""
+        if date_raw and "T" in date_raw:
+            date_raw = date_raw.split("T")[0]
+        loc = opp.get("Location") or opp.get("location") or location
+
+        if title:
+            jobs.append(_make_job(
+                title=title,
+                company=company,
+                location=loc,
+                url=job_url,
+                date_posted=date_raw,
+                source=SOURCE,
+            ))
+
+    print(f"  [{SOURCE}] Found {{len(jobs)}} jobs.")
+    return jobs
+
+
+def scrape_utimco() -> list[dict]:
+    return scrape_ultipro(
+        board_url="https://recruiting2.ultipro.com/UNI1086TAMIM/JobBoard/36bde31a-2829-41f6-8302-00354faf172a",
+        board_id="36bde31a-2829-41f6-8302-00354faf172a",
+        company="UTIMCO",
+        location="Austin, TX",
+    )
+
+
 def scrape_all_supplemental() -> list[dict]:
     """Run all supplemental scrapers and return merged, deduped list."""
     all_jobs = []
@@ -891,6 +955,7 @@ def scrape_all_supplemental() -> list[dict]:
     all_jobs.extend(scrape_allocatorjobs())
     all_jobs.extend(scrape_cfa_institute())
     all_jobs.extend(scrape_cof())
+    all_jobs.extend(scrape_utimco())
     all_jobs.extend(scrape_manual_sheet())
     return all_jobs
 
@@ -1312,6 +1377,7 @@ def generate_html(jobs: list[dict]) -> None:
           <option value="AllocatorJobs">AllocatorJobs</option>
           <option value="CFA Institute">CFA Institute</option>
           <option value="Council on Foundations">Council on Foundations</option>
+          <option value="UTIMCO">UTIMCO</option>
           <option value="Manual">Manually Added</option>
         </select>
         <a href="{MANUAL_SHEET_URL}" target="_blank" rel="noopener"
@@ -1507,7 +1573,12 @@ def main():
     # ── 3. Merge + dedup ──────────────────────────────────────────
     all_jobs  = _dedup(apify_jobs + supp_jobs)
     # Sort by date descending (blank dates go last)
+    # Manual jobs always sort to top, then by date descending
+    all_jobs.sort(key=lambda j: (0 if j.get("source") == "Manual" else 1, -(j["date_posted"] or "0000").__len__()), reverse=False)
     all_jobs.sort(key=lambda j: j["date_posted"] or "0000", reverse=True)
+    manual_jobs = [j for j in all_jobs if j.get("source") == "Manual"]
+    other_jobs  = [j for j in all_jobs if j.get("source") != "Manual"]
+    all_jobs = manual_jobs + other_jobs
 
     print(f"\n  Total unique jobs: {len(all_jobs)}")
 
