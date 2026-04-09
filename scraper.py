@@ -27,6 +27,8 @@ _env = pathlib.Path(__file__).parent / ".env"
 _env_vars = dict(_re.findall(r'^([A-Z_]+)=(.+)$', _env.read_text(), _re.M)) if _env.exists() else {}
 APIFY_TOKEN = _env_vars.get("APIFY_TOKEN", os.environ.get("APIFY_TOKEN", ""))
 DATASET_ID  = "XLbyFxagcoq3KhIE9"
+MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
+MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
 BASE_URL    = f"https://api.apify.com/v2/datasets/{DATASET_ID}/items"
 OUTPUT_DIR  = os.path.dirname(os.path.abspath(__file__))
 CSV_PATH    = os.path.join(OUTPUT_DIR, "allocator_jobs.csv")
@@ -843,6 +845,45 @@ def scrape_cof() -> list[dict]:
     )
 
 
+def scrape_manual_sheet() -> list[dict]:
+    """
+    Fetch manually added jobs from the published Google Sheet CSV.
+    Columns: Title, Company, Location, URL, Date_Posted
+    All manual jobs bypass the Layer 2 / exclusion filters — they are
+    assumed to be pre-vetted by the person who added them.
+    """
+    SOURCE = "Manual"
+    print(f"\n[{SOURCE}] Fetching Google Sheet …")
+    resp = _get(MANUAL_SHEET_CSV)
+    if not resp:
+        print(f"  [{SOURCE}] Skipped — could not fetch sheet.")
+        return []
+
+    jobs = []
+    reader = csv.DictReader(resp.text.splitlines())
+    for row in reader:
+        title      = (row.get("Title") or row.get("title") or "").strip()
+        company    = (row.get("Company") or row.get("company") or "").strip()
+        location   = (row.get("Location") or row.get("location") or "").strip()
+        url        = (row.get("URL") or row.get("url") or "").strip()
+        date_posted = (row.get("Date_Posted") or row.get("date_posted") or "").strip()
+
+        if not title and not url:
+            continue  # skip empty rows
+
+        jobs.append(_make_job(
+            title=title,
+            company=company,
+            location=location,
+            url=url,
+            date_posted=date_posted,
+            source=SOURCE,
+        ))
+
+    print(f"  [{SOURCE}] Found {len(jobs)} manually added jobs.")
+    return jobs
+
+
 def scrape_all_supplemental() -> list[dict]:
     """Run all supplemental scrapers and return merged, deduped list."""
     all_jobs = []
@@ -850,6 +891,7 @@ def scrape_all_supplemental() -> list[dict]:
     all_jobs.extend(scrape_allocatorjobs())
     all_jobs.extend(scrape_cfa_institute())
     all_jobs.extend(scrape_cof())
+    all_jobs.extend(scrape_manual_sheet())
     return all_jobs
 
 
@@ -998,7 +1040,7 @@ def _rows_html(jobs: list[dict]) -> str:
             f'<td data-sort="{escape(raw_date)}">{escape(raw_date)}</td>'
             f'<td>{escape(j["job_type"])}</td>'
             f'<td class="desc-cell" title="{desc}">{desc[:120]}{"…" if len(desc) > 120 else ""}</td>'
-            f'<td><span class="source-tag">{source}</span></td>'
+            f'<td><span class="source-tag{" manual" if j.get("source") == "Manual" else ""}">{source}</span></td>'
             f'</tr>'
         )
     return "\n".join(rows)
@@ -1191,6 +1233,10 @@ def generate_html(jobs: list[dict]) -> None:
     background: var(--cream); border: 1px solid var(--border);
     color: var(--navy); white-space: nowrap; letter-spacing: .03em;
   }}
+  .source-tag.manual {{
+    background: var(--burgundy); border-color: var(--burgundy);
+    color: #fff;
+  }}
 
   /* ── Source filter dropdown in toolbar ── */
   #sourceFilter {{
@@ -1266,7 +1312,14 @@ def generate_html(jobs: list[dict]) -> None:
           <option value="AllocatorJobs">AllocatorJobs</option>
           <option value="CFA Institute">CFA Institute</option>
           <option value="Council on Foundations">Council on Foundations</option>
+          <option value="Manual">Manually Added</option>
         </select>
+        <a href="{MANUAL_SHEET_URL}" target="_blank" rel="noopener"
+           style="padding:.45rem 1rem;background:var(--burgundy);color:#fff;font-size:.8rem;
+                  font-weight:500;letter-spacing:.04em;text-decoration:none;white-space:nowrap;
+                  border:none;font-family:var(--font-body);">
+          + Add a Job
+        </a>
       </div>
     </div>
     <div class="table-wrap">
@@ -1436,6 +1489,9 @@ def main():
     # Apply the same two-layer filter + exclusions to supplemental jobs
     # (they come in as already-normalised dicts, so we filter on the dict fields)
     def _supp_passes(j: dict) -> bool:
+        # Manual sheet entries are pre-vetted — always include them
+        if j.get("source") == "Manual":
+            return True
         title = j["title"].lower()
         if not any(kw in title for kw in LAYER2_TITLE_KEYWORDS):
             return False
