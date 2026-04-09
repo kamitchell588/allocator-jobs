@@ -1263,7 +1263,7 @@ def generate_html(jobs: list[dict]) -> None:
 
 <header>
   <div class="header-inner">
-    <div class="eyebrow">FRAM Partners</div>
+    <img src="https://framcompany.com/assets/fram-logo-BYQ0yDsY.png" alt="FRAM Partners" style="height:36px;margin-bottom:1.25rem;display:block;" />
     <h1>Institutional Allocator Jobs</h1>
     <p>Endowments, pensions, family offices, sovereign wealth &amp; private markets — US &amp; Canada</p>
   </div>
