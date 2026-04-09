@@ -1419,20 +1419,15 @@ const US_KW   = ["united states","new york","new jersey","connecticut","californ
                   "washington","boston","chicago","los angeles","san francisco","miami","dallas",
                   "houston","seattle","denver","charlotte","atlanta"," ny,"," nj,"," ct,",
                   " ca,"," il,"," tx,"," ma,"," fl,"," ga,"," pa,"," oh,"," va,"," wa,"];
-const EMEA_KW = ["united kingdom","london"," uk","germany","france","netherlands","switzerland",
-                  "sweden","norway","denmark","finland","ireland","spain","italy","luxembourg",
-                  "belgium","austria","dubai","abu dhabi","uae","middle east","africa","israel",
-                  "south africa","europe","amsterdam","frankfurt","paris","zurich","geneva",
-                  "stockholm","oslo","copenhagen","dublin","milan","madrid","lisbon"];
-const APAC_KW = ["australia","sydney","melbourne","singapore","hong kong","japan","tokyo","china",
-                  "beijing","shanghai","south korea","seoul","india","mumbai","new zealand",
-                  "taiwan","thailand","indonesia","malaysia","asia pacific","apac"];
+const CANADA_KW = ["canada","ontario","british columbia","alberta","quebec","manitoba",
+                    "saskatchewan","nova scotia","new brunswick","newfoundland","prince edward island",
+                    "toronto","vancouver","montreal","calgary","edmonton","ottawa","winnipeg",
+                    "hamilton","london, on","kitchener","victoria, bc","halifax"];
 
 function classifyRegion(loc) {{
   const l = loc.toLowerCase();
-  if (APAC_KW.some(k => l.includes(k))) return "apac";
-  if (EMEA_KW.some(k => l.includes(k))) return "emea";
-  if (US_KW.some(k => l.includes(k)))   return "us";
+  if (CANADA_KW.some(k => l.includes(k))) return "canada";
+  if (US_KW.some(k => l.includes(k)))     return "us";
   return "other";
 }}
 
