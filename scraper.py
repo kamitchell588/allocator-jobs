@@ -30,9 +30,11 @@ DATASET_ID  = "XLbyFxagcoq3KhIE9"
 MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
 MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
 BASE_URL    = f"https://api.apify.com/v2/datasets/{DATASET_ID}/items"
-OUTPUT_DIR  = os.path.dirname(os.path.abspath(__file__))
-CSV_PATH    = os.path.join(OUTPUT_DIR, "allocator_jobs.csv")
-HTML_PATH   = os.path.join(OUTPUT_DIR, "dashboard.html")
+OUTPUT_DIR        = os.path.dirname(os.path.abspath(__file__))
+CSV_PATH          = os.path.join(OUTPUT_DIR, "allocator_jobs.csv")
+HTML_PATH         = os.path.join(OUTPUT_DIR, "dashboard.html")
+ADMIN_PATH        = os.path.join(OUTPUT_DIR, "admin.html")
+HIDDEN_JOBS_PATH  = os.path.join(OUTPUT_DIR, "hidden_jobs.txt")
 
 FETCH_LIMIT = 1000   # items per page
 
@@ -1496,7 +1498,282 @@ function sortTableByCol(col, asc) {{
     print(f"Dashboard saved → {HTML_PATH}")
 
 
+def generate_admin_html(jobs: list[dict]) -> None:
+    hidden  = load_hidden_jobs()
+    updated = datetime.now().strftime("%B %d, %Y at %I:%M %p")
+
+    rows = []
+    for j in jobs:
+        raw_date  = j["date_posted"] or ""
+        url       = escape(j["url"])
+        title_cell = (
+            f'<a href="{url}" target="_blank" rel="noopener">{escape(j["title"])}</a>'
+            if url else escape(j["title"])
+        )
+        source  = escape(j.get("source", ""))
+        is_hidden = j["url"].lower().rstrip("/") in hidden
+        row_style = ' style="opacity:.4"' if is_hidden else ""
+        hide_btn  = (
+            f'<button class="hide-btn" data-url="{url}" onclick="hideJob(this)">'
+            f'{"Unhide" if is_hidden else "Hide"}</button>'
+        )
+        rows.append(
+            f'<tr{row_style}>'
+            f'<td>{title_cell}</td>'
+            f'<td>{escape(j["company"])}</td>'
+            f'<td>{escape(j["location"])}</td>'
+            f'<td>{escape(raw_date)}</td>'
+            f'<td>{escape(j["job_type"])}</td>'
+            f'<td><span class="source-tag">{source}</span></td>'
+            f'<td>{hide_btn}</td>'
+            f'</tr>'
+        )
+    rows_html = "\n".join(rows)
+
+    admin_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin — Allocator Jobs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {{
+    --navy:     #1b2232;
+    --burgundy: #4f1722;
+    --cream:    #f9f5f0;
+    --border:   #e3e5e8;
+    --muted:    #676f7e;
+    --font-display: "Source Serif 4", Georgia, serif;
+    --font-body:    "Inter", system-ui, sans-serif;
+  }}
+  *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  body {{ font-family: var(--font-body); background: var(--cream); color: var(--navy); min-height: 100vh; }}
+  a {{ color: var(--burgundy); text-decoration: none; }}
+  a:hover {{ text-decoration: underline; }}
+
+  /* Password gate */
+  #gate {{
+    position: fixed; inset: 0; background: var(--navy);
+    display: flex; align-items: center; justify-content: center; z-index: 999;
+  }}
+  #gate-box {{
+    background: #fff; padding: 2.5rem 2rem; width: 340px; text-align: center;
+  }}
+  #gate-box h2 {{ font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; margin-bottom: .4rem; color: var(--navy); }}
+  #gate-box p  {{ font-size: .8rem; color: var(--muted); margin-bottom: 1.5rem; }}
+  #gate-box input {{
+    width: 100%; padding: .6rem .8rem; border: 1px solid var(--border);
+    font-family: var(--font-body); font-size: .9rem; margin-bottom: .8rem; outline: none;
+  }}
+  #gate-box input:focus {{ border-color: var(--navy); }}
+  #gate-box button {{
+    width: 100%; padding: .65rem; background: var(--navy); color: #fff;
+    border: none; font-family: var(--font-body); font-size: .85rem;
+    font-weight: 500; cursor: pointer; letter-spacing: .04em;
+  }}
+  #gate-error {{ color: var(--burgundy); font-size: .8rem; margin-top: .6rem; display: none; }}
+
+  /* Header */
+  header {{
+    background: var(--navy); color: #fff;
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 3px solid var(--burgundy);
+  }}
+  header h1 {{ font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; }}
+  header .sub {{ font-size: .75rem; color: #a0aec0; margin-top: .3rem; }}
+  .admin-badge {{
+    display: inline-block; background: var(--burgundy); color: #fff;
+    font-size: .65rem; font-weight: 600; letter-spacing: .08em;
+    padding: .2rem .5rem; margin-left: .6rem; vertical-align: middle;
+  }}
+
+  /* Main */
+  main {{ max-width: 1300px; margin: 0 auto; padding: 1.5rem 2rem; }}
+
+  /* Notice */
+  .notice {{
+    background: #fff8e1; border-left: 4px solid #f59e0b;
+    padding: .8rem 1rem; font-size: .82rem; margin-bottom: 1.5rem; color: #92400e;
+  }}
+  .notice code {{
+    background: #fef3c7; padding: .1rem .3rem; font-size: .8rem; font-family: monospace;
+  }}
+
+  /* Toolbar */
+  .toolbar {{ display: flex; gap: .6rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }}
+  .toolbar input {{
+    flex: 1; min-width: 200px; padding: .45rem .8rem;
+    border: 1px solid var(--border); font-family: var(--font-body); font-size: .85rem; outline: none;
+  }}
+  .toolbar input:focus {{ border-color: var(--navy); }}
+
+  /* Table */
+  .table-wrap {{ overflow-x: auto; }}
+  table {{ width: 100%; border-collapse: collapse; background: #fff; font-size: .82rem; }}
+  th {{ background: var(--navy); color: #fff; padding: .6rem .8rem; text-align: left; font-weight: 500; white-space: nowrap; }}
+  td {{ padding: .55rem .8rem; border-bottom: 1px solid var(--border); vertical-align: top; }}
+  tr:hover td {{ background: var(--cream); }}
+
+  .source-tag {{
+    display: inline-block; padding: .15rem .5rem;
+    font-size: .68rem; font-weight: 500;
+    background: #eef2ff; border: 1px solid #c7d2fe;
+    color: var(--navy); white-space: nowrap;
+  }}
+
+  /* Hide button */
+  .hide-btn {{
+    padding: .25rem .7rem; font-size: .75rem; font-family: var(--font-body);
+    cursor: pointer; border: 1px solid var(--burgundy); background: #fff;
+    color: var(--burgundy); font-weight: 500; white-space: nowrap;
+  }}
+  .hide-btn:hover {{ background: var(--burgundy); color: #fff; }}
+
+  /* Hidden URL panel */
+  #hidden-panel {{
+    display: none; position: fixed; bottom: 1.5rem; right: 1.5rem;
+    background: var(--navy); color: #fff; padding: 1rem 1.2rem;
+    max-width: 480px; font-size: .8rem; z-index: 100;
+  }}
+  #hidden-panel h4 {{ font-size: .85rem; margin-bottom: .5rem; }}
+  #hidden-panel textarea {{
+    width: 100%; height: 80px; font-family: monospace; font-size: .75rem;
+    padding: .4rem; background: #0f172a; color: #a3e635; border: none; resize: none;
+  }}
+  #hidden-panel p {{ margin-top: .5rem; color: #94a3b8; font-size: .75rem; }}
+  #hidden-panel button {{
+    margin-top: .6rem; padding: .3rem .8rem; background: var(--burgundy);
+    color: #fff; border: none; font-family: var(--font-body); font-size: .75rem; cursor: pointer;
+  }}
+</style>
+</head>
+<body>
+
+<!-- Password gate -->
+<div id="gate">
+  <div id="gate-box">
+    <h2>Admin Access</h2>
+    <p>FRAM Partners — Internal Use Only</p>
+    <input type="password" id="pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')checkPw()" />
+    <button onclick="checkPw()">Enter</button>
+    <div id="gate-error">Incorrect password</div>
+  </div>
+</div>
+
+<header>
+  <h1>Allocator Jobs <span class="admin-badge">ADMIN</span></h1>
+  <div class="sub">Last updated: {updated} &nbsp;·&nbsp; {len(jobs)} total jobs (including hidden)</div>
+</header>
+
+<main>
+  <div class="notice">
+    <strong>How to permanently hide a job:</strong>
+    Click <strong>Hide</strong> on any row → the URL will appear in the panel below →
+    copy it into <code>hidden_jobs.txt</code> in the repo → rerun <code>python scraper.py</code>.
+  </div>
+
+  <div class="toolbar">
+    <input type="text" id="adminSearch" placeholder="Search jobs…" oninput="filterAdmin()" />
+  </div>
+
+  <div class="table-wrap">
+    <table id="adminTable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Company</th>
+          <th>Location</th>
+          <th>Date Posted</th>
+          <th>Type</th>
+          <th>Source</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="adminBody">
+        {rows_html}
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- Hidden URLs panel -->
+<div id="hidden-panel">
+  <h4>URLs to add to hidden_jobs.txt</h4>
+  <textarea id="hidden-urls" readonly></textarea>
+  <p>Copy the URLs above into <code>hidden_jobs.txt</code>, one per line, then rerun the scraper.</p>
+  <button onclick="document.getElementById('hidden-panel').style.display='none'">Close</button>
+</div>
+
+<script>
+// ── Password gate ──
+const ADMIN_PW = "fram2024";
+function checkPw() {{
+  const val = document.getElementById("pw-input").value;
+  if (val === ADMIN_PW) {{
+    document.getElementById("gate").style.display = "none";
+    sessionStorage.setItem("admin_auth", "1");
+  }} else {{
+    document.getElementById("gate-error").style.display = "block";
+  }}
+}}
+// Auto-unlock if already authenticated this session
+if (sessionStorage.getItem("admin_auth") === "1") {{
+  document.getElementById("gate").style.display = "none";
+}}
+
+// ── Search ──
+function filterAdmin() {{
+  const q = document.getElementById("adminSearch").value.toLowerCase();
+  Array.from(document.getElementById("adminBody").rows).forEach(row => {{
+    row.style.display = !q || row.textContent.toLowerCase().includes(q) ? "" : "none";
+  }});
+}}
+
+// ── Hide job ──
+const hiddenUrls = new Set();
+function hideJob(btn) {{
+  const url = btn.dataset.url;
+  const row = btn.closest("tr");
+  if (hiddenUrls.has(url)) {{
+    hiddenUrls.delete(url);
+    btn.textContent = "Hide";
+    row.style.opacity = "";
+  }} else {{
+    hiddenUrls.add(url);
+    btn.textContent = "Unhide";
+    row.style.opacity = "0.4";
+  }}
+  const panel = document.getElementById("hidden-panel");
+  const ta    = document.getElementById("hidden-urls");
+  if (hiddenUrls.size > 0) {{
+    panel.style.display = "block";
+    ta.value = Array.from(hiddenUrls).join("\\n");
+  }} else {{
+    panel.style.display = "none";
+  }}
+}}
+</script>
+</body>
+</html>
+"""
+
+    with open(ADMIN_PATH, "w", encoding="utf-8") as f:
+        f.write(admin_html)
+    print(f"Admin dashboard saved → {ADMIN_PATH}")
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
+
+def load_hidden_jobs() -> set:
+    """Return a set of lowercased URLs that should be suppressed from the public dashboard."""
+    p = pathlib.Path(HIDDEN_JOBS_PATH)
+    if not p.exists():
+        return set()
+    return {line.strip().lower().rstrip("/") for line in p.read_text().splitlines() if line.strip() and not line.startswith("#")}
+
 
 def _dedup(jobs: list[dict]) -> list[dict]:
     """Remove duplicate jobs by URL (case-insensitive), then by title+company."""
@@ -1568,13 +1845,20 @@ def main():
 
     print(f"\n  Total unique jobs: {len(all_jobs)}")
 
-    # ── 4. Output ─────────────────────────────────────────────────
-    save_csv(all_jobs)
-    generate_html(all_jobs)
+    # ── 4. Apply hidden jobs filter for public dashboard ──────────
+    hidden = load_hidden_jobs()
+    if hidden:
+        print(f"  Suppressing {len(hidden)} hidden job(s) from public dashboard.")
+    public_jobs = [j for j in all_jobs if j["url"].lower().rstrip("/") not in hidden]
+
+    # ── 5. Output ─────────────────────────────────────────────────
+    save_csv(public_jobs)
+    generate_html(public_jobs)           # public dashboard (no source, no delete)
+    generate_admin_html(all_jobs)        # admin dashboard (source + hide buttons)
 
     # Summary by source
     from collections import Counter
-    sources = Counter(j["source"] for j in all_jobs)
+    sources = Counter(j["source"] for j in public_jobs)
     print("\n  Jobs by source:")
     for src, n in sorted(sources.items()):
         print(f"    {src:30s} {n}")
@@ -1582,6 +1866,7 @@ def main():
     print("\nDone!")
     print(f"  CSV       : {CSV_PATH}")
     print(f"  Dashboard : {HTML_PATH}")
+    print(f"  Admin     : {ADMIN_PATH}")
     print("=" * 60)
 
 
