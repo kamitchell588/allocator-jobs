@@ -1352,6 +1352,50 @@ def generate_html(jobs: list[dict]) -> None:
 </head>
 <body>
 
+<!-- ── Email gate ── -->
+<div id="gate" style="position:fixed;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:999;">
+  <div style="background:#fff;padding:2.5rem 2rem;width:360px;text-align:center;">
+    <img src="https://framcompany.com/assets/fram-logo-BYQ0yDsY.png" alt="FRAM Partners" style="height:30px;margin-bottom:1.5rem;display:block;margin-left:auto;margin-right:auto;" />
+    <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--navy);margin-bottom:.4rem;">Allocator Job Board</h2>
+    <p style="font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;">Enter your details to access the board.</p>
+    <input id="gate-name" type="text" placeholder="Full name" style="width:100%;padding:.6rem .8rem;border:1px solid var(--border);font-family:var(--font-body);font-size:.88rem;margin-bottom:.6rem;outline:none;box-sizing:border-box;" />
+    <input id="gate-email" type="email" placeholder="Email address" style="width:100%;padding:.6rem .8rem;border:1px solid var(--border);font-family:var(--font-body);font-size:.88rem;margin-bottom:.8rem;outline:none;box-sizing:border-box;" />
+    <button onclick="submitGate()" style="width:100%;padding:.65rem;background:var(--navy);color:#fff;border:none;font-family:var(--font-body);font-size:.85rem;font-weight:500;cursor:pointer;letter-spacing:.04em;">View Jobs</button>
+    <div id="gate-error" style="color:var(--burgundy);font-size:.78rem;margin-top:.6rem;display:none;"></div>
+  </div>
+</div>
+
+<script>
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyBlYbwlbXIhjWwiPeAcw4hRQkSMAW7nolA9XLZsYkMfiou-So5sSQqiYCrtN276bbOlw/exec";
+
+// Skip gate if already submitted
+if (localStorage.getItem("fram_gate_passed") === "1") {{
+  document.getElementById("gate").style.display = "none";
+}}
+
+async function submitGate() {{
+  const name  = document.getElementById("gate-name").value.trim();
+  const email = document.getElementById("gate-email").value.trim();
+  const err   = document.getElementById("gate-error");
+  if (!name) {{ err.textContent = "Please enter your name."; err.style.display = "block"; return; }}
+  if (!email || !email.includes("@")) {{ err.textContent = "Please enter a valid email."; err.style.display = "block"; return; }}
+  err.style.display = "none";
+
+  // Show the board immediately — don't make them wait for the sheet write
+  document.getElementById("gate").style.display = "none";
+  localStorage.setItem("fram_gate_passed", "1");
+
+  // Fire-and-forget to Google Sheet
+  fetch(APPS_SCRIPT_URL, {{
+    method: "POST",
+    body: JSON.stringify({{ name, email }}),
+  }}).catch(() => {{}});
+}}
+
+document.getElementById("gate-name").addEventListener("keydown", e => {{ if (e.key === "Enter") document.getElementById("gate-email").focus(); }});
+document.getElementById("gate-email").addEventListener("keydown", e => {{ if (e.key === "Enter") submitGate(); }});
+</script>
+
 <header>
   <div class="header-inner">
     <img src="https://framcompany.com/assets/fram-logo-BYQ0yDsY.png" alt="FRAM Partners" style="height:36px;margin-bottom:1.25rem;display:block;" />
