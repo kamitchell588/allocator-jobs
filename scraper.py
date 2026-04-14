@@ -1659,7 +1659,7 @@ def generate_admin_html(jobs: list[dict]) -> None:
     <h2>Admin Access</h2>
     <p>FRAM Partners — Internal Use Only</p>
     <input type="password" id="pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')checkPw()" />
-    <input type="password" id="token-input" placeholder="GitHub token (for Refresh)" onkeydown="if(event.key==='Enter')checkPw()" style="margin-top:0" />
+    <input type="password" id="token-input" placeholder="API key" onkeydown="if(event.key==='Enter')checkPw()" style="margin-top:0" />
     <button onclick="checkPw()">Enter</button>
     <div id="gate-error">Incorrect password</div>
   </div>
