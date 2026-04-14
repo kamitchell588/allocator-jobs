@@ -1672,9 +1672,8 @@ def generate_admin_html(jobs: list[dict]) -> None:
 
 <main>
   <div class="notice">
-    <strong>How to permanently hide a job:</strong>
-    Click <strong>Hide</strong> on any row → the URL will appear in the panel below →
-    copy it into <code>hidden_jobs.txt</code> in the repo → rerun <code>python scraper.py</code>.
+    Click <strong>Hide</strong> on any row to remove it from the public dashboard — it will update automatically in ~2 minutes.
+    Click <strong>Unhide</strong> to restore it.
   </div>
 
   <div class="toolbar">
@@ -1705,13 +1704,8 @@ def generate_admin_html(jobs: list[dict]) -> None:
   </div>
 </main>
 
-<!-- Hidden URLs panel -->
-<div id="hidden-panel">
-  <h4>URLs to add to hidden_jobs.txt</h4>
-  <textarea id="hidden-urls" readonly></textarea>
-  <p>Copy the URLs above into <code>hidden_jobs.txt</code>, one per line, then rerun the scraper.</p>
-  <button onclick="document.getElementById('hidden-panel').style.display='none'">Close</button>
-</div>
+<!-- Toast notification -->
+<div id="toast" style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;background:var(--navy);color:#fff;padding:.8rem 1.2rem;font-size:.82rem;font-family:var(--font-body);z-index:200;max-width:360px;"></div>
 
 <script>
 // ── Password gate ──
@@ -1740,60 +1734,103 @@ function filterAdmin() {{
   }});
 }}
 
-// ── Hide job ──
-const hiddenUrls = new Set();
-function hideJob(btn) {{
-  const url = btn.dataset.url;
-  const row = btn.closest("tr");
-  if (hiddenUrls.has(url)) {{
-    hiddenUrls.delete(url);
-    btn.textContent = "Hide";
-    row.style.opacity = "";
-  }} else {{
-    hiddenUrls.add(url);
-    btn.textContent = "Unhide";
-    row.style.opacity = "0.4";
-  }}
-  const panel = document.getElementById("hidden-panel");
-  const ta    = document.getElementById("hidden-urls");
-  if (hiddenUrls.size > 0) {{
-    panel.style.display = "block";
-    ta.value = Array.from(hiddenUrls).join("\\n");
-  }} else {{
-    panel.style.display = "none";
-  }}
+// ── Toast helper ──
+function showToast(msg, color) {{
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.style.background = color || "var(--navy)";
+  t.style.display = "block";
+  setTimeout(() => t.style.display = "none", 4000);
 }}
 
-// ── Refresh Jobs ──
+// ── GitHub API helpers ──
+const REPO = "kamitchell588/allocator-jobs";
+function ghHeaders() {{
+  return {{
+    "Authorization": "Bearer " + (sessionStorage.getItem("gh_token") || ""),
+    "Accept": "application/vnd.github+json",
+    "Content-Type": "application/json",
+  }};
+}}
+
+async function getFileSha() {{
+  const r = await fetch(`https://api.github.com/repos/${{REPO}}/contents/hidden_jobs.txt`, {{ headers: ghHeaders() }});
+  if (!r.ok) return {{ sha: null, content: "" }};
+  const d = await r.json();
+  return {{ sha: d.sha, content: atob(d.content.replace(/\\n/g,"")) }};
+}}
+
+async function updateHiddenFile(newContent, sha) {{
+  const body = {{ message: "Update hidden jobs", content: btoa(newContent), branch: "main" }};
+  if (sha) body.sha = sha;
+  const r = await fetch(`https://api.github.com/repos/${{REPO}}/contents/hidden_jobs.txt`, {{
+    method: "PUT", headers: ghHeaders(), body: JSON.stringify(body),
+  }});
+  return r.ok;
+}}
+
+async function triggerWorkflow() {{
+  const r = await fetch(
+    `https://api.github.com/repos/${{REPO}}/actions/workflows/refresh.yml/dispatches`,
+    {{ method: "POST", headers: ghHeaders(), body: JSON.stringify({{ ref: "main" }}) }}
+  );
+  return r.status === 204;
+}}
+
+// ── Hide job (fully automatic) ──
+async function hideJob(btn) {{
+  const url = btn.dataset.url;
+  const row = btn.closest("tr");
+  const hiding = btn.textContent.trim() === "Hide";
+  btn.disabled = true;
+  btn.textContent = "…";
+
+  const {{ sha, content }} = await getFileSha();
+  const lines = content.split("\\n").map(l => l.trim()).filter(l => l && !l.startsWith("#"));
+
+  let newLines;
+  if (hiding) {{
+    if (!lines.includes(url)) lines.push(url);
+    newLines = lines;
+  }} else {{
+    newLines = lines.filter(l => l !== url);
+  }}
+
+  const ok = await updateHiddenFile(newLines.join("\\n") + (newLines.length ? "\\n" : ""), sha);
+  if (!ok) {{
+    showToast("Failed to update hidden_jobs.txt — check your token.", "#b91c1c");
+    btn.disabled = false;
+    btn.textContent = hiding ? "Hide" : "Unhide";
+    return;
+  }}
+
+  row.style.opacity = hiding ? "0.4" : "";
+  btn.textContent   = hiding ? "Unhide" : "Hide";
+  btn.disabled      = false;
+
+  // Trigger a dashboard refresh automatically
+  const triggered = await triggerWorkflow();
+  showToast(
+    hiding
+      ? (triggered ? "✓ Job hidden — dashboard refreshing (~2 min)" : "✓ Job hidden (refresh failed — try the Refresh button)")
+      : (triggered ? "✓ Job restored — dashboard refreshing (~2 min)" : "✓ Job restored (refresh failed — try the Refresh button)"),
+    hiding ? "#1b2232" : "#166534"
+  );
+}}
+
+// ── Manual Refresh Jobs button ──
 async function triggerRefresh() {{
   const btn    = document.getElementById("refreshBtn");
   const status = document.getElementById("refreshStatus");
   btn.disabled = true;
   btn.textContent = "Triggering…";
   status.textContent = "";
-  try {{
-    const resp = await fetch(
-      "https://api.github.com/repos/kamitchell588/allocator-jobs/actions/workflows/refresh.yml/dispatches",
-      {{
-        method: "POST",
-        headers: {{
-          "Authorization": "Bearer " + (sessionStorage.getItem("gh_token") || ""),
-          "Accept": "application/vnd.github+json",
-          "Content-Type": "application/json",
-        }},
-        body: JSON.stringify({{ ref: "main" }}),
-      }}
-    );
-    if (resp.status === 204) {{
-      status.textContent = "✓ Refresh started — dashboard will update in ~2 minutes.";
-      status.style.color = "#16a34a";
-    }} else {{
-      const txt = await resp.text();
-      status.textContent = "Error: " + resp.status + " " + txt;
-      status.style.color = "var(--burgundy)";
-    }}
-  }} catch(e) {{
-    status.textContent = "Network error: " + e.message;
+  const ok = await triggerWorkflow();
+  if (ok) {{
+    status.textContent = "✓ Refresh started — dashboard will update in ~2 minutes.";
+    status.style.color = "#16a34a";
+  }} else {{
+    status.textContent = "Error triggering refresh — check your token.";
     status.style.color = "var(--burgundy)";
   }}
   btn.disabled = false;
