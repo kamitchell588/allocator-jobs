@@ -25,7 +25,8 @@ except ImportError:
 import pathlib, re as _re
 _env = pathlib.Path(__file__).parent / ".env"
 _env_vars = dict(_re.findall(r'^([A-Z_]+)=(.+)$', _env.read_text(), _re.M)) if _env.exists() else {}
-APIFY_TOKEN = _env_vars.get("APIFY_TOKEN", os.environ.get("APIFY_TOKEN", ""))
+APIFY_TOKEN    = _env_vars.get("APIFY_TOKEN", os.environ.get("APIFY_TOKEN", ""))
+GH_TOKEN       = _env_vars.get("GH_TOKEN", os.environ.get("GH_TOKEN", ""))
 DATASET_ID  = "XLbyFxagcoq3KhIE9"
 MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
 MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
@@ -1658,6 +1659,7 @@ def generate_admin_html(jobs: list[dict]) -> None:
     <h2>Admin Access</h2>
     <p>FRAM Partners — Internal Use Only</p>
     <input type="password" id="pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')checkPw()" />
+    <input type="password" id="token-input" placeholder="GitHub token (for Refresh)" onkeydown="if(event.key==='Enter')checkPw()" style="margin-top:0" />
     <button onclick="checkPw()">Enter</button>
     <div id="gate-error">Incorrect password</div>
   </div>
@@ -1677,6 +1679,10 @@ def generate_admin_html(jobs: list[dict]) -> None:
 
   <div class="toolbar">
     <input type="text" id="adminSearch" placeholder="Search jobs…" oninput="filterAdmin()" />
+    <button id="refreshBtn" onclick="triggerRefresh()" style="padding:.45rem 1.2rem;background:var(--navy);color:#fff;border:none;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;letter-spacing:.04em;white-space:nowrap;">
+      ↻ Refresh Jobs
+    </button>
+    <span id="refreshStatus" style="font-size:.78rem;color:var(--muted);"></span>
   </div>
 
   <div class="table-wrap">
@@ -1711,10 +1717,12 @@ def generate_admin_html(jobs: list[dict]) -> None:
 // ── Password gate ──
 const ADMIN_PW = "fram2024";
 function checkPw() {{
-  const val = document.getElementById("pw-input").value;
+  const val   = document.getElementById("pw-input").value;
+  const token = document.getElementById("token-input").value.trim();
   if (val === ADMIN_PW) {{
     document.getElementById("gate").style.display = "none";
     sessionStorage.setItem("admin_auth", "1");
+    if (token) sessionStorage.setItem("gh_token", token);
   }} else {{
     document.getElementById("gate-error").style.display = "block";
   }}
@@ -1754,6 +1762,42 @@ function hideJob(btn) {{
   }} else {{
     panel.style.display = "none";
   }}
+}}
+
+// ── Refresh Jobs ──
+async function triggerRefresh() {{
+  const btn    = document.getElementById("refreshBtn");
+  const status = document.getElementById("refreshStatus");
+  btn.disabled = true;
+  btn.textContent = "Triggering…";
+  status.textContent = "";
+  try {{
+    const resp = await fetch(
+      "https://api.github.com/repos/kamitchell588/allocator-jobs/actions/workflows/refresh.yml/dispatches",
+      {{
+        method: "POST",
+        headers: {{
+          "Authorization": "Bearer " + (sessionStorage.getItem("gh_token") || ""),
+          "Accept": "application/vnd.github+json",
+          "Content-Type": "application/json",
+        }},
+        body: JSON.stringify({{ ref: "main" }}),
+      }}
+    );
+    if (resp.status === 204) {{
+      status.textContent = "✓ Refresh started — dashboard will update in ~2 minutes.";
+      status.style.color = "#16a34a";
+    }} else {{
+      const txt = await resp.text();
+      status.textContent = "Error: " + resp.status + " " + txt;
+      status.style.color = "var(--burgundy)";
+    }}
+  }} catch(e) {{
+    status.textContent = "Network error: " + e.message;
+    status.style.color = "var(--burgundy)";
+  }}
+  btn.disabled = false;
+  btn.textContent = "↻ Refresh Jobs";
 }}
 </script>
 </body>

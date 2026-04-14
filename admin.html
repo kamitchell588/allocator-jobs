@@ -126,6 +126,7 @@
     <h2>Admin Access</h2>
     <p>FRAM Partners — Internal Use Only</p>
     <input type="password" id="pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')checkPw()" />
+    <input type="password" id="token-input" placeholder="GitHub token (for Refresh)" onkeydown="if(event.key==='Enter')checkPw()" style="margin-top:0" />
     <button onclick="checkPw()">Enter</button>
     <div id="gate-error">Incorrect password</div>
   </div>
@@ -133,7 +134,7 @@
 
 <header>
   <h1>Allocator Jobs <span class="admin-badge">ADMIN</span></h1>
-  <div class="sub">Last updated: April 13, 2026 at 12:24 PM &nbsp;·&nbsp; 87 total jobs (including hidden)</div>
+  <div class="sub">Last updated: April 14, 2026 at 12:05 PM &nbsp;·&nbsp; 87 total jobs (including hidden)</div>
 </header>
 
 <main>
@@ -145,6 +146,10 @@
 
   <div class="toolbar">
     <input type="text" id="adminSearch" placeholder="Search jobs…" oninput="filterAdmin()" />
+    <button id="refreshBtn" onclick="triggerRefresh()" style="padding:.45rem 1.2rem;background:var(--navy);color:#fff;border:none;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;letter-spacing:.04em;white-space:nowrap;">
+      ↻ Refresh Jobs
+    </button>
+    <span id="refreshStatus" style="font-size:.78rem;color:var(--muted);"></span>
   </div>
 
   <div class="table-wrap">
@@ -245,9 +250,9 @@
 <tr><td><a href="https://assets-002.noviams.com/novi-file-uploads/ncpers/pdfs-and-documents/Careers_SERS_Ohio_Executive_Director_Feb_2026.pdf" target="_blank" rel="noopener">Executive Director</a></td><td>School Employees Retirement System of Ohio (SERS )</td><td></td><td></td><td></td><td><span class="source-tag">NCPERS</span></td><td><button class="hide-btn" data-url="https://assets-002.noviams.com/novi-file-uploads/ncpers/pdfs-and-documents/Careers_SERS_Ohio_Executive_Director_Feb_2026.pdf" onclick="hideJob(this)">Hide</button></td></tr>
 <tr><td><a href="https://tinyurl.com/5erwe9rx" target="_blank" rel="noopener">Chief Financial Officer</a></td><td>San Antonio Fire &amp; Police Pension Fund (SAFPPF)</td><td></td><td></td><td></td><td><span class="source-tag">NCPERS</span></td><td><button class="hide-btn" data-url="https://tinyurl.com/5erwe9rx" onclick="hideJob(this)">Hide</button></td></tr>
 <tr><td><a href="https://assets-002.noviams.com/novi-file-uploads/ncpers/pdfs-and-documents/Careers_SJORS_CIO_Profile_FINAL_online_april_2026.pdf" target="_blank" rel="noopener">Managing Director of Public Markets</a></td><td>San Francisco Employees&#x27; Retirement System</td><td></td><td></td><td></td><td><span class="source-tag">NCPERS</span></td><td><button class="hide-btn" data-url="https://assets-002.noviams.com/novi-file-uploads/ncpers/pdfs-and-documents/Careers_SJORS_CIO_Profile_FINAL_online_april_2026.pdf" onclick="hideJob(this)">Hide</button></td></tr>
-<tr><td><a href="https://allocatorjobs.com/investment-operations-analyst-wellesley-college/" target="_blank" rel="noopener">Investment Operations Analyst</a></td><td>wellesley college is hiring an investment analyst</td><td></td><td></td><td></td><td><span class="source-tag">AllocatorJobs</span></td><td><button class="hide-btn" data-url="https://allocatorjobs.com/investment-operations-analyst-wellesley-college/" onclick="hideJob(this)">Hide</button></td></tr>
-<tr><td><a href="https://allocatorjobs.com/investment-managing-director/" target="_blank" rel="noopener">Investment Managing Director</a></td><td>Cambridge Associates is hiring an Investment Analyst</td><td></td><td></td><td></td><td><span class="source-tag">AllocatorJobs</span></td><td><button class="hide-btn" data-url="https://allocatorjobs.com/investment-managing-director/" onclick="hideJob(this)">Hide</button></td></tr>
-<tr><td><a href="https://allocatorjobs.com/director-investments-risk-church-pension-group/" target="_blank" rel="noopener">Director Investments – Risk</a></td><td>Church pension group is hiring an investment analsyt, real estate</td><td></td><td></td><td></td><td><span class="source-tag">AllocatorJobs</span></td><td><button class="hide-btn" data-url="https://allocatorjobs.com/director-investments-risk-church-pension-group/" onclick="hideJob(this)">Hide</button></td></tr>
+<tr><td><a href="https://allocatorjobs.com/chief-investment-officer-bowdoin-college/" target="_blank" rel="noopener">Chief Investment Officer</a></td><td>Bowdoin College is hiring an Investment Analyst</td><td></td><td></td><td></td><td><span class="source-tag">AllocatorJobs</span></td><td><button class="hide-btn" data-url="https://allocatorjobs.com/chief-investment-officer-bowdoin-college/" onclick="hideJob(this)">Hide</button></td></tr>
+<tr><td><a href="https://allocatorjobs.com/analyst-of-alternative-investments-nysif/" target="_blank" rel="noopener">Analyst of Alternative Investments</a></td><td>University of Colorado Boulder is hiring an Analyst of Alternative Investments</td><td></td><td></td><td></td><td><span class="source-tag">AllocatorJobs</span></td><td><button class="hide-btn" data-url="https://allocatorjobs.com/analyst-of-alternative-investments-nysif/" onclick="hideJob(this)">Hide</button></td></tr>
+<tr><td><a href="https://allocatorjobs.com/junior-investment-analyst-nysif/" target="_blank" rel="noopener">Junior Investment Analyst</a></td><td>New York State Insurance Fund is hiring a Chief Investment Risk Officer</td><td></td><td></td><td></td><td><span class="source-tag">AllocatorJobs</span></td><td><button class="hide-btn" data-url="https://allocatorjobs.com/junior-investment-analyst-nysif/" onclick="hideJob(this)">Hide</button></td></tr>
       </tbody>
     </table>
   </div>
@@ -265,10 +270,12 @@
 // ── Password gate ──
 const ADMIN_PW = "fram2024";
 function checkPw() {
-  const val = document.getElementById("pw-input").value;
+  const val   = document.getElementById("pw-input").value;
+  const token = document.getElementById("token-input").value.trim();
   if (val === ADMIN_PW) {
     document.getElementById("gate").style.display = "none";
     sessionStorage.setItem("admin_auth", "1");
+    if (token) sessionStorage.setItem("gh_token", token);
   } else {
     document.getElementById("gate-error").style.display = "block";
   }
@@ -308,6 +315,42 @@ function hideJob(btn) {
   } else {
     panel.style.display = "none";
   }
+}
+
+// ── Refresh Jobs ──
+async function triggerRefresh() {
+  const btn    = document.getElementById("refreshBtn");
+  const status = document.getElementById("refreshStatus");
+  btn.disabled = true;
+  btn.textContent = "Triggering…";
+  status.textContent = "";
+  try {
+    const resp = await fetch(
+      "https://api.github.com/repos/kamitchell588/allocator-jobs/actions/workflows/refresh.yml/dispatches",
+      {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + (sessionStorage.getItem("gh_token") || ""),
+          "Accept": "application/vnd.github+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ref: "main" }),
+      }
+    );
+    if (resp.status === 204) {
+      status.textContent = "✓ Refresh started — dashboard will update in ~2 minutes.";
+      status.style.color = "#16a34a";
+    } else {
+      const txt = await resp.text();
+      status.textContent = "Error: " + resp.status + " " + txt;
+      status.style.color = "var(--burgundy)";
+    }
+  } catch(e) {
+    status.textContent = "Network error: " + e.message;
+    status.style.color = "var(--burgundy)";
+  }
+  btn.disabled = false;
+  btn.textContent = "↻ Refresh Jobs";
 }
 </script>
 </body>
