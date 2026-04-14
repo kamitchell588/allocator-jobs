@@ -401,18 +401,16 @@ HEADERS = {
 
 # ── API helpers ──────────────────────────────────────────────────────────────
 
-def fetch_all_items() -> list[dict]:
-    """Fetch every item from the Apify dataset, handling pagination."""
+def _fetch_items(extra_params: dict = None) -> list[dict]:
+    """Fetch items from the Apify dataset with optional extra params (e.g. date filter)."""
     items = []
     offset = 0
-    print(f"Connecting to Apify dataset {DATASET_ID} …")
+    params_base = {"token": APIFY_TOKEN, "limit": FETCH_LIMIT}
+    if extra_params:
+        params_base.update(extra_params)
 
     while True:
-        params = {
-            "token": APIFY_TOKEN,
-            "limit": FETCH_LIMIT,
-            "offset": offset,
-        }
+        params = {**params_base, "offset": offset}
         try:
             resp = requests.get(BASE_URL, params=params, timeout=60)
             resp.raise_for_status()
@@ -424,8 +422,6 @@ def fetch_all_items() -> list[dict]:
             sys.exit(1)
 
         page = resp.json()
-
-        # Apify can return a list directly or wrap in {"items": [...]}
         if isinstance(page, list):
             batch = page
         elif isinstance(page, dict):
@@ -445,6 +441,42 @@ def fetch_all_items() -> list[dict]:
 
     print(f"Total raw items fetched: {len(items)}")
     return items
+
+
+def fetch_all_items() -> list[dict]:
+    """Fetch every item from the Apify dataset (full historical pull)."""
+    print(f"Connecting to Apify dataset {DATASET_ID} …")
+    return _fetch_items()
+
+
+def fetch_recent_items(days: int = 7) -> list[dict]:
+    """Fetch only items added to the dataset in the last N days."""
+    from datetime import timedelta
+    since = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+    print(f"Connecting to Apify dataset {DATASET_ID} (last {days} days since {since}) …")
+    return _fetch_items({"createdAtFrom": since})
+
+
+def load_csv_jobs() -> list[dict]:
+    """Load existing jobs from the CSV as the historical base."""
+    p = pathlib.Path(CSV_PATH)
+    if not p.exists():
+        return []
+    jobs = []
+    with open(CSV_PATH, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            jobs.append({
+                "title":       row.get("title", ""),
+                "company":     row.get("company", ""),
+                "location":    row.get("location", ""),
+                "date_posted": row.get("date_posted", ""),
+                "url":         row.get("url", ""),
+                "description": row.get("description", ""),
+                "job_type":    row.get("job_type", ""),
+                "source":      row.get("source", "Apify"),
+            })
+    print(f"  Loaded {len(jobs)} jobs from existing CSV.")
+    return jobs
 
 
 # ── Filtering ────────────────────────────────────────────────────────────────
@@ -1304,13 +1336,6 @@ def generate_html(jobs: list[dict]) -> None:
     color: #fff;
   }}
 
-  /* ── Source filter dropdown in toolbar ── */
-  #sourceFilter {{
-    padding: .45rem .8rem; border: 1px solid var(--border); border-radius: 0;
-    font-family: var(--font-body); font-size: .8rem; outline: none;
-    color: var(--navy); background: var(--white); cursor: pointer;
-  }}
-  #sourceFilter:focus {{ border-color: var(--navy); }}
 
   /* ── Region dropdown inside Location th ── */
   .loc-th {{ position: relative; }}
@@ -1371,16 +1396,6 @@ def generate_html(jobs: list[dict]) -> None:
       <h2>All Roles ({stats["total"]})</h2>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;">
         <input id="searchBox" type="search" placeholder="Search title, company, location …" />
-        <select id="sourceFilter">
-          <option value="all">All sources</option>
-          <option value="Apify">Apify</option>
-          <option value="NCPERS">NCPERS</option>
-          <option value="AllocatorJobs">AllocatorJobs</option>
-          <option value="CFA Institute">CFA Institute</option>
-          <option value="Council on Foundations">Council on Foundations</option>
-          <option value="UTIMCO">UTIMCO</option>
-          <option value="Manual">Manually Added</option>
-        </select>
       </div>
     </div>
     <div class="table-wrap">
@@ -1432,26 +1447,22 @@ function classifyRegion(loc) {{
   return "other";
 }}
 
-// ── Search + Region + Source filter ──
+// ── Search + Region filter ──
 const searchBox    = document.getElementById("searchBox");
 const regionFilter = document.getElementById("regionFilter");
-const sourceFilter = document.getElementById("sourceFilter");
 const tableBody    = document.getElementById("tableBody");
 const noResults    = document.getElementById("noResults");
 
 function filterTable() {{
   const q      = searchBox.value.toLowerCase().trim();
   const region = regionFilter.value;
-  const src    = sourceFilter.value;
   let visible  = 0;
   Array.from(tableBody.rows).forEach(row => {{
     const text    = row.textContent.toLowerCase();
     const loc     = row.cells[2] ? row.cells[2].textContent : "";
-    const rowSrc  = "";
     const matchQ  = !q || text.includes(q);
     const matchR  = region === "all" || classifyRegion(loc) === region;
-    const matchS  = src === "all" || rowSrc === src;
-    const show    = matchQ && matchR && matchS;
+    const show    = matchQ && matchR;
     row.style.display = show ? "" : "none";
     if (show) visible++;
   }});
@@ -1460,7 +1471,6 @@ function filterTable() {{
 
 searchBox.addEventListener("input", filterTable);
 regionFilter.addEventListener("change", filterTable);
-sourceFilter.addEventListener("change", filterTable);
 
 // ── Column sort ──
 let sortCol = -1, sortAsc = true;
@@ -1880,17 +1890,19 @@ def main():
     print("  Institutional Allocator Job Scraper")
     print("=" * 60)
 
-    # ── 1. Apify dataset ──────────────────────────────────────────
-    print("\n[Apify] Fetching dataset …")
-    raw_items = fetch_all_items()
+    # ── 1. Load historical jobs from CSV + fetch last 7 days from Apify ──
+    print("\n[Apify] Fetching last 7 days …")
+    recent_raw  = fetch_recent_items(days=7)
+    recent_jobs = [normalise(j) for j in filter_jobs(recent_raw)] if recent_raw else []
+    print(f"  [Apify] {len(recent_jobs)} new/recent jobs after filtering.")
 
-    if not raw_items:
-        print("No items returned from Apify dataset. Check token and dataset ID.")
-        sys.exit(1)
+    csv_jobs = load_csv_jobs()
+    # Strip out old Manual/supplemental entries from CSV — they'll be re-fetched fresh
+    csv_apify_jobs = [j for j in csv_jobs if j["source"] not in ("Manual", "NCPERS", "AllocatorJobs", "UTIMCO")]
 
-    filtered_apify = filter_jobs(raw_items)
-    apify_jobs     = [normalise(j) for j in filtered_apify]
-    print(f"  [Apify] {len(apify_jobs)} jobs after filtering.")
+    # Merge: recent Apify jobs take precedence (placed first for dedup)
+    apify_jobs = _dedup(recent_jobs + csv_apify_jobs)
+    print(f"  [Apify] {len(apify_jobs)} total after merging with historical CSV.")
 
     # ── 2. Supplemental sources ───────────────────────────────────
     supp_raw  = scrape_all_supplemental()

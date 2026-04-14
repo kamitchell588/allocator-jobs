@@ -175,13 +175,6 @@
     color: #fff;
   }
 
-  /* ── Source filter dropdown in toolbar ── */
-  #sourceFilter {
-    padding: .45rem .8rem; border: 1px solid var(--border); border-radius: 0;
-    font-family: var(--font-body); font-size: .8rem; outline: none;
-    color: var(--navy); background: var(--white); cursor: pointer;
-  }
-  #sourceFilter:focus { border-color: var(--navy); }
 
   /* ── Region dropdown inside Location th ── */
   .loc-th { position: relative; }
@@ -212,7 +205,7 @@
   <div class="stats-grid">
     <div class="stat-card">
       <div class="label">Total Roles</div>
-      <div class="value">87</div>
+      <div class="value">86</div>
     </div>
     <div class="stat-card">
       <div class="label">Earliest Posted</div>
@@ -224,7 +217,7 @@
     </div>
     <div class="stat-card">
       <div class="label">Last Updated</div>
-      <div class="value" style="font-size:.85rem;padding-top:.4rem;line-height:1.5;font-family:var(--font-body);font-weight:400;">April 14, 2026 at 12:16 PM</div>
+      <div class="value" style="font-size:.85rem;padding-top:.4rem;line-height:1.5;font-family:var(--font-body);font-weight:400;">April 14, 2026 at 12:26 PM</div>
     </div>
   </div>
 
@@ -232,26 +225,16 @@
   <div class="section">
     <h2>Top Hiring Organizations</h2>
     <div class="companies-wrap">
-      <div class="company-chip"><span class="chip-name">StepStone Group</span><span class="chip-count">25</span></div><div class="company-chip"><span class="chip-name">CPP Investments | Investissements RPC</span><span class="chip-count">13</span></div><div class="company-chip"><span class="chip-name">Cambridge Associates</span><span class="chip-count">9</span></div><div class="company-chip"><span class="chip-name">Ontario Teachers&#x27; Pension Plan</span><span class="chip-count">8</span></div><div class="company-chip"><span class="chip-name">Santa Clara University</span><span class="chip-count">6</span></div><div class="company-chip"><span class="chip-name">UTIMCO</span><span class="chip-count">4</span></div><div class="company-chip"><span class="chip-name">City of Austin Employees’ Retirement System (COAERS)</span><span class="chip-count">2</span></div><div class="company-chip"><span class="chip-name">Jordan Park</span><span class="chip-count">1</span></div>
+      <div class="company-chip"><span class="chip-name">StepStone Group</span><span class="chip-count">25</span></div><div class="company-chip"><span class="chip-name">CPP Investments | Investissements RPC</span><span class="chip-count">13</span></div><div class="company-chip"><span class="chip-name">Cambridge Associates</span><span class="chip-count">9</span></div><div class="company-chip"><span class="chip-name">Ontario Teachers&#x27; Pension Plan</span><span class="chip-count">8</span></div><div class="company-chip"><span class="chip-name">Santa Clara University</span><span class="chip-count">5</span></div><div class="company-chip"><span class="chip-name">UTIMCO</span><span class="chip-count">4</span></div><div class="company-chip"><span class="chip-name">City of Austin Employees’ Retirement System (COAERS)</span><span class="chip-count">2</span></div><div class="company-chip"><span class="chip-name">Jordan Park</span><span class="chip-count">1</span></div>
     </div>
   </div>
 
   <!-- Jobs table -->
   <div class="table-section">
     <div class="table-toolbar">
-      <h2>All Roles (87)</h2>
+      <h2>All Roles (86)</h2>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;">
         <input id="searchBox" type="search" placeholder="Search title, company, location …" />
-        <select id="sourceFilter">
-          <option value="all">All sources</option>
-          <option value="Apify">Apify</option>
-          <option value="NCPERS">NCPERS</option>
-          <option value="AllocatorJobs">AllocatorJobs</option>
-          <option value="CFA Institute">CFA Institute</option>
-          <option value="Council on Foundations">Council on Foundations</option>
-          <option value="UTIMCO">UTIMCO</option>
-          <option value="Manual">Manually Added</option>
-        </select>
       </div>
     </div>
     <div class="table-wrap">
@@ -327,7 +310,6 @@
 <tr class="age-recent"><td><a href="https://job-boards.greenhouse.io/tpgcareers/jobs/7638072003" target="_blank" rel="noopener">Performance Solutions, Associate</a></td><td>TPG Careers Page </td><td>New York, New York, United States</td><td data-sort="2026-03-30">2026-03-30</td><td>FULL_TIME</td></tr>
 <tr class="age-recent"><td><a href="https://otppb.wd3.myworkdayjobs.com/OntarioTeachers_Careers/job/Toronto-Canada/Principal---Funds--Teachers--Venture-Growth_6952" target="_blank" rel="noopener">Principal - Funds, Teachers&#x27; Venture Growth</a></td><td>Ontario Teachers&#x27; Pension Plan</td><td>Toronto, Ontario, Canada</td><td data-sort="2026-03-30">2026-03-30</td><td>FULL_TIME</td></tr>
 <tr class="age-recent"><td><a href="https://otppb.wd3.myworkdayjobs.com/OntarioTeachers_Careers/job/Toronto-Canada/Investment-Associate---Teachers--Venture-Growth-Funds_6959" target="_blank" rel="noopener">Investment Associate - Funds, Teachers’ Venture Growth</a></td><td>Ontario Teachers&#x27; Pension Plan</td><td>Toronto, Ontario, Canada</td><td data-sort="2026-03-30">2026-03-30</td><td>FULL_TIME</td></tr>
-<tr class="age-recent"><td><a href="https://scu.wd1.myworkdayjobs.com/scu/job/Santa-Clara-CA/Director-of-Residence-Life_R7247" target="_blank" rel="noopener">Director of Residence Life</a></td><td>Santa Clara University</td><td>Santa Clara, California, United States</td><td data-sort="2026-03-30">2026-03-30</td><td>FULL_TIME</td></tr>
 <tr class="age-recent"><td><a href="https://www.stepstonegroup.com/current-opportunities/?gh_jid=7763248" target="_blank" rel="noopener">Vice President - Technical Client Solutions </a></td><td>StepStone Group</td><td>San Diego, California, United States</td><td data-sort="2026-03-27">2026-03-27</td><td>FULL_TIME</td></tr>
 <tr class="age-recent"><td><a href="https://www.stepstonegroup.com/current-opportunities/?gh_jid=7720981" target="_blank" rel="noopener">Vice President, Investor Services</a></td><td>StepStone Group</td><td>San Diego, California, United States</td><td data-sort="2026-03-27">2026-03-27</td><td>FULL_TIME</td></tr>
 <tr class="age-recent"><td><a href="https://cppib.wd10.myworkdayjobs.com/cppinvestments/job/Toronto/Technology-Architecture---Governance_JR00352" target="_blank" rel="noopener">Managing Director, Technology Architecture &amp; Governance</a></td><td>CPP Investments | Investissements RPC</td><td>Toronto, Ontario, Canada</td><td data-sort="2026-03-27">2026-03-27</td><td>FULL_TIME</td></tr>
@@ -360,7 +342,7 @@
   </div>
 
   <footer>
-    <p style="margin-top:1.5rem;">Generated by allocator-jobs scraper &bull; April 14, 2026 at 12:16 PM</p>
+    <p style="margin-top:1.5rem;">Generated by allocator-jobs scraper &bull; April 14, 2026 at 12:26 PM</p>
     <p style="margin-top:.4rem;">
       <span style="color:#2d6a4f;">&#9632;</span> Posted &le; 7 days &nbsp;
       <span style="color:#d97706;">&#9632;</span> Posted 8–30 days &nbsp;
@@ -389,26 +371,22 @@ function classifyRegion(loc) {
   return "other";
 }
 
-// ── Search + Region + Source filter ──
+// ── Search + Region filter ──
 const searchBox    = document.getElementById("searchBox");
 const regionFilter = document.getElementById("regionFilter");
-const sourceFilter = document.getElementById("sourceFilter");
 const tableBody    = document.getElementById("tableBody");
 const noResults    = document.getElementById("noResults");
 
 function filterTable() {
   const q      = searchBox.value.toLowerCase().trim();
   const region = regionFilter.value;
-  const src    = sourceFilter.value;
   let visible  = 0;
   Array.from(tableBody.rows).forEach(row => {
     const text    = row.textContent.toLowerCase();
     const loc     = row.cells[2] ? row.cells[2].textContent : "";
-    const rowSrc  = "";
     const matchQ  = !q || text.includes(q);
     const matchR  = region === "all" || classifyRegion(loc) === region;
-    const matchS  = src === "all" || rowSrc === src;
-    const show    = matchQ && matchR && matchS;
+    const show    = matchQ && matchR;
     row.style.display = show ? "" : "none";
     if (show) visible++;
   });
@@ -417,7 +395,6 @@ function filterTable() {
 
 searchBox.addEventListener("input", filterTable);
 regionFilter.addEventListener("change", filterTable);
-sourceFilter.addEventListener("change", filterTable);
 
 // ── Column sort ──
 let sortCol = -1, sortAsc = true;
