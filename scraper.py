@@ -27,10 +27,10 @@ _env = pathlib.Path(__file__).parent / ".env"
 _env_vars = dict(_re.findall(r'^([A-Z_]+)=(.+)$', _env.read_text(), _re.M)) if _env.exists() else {}
 APIFY_TOKEN    = _env_vars.get("APIFY_TOKEN", os.environ.get("APIFY_TOKEN", ""))
 GH_TOKEN       = _env_vars.get("GH_TOKEN", os.environ.get("GH_TOKEN", ""))
-DATASET_ID  = "XLbyFxagcoq3KhIE9"
+DATASET_IDS = ["XLbyFxagcoq3KhIE9", "eybd42F9fMwxLzZhz"]  # all Apify datasets to pull from
 MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
 MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
-BASE_URL    = f"https://api.apify.com/v2/datasets/{DATASET_ID}/items"
+APIFY_BASE  = "https://api.apify.com/v2/datasets/{dataset_id}/items"
 OUTPUT_DIR        = os.path.dirname(os.path.abspath(__file__))
 CSV_PATH          = os.path.join(OUTPUT_DIR, "allocator_jobs.csv")
 HTML_PATH         = os.path.join(OUTPUT_DIR, "dashboard.html")
@@ -401,8 +401,9 @@ HEADERS = {
 
 # ── API helpers ──────────────────────────────────────────────────────────────
 
-def _fetch_items(extra_params: dict = None) -> list[dict]:
-    """Fetch items from the Apify dataset with optional extra params (e.g. date filter)."""
+def _fetch_items(dataset_id: str, extra_params: dict = None) -> list[dict]:
+    """Fetch items from an Apify dataset with optional extra params (e.g. date filter)."""
+    url = APIFY_BASE.format(dataset_id=dataset_id)
     items = []
     offset = 0
     params_base = {"token": APIFY_TOKEN, "limit": FETCH_LIMIT}
@@ -412,14 +413,14 @@ def _fetch_items(extra_params: dict = None) -> list[dict]:
     while True:
         params = {**params_base, "offset": offset}
         try:
-            resp = requests.get(BASE_URL, params=params, timeout=60)
+            resp = requests.get(url, params=params, timeout=60)
             resp.raise_for_status()
         except requests.exceptions.HTTPError as e:
             print(f"  HTTP error: {e}")
-            sys.exit(1)
+            return items
         except requests.exceptions.RequestException as e:
             print(f"  Request error: {e}")
-            sys.exit(1)
+            return items
 
         page = resp.json()
         if isinstance(page, list):
@@ -443,18 +444,15 @@ def _fetch_items(extra_params: dict = None) -> list[dict]:
     return items
 
 
-def fetch_all_items() -> list[dict]:
-    """Fetch every item from the Apify dataset (full historical pull)."""
-    print(f"Connecting to Apify dataset {DATASET_ID} …")
-    return _fetch_items()
-
-
 def fetch_recent_items(days: int = 7) -> list[dict]:
-    """Fetch only items added to the dataset in the last N days."""
+    """Fetch items from all datasets added in the last N days."""
     from datetime import timedelta
     since = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
-    print(f"Connecting to Apify dataset {DATASET_ID} (last {days} days since {since}) …")
-    return _fetch_items({"createdAtFrom": since})
+    all_items = []
+    for ds_id in DATASET_IDS:
+        print(f"Connecting to Apify dataset {ds_id} (last {days} days since {since}) …")
+        all_items.extend(_fetch_items(ds_id, {"createdAtFrom": since}))
+    return all_items
 
 
 def load_csv_jobs() -> list[dict]:
