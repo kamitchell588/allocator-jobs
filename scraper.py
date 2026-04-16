@@ -1685,6 +1685,30 @@ def generate_admin_html(jobs: list[dict]) -> None:
   }}
   .hide-btn:hover {{ background: var(--burgundy); color: #fff; }}
 
+  /* Add Job by URL panel */
+  .add-job-panel {{
+    background: #fff; border: 1px solid var(--border);
+    padding: 1.2rem 1.4rem; margin-bottom: 1.5rem;
+  }}
+  .add-job-panel h3 {{
+    font-family: var(--font-display); font-size: 1rem; font-weight: 500;
+    margin-bottom: .8rem; color: var(--navy);
+  }}
+  .add-job-row {{ display: flex; gap: .6rem; align-items: center; flex-wrap: wrap; }}
+  .add-job-row input[type="url"] {{
+    flex: 1; min-width: 260px; padding: .45rem .8rem;
+    border: 1px solid var(--border); font-family: var(--font-body);
+    font-size: .85rem; outline: none;
+  }}
+  .add-job-row input[type="url"]:focus {{ border-color: var(--navy); }}
+  .add-job-row button {{
+    padding: .45rem 1.2rem; background: var(--burgundy); color: #fff;
+    border: none; font-family: var(--font-body); font-size: .82rem;
+    font-weight: 500; cursor: pointer; letter-spacing: .04em; white-space: nowrap;
+  }}
+  .add-job-row button:disabled {{ opacity: .6; cursor: default; }}
+  #addJobStatus {{ font-size: .78rem; color: var(--muted); margin-top: .5rem; }}
+
   /* Hidden URL panel */
   #hidden-panel {{
     display: none; position: fixed; bottom: 1.5rem; right: 1.5rem;
@@ -1726,6 +1750,41 @@ def generate_admin_html(jobs: list[dict]) -> None:
   <div class="notice">
     Click <strong>Hide</strong> on any row to remove it from the public dashboard — it will update automatically in ~2 minutes.
     Click <strong>Unhide</strong> to restore it.
+  </div>
+
+  <!-- Add Job by URL -->
+  <div class="add-job-panel">
+    <h3>Add Job by URL</h3>
+    <div class="add-job-row">
+      <input type="url" id="jobUrlInput" placeholder="Paste job posting URL…" />
+      <button id="addJobBtn" onclick="addJobByUrl()">Submit</button>
+    </div>
+    <div id="addJobStatus"></div>
+    <div id="jobConfirmForm" style="display:none;margin-top:1rem;border-top:1px solid var(--border);padding-top:1rem;">
+      <p style="font-size:.78rem;color:var(--muted);margin-bottom:.8rem;">Review and fill in any missing fields, then click Save.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
+        <div>
+          <label style="font-size:.72rem;font-weight:500;color:var(--muted);display:block;margin-bottom:.2rem;">Job Title *</label>
+          <input type="text" id="cfTitle" style="width:100%;padding:.4rem .6rem;border:1px solid var(--border);font-family:var(--font-body);font-size:.82rem;outline:none;" />
+        </div>
+        <div>
+          <label style="font-size:.72rem;font-weight:500;color:var(--muted);display:block;margin-bottom:.2rem;">Company *</label>
+          <input type="text" id="cfCompany" style="width:100%;padding:.4rem .6rem;border:1px solid var(--border);font-family:var(--font-body);font-size:.82rem;outline:none;" />
+        </div>
+        <div>
+          <label style="font-size:.72rem;font-weight:500;color:var(--muted);display:block;margin-bottom:.2rem;">Location</label>
+          <input type="text" id="cfLocation" placeholder="e.g. New York, NY" style="width:100%;padding:.4rem .6rem;border:1px solid var(--border);font-family:var(--font-body);font-size:.82rem;outline:none;" />
+        </div>
+        <div>
+          <label style="font-size:.72rem;font-weight:500;color:var(--muted);display:block;margin-bottom:.2rem;">Date Posted</label>
+          <input type="text" id="cfDate" placeholder="YYYY-MM-DD" style="width:100%;padding:.4rem .6rem;border:1px solid var(--border);font-family:var(--font-body);font-size:.82rem;outline:none;" />
+        </div>
+      </div>
+      <div style="margin-top:.8rem;display:flex;gap:.6rem;">
+        <button onclick="confirmAddJob()" style="padding:.4rem 1.2rem;background:var(--navy);color:#fff;border:none;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;">Save Job</button>
+        <button onclick="cancelAddJob()" style="padding:.4rem 1rem;background:#fff;color:var(--muted);border:1px solid var(--border);font-family:var(--font-body);font-size:.82rem;cursor:pointer;">Cancel</button>
+      </div>
+    </div>
   </div>
 
   <div class="toolbar">
@@ -1868,6 +1927,158 @@ async function hideJob(btn) {{
       : (triggered ? "✓ Job restored — dashboard refreshing (~2 min)" : "✓ Job restored (refresh failed — try the Refresh button)"),
     hiding ? "#1b2232" : "#166534"
   );
+}}
+
+// ── Add Job by URL ──
+const ANTHROPIC_KEY = "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";
+
+async function addJobByUrl() {{
+  const urlInput = document.getElementById("jobUrlInput");
+  const statusEl = document.getElementById("addJobStatus");
+  const btn      = document.getElementById("addJobBtn");
+  const jobUrl   = urlInput.value.trim();
+
+  if (!jobUrl) {{ statusEl.textContent = "Please enter a URL."; return; }}
+
+  btn.disabled = true;
+  statusEl.textContent = "Fetching job page…";
+
+  let pageText = "";
+  const proxies = [
+    u => `https://api.allorigins.win/get?url=${{encodeURIComponent(u)}}`,
+    u => `https://corsproxy.io/?${{encodeURIComponent(u)}}`,
+  ];
+  for (const makeUrl of proxies) {{
+    try {{
+      const proxyResp = await fetch(makeUrl(jobUrl), {{ signal: AbortSignal.timeout(8000) }});
+      if (!proxyResp.ok) continue;
+      const raw = await proxyResp.text();
+      let html = raw;
+      try {{ html = JSON.parse(raw).contents || raw; }} catch (_) {{}}
+      pageText = html
+        .replace(/<style[\s\S]*?<\/style>/gi, "")
+        .replace(/<script[\s\S]*?<\/script>/gi, "")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 12000);
+      if (pageText.length > 200) break;
+    }} catch (e) {{ console.warn("Proxy failed:", e.message); }}
+  }}
+
+  statusEl.textContent = "Parsing with Claude…";
+  let job = {{}};
+  try {{
+    const prompt = pageText
+      ? `Here is the text scraped from this job posting (${{jobUrl}}):\\n\\n${{pageText}}\\n\\nReturn ONLY a JSON object with: title, company, location (city + state/country), date_posted (YYYY-MM-DD or null), type (FULL_TIME/PART_TIME or null).`
+      : `Job URL: ${{jobUrl}}\\nReturn ONLY a JSON object with: title, company, location, date_posted, type. Use null for fields you cannot determine.`;
+    const resp = await fetch("https://api.anthropic.com/v1/messages", {{
+      method: "POST",
+      headers: {{
+        "x-api-key": ANTHROPIC_KEY,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+        "anthropic-dangerous-direct-browser-access": "true",
+      }},
+      body: JSON.stringify({{
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 256,
+        messages: [{{ role: "user", content: prompt }}]
+      }})
+    }});
+    if (!resp.ok) {{
+      const errBody = await resp.json().catch(() => ({{}}));
+      throw new Error(`Anthropic API error: ${{resp.status}} — ${{errBody.error?.message || JSON.stringify(errBody)}}`);
+    }}
+    const data = await resp.json();
+    const text = data.content?.[0]?.text || "";
+    const match = text.match(/\{{[\s\S]*\}}/);
+    if (match) job = JSON.parse(match[0]);
+  }} catch (err) {{
+    statusEl.textContent = "Error parsing job: " + err.message;
+    btn.disabled = false;
+    return;
+  }}
+
+  if (!job.title) {{
+    statusEl.textContent = "Could not extract job title. Try a different URL.";
+    btn.disabled = false;
+    return;
+  }}
+
+  document.getElementById("cfTitle").value    = job.title    || "";
+  document.getElementById("cfCompany").value  = job.company  || "";
+  document.getElementById("cfLocation").value = job.location || "";
+  document.getElementById("cfDate").value     = job.date_posted || "";
+  document.getElementById("jobConfirmForm").style.display = "block";
+  statusEl.textContent = pageText.length > 200
+    ? "Review the details below and fill in anything missing."
+    : "Job board blocked scraping — please fill in the missing fields.";
+  btn.disabled = false;
+}}
+
+async function confirmAddJob() {{
+  const jobUrl      = document.getElementById("jobUrlInput").value.trim();
+  const title       = document.getElementById("cfTitle").value.trim();
+  const company     = document.getElementById("cfCompany").value.trim();
+  const location    = document.getElementById("cfLocation").value.trim();
+  const date_posted = document.getElementById("cfDate").value.trim();
+  const statusEl    = document.getElementById("addJobStatus");
+
+  if (!title) {{ statusEl.textContent = "Job title is required."; return; }}
+
+  statusEl.textContent = "Saving to allocator_jobs.csv…";
+
+  try {{
+    const csvResp = await fetch(`https://api.github.com/repos/${{REPO}}/contents/allocator_jobs.csv`, {{ headers: ghHeaders() }});
+    if (!csvResp.ok) throw new Error(`GitHub fetch error: ${{csvResp.status}}`);
+    const csvData = await csvResp.json();
+    const existing = atob(csvData.content.replace(/\\n/g, ""));
+    function csvEsc(v) {{ return /[",\\n]/.test(v) ? `"${{v.replace(/"/g,'""')}}"` : v; }}
+    const newRow = [csvEsc(jobUrl), csvEsc(title), csvEsc(company), csvEsc(location), date_posted, "", "Manual"].join(",") + "\\n";
+    const putResp = await fetch(`https://api.github.com/repos/${{REPO}}/contents/allocator_jobs.csv`, {{
+      method: "PUT",
+      headers: ghHeaders(),
+      body: JSON.stringify({{
+        message: `Add manual job: ${{title}}`,
+        content: btoa(unescape(encodeURIComponent(existing + newRow))),
+        sha: csvData.sha,
+        branch: "main"
+      }})
+    }});
+    if (!putResp.ok) {{
+      const errBody = await putResp.json().catch(() => ({{}}));
+      throw new Error(errBody.message || `GitHub write error: ${{putResp.status}}`);
+    }}
+  }} catch (err) {{
+    statusEl.textContent = "Error saving to CSV: " + err.message;
+    return;
+  }}
+
+  const tbody = document.getElementById("adminBody");
+  const tr = document.createElement("tr");
+  const safeUrl = jobUrl.replace(/"/g, "&quot;");
+  tr.innerHTML = `
+    <td><a href="${{safeUrl}}" target="_blank" rel="noopener">${{title}}</a></td>
+    <td>${{company}}</td>
+    <td>${{location}}</td>
+    <td>${{date_posted}}</td>
+    <td></td>
+    <td><span class="source-tag">Manual</span></td>
+    <td><button class="hide-btn" data-url="${{safeUrl}}" onclick="hideJob(this)">Hide</button></td>
+  `;
+  tbody.insertBefore(tr, tbody.firstChild);
+
+  document.getElementById("jobUrlInput").value = "";
+  document.getElementById("jobConfirmForm").style.display = "none";
+  statusEl.textContent = "";
+  showToast("✓ Job added successfully!", "#166534");
+}}
+
+function cancelAddJob() {{
+  document.getElementById("jobConfirmForm").style.display = "none";
+  document.getElementById("addJobStatus").textContent = "";
+  document.getElementById("addJobBtn").disabled = false;
 }}
 
 // ── Manual Refresh Jobs button ──
