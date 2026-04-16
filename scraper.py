@@ -1735,7 +1735,8 @@ def generate_admin_html(jobs: list[dict]) -> None:
     <h2>Admin Access</h2>
     <p>FRAM Partners — Internal Use Only</p>
     <input type="password" id="pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')checkPw()" />
-    <input type="password" id="token-input" placeholder="API key" onkeydown="if(event.key==='Enter')checkPw()" style="margin-top:0" />
+    <input type="password" id="token-input" placeholder="GitHub token" onkeydown="if(event.key==='Enter')checkPw()" style="margin-top:0" />
+    <input type="password" id="anthropic-input" placeholder="Anthropic API key" onkeydown="if(event.key==='Enter')checkPw()" style="margin-top:.5rem" />
     <button onclick="checkPw()">Enter</button>
     <div id="gate-error">Incorrect password</div>
   </div>
@@ -1828,6 +1829,8 @@ function checkPw() {{
     document.getElementById("gate").style.display = "none";
     sessionStorage.setItem("admin_auth", "1");
     if (token) sessionStorage.setItem("gh_token", token);
+    const anthropicKey = document.getElementById("anthropic-input").value.trim();
+    if (anthropicKey) sessionStorage.setItem("anthropic_key", anthropicKey);
   }} else {{
     document.getElementById("gate-error").style.display = "block";
   }}
@@ -1930,7 +1933,7 @@ async function hideJob(btn) {{
 }}
 
 // ── Add Job by URL ──
-const ANTHROPIC_KEY = "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";
+const ANTHROPIC_KEY = sessionStorage.getItem("anthropic_key") || "";
 
 async function addJobByUrl() {{
   const urlInput = document.getElementById("jobUrlInput");
