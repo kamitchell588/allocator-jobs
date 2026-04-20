@@ -1677,6 +1677,13 @@ def generate_admin_html(jobs: list[dict]) -> None:
     color: var(--navy); white-space: nowrap;
   }}
 
+  /* Sortable headers */
+  th[data-col] {{ user-select: none; }}
+  th[data-col]:hover {{ background: #24304a; }}
+  th[data-col].asc  .sort-icon::after {{ content: " ▲"; opacity: .7; }}
+  th[data-col].desc .sort-icon::after {{ content: " ▼"; opacity: .7; }}
+  th[data-col] .sort-icon {{ font-size: .65rem; }}
+
   /* Hide button */
   .hide-btn {{
     padding: .25rem .7rem; font-size: .75rem; font-family: var(--font-body);
@@ -1800,12 +1807,12 @@ def generate_admin_html(jobs: list[dict]) -> None:
     <table id="adminTable">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Company</th>
-          <th>Location</th>
-          <th>Date Posted</th>
-          <th>Type</th>
-          <th>Source</th>
+          <th data-col="0" style="cursor:pointer;" onclick="sortAdmin(0)">Title <span class="sort-icon"></span></th>
+          <th data-col="1" style="cursor:pointer;" onclick="sortAdmin(1)">Company <span class="sort-icon"></span></th>
+          <th data-col="2" style="cursor:pointer;" onclick="sortAdmin(2)">Location <span class="sort-icon"></span></th>
+          <th data-col="3" style="cursor:pointer;" onclick="sortAdmin(3)">Date Posted <span class="sort-icon"></span></th>
+          <th data-col="4">Type</th>
+          <th data-col="5">Source</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -1930,6 +1937,24 @@ async function hideJob(btn) {{
       : (triggered ? "✓ Job restored — dashboard refreshing (~2 min)" : "✓ Job restored (refresh failed — try the Refresh button)"),
     hiding ? "#1b2232" : "#166534"
   );
+}}
+
+// ── Column sort ──
+let _sortCol = -1, _sortAsc = true;
+function sortAdmin(col) {{
+  if (_sortCol === col) {{ _sortAsc = !_sortAsc; }} else {{ _sortCol = col; _sortAsc = true; }}
+  document.querySelectorAll("th[data-col]").forEach(th => {{
+    th.classList.remove("asc", "desc");
+    if (parseInt(th.dataset.col) === col) th.classList.add(_sortAsc ? "asc" : "desc");
+  }});
+  const tbody = document.getElementById("adminBody");
+  Array.from(tbody.rows)
+    .sort((a, b) => {{
+      const ta = (a.cells[col]?.textContent || "").trim().toLowerCase();
+      const tb = (b.cells[col]?.textContent || "").trim().toLowerCase();
+      return _sortAsc ? ta.localeCompare(tb) : tb.localeCompare(ta);
+    }})
+    .forEach(r => tbody.appendChild(r));
 }}
 
 // ── Add Job by URL ──
