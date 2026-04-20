@@ -968,7 +968,7 @@ def scrape_ultipro(board_url: str, board_id: str, company: str, location: str) -
                 source=SOURCE,
             ))
 
-    print(f"  [{SOURCE}] Found {{len(jobs)}} jobs.")
+    print(f"  [{SOURCE}] Found {len(jobs)} jobs.")
     return jobs
 
 
@@ -1129,7 +1129,7 @@ def _rows_html(jobs: list[dict]) -> str:
             if url else escape(j["title"])
         )
         desc = escape(j["description"])
-        source = escape(j.get("source", ""))
+        source = escape(j.get("source") or "")
         rows.append(
             f'<tr class="age-{age_class}">'
             f'<td>{title_cell}</td>'
@@ -1563,7 +1563,7 @@ def generate_admin_html(jobs: list[dict]) -> None:
             f'<a href="{url}" target="_blank" rel="noopener">{escape(j["title"])}</a>'
             if url else escape(j["title"])
         )
-        source  = escape(j.get("source", ""))
+        source  = escape(j.get("source") or "")
         is_hidden = j["url"].lower().rstrip("/") in hidden
         row_style = ' style="opacity:.4"' if is_hidden else ""
         hide_btn  = (
