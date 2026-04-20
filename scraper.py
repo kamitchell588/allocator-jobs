@@ -1933,7 +1933,6 @@ async function hideJob(btn) {{
 }}
 
 // ── Add Job by URL ──
-const ANTHROPIC_KEY = sessionStorage.getItem("anthropic_key") || "";
 
 async function addJobByUrl() {{
   const urlInput = document.getElementById("jobUrlInput");
@@ -1978,7 +1977,7 @@ async function addJobByUrl() {{
     const resp = await fetch("https://api.anthropic.com/v1/messages", {{
       method: "POST",
       headers: {{
-        "x-api-key": ANTHROPIC_KEY,
+        "x-api-key": sessionStorage.getItem("anthropic_key") || "",
         "anthropic-version": "2023-06-01",
         "content-type": "application/json",
         "anthropic-dangerous-direct-browser-access": "true",
