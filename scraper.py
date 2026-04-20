@@ -1835,8 +1835,8 @@ function checkPw() {{
     document.getElementById("gate-error").style.display = "block";
   }}
 }}
-// Auto-unlock if already authenticated this session
-if (sessionStorage.getItem("admin_auth") === "1") {{
+// Auto-unlock if already authenticated this session AND Anthropic key is present
+if (sessionStorage.getItem("admin_auth") === "1" && sessionStorage.getItem("anthropic_key")) {{
   document.getElementById("gate").style.display = "none";
 }}
 
