@@ -2234,7 +2234,7 @@ def main():
     sources = Counter(j["source"] for j in public_jobs)
     print("\n  Jobs by source:")
     for src, n in sorted(sources.items(), key=lambda x: x[0] or ""):
-        print(f"    {src:30s} {n}")
+        print(f"    {(src or 'Unknown'):30s} {n}")
 
     print("\nDone!")
     print(f"  CSV       : {CSV_PATH}")
