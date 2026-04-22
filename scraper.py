@@ -27,7 +27,7 @@ _env = pathlib.Path(__file__).parent / ".env"
 _env_vars = dict(_re.findall(r'^([A-Z_]+)=(.+)$', _env.read_text(), _re.M)) if _env.exists() else {}
 APIFY_TOKEN    = _env_vars.get("APIFY_TOKEN", os.environ.get("APIFY_TOKEN", ""))
 GH_TOKEN       = _env_vars.get("GH_TOKEN", os.environ.get("GH_TOKEN", ""))
-DATASET_IDS = ["XLbyFxagcoq3KhIE9", "eybd42F9fMwxLzZhz"]  # all Apify datasets to pull from
+DATASET_IDS = ["XLbyFxagcoq3KhIE9", "eybd42F9fMwxLzZhz", "5roxh0NiolJRHztZg"]  # all Apify datasets to pull from
 MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
 MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
 APIFY_BASE  = "https://api.apify.com/v2/datasets/{dataset_id}/items"
@@ -1068,7 +1068,7 @@ def normalise(item: dict) -> dict:
         "url":         url,
         "description": description,
         "job_type":    job_type,
-        "source":      item.get("_source", "Apify"),
+        "source":      item.get("_source") or "Apify",
     }
 
 
@@ -2233,7 +2233,7 @@ def main():
     from collections import Counter
     sources = Counter(j["source"] for j in public_jobs)
     print("\n  Jobs by source:")
-    for src, n in sorted(sources.items()):
+    for src, n in sorted(sources.items(), key=lambda x: x[0] or ""):
         print(f"    {src:30s} {n}")
 
     print("\nDone!")
