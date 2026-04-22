@@ -1410,18 +1410,6 @@ document.getElementById("gate-email").addEventListener("keydown", e => {{ if (e.
       <div class="label">Total Roles</div>
       <div class="value">{stats["total"]}</div>
     </div>
-    <div class="stat-card">
-      <div class="label">Earliest Posted</div>
-      <div class="value" style="font-size:1.2rem;padding-top:.2rem;">{stats["date_min"]}</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Latest Posted</div>
-      <div class="value" style="font-size:1.2rem;padding-top:.2rem;">{stats["date_max"]}</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Last Updated</div>
-      <div class="value" style="font-size:.85rem;padding-top:.4rem;line-height:1.5;font-family:var(--font-body);font-weight:400;">{updated}</div>
-    </div>
   </div>
 
   <!-- Top companies -->
