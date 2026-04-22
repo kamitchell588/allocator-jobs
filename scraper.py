@@ -30,7 +30,7 @@ GH_TOKEN       = _env_vars.get("GH_TOKEN", os.environ.get("GH_TOKEN", ""))
 # Actor Task IDs — stable IDs that always point to the latest run
 ACTOR_TASK_IDS = ["jDown13k7veexhpaZ", "iJ7jIqOFzpvnWWtpk", "7VDcxoQjS4RJCp3MQ"]
 # Fallback static dataset IDs (historical data, only used if actor task fetch fails)
-FALLBACK_DATASET_IDS = ["XLbyFxagcoq3KhIE9", "eybd42F9fMwxLzZhz", "iEwxgRc58jXmMHOK0", "EpFF1d5hVuM3OHXiP", "2D2eKfnhSdXzUc5hl"]
+FALLBACK_DATASET_IDS = ["XLbyFxagcoq3KhIE9", "eybd42F9fMwxLzZhz", "iEwxgRc58jXmMHOK0", "EpFF1d5hVuM3OHXiP", "2D2eKfnhSdXzUc5hl", "Q5FdOI30ONqauct6b"]
 MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
 MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
 APIFY_BASE      = "https://api.apify.com/v2/datasets/{dataset_id}/items"
