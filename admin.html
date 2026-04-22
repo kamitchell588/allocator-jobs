@@ -166,7 +166,7 @@
 
 <header>
   <h1>Allocator Jobs <span class="admin-badge">ADMIN</span></h1>
-  <div class="sub">Last updated: April 22, 2026 at 12:16 AM &nbsp;·&nbsp; 171 total jobs (including hidden)</div>
+  <div class="sub">Last updated: April 22, 2026 at 12:22 AM &nbsp;·&nbsp; 168 total jobs (including hidden)</div>
 </header>
 
 <main>
@@ -400,9 +400,6 @@
 <tr><td><a href="https://assets-002.noviams.com/novi-file-uploads/ncpers/pdfs-and-documents/Careers_SERS_Ohio_Executive_Director_Feb_2026.pdf" target="_blank" rel="noopener">Executive Director</a></td><td>School Employees Retirement System of Ohio (SERS )</td><td></td><td></td><td></td><td><span class="source-tag">NCPERS</span></td><td><button class="hide-btn" data-url="https://assets-002.noviams.com/novi-file-uploads/ncpers/pdfs-and-documents/Careers_SERS_Ohio_Executive_Director_Feb_2026.pdf" onclick="hideJob(this)">Hide</button></td></tr>
 <tr><td><a href="https://tinyurl.com/5erwe9rx" target="_blank" rel="noopener">Chief Financial Officer</a></td><td>San Antonio Fire &amp; Police Pension Fund (SAFPPF)</td><td></td><td></td><td></td><td><span class="source-tag">NCPERS</span></td><td><button class="hide-btn" data-url="https://tinyurl.com/5erwe9rx" onclick="hideJob(this)">Hide</button></td></tr>
 <tr><td><a href="https://assets-002.noviams.com/novi-file-uploads/ncpers/pdfs-and-documents/Careers_SJORS_CIO_Profile_FINAL_online_april_2026.pdf" target="_blank" rel="noopener">Managing Director of Public Markets</a></td><td>San Francisco Employees&#x27; Retirement System</td><td></td><td></td><td></td><td><span class="source-tag">NCPERS</span></td><td><button class="hide-btn" data-url="https://assets-002.noviams.com/novi-file-uploads/ncpers/pdfs-and-documents/Careers_SJORS_CIO_Profile_FINAL_online_april_2026.pdf" onclick="hideJob(this)">Hide</button></td></tr>
-<tr><td><a href="https://allocatorjobs.com/global-fixed-income-managing-investment-director/" target="_blank" rel="noopener">Global Fixed Income Managing Investment Director</a></td><td>CalPERS is hiring a Deputy CIO</td><td></td><td></td><td></td><td><span class="source-tag">AllocatorJobs</span></td><td><button class="hide-btn" data-url="https://allocatorjobs.com/global-fixed-income-managing-investment-director/" onclick="hideJob(this)">Hide</button></td></tr>
-<tr><td><a href="https://allocatorjobs.com/chief-investment-officer-the-boston-foundation/" target="_blank" rel="noopener">Chief Investment Officer</a></td><td>The Boston Foundation is hiring a Senior Director, Impact Investments</td><td></td><td></td><td></td><td><span class="source-tag">AllocatorJobs</span></td><td><button class="hide-btn" data-url="https://allocatorjobs.com/chief-investment-officer-the-boston-foundation/" onclick="hideJob(this)">Hide</button></td></tr>
-<tr><td><a href="https://allocatorjobs.com/private-markets-assistant-portfolio-manager-new-york-state-insurance-fund/" target="_blank" rel="noopener">Private Markets Assistant Portfolio Manager</a></td><td>New York State Insurance Fund is hiring a Chief Investment Risk Officer</td><td></td><td></td><td></td><td><span class="source-tag">AllocatorJobs</span></td><td><button class="hide-btn" data-url="https://allocatorjobs.com/private-markets-assistant-portfolio-manager-new-york-state-insurance-fund/" onclick="hideJob(this)">Hide</button></td></tr>
       </tbody>
     </table>
   </div>
@@ -647,7 +644,7 @@ async function confirmAddJob() {
     const csvData = await csvResp.json();
     const existing = atob(csvData.content.replace(/\n/g, ""));
     function csvEsc(v) { return /[",\n]/.test(v) ? `"${v.replace(/"/g,'""')}"` : v; }
-    const newRow = [csvEsc(jobUrl), csvEsc(title), csvEsc(company), csvEsc(location), date_posted, "", "Manual"].join(",") + "\n";
+    const newRow = [csvEsc(title), csvEsc(company), csvEsc(location), date_posted, csvEsc(jobUrl), "", "Manual"].join(",") + "\n";
     const putResp = await fetch(`https://api.github.com/repos/${REPO}/contents/allocator_jobs.csv`, {
       method: "PUT",
       headers: ghHeaders(),
