@@ -1,7 +1,7 @@
 # Allocator Jobs — CLAUDE.md
 
 ## What this project is
-A job board for institutional allocator roles (endowments, pensions, family offices, sovereign wealth) built for FRAM Partners. It scrapes job data, filters it, and publishes a static HTML dashboard.
+A job board for institutional allocator roles (endowments, pensions, family offices, sovereign wealth) built for FRAM Partners. Scrapes job data, filters it, and publishes a static HTML dashboard.
 
 ## Architecture
 - **`scraper.py`** — main script, run via `bash run.sh`
@@ -11,29 +11,43 @@ A job board for institutional allocator roles (endowments, pensions, family offi
 - **`hidden_jobs.txt`** — newline-separated list of URLs suppressed from public dashboard
 - **`.env`** — `APIFY_TOKEN` and `GH_TOKEN` (never committed)
 
-## Data sources
-1. **Apify datasets** — list of dataset IDs in `DATASET_IDS` at top of scraper.py. Scraper fetches last 7 days of new items and merges with CSV history.
-2. **Supplemental scrapers** — NCPERS, AllocatorJobs.com, CFA Institute, Council on Foundations, UTIMCO (UltiPro)
-3. **Manual Google Sheet** — pre-vetted jobs, bypasses title/exclusion filters. Published CSV URL in `MANUAL_SHEET_CSV`.
+## Current Apify dataset IDs
+```python
+DATASET_IDS = ["XLbyFxagcoq3KhIE9", "eybd42F9fMwxLzZhz", "iEwxgRc58jXmMHOK0", "EpFF1d5hVuM3OHXiP"]
+```
+To add a new dataset: add its ID to this list in `scraper.py`. All datasets go through the same filtering pipeline.
 
 ## Filtering pipeline
-- Layer 1: disabled (org filtering handled upstream in Apify)
-- Layer 2: title must match `LAYER2_TITLE_KEYWORDS`
-- Exclusions: title must NOT match `EXCLUDE_TITLE_KEYWORDS`
-- Geo: US or Canada only (`NORTH_AMERICA_GEO`)
-- Manual sheet entries bypass all filters
+1. **Layer 2** — title must match `LAYER2_TITLE_KEYWORDS` (investment, portfolio, analyst, etc.)
+2. **Exclusions** — title must NOT match `EXCLUDE_TITLE_KEYWORDS` (receptionist, compliance, etc.)
+3. **Geo** — US or Canada only
+- Manual Google Sheet entries bypass all filters (pre-vetted)
 
-## How to add a new Apify dataset
-Add the dataset ID string to `DATASET_IDS` in `scraper.py`. That's it — the scraper loops over all IDs automatically.
+## Data sources
+1. Apify datasets (all IDs in `DATASET_IDS`) — fetches last 7 days, merges with CSV history
+2. Supplemental scrapers — NCPERS, AllocatorJobs.com, CFA Institute, Council on Foundations, UTIMCO
+3. Manual Google Sheet — pre-vetted jobs added manually
+
+## Dashboard
+- Public dashboard shows: Total Roles stat card, Top Hiring Organizations, jobs table
+- Date stat cards (Last Updated, Earliest Posted, Latest Posted) intentionally removed
+- Admin panel login requires password + GitHub token (entered at login screen)
 
 ## GitHub / CI
 - Repo: `kamitchell588/allocator-jobs`
-- Workflow: `.github/refresh.yml` — triggered manually from admin.html "Refresh Jobs" button via GitHub API
-- Admin panel writes to `hidden_jobs.txt` and `allocator_jobs.csv` via GitHub API, then triggers the workflow
+- Workflow: `.github/workflows/refresh.yml` — triggered from admin panel "↻ Refresh Jobs" button
+- Actions bot needs `permissions: contents: write` in workflow yml
+- Workflow does `git pull --rebase origin main` before push to avoid race conditions
+
+## Token management
+- GitHub token needs `repo` + `workflow` scopes
+- When regenerating token, update TWO places:
+  1. `.env`: `sed -i '' 's/GH_TOKEN=.*/GH_TOKEN=newtoken/' /Users/katiemitchell/allocator-jobs/.env`
+  2. Git remote: `git remote set-url origin https://newtoken@github.com/kamitchell588/allocator-jobs.git`
+- Never paste token in chat — use `!` prefix to run commands locally
 
 ## Running locally
 ```bash
 cd /Users/katiemitchell/allocator-jobs
 bash run.sh
 ```
-Opens `dashboard.html` when done.
