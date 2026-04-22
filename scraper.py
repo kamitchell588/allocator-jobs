@@ -2062,7 +2062,7 @@ async function confirmAddJob() {{
     const csvData = await csvResp.json();
     const existing = atob(csvData.content.replace(/\\n/g, ""));
     function csvEsc(v) {{ return /[",\\n]/.test(v) ? `"${{v.replace(/"/g,'""')}}"` : v; }}
-    const newRow = [csvEsc(jobUrl), csvEsc(title), csvEsc(company), csvEsc(location), date_posted, "", "Manual"].join(",") + "\\n";
+    const newRow = [csvEsc(title), csvEsc(company), csvEsc(location), date_posted, csvEsc(jobUrl), "", "Manual"].join(",") + "\\n";
     const putResp = await fetch(`https://api.github.com/repos/${{REPO}}/contents/allocator_jobs.csv`, {{
       method: "PUT",
       headers: ghHeaders(),
