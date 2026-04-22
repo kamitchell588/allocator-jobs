@@ -2,6 +2,8 @@ name: Refresh Job Dashboard
 
 on:
   workflow_dispatch:  # manual trigger via API or GitHub UI
+  schedule:
+    - cron: "0 14 * * *"  # daily at 2pm UTC (10am ET)
 
 jobs:
   scrape:

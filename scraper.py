@@ -27,10 +27,15 @@ _env = pathlib.Path(__file__).parent / ".env"
 _env_vars = dict(_re.findall(r'^([A-Z_]+)=(.+)$', _env.read_text(), _re.M)) if _env.exists() else {}
 APIFY_TOKEN    = _env_vars.get("APIFY_TOKEN", os.environ.get("APIFY_TOKEN", ""))
 GH_TOKEN       = _env_vars.get("GH_TOKEN", os.environ.get("GH_TOKEN", ""))
-DATASET_IDS = ["XLbyFxagcoq3KhIE9", "eybd42F9fMwxLzZhz", "iEwxgRc58jXmMHOK0", "EpFF1d5hVuM3OHXiP"]  # all Apify datasets to pull from
+# Actor Task IDs — stable IDs that always point to the latest run
+ACTOR_TASK_IDS = ["jDown13k7veexhpaZ", "iJ7jIqOFzpvnWWtpk", "7VDcxoQjS4RJCp3MQ"]
+# Fallback static dataset IDs (historical data, only used if actor task fetch fails)
+FALLBACK_DATASET_IDS = ["XLbyFxagcoq3KhIE9", "eybd42F9fMwxLzZhz", "iEwxgRc58jXmMHOK0", "EpFF1d5hVuM3OHXiP"]
 MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
 MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
-APIFY_BASE  = "https://api.apify.com/v2/datasets/{dataset_id}/items"
+APIFY_BASE      = "https://api.apify.com/v2/datasets/{dataset_id}/items"
+APIFY_TASK_BASE = "https://api.apify.com/v2/actor-tasks/{task_id}/runs"
+JOB_MAX_AGE_DAYS = 60  # drop jobs older than this from the CSV
 OUTPUT_DIR        = os.path.dirname(os.path.abspath(__file__))
 CSV_PATH          = os.path.join(OUTPUT_DIR, "allocator_jobs.csv")
 HTML_PATH         = os.path.join(OUTPUT_DIR, "dashboard.html")
@@ -444,14 +449,36 @@ def _fetch_items(dataset_id: str, extra_params: dict = None) -> list[dict]:
     return items
 
 
-def fetch_recent_items(days: int = 7) -> list[dict]:
-    """Fetch items from all datasets added in the last N days."""
+def _get_latest_dataset_id(task_id: str) -> str | None:
+    """Return the dataset ID from the most recent successful run of an actor task."""
+    url = APIFY_TASK_BASE.format(task_id=task_id)
+    try:
+        resp = requests.get(url, params={"token": APIFY_TOKEN, "limit": 1, "desc": True, "status": "SUCCEEDED"}, timeout=30)
+        resp.raise_for_status()
+        data = resp.json()
+        items = data if isinstance(data, list) else data.get("items", data.get("data", []))
+        if items:
+            return items[0].get("defaultDatasetId")
+    except Exception as e:
+        print(f"  [WARN] Could not fetch latest run for task {task_id}: {e}")
+    return None
+
+
+def fetch_recent_items(days: int = 1) -> list[dict]:
+    """Fetch items from the latest run of each actor task, filtering to last N days."""
     from datetime import timedelta
     since = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     all_items = []
-    for ds_id in DATASET_IDS:
-        print(f"Connecting to Apify dataset {ds_id} (last {days} days since {since}) …")
-        all_items.extend(_fetch_items(ds_id, {"createdAtFrom": since}))
+
+    for task_id in ACTOR_TASK_IDS:
+        print(f"Fetching latest dataset for actor task {task_id} …")
+        ds_id = _get_latest_dataset_id(task_id)
+        if ds_id:
+            print(f"  Latest dataset: {ds_id} (items from last {days} day(s) since {since})")
+            all_items.extend(_fetch_items(ds_id, {"createdAtFrom": since}))
+        else:
+            print(f"  [WARN] No successful run found for task {task_id} — skipping.")
+
     return all_items
 
 
@@ -2158,13 +2185,18 @@ def main():
     print("  Institutional Allocator Job Scraper")
     print("=" * 60)
 
-    # ── 1. Load historical jobs from CSV + fetch last 7 days from Apify ──
-    print("\n[Apify] Fetching last 7 days …")
-    recent_raw  = fetch_recent_items(days=7)
+    # ── 1. Load historical jobs from CSV + fetch last 24 hours from Apify ──
+    print("\n[Apify] Fetching last 24 hours …")
+    recent_raw  = fetch_recent_items(days=1)
     recent_jobs = [normalise(j) for j in filter_jobs(recent_raw)] if recent_raw else []
     print(f"  [Apify] {len(recent_jobs)} new/recent jobs after filtering.")
 
     csv_jobs = load_csv_jobs()
+    # Drop jobs older than JOB_MAX_AGE_DAYS based on date_posted
+    cutoff = (datetime.now(timezone.utc) - __import__('datetime').timedelta(days=JOB_MAX_AGE_DAYS)).date()
+    before = len(csv_jobs)
+    csv_jobs = [j for j in csv_jobs if not j["date_posted"] or datetime.strptime(j["date_posted"][:10], "%Y-%m-%d").date() >= cutoff]
+    print(f"  Dropped {before - len(csv_jobs)} jobs older than {JOB_MAX_AGE_DAYS} days from CSV.")
     # Strip out old Manual/supplemental entries from CSV — they'll be re-fetched fresh
     csv_apify_jobs = [j for j in csv_jobs if j["source"] not in ("Manual", "NCPERS", "AllocatorJobs", "UTIMCO")]
 
