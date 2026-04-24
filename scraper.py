@@ -477,9 +477,19 @@ def fetch_recent_items(days: int = 1) -> list[dict]:
         if ds_id:
             print(f"  Latest dataset: {ds_id} (items created since {since})")
             items = _fetch_items(ds_id, {"createdAtFrom": since})
-            # Also filter by date_posted to catch stale jobs ingested late
-            filtered = [i for i in items if not (i.get("date_posted") or "")[:10] or (i.get("date_posted") or "")[:10] >= since_date]
-            print(f"  {len(filtered)} of {len(items)} items pass date_posted filter.")
+            # Filter by date_posted; fall back to Apify createdAt if date_posted is missing
+            filtered = []
+            for i in items:
+                dp = (i.get("date_posted") or "")[:10]
+                if dp:
+                    if dp >= since_date:
+                        filtered.append(i)
+                else:
+                    # No date_posted — fall back to Apify createdAt
+                    created = (i.get("createdAt") or "")[:10]
+                    if not created or created >= since_date:
+                        filtered.append(i)
+            print(f"  {len(filtered)} of {len(items)} items pass date filter.")
             all_items.extend(filtered)
         else:
             print(f"  [WARN] No successful run found for task {task_id} — skipping.")
@@ -495,12 +505,17 @@ def fetch_one_time_datasets() -> list[dict]:
     for ds_id in FALLBACK_DATASET_IDS:
         print(f"Fetching historical dataset {ds_id} (excluding jobs before {cutoff}) …")
         items = _fetch_items(ds_id)
-        # Filter out jobs older than JOB_MAX_AGE_DAYS by date_posted
+        # Filter out jobs older than JOB_MAX_AGE_DAYS; use createdAt as fallback if no date_posted
         filtered = []
         for item in items:
-            dp = item.get("date_posted") or item.get("datePosted") or item.get("date") or ""
-            if dp and dp[:10] < cutoff:
-                continue
+            dp = (item.get("date_posted") or item.get("datePosted") or item.get("date") or "")[:10]
+            if dp:
+                if dp < cutoff:
+                    continue
+            else:
+                created = (item.get("createdAt") or "")[:10]
+                if created and created < cutoff:
+                    continue
             filtered.append(item)
         print(f"  {len(filtered)} of {len(items)} items within date range.")
         all_items.extend(filtered)
