@@ -29,8 +29,8 @@ APIFY_TOKEN    = _env_vars.get("APIFY_TOKEN", os.environ.get("APIFY_TOKEN", ""))
 GH_TOKEN       = _env_vars.get("GH_TOKEN", os.environ.get("GH_TOKEN", ""))
 # Actor Task IDs — stable IDs that always point to the latest run
 ACTOR_TASK_IDS = ["jDown13k7veexhpaZ", "iJ7jIqOFzpvnWWtpk", "7VDcxoQjS4RJCp3MQ", "7CkdmGSDpEHQVhgQH"]
-# Fallback static dataset IDs (historical data, only used if actor task fetch fails)
-FALLBACK_DATASET_IDS = ["XLbyFxagcoq3KhIE9", "eybd42F9fMwxLzZhz", "iEwxgRc58jXmMHOK0", "EpFF1d5hVuM3OHXiP", "2D2eKfnhSdXzUc5hl", "Q5FdOI30ONqauct6b"]
+# Fallback static dataset IDs — cleared once historical data is in the CSV
+FALLBACK_DATASET_IDS = []
 MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
 MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
 APIFY_BASE      = "https://api.apify.com/v2/datasets/{dataset_id}/items"
@@ -2228,10 +2228,7 @@ def main():
     # ── 1. Load historical jobs from CSV + fetch last 24 hours from Apify ──
     print("\n[Apify] Fetching last 24 hours …")
     recent_raw  = fetch_recent_items(days=1)
-    print("\n[Apify] Fetching one-time historical datasets …")
-    onetime_raw = fetch_one_time_datasets()
-    all_raw     = recent_raw + onetime_raw
-    recent_jobs = [normalise(j) for j in filter_jobs(all_raw)] if all_raw else []
+    recent_jobs = [normalise(j) for j in filter_jobs(recent_raw)] if recent_raw else []
     print(f"  [Apify] {len(recent_jobs)} new/recent jobs after filtering.")
 
     csv_jobs = load_csv_jobs()
