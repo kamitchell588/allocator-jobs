@@ -468,14 +468,19 @@ def fetch_recent_items(days: int = 1) -> list[dict]:
     """Fetch items from the latest run of each actor task, filtering to last N days."""
     from datetime import timedelta
     since = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+    since_date = since[:10]  # YYYY-MM-DD for date_posted comparison
     all_items = []
 
     for task_id in ACTOR_TASK_IDS:
         print(f"Fetching latest dataset for actor task {task_id} …")
         ds_id = _get_latest_dataset_id(task_id)
         if ds_id:
-            print(f"  Latest dataset: {ds_id} (items from last {days} day(s) since {since})")
-            all_items.extend(_fetch_items(ds_id, {"createdAtFrom": since}))
+            print(f"  Latest dataset: {ds_id} (items created since {since})")
+            items = _fetch_items(ds_id, {"createdAtFrom": since})
+            # Also filter by date_posted to catch stale jobs ingested late
+            filtered = [i for i in items if not (i.get("date_posted") or "")[:10] or (i.get("date_posted") or "")[:10] >= since_date]
+            print(f"  {len(filtered)} of {len(items)} items pass date_posted filter.")
+            all_items.extend(filtered)
         else:
             print(f"  [WARN] No successful run found for task {task_id} — skipping.")
 
@@ -483,11 +488,22 @@ def fetch_recent_items(days: int = 1) -> list[dict]:
 
 
 def fetch_one_time_datasets() -> list[dict]:
-    """Fetch all items from one-time historical datasets (no date filter)."""
+    """Fetch items from one-time historical datasets, filtered to last JOB_MAX_AGE_DAYS days by date_posted."""
+    from datetime import timedelta
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=JOB_MAX_AGE_DAYS)).strftime("%Y-%m-%d")
     all_items = []
     for ds_id in FALLBACK_DATASET_IDS:
-        print(f"Fetching historical dataset {ds_id} …")
-        all_items.extend(_fetch_items(ds_id))
+        print(f"Fetching historical dataset {ds_id} (excluding jobs before {cutoff}) …")
+        items = _fetch_items(ds_id)
+        # Filter out jobs older than JOB_MAX_AGE_DAYS by date_posted
+        filtered = []
+        for item in items:
+            dp = item.get("date_posted") or item.get("datePosted") or item.get("date") or ""
+            if dp and dp[:10] < cutoff:
+                continue
+            filtered.append(item)
+        print(f"  {len(filtered)} of {len(items)} items within date range.")
+        all_items.extend(filtered)
     return all_items
 
 
@@ -2205,7 +2221,8 @@ def main():
 
     csv_jobs = load_csv_jobs()
     # Drop jobs older than JOB_MAX_AGE_DAYS based on date_posted
-    cutoff = (datetime.now(timezone.utc) - __import__('datetime').timedelta(days=JOB_MAX_AGE_DAYS)).date()
+    from datetime import timedelta
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=JOB_MAX_AGE_DAYS)).date()
     before = len(csv_jobs)
     csv_jobs = [j for j in csv_jobs if not j["date_posted"] or datetime.strptime(j["date_posted"][:10], "%Y-%m-%d").date() >= cutoff]
     print(f"  Dropped {before - len(csv_jobs)} jobs older than {JOB_MAX_AGE_DAYS} days from CSV.")
