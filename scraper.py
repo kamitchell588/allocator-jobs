@@ -454,13 +454,14 @@ def _get_latest_dataset_id(task_id: str) -> str | None:
     url = APIFY_TASK_BASE.format(task_id=task_id)
     try:
         resp = requests.get(url, params={"token": APIFY_TOKEN, "limit": 1, "desc": True, "status": "SUCCEEDED"}, timeout=30)
+        print(f"  [DEBUG] Task {task_id} status={resp.status_code} body={resp.text[:200]}")
         resp.raise_for_status()
         data = resp.json()
         items = data if isinstance(data, list) else data.get("items", data.get("data", []))
         if items:
             return items[0].get("defaultDatasetId")
     except Exception as e:
-        print(f"  [WARN] Could not fetch latest run for task {task_id}: {e}")
+        print(f"  [WARN] Could not fetch latest run for task {task_id}: {type(e).__name__}: {e}")
     return None
 
 
