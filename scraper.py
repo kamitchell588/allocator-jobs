@@ -37,7 +37,11 @@ FALLBACK_DATASET_IDS = [
     "cwuKdgsgeudgBEJxs", "LIlJngvo4w5z49FYa",
     "WexvdCORF71lnE6nn", "AprUvVXigcUU2xgCg",
     "YVfkabO2zGPw8jnbP", "cS2Q4BOjI1WMwz1gs",
-    "vHlmlhl9geIt5WwVN",
+    "vHlmlhl9geIt5WwVN", "LTieQnoKzWpWVvf4S",
+    "eNzfc6bFgBo3VqcXv", "8L6TsizYWMm5Hnwav",
+    "O15hLHMUReCd6463X", "9LL6x6bAQWxQlUT4Q",
+    "VUJkI1KzBF0NuEG5s", "l8vgjRmMGaWEheJhC",
+    "8Agn0hDUSzYHU56cY",
 ]
 MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
 MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
