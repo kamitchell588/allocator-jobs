@@ -2129,6 +2129,15 @@ def main():
     recent_jobs = [normalise(j) for j in filter_jobs(recent_raw)] if recent_raw else []
     print(f"  [Apify] {len(recent_jobs)} new/recent jobs after filtering.")
 
+    # Backfill from any one-time datasets (cleared after use)
+    if FALLBACK_DATASET_IDS:
+        print("\n[Apify] Fetching backfill datasets …")
+        backfill_raw  = fetch_one_time_datasets()
+        backfill_jobs = [normalise(j) for j in filter_jobs(backfill_raw)] if backfill_raw else []
+        print(f"  [Apify] {len(backfill_jobs)} backfill jobs after filtering.")
+    else:
+        backfill_jobs = []
+
     csv_jobs = load_csv_jobs()
     # Drop jobs older than JOB_MAX_AGE_DAYS based on date_posted
     from datetime import timedelta
@@ -2139,8 +2148,8 @@ def main():
     # Strip out old Manual/supplemental entries from CSV — they'll be re-fetched fresh
     csv_apify_jobs = [j for j in csv_jobs if j["source"] not in ("Manual", "NCPERS", "AllocatorJobs", "UTIMCO")]
 
-    # Merge: recent Apify jobs take precedence (placed first for dedup)
-    apify_jobs = _dedup(recent_jobs + csv_apify_jobs)
+    # Merge: recent + backfill take precedence over CSV (placed first for dedup)
+    apify_jobs = _dedup(recent_jobs + backfill_jobs + csv_apify_jobs)
     print(f"  [Apify] {len(apify_jobs)} total after merging with historical CSV.")
 
     # ── 2. Supplemental sources ───────────────────────────────────
