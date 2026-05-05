@@ -468,32 +468,17 @@ def _get_latest_dataset_id(task_id: str) -> str | None:
 
 
 def fetch_recent_items(days: int = 1) -> list[dict]:
-    """Fetch items from the latest run of each actor task, filtering to last N days."""
-    from datetime import timedelta
-    since = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
-    since_date = since[:10]  # YYYY-MM-DD for date_posted comparison
+    """Fetch all items from the latest run of each actor task."""
     all_items = []
 
     for task_id in ACTOR_TASK_IDS:
         print(f"Fetching latest dataset for actor task {task_id} …")
         ds_id = _get_latest_dataset_id(task_id)
         if ds_id:
-            print(f"  Latest dataset: {ds_id} (items created since {since})")
-            items = _fetch_items(ds_id, {"createdAtFrom": since})
-            # Filter by date_posted; fall back to Apify createdAt if date_posted is missing
-            filtered = []
-            for i in items:
-                dp = (i.get("date_posted") or "")[:10]
-                if dp:
-                    if dp >= since_date:
-                        filtered.append(i)
-                else:
-                    # No date_posted — fall back to Apify createdAt
-                    created = (i.get("createdAt") or "")[:10]
-                    if not created or created >= since_date:
-                        filtered.append(i)
-            print(f"  {len(filtered)} of {len(items)} items pass date filter.")
-            all_items.extend(filtered)
+            print(f"  Latest dataset: {ds_id}")
+            items = _fetch_items(ds_id)
+            print(f"  {len(items)} items fetched.")
+            all_items.extend(items)
         else:
             print(f"  [WARN] No successful run found for task {task_id} — skipping.")
 
