@@ -846,107 +846,6 @@ def scrape_allocatorjobs() -> list[dict]:
     return jobs
 
 
-def _scrape_ymcareers(site_url: str, source_name: str, search_terms: list[str]) -> list[dict]:
-    """
-    Generic scraper for YourMembership/YM Careers boards (careers.cfainstitute.org, jobs.cof.org).
-    Tries searching for each term and parses the listing HTML.
-    """
-    print(f"\n[{source_name}] Fetching …")
-    jobs     = []
-    seen     = set()
-
-    for term in search_terms:
-        page = 1
-        while True:
-            params = {"keywords": term, "page": page}
-            resp   = _get(site_url, params=params)
-            if not resp:
-                break
-
-            soup     = BeautifulSoup(resp.text, "lxml")
-            # YM Careers uses table rows or article/li cards depending on theme
-            listings = (
-                soup.select("tr.data-row, li.job, article.job-listing, "
-                            ".job-listing, .jb-job-list-row, "
-                            "h2.job-title, .views-row")
-            )
-
-            if not listings:
-                # Fallback: look for any <a> with /job/ or /jobs/ in href
-                listings = [
-                    a for a in soup.select("a[href]")
-                    if re.search(r"/job(s)?/\d|/job(s)?/[a-z]", a.get("href", ""), re.I)
-                ]
-
-            if not listings:
-                break
-
-            for item in listings:
-                if hasattr(item, "select_one"):
-                    title_tag = item.select_one("a, h2, h3, .job-title, td.views-field-title")
-                else:
-                    title_tag = item   # item is already an <a>
-
-                if not title_tag:
-                    continue
-
-                title   = title_tag.get_text(strip=True)
-                href    = title_tag.get("href", "") if title_tag.name == "a" else ""
-                if not href and hasattr(title_tag, "find"):
-                    a = title_tag.find("a")
-                    href = a.get("href", "") if a else ""
-
-                # Make absolute URL
-                if href and not href.startswith("http"):
-                    from urllib.parse import urljoin
-                    href = urljoin(site_url, href)
-
-                # Location
-                loc_tag  = item.select_one(".job-location, .location, td.views-field-field-location") if hasattr(item, "select_one") else None
-                location = loc_tag.get_text(strip=True) if loc_tag else ""
-
-                # Company / employer
-                org_tag  = item.select_one(".employer, .company, td.views-field-field-company") if hasattr(item, "select_one") else None
-                company  = org_tag.get_text(strip=True) if org_tag else ""
-
-                uid = (title.lower(), href)
-                if title and uid not in seen:
-                    seen.add(uid)
-                    jobs.append(_make_job(
-                        title=title,
-                        company=company,
-                        location=location,
-                        url=href,
-                        source=source_name,
-                    ))
-
-            # Next page
-            next_link = soup.select_one("a.next, a[rel='next'], .pager-next a")
-            if not next_link:
-                break
-            page += 1
-            if page > 10:
-                break
-
-    print(f"  [{source_name}] Found {len(jobs)} raw listings.")
-    return jobs
-
-
-def scrape_cfa_institute() -> list[dict]:
-    return _scrape_ymcareers(
-        site_url="https://careers.cfainstitute.org/jobs/",
-        source_name="CFA Institute",
-        search_terms=["investment", "portfolio", "analyst", "private equity", "alternatives"],
-    )
-
-
-def scrape_cof() -> list[dict]:
-    return _scrape_ymcareers(
-        site_url="https://jobs.cof.org/jobs/",
-        source_name="Council on Foundations",
-        search_terms=["investment", "portfolio", "endowment", "analyst", "chief investment officer"],
-    )
-
 
 def scrape_manual_sheet() -> list[dict]:
     """
@@ -1056,8 +955,7 @@ def scrape_all_supplemental() -> list[dict]:
     all_jobs = []
     all_jobs.extend(scrape_ncpers())
     all_jobs.extend(scrape_allocatorjobs())
-    all_jobs.extend(scrape_cfa_institute())
-    all_jobs.extend(scrape_cof())
+
     all_jobs.extend(scrape_utimco())
     all_jobs.extend(scrape_manual_sheet())
     return all_jobs
