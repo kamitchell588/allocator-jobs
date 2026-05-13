@@ -2192,7 +2192,20 @@ def main():
     # Manual jobs always pinned to top
     all_jobs = manual_jobs + deduped
 
-    print(f"\n  Total unique jobs: {len(all_jobs)}")
+    # Drop any non-Manual job where the age date is older than JOB_MAX_AGE_DAYS
+    before_cutoff = len(all_jobs)
+    def _passes_cutoff(j: dict) -> bool:
+        if j.get("source") == "Manual":
+            return True
+        age = (j.get("date_posted") or j.get("date_added") or "")[:10]
+        if not age:
+            return True
+        try:
+            return datetime.strptime(age, "%Y-%m-%d").date() >= cutoff
+        except ValueError:
+            return True
+    all_jobs = [j for j in all_jobs if _passes_cutoff(j)]
+    print(f"\n  Total unique jobs: {len(all_jobs)} ({before_cutoff - len(all_jobs)} dropped by age cutoff)")
 
     # ── 4. Apply hidden jobs filter for public dashboard ──────────
     hidden = load_hidden_jobs()
