@@ -1394,6 +1394,9 @@ document.getElementById("gate-email").addEventListener("keydown", e => {{ if (e.
       <h2>All Roles ({stats["total"]})</h2>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;">
         <input id="searchBox" type="search" placeholder="Search title, company, location …" />
+        <select id="companyFilter" style="padding:.5rem 1rem;border:1px solid var(--border);border-radius:0;font-family:var(--font-body);font-size:.8rem;outline:none;background:var(--white);color:var(--navy);max-width:220px;">
+          <option value="">All companies</option>
+        </select>
       </div>
     </div>
     <div class="table-wrap">
@@ -1445,22 +1448,41 @@ function classifyRegion(loc) {{
   return "other";
 }}
 
-// ── Search + Region filter ──
-const searchBox    = document.getElementById("searchBox");
-const regionFilter = document.getElementById("regionFilter");
-const tableBody    = document.getElementById("tableBody");
-const noResults    = document.getElementById("noResults");
+// ── Search + Region + Company filter ──
+const searchBox     = document.getElementById("searchBox");
+const regionFilter  = document.getElementById("regionFilter");
+const companyFilter = document.getElementById("companyFilter");
+const tableBody     = document.getElementById("tableBody");
+const noResults     = document.getElementById("noResults");
+
+// Populate company dropdown from table data
+(function() {{
+  const companies = new Set();
+  Array.from(tableBody.rows).forEach(row => {{
+    const co = row.cells[1] ? row.cells[1].textContent.trim() : "";
+    if (co) companies.add(co);
+  }});
+  Array.from(companies).sort().forEach(co => {{
+    const opt = document.createElement("option");
+    opt.value = co.toLowerCase();
+    opt.textContent = co;
+    companyFilter.appendChild(opt);
+  }});
+}})();
 
 function filterTable() {{
   const q      = searchBox.value.toLowerCase().trim();
   const region = regionFilter.value;
+  const co     = companyFilter.value.toLowerCase();
   let visible  = 0;
   Array.from(tableBody.rows).forEach(row => {{
     const text    = row.textContent.toLowerCase();
     const loc     = row.cells[2] ? row.cells[2].textContent : "";
+    const rowCo   = row.cells[1] ? row.cells[1].textContent.toLowerCase().trim() : "";
     const matchQ  = !q || text.includes(q);
     const matchR  = region === "all" || classifyRegion(loc) === region;
-    const show    = matchQ && matchR;
+    const matchCo = !co || rowCo === co;
+    const show    = matchQ && matchR && matchCo;
     row.style.display = show ? "" : "none";
     if (show) visible++;
   }});
@@ -1469,6 +1491,7 @@ function filterTable() {{
 
 searchBox.addEventListener("input", filterTable);
 regionFilter.addEventListener("change", filterTable);
+companyFilter.addEventListener("change", filterTable);
 
 // ── Column sort ──
 let sortCol = -1, sortAsc = true;
