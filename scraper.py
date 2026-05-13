@@ -402,7 +402,7 @@ EXCLUDE_TITLE_KEYWORDS = [
     "retirement system",
 ]
 
-CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source"]
+CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source", "date_added"]
 
 # Browser-like headers to avoid 403s on stricter sites
 HEADERS = {
@@ -539,6 +539,7 @@ def load_csv_jobs() -> list[dict]:
                 "description": row.get("description", ""),
                 "job_type":    row.get("job_type", ""),
                 "source":      row.get("source", "Apify"),
+                "date_added":  row.get("date_added", "") or datetime.now(timezone.utc).strftime("%Y-%m-%d"),
             })
     print(f"  Loaded {len(jobs)} jobs from existing CSV.")
     return jobs
@@ -713,6 +714,7 @@ def _make_job(title, company, location, url, description="", job_type="", date_p
         "description": (description.strip())[:500] + ("…" if len(description.strip()) > 500 else ""),
         "job_type":    job_type.strip(),
         "source":      source,
+        "date_added":  datetime.now(timezone.utc).strftime("%Y-%m-%d"),
     }
 
 
@@ -1034,6 +1036,7 @@ def normalise(item: dict) -> dict:
         "description": description,
         "job_type":    job_type,
         "source":      item.get("_source") or "Apify",
+        "date_added":  datetime.now(timezone.utc).strftime("%Y-%m-%d"),
     }
 
 
@@ -1041,7 +1044,7 @@ def normalise(item: dict) -> dict:
 
 def save_csv(jobs: list[dict]) -> None:
     with open(CSV_PATH, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=CSV_COLUMNS)
+        writer = csv.DictWriter(f, fieldnames=CSV_COLUMNS, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(jobs)
     print(f"CSV saved  → {CSV_PATH}")
@@ -2143,7 +2146,9 @@ def main():
     from datetime import timedelta
     cutoff = (datetime.now(timezone.utc) - timedelta(days=JOB_MAX_AGE_DAYS)).date()
     before = len(csv_jobs)
-    csv_jobs = [j for j in csv_jobs if not j["date_posted"] or datetime.strptime(j["date_posted"][:10], "%Y-%m-%d").date() >= cutoff]
+    def _age_date(j: dict) -> str:
+        return (j["date_posted"] or j["date_added"] or "")[:10]
+    csv_jobs = [j for j in csv_jobs if _age_date(j) and datetime.strptime(_age_date(j), "%Y-%m-%d").date() >= cutoff]
     print(f"  Dropped {before - len(csv_jobs)} jobs older than {JOB_MAX_AGE_DAYS} days from CSV.")
     # Strip out old Manual/supplemental entries from CSV — they'll be re-fetched fresh
     csv_apify_jobs = [j for j in csv_jobs if j["source"] not in ("Manual", "NCPERS", "AllocatorJobs", "UTIMCO")]
