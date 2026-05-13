@@ -1526,12 +1526,14 @@ def generate_admin_html(jobs: list[dict]) -> None:
             f'<button class="hide-btn" data-url="{url}" onclick="hideJob(this)">'
             f'{"Unhide" if is_hidden else "Hide"}</button>'
         )
+        date_added = escape(j.get("date_added") or "")
         rows.append(
             f'<tr{row_style}>'
             f'<td>{title_cell}</td>'
             f'<td>{escape(j["company"])}</td>'
             f'<td>{escape(j["location"])}</td>'
             f'<td>{escape(raw_date)}</td>'
+            f'<td>{date_added}</td>'
             f'<td>{escape(j["job_type"])}</td>'
             f'<td><span class="source-tag">{source}</span></td>'
             f'<td>{hide_btn}</td>'
@@ -1767,8 +1769,9 @@ def generate_admin_html(jobs: list[dict]) -> None:
           <th data-col="1" style="cursor:pointer;" onclick="sortAdmin(1)">Company <span class="sort-icon"></span></th>
           <th data-col="2" style="cursor:pointer;" onclick="sortAdmin(2)">Location <span class="sort-icon"></span></th>
           <th data-col="3" style="cursor:pointer;" onclick="sortAdmin(3)">Date Posted <span class="sort-icon"></span></th>
-          <th data-col="4">Type</th>
-          <th data-col="5">Source</th>
+          <th data-col="4" style="cursor:pointer;" onclick="sortAdmin(4)">Date Added <span class="sort-icon"></span></th>
+          <th data-col="5">Type</th>
+          <th data-col="6">Source</th>
           <th>Action</th>
         </tr>
       </thead>
