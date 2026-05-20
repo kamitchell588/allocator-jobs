@@ -30,7 +30,18 @@ GH_TOKEN       = _env_vars.get("GH_TOKEN", os.environ.get("GH_TOKEN", ""))
 # Actor Task IDs — stable IDs that always point to the latest run
 ACTOR_TASK_IDS = ["jDown13k7veexhpaZ", "iJ7jIqOFzpvnWWtpk", "7VDcxoQjS4RJCp3MQ", "7CkdmGSDpEHQVhgQH"]
 # Fallback static dataset IDs — cleared once historical data is in the CSV
-FALLBACK_DATASET_IDS = []
+FALLBACK_DATASET_IDS = [
+    "iYXtBNh4h8zqhLgKQ", "1s0tuGgDsvOOQyc1J",
+    "OtX2O44Ggmtc9BUOw", "IU7GKGSbl8mltq1vq",
+    "gfhSuCSle0oQIzVvs", "eNyIOm3LBjmwVtKRK",
+    "24zmXKTZsPJuQY7gf", "WqXdqJorrgaQgk8hT",
+    "XVOOzs4gNYeAUZeO1", "yUvDCmFc4IIdI1AIn",
+    "VBpltcZwNLhyftdY9", "sXiuUWlJwruG39u3e",
+    "xZGACZxVgz0Tf2nfq", "SsqfsadC7bKtVxdEb",
+    "kzRn8UKrrDj2lfHof", "2Wx0D9eCLAqP931PI",
+    "8jo0SaCMmb9b6LUxW", "dIEMwWDNKmVp3eSAz",
+    "sLxBvl6Qz7yAPiagc", "8iltqkljjsLoXNBQb",
+]
 MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
 MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
 APIFY_BASE      = "https://api.apify.com/v2/datasets/{dataset_id}/items"
