@@ -1373,7 +1373,7 @@ document.getElementById("gate-email").addEventListener("keydown", e => {{ if (e.
 
 <header>
   <div class="header-inner">
-    <img src="https://framcompany.com/assets/fram-logo-BYQ0yDsY.png" alt="FRAM Partners" style="height:36px;margin-bottom:1.25rem;display:block;" />
+    <img src="https://raw.githubusercontent.com/kamitchell588/allocator-jobs/main/Fram_F_Logo_WhitePNG%20(1).png" alt="FRAM Partners" style="height:36px;margin-bottom:1.25rem;display:block;" />
     <h1>Institutional Allocator Jobs</h1>
     <p>Endowments, pensions, family offices, sovereign wealth &amp; private markets — US &amp; Canada</p>
   </div>
