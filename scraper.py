@@ -785,6 +785,76 @@ def filter_jobs(items: list[dict]) -> list[dict]:
     return after_geo
 
 
+# ── Link check: is the job page still there? ────────────────────────────────
+def _link_mode() -> str:
+    """env LINK_CHECK_MODE, else data/link_check_mode.txt, else 'report'. Values: report | remove | off."""
+    m = os.environ.get("LINK_CHECK_MODE", "").strip().lower()
+    if not m:
+        try:
+            m = (pathlib.Path(__file__).parent / "data" / "link_check_mode.txt").read_text().strip().lower()
+        except OSError:
+            m = ""
+    return m if m in ("report", "remove", "off") else "report"
+
+
+LINK_CHECK_MODE = _link_mode()
+LINK_CHECK_MIN_AGE_DAYS = 7      # only check jobs at least this old (fresh ones are almost surely open)
+LINK_CHECK_MAX_PER_RUN  = 600    # cap so a run stays quick and polite
+
+
+def _check_one(url: str) -> str:
+    """Return 'gone', 'ok' or 'unknown'. 'gone' only on clear signals: 404/410, or Greenhouse's error redirect."""
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=12, allow_redirects=True, stream=True)
+        status, final = resp.status_code, resp.url or url
+        resp.close()
+    except requests.exceptions.RequestException:
+        return "unknown"
+    if status in (404, 410):
+        return "gone"
+    if "greenhouse.io" in final and "error=true" in final:
+        return "gone"
+    if 200 <= status < 300:
+        return "ok"
+    return "unknown"          # 403 / 429 / 5xx etc: say nothing rather than guess
+
+
+def check_links(jobs: list[dict], today=None) -> list[dict]:
+    """Check each older non-manual job's page. In 'report' mode nothing is removed; in 'remove' mode
+    jobs whose page is clearly gone are dropped. Never raises and never fails the run."""
+    if LINK_CHECK_MODE == "off":
+        return jobs
+    from concurrent.futures import ThreadPoolExecutor
+    from datetime import timedelta
+    today = today or datetime.now(timezone.utc).date()
+    cutoff = (today - timedelta(days=LINK_CHECK_MIN_AGE_DAYS)).strftime("%Y-%m-%d")
+    candidates = [j for j in jobs
+                  if j.get("source") != "Manual" and j.get("url", "").startswith("http")
+                  and ((j.get("date_posted") or j.get("date_added") or "")[:10] <= cutoff)]
+    candidates.sort(key=lambda j: (j.get("date_posted") or j.get("date_added") or ""))   # oldest first
+    candidates = candidates[:LINK_CHECK_MAX_PER_RUN]
+    print(f"\n  [Link check] mode={LINK_CHECK_MODE}; checking {len(candidates)} job link(s) …")
+    try:
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            results = list(ex.map(lambda j: _check_one(j["url"]), candidates))
+    except Exception as e:                      # pragma: no cover
+        print(f"  [Link check] skipped: {type(e).__name__}: {e}")
+        return jobs
+    from collections import Counter
+    tally = Counter(results)
+    print(f"  [Link check] ok={tally['ok']} gone={tally['gone']} unknown={tally['unknown']}")
+    gone = [j for j, r in zip(candidates, results) if r == "gone"]
+    for j in gone[:50]:
+        print(f"    gone: {j['company']} | {j['title']} | {j['url']}")
+    if LINK_CHECK_MODE != "remove" or not gone:
+        if gone:
+            print("  [Link check] report-only: nothing removed (set LINK_CHECK_MODE=remove to drop these).")
+        return jobs
+    gone_ids = {id(j) for j in gone}
+    print(f"  [Link check] removed {len(gone_ids)} job(s) whose page is gone.")
+    return [j for j in jobs if id(j) not in gone_ids]
+
+
 # ── Supplemental scrapers ────────────────────────────────────────────────────
 
 def _make_job(title, company, location, url, description="", job_type="", date_posted="", source=""):
@@ -2492,6 +2562,7 @@ def main():
         except ValueError:
             return True
     all_jobs = [j for j in all_jobs if _passes_cutoff(j)]
+    all_jobs = check_links(all_jobs)
     print(f"\n  Total unique jobs: {len(all_jobs)} ({before_cutoff - len(all_jobs)} dropped by age cutoff)")
 
     # ── 4. Apply hidden jobs filter for public dashboard ──────────
