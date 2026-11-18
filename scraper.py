@@ -457,40 +457,93 @@ def _fetch_items(dataset_id: str, extra_params: dict = None) -> list[dict]:
     return items
 
 
-def _get_latest_dataset_id(task_id: str) -> str | None:
-    """Return the dataset ID from the most recent successful run of an actor task."""
+APIFY_API = "https://api.apify.com/v2"
+ACTOR_SLUG = "fantastic-jobs~career-site-job-listing-api"
+ONE_OFF_WINDOW_HOURS = 72     # an unscheduled (manual) task is ingested for this long after its last run
+STALE_ERROR_HOURS    = 48     # a scheduled task with no successful run in this long counts as a failure
+
+
+def _api_get(path: str, params: dict | None = None):
+    resp = requests.get(f"{APIFY_API}{path}", params={"token": APIFY_TOKEN, **(params or {})}, timeout=30)
+    resp.raise_for_status()
+    body = resp.json()
+    return body.get("data", body) if isinstance(body, dict) else body
+
+
+def discover_tasks() -> list[dict] | None:
+    """All of this account's tasks for the job-listing actor, each flagged if an enabled schedule runs it.
+    Returns None if discovery fails (the caller then falls back to ACTOR_TASK_IDS)."""
+    try:
+        actor_id = _api_get(f"/acts/{ACTOR_SLUG}")["id"]
+        tasks = _api_get("/actor-tasks", {"limit": 1000}).get("items", [])
+        schedules = _api_get("/schedules", {"limit": 1000}).get("items", [])
+        scheduled = set()
+        for sch in schedules:
+            if sch.get("isEnabled", True):
+                for act in sch.get("actions", []) or []:
+                    if act.get("type") == "RUN_ACTOR_TASK" and act.get("actorTaskId"):
+                        scheduled.add(act["actorTaskId"])
+        return [{"id": t["id"], "name": t.get("name", t["id"]), "scheduled": t["id"] in scheduled}
+                for t in tasks if t.get("actId") == actor_id]
+    except Exception as e:
+        print(f"  [WARN] Task discovery failed ({type(e).__name__}: {e}); using the built-in task list.")
+        return None
+
+
+def _get_latest_run(task_id: str) -> tuple[str | None, datetime | None]:
+    """Return (dataset ID, finish time) of the most recent successful run of an actor task."""
     url = APIFY_TASK_BASE.format(task_id=task_id)
     try:
         resp = requests.get(url, params={"token": APIFY_TOKEN, "limit": 1, "desc": "true", "status": "SUCCEEDED"}, timeout=30)
         resp.raise_for_status()
         data = resp.json()
-        # Apify wraps the list under data.items
         if isinstance(data, dict) and "data" in data:
             data = data["data"]
         items = data if isinstance(data, list) else data.get("items", [])
         if items:
-            return items[0].get("defaultDatasetId")
+            fin = items[0].get("finishedAt") or items[0].get("startedAt")
+            when = datetime.fromisoformat(fin.replace("Z", "+00:00")) if fin else None
+            return items[0].get("defaultDatasetId"), when
     except Exception as e:
         print(f"  [WARN] Could not fetch latest run for task {task_id}: {type(e).__name__}: {e}")
         RUN_ERRORS.append(f"task {task_id}: could not fetch latest run ({type(e).__name__})")
-    return None
+    return None, None
 
 
-def fetch_recent_items(days: int = 1) -> list[dict]:
-    """Fetch all items from the latest run of each actor task."""
+def fetch_recent_items(days: int = 1, now: datetime | None = None) -> list[dict]:
+    """Fetch items from the latest run of every relevant task, found automatically:
+    scheduled tasks always (and a stale one is flagged as a failure); unscheduled tasks only for a few
+    days after their last run, so a manual backfill is ingested once and then drops out."""
+    now = now or datetime.now(timezone.utc)
+    found = discover_tasks()
+    if found is None:
+        tasks = [{"id": t, "name": t, "scheduled": True} for t in ACTOR_TASK_IDS]
+    else:
+        tasks = found
+    print(f"  [Tasks] {len(tasks)} task(s) for this actor ({sum(t['scheduled'] for t in tasks)} scheduled).")
     all_items = []
 
-    for task_id in ACTOR_TASK_IDS:
-        print(f"Fetching latest dataset for actor task {task_id} …")
-        ds_id = _get_latest_dataset_id(task_id)
-        if ds_id:
-            print(f"  Latest dataset: {ds_id}")
-            items = _fetch_items(ds_id)
-            print(f"  {len(items)} items fetched.")
-            all_items.extend(items)
-        else:
-            print(f"  [WARN] No successful run found for task {task_id} — skipping.")
-            RUN_ERRORS.append(f"task {task_id}: no successful run found")
+    for t in tasks:
+        task_id, label = t["id"], f"{t['name']} ({t['id']})"
+        ds_id, when = _get_latest_run(task_id)
+        age_h = (now - when).total_seconds() / 3600 if when else None
+        if not ds_id:
+            if t["scheduled"]:
+                print(f"  [WARN] No successful run found for scheduled task {label}.")
+                RUN_ERRORS.append(f"task {label}: no successful run found")
+            else:
+                print(f"  [Tasks] skipping {label}: never run successfully.")
+            continue
+        if not t["scheduled"] and age_h is not None and age_h > ONE_OFF_WINDOW_HOURS:
+            print(f"  [Tasks] skipping {label}: unscheduled, last run {age_h:.0f}h ago (already ingested).")
+            continue
+        if t["scheduled"] and age_h is not None and age_h > STALE_ERROR_HOURS:
+            print(f"  [WARN] Scheduled task {label} last succeeded {age_h:.0f}h ago.")
+            RUN_ERRORS.append(f"task {label}: last successful run was {age_h:.0f}h ago")
+        print(f"Fetching dataset {ds_id} for task {label} …")
+        items = _fetch_items(ds_id)
+        print(f"  {len(items)} items fetched.")
+        all_items.extend(items)
 
     return all_items
 
