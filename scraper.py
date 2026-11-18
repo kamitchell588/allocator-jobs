@@ -609,8 +609,35 @@ def _org_text_from_item(item: dict) -> str:
     return " ".join(str(f) for f in fields if f).lower()
 
 
+_ORG_DOMAINS = None
+
+def _load_org_domains() -> dict:
+    """search_term (lowercase) -> locked domain, from data/orgs.csv. Only firms with a locked domain."""
+    global _ORG_DOMAINS
+    if _ORG_DOMAINS is None:
+        _ORG_DOMAINS = {}
+        path = pathlib.Path(__file__).parent / "data" / "orgs.csv"
+        try:
+            with open(path, newline="", encoding="utf-8") as f:
+                for r in csv.DictReader(f):
+                    d = (r.get("domain") or "").strip().lower()
+                    t = (r.get("search_term") or r.get("org_name") or "").strip().lower()
+                    if d and t:
+                        _ORG_DOMAINS[t] = d
+        except FileNotFoundError:
+            pass
+    return _ORG_DOMAINS
+
+
 def passes_layer1(item: dict) -> bool:
-    """Layer 1 removed — org filtering handled upstream in Apify."""
+    """Layer 1: domain allowlist. If the job's company name matches a firm in
+    data/orgs.csv that has a locked domain, the job's domain must equal it
+    (blocks look-alike companies, e.g. wrong 'Citadel'). Other orgs pass."""
+    org = str(item.get("organization") or "").strip().lower()
+    dom = str(item.get("domain_derived") or "").strip().lower()
+    expected = _load_org_domains().get(org)
+    if expected and dom:
+        return dom == expected or dom.endswith("." + expected)
     return True
 
 
