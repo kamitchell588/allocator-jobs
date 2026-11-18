@@ -1,31 +1,81 @@
-org_name,priority,sector,region,hq,size_b,source,domain,already_in_apify,name_risk,pilot,search_term,coverage,coverage_note
-Summit Partners,P1,Growth Equity,United States,"Boston, MA",42,Praxis Rock SEC Form ADV directories (2026),summitpartners.com,,,Y,Summit Partners,Covered by Apify,Returns jobs
-TCV,P1,Growth Equity,United States,"Menlo Park, CA",22.5,Praxis Rock SEC Form ADV directories (2026); Altss largest VC firms (US),,,Y,Y,TCV,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-Citadel,P1,Hedge Fund,United States,"Miami, FL",1094.3,Praxis Rock SEC Form ADV directories (2026),,,Y,Y,Citadel,Own career site,Needs a direct scraper or manual add
-Millennium Management,P1,Hedge Fund,United States,"New York, NY",720.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Millennium,Own career site,Needs a direct scraper or manual add
-Point72 Asset Management,P1,Hedge Fund,United States,"Stamford, CT",324.4,Praxis Rock SEC Form ADV directories (2026),point72.com,,,Y,Point72,Covered by Apify,Returns jobs
-Coatue,P1,Hedge Fund,United States,"New York, NY",128.7,Praxis Rock SEC Form ADV directories (2026); Global Alts Miami 2026 speaker list,,,Y,Y,Coatue,Own career site,Needs a direct scraper or manual add
-Viking Global Investors,P1,Hedge Fund,United States,"Stamford, CT",81.7,Praxis Rock SEC Form ADV directories (2026),vikingglobal.com,,,Y,Viking Global Investors,Covered by Apify,Returns jobs
-Pershing Square Capital Management,P1,Hedge Fund,United States,"New York, NY",25.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,Pershing Square,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-Blue Owl Capital,P1,Multi-strategy Alternatives,United States,"New York, NY",,PEI 300 (2026) top 30,blueowl.com,,,Y,Blue Owl Capital,Covered by Apify,Returns jobs
-Bain Capital Credit,P1,Private Credit,United States,"Boston, MA",76.3,Praxis Rock SEC Form ADV directories (2026),baincapital.com,,,Y,Bain Capital,Covered by Apify,Returns jobs
-Churchill Asset Management,P1,Private Credit,United States,"New York, NY",55.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,Nuveen Churchill,Parent company,"Roles posted under Nuveen/TIAA (UltiPro, Workday); would need a Nuveen search plus a Churchill text check"
-Onex Credit,P1,Private Credit,Canada,"Toronto, Canada",30.1,Praxis Rock SEC Form ADV directories (2026),onex.com,,,Y,Onex,Covered by Apify,Returns jobs
-Arcmont Asset Management,P1,Private Credit,Europe,"London, UK",28,Praxis Rock SEC Form ADV directories (2026),,,,Y,Arcmont Asset Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-AGL Credit Management,P1,Private Credit,United States,"New York, NY",25.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,AGL Credit Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-Strategic Value Partners,P1,Private Credit,United States,"Greenwich, CT",25.6,Praxis Rock SEC Form ADV directories (2026),,,,Y,Strategic Value Partners,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-Quantum Capital Group,P1,Private Equity,United States,"Houston, TX",28.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Quantum Capital Group,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-TowerBrook Capital Partners,P1,Private Equity,United States,"New York, NY",27.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,TowerBrook Capital Partners,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-IK Partners,P1,Private Equity,Europe,"London, UK",14.5,Praxis Rock SEC Form ADV directories (2026),ikpartners.com,,,Y,IK Partners,Covered by Apify,Returns jobs
-Grain Management,P1,Private Equity,United States,"Washington, DC",11.4,Praxis Rock SEC Form ADV directories (2026),,,,Y,Grain Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-JLL Partners,P1,Private Equity,United States,"New York, NY",10.9,Praxis Rock SEC Form ADV directories (2026),jllpartners.com,,,Y,JLL Partners,No public board found,Beware name collision with JLL (Jones Lang LaSalle); needs domain lock jllpartners.com
-Goldman Sachs Alternatives,P1,Private Equity,United States,"New York, NY",,PEI 300 (2026) top 30,,,,Y,Goldman Sachs Alternatives,Own career site,Needs a direct scraper or manual add
-Affinius Capital,P1,Real Estate,United States,"San Antonio, TX",30.4,Praxis Rock SEC Form ADV directories (2026),affiniuscapital.com,,,Y,Affinius Capital,Covered by Apify,Returns jobs
-BGO (BentallGreenOak),P1,Real Estate,Canada,"Toronto, Canada",24.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,BentallGreenOak,Own career site,Only seen on Canadian job boards; likely own ATS
-Stockbridge Capital Group,P1,Real Estate,United States,"San Francisco, CA",21.5,Praxis Rock SEC Form ADV directories (2026),,,,Y,Stockbridge Capital Group,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-Berkshire Residential Investments,P1,Real Estate,United States,"Boston, MA",19.2,Praxis Rock SEC Form ADV directories (2026),berkshire.com,,,Y,Berkshire Group,Covered by Apify,"Returns jobs as 'Berkshire Group, LLC' (mostly property management)"
-Founders Fund,P1,Venture Capital,United States,"San Francisco, CA",58.9,Praxis Rock SEC Form ADV directories (2026),,,,Y,Founders Fund,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-Lightspeed Venture Partners,P1,Venture Capital,United States,"Menlo Park, CA",50,Praxis Rock SEC Form ADV directories (2026),,,,Y,LSVP,No public board found,Lever board 'LSVP' returned nothing; Lever may not be indexed or no openings
-Ribbit Capital,P1,Venture Capital,United States,"Palo Alto, CA",20.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Ribbit Capital,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-Greenoaks,P1,Venture Capital,United States,"San Francisco, CA",18.3,Praxis Rock SEC Form ADV directories (2026),,,Y,Y,Greenoaks,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters
-Flagship Pioneering,P1,Venture Capital,United States,"Cambridge, MA",13.4,Praxis Rock SEC Form ADV directories (2026),flagshippioneering.com,,,Y,Flagship Pioneering,Covered by Apify,Returns jobs
+org_name,priority,sector,region,hq,size_b,source,domain,already_in_apify,name_risk,pilot,search_term,coverage,coverage_note,batch
+Summit Partners,P1,Growth Equity,United States,"Boston, MA",42,Praxis Rock SEC Form ADV directories (2026),summitpartners.com,,,Y,Summit Partners,Covered by Apify,Returns jobs,pilot
+TCV,P1,Growth Equity,United States,"Menlo Park, CA",22.5,Praxis Rock SEC Form ADV directories (2026); Altss largest VC firms (US),,,Y,Y,TCV,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+Citadel,P1,Hedge Fund,United States,"Miami, FL",1094.3,Praxis Rock SEC Form ADV directories (2026),,,Y,Y,Citadel,Own career site,Needs a direct scraper or manual add,pilot
+Millennium Management,P1,Hedge Fund,United States,"New York, NY",720.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Millennium,Own career site,Needs a direct scraper or manual add,pilot
+Point72 Asset Management,P1,Hedge Fund,United States,"Stamford, CT",324.4,Praxis Rock SEC Form ADV directories (2026),point72.com,,,Y,Point72,Covered by Apify,Returns jobs,pilot
+Coatue,P1,Hedge Fund,United States,"New York, NY",128.7,Praxis Rock SEC Form ADV directories (2026); Global Alts Miami 2026 speaker list,,,Y,Y,Coatue,Own career site,Needs a direct scraper or manual add,pilot
+Viking Global Investors,P1,Hedge Fund,United States,"Stamford, CT",81.7,Praxis Rock SEC Form ADV directories (2026),vikingglobal.com,,,Y,Viking Global Investors,Covered by Apify,Returns jobs,pilot
+Pershing Square Capital Management,P1,Hedge Fund,United States,"New York, NY",25.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,Pershing Square,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+Blue Owl Capital,P1,Multi-strategy Alternatives,United States,"New York, NY",,PEI 300 (2026) top 30,blueowl.com,,,Y,Blue Owl Capital,Covered by Apify,Returns jobs,pilot
+Bain Capital Credit,P1,Private Credit,United States,"Boston, MA",76.3,Praxis Rock SEC Form ADV directories (2026),baincapital.com,,,Y,Bain Capital,Covered by Apify,Returns jobs,pilot
+Churchill Asset Management,P1,Private Credit,United States,"New York, NY",55.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,Nuveen Churchill,Parent company,"Roles posted under Nuveen/TIAA (UltiPro, Workday); would need a Nuveen search plus a Churchill text check",pilot
+Onex Credit,P1,Private Credit,Canada,"Toronto, Canada",30.1,Praxis Rock SEC Form ADV directories (2026),onex.com,,,Y,Onex,Covered by Apify,Returns jobs,pilot
+Arcmont Asset Management,P1,Private Credit,Europe,"London, UK",28,Praxis Rock SEC Form ADV directories (2026),,,,Y,Arcmont Asset Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+AGL Credit Management,P1,Private Credit,United States,"New York, NY",25.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,AGL Credit Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+Strategic Value Partners,P1,Private Credit,United States,"Greenwich, CT",25.6,Praxis Rock SEC Form ADV directories (2026),,,,Y,Strategic Value Partners,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+Quantum Capital Group,P1,Private Equity,United States,"Houston, TX",28.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Quantum Capital Group,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+TowerBrook Capital Partners,P1,Private Equity,United States,"New York, NY",27.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,TowerBrook Capital Partners,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+IK Partners,P1,Private Equity,Europe,"London, UK",14.5,Praxis Rock SEC Form ADV directories (2026),ikpartners.com,,,Y,IK Partners,Covered by Apify,Returns jobs,pilot
+Grain Management,P1,Private Equity,United States,"Washington, DC",11.4,Praxis Rock SEC Form ADV directories (2026),,,,Y,Grain Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+JLL Partners,P1,Private Equity,United States,"New York, NY",10.9,Praxis Rock SEC Form ADV directories (2026),jllpartners.com,,,Y,JLL Partners,No public board found,Beware name collision with JLL (Jones Lang LaSalle); needs domain lock jllpartners.com,pilot
+Goldman Sachs Alternatives,P1,Private Equity,United States,"New York, NY",,PEI 300 (2026) top 30,,,,Y,Goldman Sachs Alternatives,Own career site,Needs a direct scraper or manual add,pilot
+Affinius Capital,P1,Real Estate,United States,"San Antonio, TX",30.4,Praxis Rock SEC Form ADV directories (2026),affiniuscapital.com,,,Y,Affinius Capital,Covered by Apify,Returns jobs,pilot
+BGO (BentallGreenOak),P1,Real Estate,Canada,"Toronto, Canada",24.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,BentallGreenOak,Own career site,Only seen on Canadian job boards; likely own ATS,pilot
+Stockbridge Capital Group,P1,Real Estate,United States,"San Francisco, CA",21.5,Praxis Rock SEC Form ADV directories (2026),,,,Y,Stockbridge Capital Group,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+Berkshire Residential Investments,P1,Real Estate,United States,"Boston, MA",19.2,Praxis Rock SEC Form ADV directories (2026),berkshire.com,,,Y,Berkshire Group,Covered by Apify,"Returns jobs as 'Berkshire Group, LLC' (mostly property management)",pilot
+Founders Fund,P1,Venture Capital,United States,"San Francisco, CA",58.9,Praxis Rock SEC Form ADV directories (2026),,,,Y,Founders Fund,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+Lightspeed Venture Partners,P1,Venture Capital,United States,"Menlo Park, CA",50,Praxis Rock SEC Form ADV directories (2026),,,,Y,LSVP,No public board found,Lever board 'LSVP' returned nothing; Lever may not be indexed or no openings,pilot
+Ribbit Capital,P1,Venture Capital,United States,"Palo Alto, CA",20.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Ribbit Capital,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+Greenoaks,P1,Venture Capital,United States,"San Francisco, CA",18.3,Praxis Rock SEC Form ADV directories (2026),,,Y,Y,Greenoaks,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
+Flagship Pioneering,P1,Venture Capital,United States,"Cambridge, MA",13.4,Praxis Rock SEC Form ADV directories (2026),flagshippioneering.com,,,Y,Flagship Pioneering,Covered by Apify,Returns jobs,pilot
+Apollo Global Management,P1,Multi-strategy Alternatives,United States,"New York, NY",718.5,,,,,N,Apollo Global Management,Retest,No jobs returned; try 'Apollo',1
+KKR,P1,Private Equity,United States,"New York, NY",518.1,,kkr.com,,Y,N,KKR,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Ares Management,P1,Multi-strategy Alternatives,United States,"Los Angeles, CA",458.8,,ares.com,,,N,Ares Management,Covered by Apify,Returned jobs in batch 1; domain locked,1
+AQR Capital Management,P1,Hedge Fund,United States,"Greenwich, CT",311.7,,aqr.com,,,N,AQR,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Two Sigma,P1,Hedge Fund,United States,"New York, NY",310.9,,,,,N,Two Sigma,No jobs returned,No match in batch 1; check name or board,1
+Schonfeld Strategic Advisors,P1,Hedge Fund,United States,"New York, NY",296.5,,schonfeld.com,,,N,Schonfeld,Covered by Apify,Returned jobs in batch 1; domain locked,1
+The Carlyle Group,P1,Multi-strategy Alternatives,United States,"Washington, DC",283.8,,carlyle.com,,,N,Carlyle,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Balyasny Asset Management,P1,Hedge Fund,United States,"Chicago, IL",277.6,,,,,N,Balyasny,No jobs returned,No match in batch 1; check name or board,1
+KKR Credit,P1,Private Credit,United States,"San Francisco, CA",270.9,,kkr.com,,,N,KKR,Covered by Apify,Returned jobs in batch 1; domain locked,1
+D.E. Shaw & Co.,P1,Hedge Fund,United States,"New York, NY",213.4,,,,,N,D. E. Shaw,No jobs returned,No match in batch 1; check name or board,1
+Oaktree Capital Management,P1,Private Credit,United States,"Los Angeles, CA",183.3,,oaktreecapital.com,,,N,Oaktree,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Thoma Bravo,P1,Private Equity,United States,"Chicago, IL",182.9,,,,,N,Thoma Bravo,No jobs returned,No match in batch 1; check name or board,1
+ExodusPoint Capital Management,P1,Hedge Fund,United States,"New York, NY",181.8,,exoduspoint.com,,,N,ExodusPoint,Covered by Apify,Returned jobs in batch 1; domain locked,1
+HPS Investment Partners,P1,Private Credit,United States,"New York, NY",175.7,,hpspartners.com,,,N,HPS Investment Partners,Covered by Apify,Returned jobs in batch 1; domain locked,1
+NB Alternatives (Neuberger Berman Private Markets),P1,Private Equity,United States,"Dallas, TX",160.2,,,,,N,NB Alternatives,No jobs returned,No match in batch 1; check name or board,1
+Bridgewater Associates,P1,Hedge Fund,United States,"Westport, CT",150.2,,bridgewater.com,,,N,Bridgewater Associates,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Blackstone,P1,Private Equity,United States,"New York, NY",145.7,,blackstone.com,,Y,N,Blackstone,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Global Infrastructure Partners,P1,Infrastructure,United States,"New York, NY",142.2,,,,,N,Global Infrastructure Partners,No jobs returned,No match in batch 1; check name or board,1
+Verition Fund Management,P1,Hedge Fund,United States,"Greenwich, CT",139.4,,,,,N,Verition Fund,No jobs returned,No match in batch 1; check name or board,1
+Blackstone Real Estate,P1,Real Estate,United States,"New York, NY",130.7,,blackstone.com,,,N,Blackstone,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Golub Capital,P1,Private Credit,United States,"Chicago, IL",128,,golubcapital.com,,,N,Golub Capital,Covered by Apify,Returned jobs in batch 1; domain locked,1
+General Atlantic,P1,Growth Equity,United States,"New York, NY",125.3,,generalatlantic.com,,,N,General Atlantic,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Silver Lake,P1,Private Equity,United States,"Menlo Park, CA",117.7,,silverlake.com,,,N,Silver Lake,Covered by Apify,Verify domain; lookalikes (Silver Lake Resources etc.) returned,1
+Warburg Pincus,P1,Private Equity,United States,"New York, NY",112.3,,warburgpincus.com,,Y,N,Warburg Pincus,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Hellman & Friedman,P1,Private Equity,United States,"San Francisco, CA",110.4,,,,,N,Hellman & Friedman,No jobs returned,No match in batch 1; check name or board,1
+Andreessen Horowitz,P1,Venture Capital,United States,"Menlo Park, CA",106.5,,,,,N,Andreessen Horowitz,No jobs returned,No match in batch 1; check name or board,1
+Vista Equity Partners,P1,Private Equity,United States,"San Francisco, CA",106,,vistaequitypartners.com,,,N,Vista Equity Partners,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Tiger Global Management,P1,Hedge Fund,United States,"New York, NY",102.2,,,,,N,Tiger Global,No jobs returned,No match in batch 1; check name or board,1
+Oak Hill Advisors,P1,Private Credit,United States,"New York, NY",100.7,,oakhilladvisors.com,,,N,Oak Hill,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Bain Capital,P1,Private Equity,United States,"Boston, MA",99.5,,,,,N,Bain Capital,No jobs returned,No match in batch 1; check name or board,1
+Renaissance Technologies,P1,Hedge Fund,United States,"New York, NY",96.4,,,,,N,Renaissance Technologies,No jobs returned,No match in batch 1; check name or board,1
+Insight Partners,P1,Private Equity,United States,"New York, NY",92.2,,,,,N,Insight Partners,No jobs returned,No match in batch 1; check name or board,1
+Advent International,P1,Private Equity,United States,"Boston, MA",91.6,,,,,N,Advent International,No jobs returned,No match in batch 1; check name or board,1
+"Clayton, Dubilier & Rice",P1,Private Equity,United States,"New York, NY",87.4,,,,,N,"Clayton, Dubilier & Rice",No jobs returned,No match in batch 1; check name or board,1
+Leonard Green & Partners,P1,Private Equity,United States,"Los Angeles, CA",85.6,,,,,N,Leonard Green & Partners,No jobs returned,No match in batch 1; check name or board,1
+Clearlake Capital,P1,Private Equity,United States,"Santa Monica, CA",83.6,,,,,N,Clearlake Capital,No jobs returned,No match in batch 1; check name or board,1
+Sequoia Capital,P1,Venture Capital,United States,"Menlo Park, CA",82.2,,,,,N,Sequoia Capital,No jobs returned,No match in batch 1; check name or board,1
+Starwood Capital Group,P1,Real Estate,United States,"Miami Beach, FL",79.2,,starwoodcapital.com,,,N,Starwood Capital,Covered by Apify,Returned jobs in batch 1; domain locked,1
+PineBridge Investments,P1,Private Credit,United States,"New York, NY",76.7,,pinebridge.com,,,N,PineBridge,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Clarion Partners,P1,Real Estate,United States,"New York, NY",73.7,,,,,N,Clarion Partners,No jobs returned,No match in batch 1; check name or board,1
+GoldenTree Asset Management,P1,Private Credit,United States,"New York, NY",70.1,,,,,N,GoldenTree,No jobs returned,No match in batch 1; check name or board,1
+Stone Point Capital,P1,Private Equity,United States,"Greenwich, CT",69.2,,,,,N,Stone Point Capital,No jobs returned,No match in batch 1; check name or board,1
+Carlyle Global Credit,P1,Private Credit,United States,"New York, NY",68.4,,carlyle.com,,,N,Carlyle,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Blue Owl Real Estate,P1,Real Estate,United States,"Chicago, IL",67.9,,blueowl.com,,,N,Blue Owl,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Davidson Kempner Capital Management,P1,Hedge Fund,United States,"New York, NY",66.1,,davidsonkempner.com,,,N,Davidson Kempner,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Bayview Asset Management,P1,Private Credit,United States,"Coral Gables, FL",65.3,,bayview.com,,,N,Bayview Asset Management,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Farallon Capital Management,P1,Hedge Fund,United States,"San Francisco, CA",64.5,,farallon.com,,,N,Farallon,No public board found,Only 'Farallon Consulting' (unrelated) returned; domain locked to block it,1
+Valor Equity Partners,P1,Private Equity,United States,"Chicago, IL",63.5,,,,,N,Valor Equity Partners,No jobs returned,No match in batch 1; check name or board,1
+Bridge Investment Group,P1,Real Estate,United States,"Sandy, UT",62.7,,bridgeig.com,,,N,Bridge Investment Group,Covered by Apify,Returned jobs in batch 1; domain locked,1
+Blackstone Private Credit,P1,Private Credit,United States,"New York, NY",57.9,,blackstone.com,,,N,Blackstone,Covered by Apify,Returned jobs in batch 1; domain locked,1
