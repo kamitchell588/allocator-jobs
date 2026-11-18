@@ -603,6 +603,18 @@ _ORG_DOMAINS = None
 _ORG_META = None
 
 
+def _match_org(table: dict, company: str):
+    """Look up a company in a search_term-keyed table. Exact match, or the company name
+    starts with the term followed by a space or comma (e.g. 'Berkshire Group, LLC' for 'Berkshire Group')."""
+    c = (company or "").strip().lower()
+    if c in table:
+        return table[c]
+    for term, val in table.items():
+        if c.startswith(term) and c[len(term):len(term) + 1] in (" ", ","):
+            return val
+    return None
+
+
 def _load_org_meta() -> dict:
     """search_term (lowercase) -> row from data/orgs.csv (priority, sector, region, hq, size_b)."""
     global _ORG_META
@@ -624,7 +636,14 @@ def write_run_report(raw: list[dict], kept: list[dict]) -> None:
     """Per-firm coverage: jobs returned by Apify vs jobs kept. Flags firms with zero."""
     from collections import Counter
     def _name(i): return str(i.get("organization") or i.get("company") or "").strip().lower()
-    raw_c, kept_c = Counter(_name(i) for i in raw), Counter(_name(i) for i in kept)
+    terms = list(_load_org_meta().keys())
+    def _term(i):
+        n = _name(i)
+        for t in terms:
+            if n == t or (n.startswith(t) and n[len(t):len(t) + 1] in (" ", ",")):
+                return t
+        return n
+    raw_c, kept_c = Counter(_term(i) for i in raw), Counter(_term(i) for i in kept)
     rows = []
     for term, r in _load_org_meta().items():
         rows.append({"firm": r.get("org_name", term), "search_term": r.get("search_term", ""),
@@ -664,7 +683,7 @@ def passes_layer1(item: dict) -> bool:
     (blocks look-alike companies, e.g. wrong 'Citadel'). Other orgs pass."""
     org = str(item.get("organization") or "").strip().lower()
     dom = str(item.get("domain_derived") or "").strip().lower()
-    expected = _load_org_domains().get(org)
+    expected = _match_org(_load_org_domains(), org)
     if expected and dom:
         return dom == expected or dom.endswith("." + expected)
     return True
@@ -1100,7 +1119,7 @@ def normalise(item: dict) -> dict:
     country = _first(item.get("countries_derived"))
     parts = [p.strip() for p in _first(item.get("locations_derived")).split(",")]
     state = parts[-2] if len(parts) >= 3 else ""
-    meta = _load_org_meta().get(str(company).strip().lower(), {})
+    meta = _match_org(_load_org_meta(), str(company)) or {}
 
     return {
         "title":       title,
