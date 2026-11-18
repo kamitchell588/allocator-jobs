@@ -1,0 +1,37 @@
+{
+  "limit": 300,
+  "timeRange": "6m",
+  "organizationSearch": [
+    "Point72",
+    "Onex",
+    "Berkshire Residential",
+    "Bain Capital",
+    "Nuveen Churchill",
+    "BentallGreenOak",
+    "Lightspeed Venture Partners",
+    "Quantum Capital Group"
+  ],
+  "titleExclusionSearch": [
+    "clinical",
+    "marketing",
+    "software",
+    "patient",
+    "volunteer",
+    "events",
+    "coordinator",
+    "architect",
+    "HR",
+    "technician",
+    "HVAC",
+    "administrative",
+    "Assistant"
+  ],
+  "descriptionType": "text",
+  "aiVisaSponsorshipFilter": false,
+  "hasSalary": false,
+  "hasNoLocation": false,
+  "includeCompanyDetails": false,
+  "removeAgency": false,
+  "populateAiRemoteLocation": false,
+  "populateAiRemoteLocationDerived": false
+}

@@ -1,0 +1,31 @@
+org_name,priority,sector,region,hq,size_b,source,domain,already_in_apify,name_risk,pilot,search_term
+Summit Partners,P1,Growth Equity,United States,"Boston, MA",42,Praxis Rock SEC Form ADV directories (2026),summitpartners.com,,,Y,Summit Partners
+TCV,P1,Growth Equity,United States,"Menlo Park, CA",22.5,Praxis Rock SEC Form ADV directories (2026); Altss largest VC firms (US),,,Y,Y,TCV
+Citadel,P1,Hedge Fund,United States,"Miami, FL",1094.3,Praxis Rock SEC Form ADV directories (2026),,,Y,Y,Citadel
+Millennium Management,P1,Hedge Fund,United States,"New York, NY",720.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Millennium
+Point72 Asset Management,P1,Hedge Fund,United States,"Stamford, CT",324.4,Praxis Rock SEC Form ADV directories (2026),point72.com,,,Y,Point72
+Coatue,P1,Hedge Fund,United States,"New York, NY",128.7,Praxis Rock SEC Form ADV directories (2026); Global Alts Miami 2026 speaker list,,,Y,Y,Coatue
+Viking Global Investors,P1,Hedge Fund,United States,"Stamford, CT",81.7,Praxis Rock SEC Form ADV directories (2026),vikingglobal.com,,,Y,Viking Global Investors
+Pershing Square Capital Management,P1,Hedge Fund,United States,"New York, NY",25.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,Pershing Square
+Blue Owl Capital,P1,Multi-strategy Alternatives,United States,"New York, NY",,PEI 300 (2026) top 30,blueowl.com,,,Y,Blue Owl Capital
+Bain Capital Credit,P1,Private Credit,United States,"Boston, MA",76.3,Praxis Rock SEC Form ADV directories (2026),baincapital.com,,,Y,Bain Capital
+Churchill Asset Management,P1,Private Credit,United States,"New York, NY",55.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,Nuveen Churchill
+Onex Credit,P1,Private Credit,Canada,"Toronto, Canada",30.1,Praxis Rock SEC Form ADV directories (2026),onex.com,,,Y,Onex
+Arcmont Asset Management,P1,Private Credit,Europe,"London, UK",28,Praxis Rock SEC Form ADV directories (2026),,,,Y,Arcmont Asset Management
+AGL Credit Management,P1,Private Credit,United States,"New York, NY",25.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,AGL Credit Management
+Strategic Value Partners,P1,Private Credit,United States,"Greenwich, CT",25.6,Praxis Rock SEC Form ADV directories (2026),,,,Y,Strategic Value Partners
+Quantum Capital Group,P1,Private Equity,United States,"Houston, TX",28.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Quantum Capital Group
+TowerBrook Capital Partners,P1,Private Equity,United States,"New York, NY",27.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,TowerBrook Capital Partners
+IK Partners,P1,Private Equity,Europe,"London, UK",14.5,Praxis Rock SEC Form ADV directories (2026),ikpartners.com,,,Y,IK Partners
+Grain Management,P1,Private Equity,United States,"Washington, DC",11.4,Praxis Rock SEC Form ADV directories (2026),,,,Y,Grain Management
+JLL Partners,P1,Private Equity,United States,"New York, NY",10.9,Praxis Rock SEC Form ADV directories (2026),,,,Y,JLL Partners
+Goldman Sachs Alternatives,P1,Private Equity,United States,"New York, NY",,PEI 300 (2026) top 30,,,,Y,Goldman Sachs Alternatives
+Affinius Capital,P1,Real Estate,United States,"San Antonio, TX",30.4,Praxis Rock SEC Form ADV directories (2026),affiniuscapital.com,,,Y,Affinius Capital
+BGO (BentallGreenOak),P1,Real Estate,Canada,"Toronto, Canada",24.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,BentallGreenOak
+Stockbridge Capital Group,P1,Real Estate,United States,"San Francisco, CA",21.5,Praxis Rock SEC Form ADV directories (2026),,,,Y,Stockbridge Capital Group
+Berkshire Residential Investments,P1,Real Estate,United States,"Boston, MA",19.2,Praxis Rock SEC Form ADV directories (2026),,,,Y,Berkshire Residential
+Founders Fund,P1,Venture Capital,United States,"San Francisco, CA",58.9,Praxis Rock SEC Form ADV directories (2026),,,,Y,Founders Fund
+Lightspeed Venture Partners,P1,Venture Capital,United States,"Menlo Park, CA",50,Praxis Rock SEC Form ADV directories (2026),,,,Y,Lightspeed Venture Partners
+Ribbit Capital,P1,Venture Capital,United States,"Palo Alto, CA",20.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Ribbit Capital
+Greenoaks,P1,Venture Capital,United States,"San Francisco, CA",18.3,Praxis Rock SEC Form ADV directories (2026),,,Y,Y,Greenoaks
+Flagship Pioneering,P1,Venture Capital,United States,"Cambridge, MA",13.4,Praxis Rock SEC Form ADV directories (2026),flagshippioneering.com,,,Y,Flagship Pioneering
