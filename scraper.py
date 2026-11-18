@@ -393,7 +393,7 @@ EXCLUDE_TITLE_KEYWORDS = [
 
 CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source", "date_added",
                "job_country", "job_state", "seniority",
-               "org_priority", "org_sector", "org_region", "org_hq", "org_size_b"]
+               "org_priority", "org_sector", "org_region", "org_hq", "org_size_b", "experience_years"]
 EXTRA_COLUMNS = CSV_COLUMNS[9:]
 
 RUN_ERRORS: list[str] = []   # any fetch problem is recorded here; main() exits non-zero if non-empty
@@ -1114,7 +1114,8 @@ def normalise(item: dict) -> dict:
         "date_added":  datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "job_country": country,
         "job_state":   state,
-        "seniority":   _first(item.get("ai_experience_level")),
+        "seniority":   "",
+        "experience_years": _first(item.get("ai_experience_level")),
         "org_priority": meta.get("priority", ""),
         "org_sector":   meta.get("sector", ""),
         "org_region":   meta.get("region", ""),
@@ -1156,6 +1157,90 @@ def _stats(jobs: list[dict]) -> dict:
     }
 
 
+# ── Seniority + sector labels ────────────────────────────────────────────────
+SENIORITY_LEVELS = ["Intern / Entry", "Analyst / Associate", "Senior / Manager",
+                    "Director / VP / Principal", "Executive / Head"]
+
+def seniority_label(title: str, years: str = "") -> str:
+    """Best-effort seniority from the job title; falls back to Apify's years-of-experience bucket."""
+    t = f" {title.lower()} "
+    def has(*words): return any(w in t for w in words)
+    if has(" intern", "internship", " summer analyst", " co-op", " trainee", " graduate program"):
+        return SENIORITY_LEVELS[0]
+    if has(" chief ", " cio", " ceo", " cfo", " coo", " president", " head of", " managing director",
+           " general partner", " managing partner", " partner,", " partner "):
+        return SENIORITY_LEVELS[4]
+    if has(" director", " principal", " vice president", " vp,", " vp ", " svp", " evp"):
+        return SENIORITY_LEVELS[3]
+    if has(" senior", " sr.", " sr ", " lead", " manager", " head "):
+        return SENIORITY_LEVELS[2]
+    if has(" associate", " analyst", " junior", " entry"):
+        return SENIORITY_LEVELS[1]
+    return {"0-2": SENIORITY_LEVELS[0], "2-5": SENIORITY_LEVELS[1],
+            "5-10": SENIORITY_LEVELS[2], "10+": SENIORITY_LEVELS[3]}.get((years or "").strip(), "Not specified")
+
+
+_SECTOR_BY_NAME = [
+    ("Pension / Retirement", [r"pension", r"retirement", r"ncpers", r"teachers", r"public employees"]),
+    ("Endowment / Foundation", [r"endowment", r"foundation", r"university", r"college", r"utimco"]),
+    ("Family Office", [r"family office"]),
+    ("Sovereign Wealth", [r"sovereign", r"investment authority", r"\bgic\b", r"mubadala", r"temasek"]),
+    ("Insurance", [r"insurance", r"assurance"]),
+]
+_SECTOR_BY_TEXT = [
+    ("Real Estate", [r"real estate", r"\breit\b"]),
+    ("Private Credit", [r"private credit", r"direct lending"]),
+    ("Infrastructure", [r"infrastructure"]),
+    ("Venture Capital", [r"venture"]),
+    ("Private Equity", [r"private equity", r"buyout"]),
+    ("Hedge Fund", [r"hedge fund", r"absolute return"]),
+]
+_SECTOR_OVERRIDES = None
+
+def _load_sector_overrides() -> dict:
+    """data/sector_overrides.csv: company,sector — hand-editable; wins over inference."""
+    global _SECTOR_OVERRIDES
+    if _SECTOR_OVERRIDES is None:
+        _SECTOR_OVERRIDES = {}
+        path = pathlib.Path(__file__).parent / "data" / "sector_overrides.csv"
+        try:
+            with open(path, newline="", encoding="utf-8") as f:
+                for r in csv.DictReader(f):
+                    if r.get("company") and r.get("sector"):
+                        _SECTOR_OVERRIDES[r["company"].strip().lower()] = r["sector"].strip()
+        except FileNotFoundError:
+            pass
+    return _SECTOR_OVERRIDES
+
+
+def sector_label(j: dict) -> str:
+    """Sector / asset class: orgs.csv value, then hand-edited overrides, then inference from name, then title/description."""
+    if j.get("org_sector"):
+        return j["org_sector"]
+    company = j.get("company", "").strip().lower()
+    if company in _load_sector_overrides():
+        return _load_sector_overrides()[company]
+    for label, pats in _SECTOR_BY_NAME:
+        if any(_re.search(p, company) for p in pats):
+            return label
+    text = f"{j.get('title', '')} {j.get('description', '')}".lower()
+    for label, pats in _SECTOR_BY_TEXT:
+        if any(_re.search(p, text) for p in pats):
+            return label
+    return "Not classified"
+
+
+def enrich(j: dict) -> dict:
+    """Fill seniority and sector labels (also repairs older CSV rows that lack them)."""
+    cur = (j.get("seniority") or "").strip()
+    if cur and cur[0].isdigit():            # older rows stored the raw Apify bucket here
+        j["experience_years"], cur = cur, ""
+    if cur not in SENIORITY_LEVELS and cur != "Not specified":
+        j["seniority"] = seniority_label(j.get("title", ""), j.get("experience_years", ""))
+    j["org_sector"] = sector_label(j)
+    return j
+
+
 def _rows_html(jobs: list[dict]) -> str:
     rows = []
     now = datetime.now(timezone.utc).date()
@@ -1186,6 +1271,8 @@ def _rows_html(jobs: list[dict]) -> str:
             f'<td>{title_cell}</td>'
             f'<td>{escape(j["company"])}</td>'
             f'<td>{escape(j["location"])}</td>'
+            f'<td>{escape(j.get("seniority") or "")}</td>'
+            f'<td>{escape(j.get("org_sector") or "")}</td>'
             f'<td data-sort="{escape(raw_date)}">{escape(raw_date)}</td>'
             f'<td>{escape(j["job_type"])}</td>'
             f'</tr>'
@@ -1397,6 +1484,26 @@ def generate_html(jobs: list[dict]) -> None:
   }}
   .loc-th select:focus {{ outline: none; border-color: var(--white); }}
   .loc-th select option {{ background: var(--navy); color: var(--white); }}
+
+  /* ── Multi-select filters ── */
+  .filter-bar {{ display: flex; gap: .6rem; flex-wrap: wrap; align-items: center;
+                 padding: .9rem 1.5rem; border-bottom: 1px solid var(--border); background: var(--cream); }}
+  .ms {{ position: relative; }}
+  .ms-btn {{ padding: .5rem .9rem; border: 1px solid var(--border); background: var(--white);
+             color: var(--navy); font-family: var(--font-body); font-size: .8rem; cursor: pointer; border-radius: 0; }}
+  .ms-btn.active {{ border-color: var(--navy); font-weight: 600; }}
+  .ms-panel {{ display: none; position: absolute; z-index: 20; top: calc(100% + 2px); left: 0;
+               min-width: 240px; max-width: 320px; background: var(--white);
+               border: 1px solid var(--navy); box-shadow: 0 6px 18px rgba(0,0,0,.12); }}
+  .ms.open .ms-panel {{ display: block; }}
+  .ms-search {{ width: 100%; box-sizing: border-box; padding: .5rem .7rem; border: 0;
+                border-bottom: 1px solid var(--border); font-size: .8rem; outline: none; font-family: var(--font-body); }}
+  .ms-list {{ max-height: 260px; overflow-y: auto; padding: .3rem 0; }}
+  .ms-opt {{ display: flex; gap: .5rem; align-items: center; padding: .3rem .8rem; font-size: .8rem; cursor: pointer; }}
+  .ms-opt:hover {{ background: var(--cream); }}
+  .ms-foot {{ padding: .4rem .8rem; border-top: 1px solid var(--border); font-size: .75rem; }}
+  .ms-foot a {{ color: var(--navy); cursor: pointer; text-decoration: underline; }}
+  #clearAll {{ font-size: .78rem; color: var(--navy); cursor: pointer; text-decoration: underline; background: none; border: 0; }}
 </style>
 </head>
 <body>
@@ -1477,20 +1584,20 @@ document.getElementById("gate-email").addEventListener("keydown", e => {{ if (e.
       <h2>All Roles ({stats["total"]})</h2>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;">
         <input id="searchBox" type="search" placeholder="Search title, company, location …" />
-        <select id="companyFilter" style="padding:.5rem 1rem;border:1px solid var(--border);border-radius:0;font-family:var(--font-body);font-size:.8rem;outline:none;background:var(--white);color:var(--navy);max-width:220px;">
-          <option value="">All companies</option>
-        </select>
       </div>
     </div>
+    <div class="filter-bar" id="filterBar"></div>
     <div class="table-wrap">
       <table id="jobsTable">
         <thead>
           <tr>
             <th data-col="0">Title <span class="sort-icon"></span></th>
             <th data-col="1">Company <span class="sort-icon"></span></th>
-            <th data-col="2" class="loc-th">Location <span class="sort-icon"></span><select id="regionFilter" onclick="event.stopPropagation()"><option value="all">All regions</option><option value="us">United States</option><option value="canada">Canada</option></select></th>
-            <th data-col="3">Date Posted <span class="sort-icon"></span></th>
-            <th data-col="4">Type <span class="sort-icon"></span></th>
+            <th data-col="2">Location <span class="sort-icon"></span></th>
+            <th data-col="3">Seniority <span class="sort-icon"></span></th>
+            <th data-col="4">Sector <span class="sort-icon"></span></th>
+            <th data-col="5">Date Posted <span class="sort-icon"></span></th>
+            <th data-col="6">Type <span class="sort-icon"></span></th>
           </tr>
         </thead>
         <tbody id="tableBody">
@@ -1531,41 +1638,95 @@ function classifyRegion(loc) {{
   return "other";
 }}
 
-// ── Search + Region + Company filter ──
-const searchBox     = document.getElementById("searchBox");
-const regionFilter  = document.getElementById("regionFilter");
-const companyFilter = document.getElementById("companyFilter");
-const tableBody     = document.getElementById("tableBody");
-const noResults     = document.getElementById("noResults");
+// ── Search + multi-select filters ──
+const searchBox = document.getElementById("searchBox");
+const tableBody = document.getElementById("tableBody");
+const noResults = document.getElementById("noResults");
+const filterBar = document.getElementById("filterBar");
 
-// Populate company dropdown from table data
-(function() {{
-  const companies = new Set();
-  Array.from(tableBody.rows).forEach(row => {{
-    const co = row.cells[1] ? row.cells[1].textContent.trim() : "";
-    if (co) companies.add(co);
+const regionLabel = {{ us: "United States", canada: "Canada", other: "Other / Unknown" }};
+const SENIORITY_ORDER = ["Intern / Entry","Analyst / Associate","Senior / Manager","Director / VP / Principal","Executive / Head","Not specified"];
+
+// Each filter: label, how to read a value list from a row, optional fixed option order
+const FILTERS = [
+  {{ key: "company",   label: "Company",   get: r => [r.cells[1].textContent.trim()] }},
+  {{ key: "region",    label: "Region",    get: r => [regionLabel[classifyRegion(r.cells[2].textContent)]] }},
+  {{ key: "seniority", label: "Seniority", get: r => [r.cells[3].textContent.trim() || "Not specified"], order: SENIORITY_ORDER }},
+  {{ key: "sector",    label: "Sector",    get: r => [r.cells[4].textContent.trim() || "Not classified"] }},
+  {{ key: "type",      label: "Type",      get: r => (r.cells[6].textContent.split(",").map(x => x.trim()).filter(Boolean)) }},
+];
+const selected = {{}};   // key -> Set of chosen values (empty = no restriction)
+
+function buildFilters() {{
+  const rows = Array.from(tableBody.rows);
+  FILTERS.forEach(f => {{
+    selected[f.key] = new Set();
+    const counts = {{}};
+    rows.forEach(r => {{ f.get(r).forEach(v => {{ if (v) counts[v] = (counts[v] || 0) + 1; }}); }});
+    let opts = Object.keys(counts);
+    opts = f.order ? opts.filter(o => f.order.includes(o)).sort((a, b) => f.order.indexOf(a) - f.order.indexOf(b))
+                   : opts.sort((a, b) => a.localeCompare(b));
+    if (!opts.length) return;
+    const wrap = document.createElement("div"); wrap.className = "ms";
+    const btn = document.createElement("button"); btn.type = "button"; btn.className = "ms-btn";
+    const panel = document.createElement("div"); panel.className = "ms-panel";
+    let search = null;
+    if (opts.length > 8) {{
+      search = document.createElement("input"); search.className = "ms-search"; search.placeholder = "Search " + f.label.toLowerCase() + "…";
+      panel.appendChild(search);
+    }}
+    const list = document.createElement("div"); list.className = "ms-list";
+    opts.forEach(o => {{
+      const lab = document.createElement("label"); lab.className = "ms-opt"; lab.dataset.v = o.toLowerCase();
+      const cb = document.createElement("input"); cb.type = "checkbox";
+      cb.addEventListener("change", () => {{
+        cb.checked ? selected[f.key].add(o) : selected[f.key].delete(o);
+        updateBtn(); filterTable();
+      }});
+      lab.appendChild(cb); lab.appendChild(document.createTextNode(o + " (" + counts[o] + ")"));
+      lab._cb = cb; list.appendChild(lab);
+    }});
+    panel.appendChild(list);
+    const foot = document.createElement("div"); foot.className = "ms-foot";
+    const clr = document.createElement("a"); clr.textContent = "Clear";
+    clr.addEventListener("click", () => {{ selected[f.key].clear(); list.querySelectorAll("input").forEach(c => c.checked = false); updateBtn(); filterTable(); }});
+    foot.appendChild(clr); panel.appendChild(foot);
+    function updateBtn() {{
+      const n = selected[f.key].size;
+      btn.textContent = f.label + (n ? " (" + n + ")" : "") + " ▾";
+      btn.classList.toggle("active", n > 0);
+    }}
+    updateBtn();
+    btn.addEventListener("click", e => {{
+      e.stopPropagation();
+      document.querySelectorAll(".ms.open").forEach(m => {{ if (m !== wrap) m.classList.remove("open"); }});
+      wrap.classList.toggle("open");
+    }});
+    panel.addEventListener("click", e => e.stopPropagation());
+    if (search) search.addEventListener("input", () => {{
+      const q = search.value.toLowerCase();
+      list.querySelectorAll(".ms-opt").forEach(l => l.style.display = l.dataset.v.includes(q) ? "" : "none");
+    }});
+    wrap.appendChild(btn); wrap.appendChild(panel); filterBar.appendChild(wrap);
+    f._reset = () => {{ selected[f.key].clear(); list.querySelectorAll("input").forEach(c => c.checked = false); updateBtn(); }};
   }});
-  Array.from(companies).sort().forEach(co => {{
-    const opt = document.createElement("option");
-    opt.value = co.toLowerCase();
-    opt.textContent = co;
-    companyFilter.appendChild(opt);
-  }});
-}})();
+  const all = document.createElement("button"); all.type = "button"; all.id = "clearAll"; all.textContent = "Clear all filters";
+  all.addEventListener("click", () => {{ FILTERS.forEach(f => f._reset && f._reset()); searchBox.value = ""; filterTable(); }});
+  filterBar.appendChild(all);
+  document.addEventListener("click", () => document.querySelectorAll(".ms.open").forEach(m => m.classList.remove("open")));
+}}
 
 function filterTable() {{
-  const q      = searchBox.value.toLowerCase().trim();
-  const region = regionFilter.value;
-  const co     = companyFilter.value.toLowerCase();
-  let visible  = 0;
+  const q = searchBox.value.toLowerCase().trim();
+  let visible = 0;
   Array.from(tableBody.rows).forEach(row => {{
-    const text    = row.textContent.toLowerCase();
-    const loc     = row.cells[2] ? row.cells[2].textContent : "";
-    const rowCo   = row.cells[1] ? row.cells[1].textContent.toLowerCase().trim() : "";
-    const matchQ  = !q || text.includes(q);
-    const matchR  = region === "all" || classifyRegion(loc) === region;
-    const matchCo = !co || rowCo === co;
-    const show    = matchQ && matchR && matchCo;
+    let show = !q || row.textContent.toLowerCase().includes(q);
+    if (show) {{
+      for (const f of FILTERS) {{
+        const sel = selected[f.key];
+        if (sel && sel.size && !f.get(row).some(v => sel.has(v))) {{ show = false; break; }}
+      }}
+    }}
     row.style.display = show ? "" : "none";
     if (show) visible++;
   }});
@@ -1573,8 +1734,7 @@ function filterTable() {{
 }}
 
 searchBox.addEventListener("input", filterTable);
-regionFilter.addEventListener("change", filterTable);
-companyFilter.addEventListener("change", filterTable);
+buildFilters();
 
 // ── Column sort ──
 let sortCol = -1, sortAsc = true;
@@ -2322,6 +2482,8 @@ def main():
     public_jobs = [j for j in all_jobs if j["url"].lower().rstrip("/") not in hidden]
 
     # ── 5. Output ─────────────────────────────────────────────────
+    all_jobs = [enrich(j) for j in all_jobs]
+    public_jobs = [enrich(j) for j in public_jobs]
     save_csv(public_jobs)
     generate_html(public_jobs)           # public dashboard (no source, no delete)
     generate_admin_html(all_jobs)        # admin dashboard (source + hide buttons)
