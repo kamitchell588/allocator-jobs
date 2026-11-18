@@ -510,6 +510,20 @@ def _get_latest_run(task_id: str) -> tuple[str | None, datetime | None]:
     return None, None
 
 
+def _has_any_run(task_id: str) -> bool:
+    """True if the task has at least one run of any status (a failed one counts)."""
+    try:
+        resp = requests.get(APIFY_TASK_BASE.format(task_id=task_id),
+                            params={"token": APIFY_TOKEN, "limit": 1, "desc": "true"}, timeout=30)
+        resp.raise_for_status()
+        data = resp.json()
+        data = data.get("data", data) if isinstance(data, dict) else data
+        items = data if isinstance(data, list) else data.get("items", [])
+        return bool(items)
+    except Exception:
+        return True       # can't tell: be cautious and treat it as a real problem
+
+
 def fetch_recent_items(days: int = 1, now: datetime | None = None) -> list[dict]:
     """Fetch items from the latest run of every relevant task, found automatically:
     scheduled tasks always (and a stale one is flagged as a failure); unscheduled tasks only for a few
@@ -528,9 +542,11 @@ def fetch_recent_items(days: int = 1, now: datetime | None = None) -> list[dict]
         ds_id, when = _get_latest_run(task_id)
         age_h = (now - when).total_seconds() / 3600 if when else None
         if not ds_id:
-            if t["scheduled"]:
-                print(f"  [WARN] No successful run found for scheduled task {label}.")
-                RUN_ERRORS.append(f"task {label}: no successful run found")
+            if t["scheduled"] and _has_any_run(task_id):
+                print(f"  [WARN] Scheduled task {label} has runs but none succeeded.")
+                RUN_ERRORS.append(f"task {label}: has runs but none succeeded")
+            elif t["scheduled"]:
+                print(f"  [Tasks] scheduled task {label} has not run yet (waiting for its first run).")
             else:
                 print(f"  [Tasks] skipping {label}: never run successfully.")
             continue
@@ -738,7 +754,9 @@ def passes_layer1(item: dict) -> bool:
     dom = str(item.get("domain_derived") or "").strip().lower()
     expected = _match_org(_load_org_domains(), org)
     if expected:
-        return bool(dom) and (dom == expected or dom.endswith("." + expected))
+        if not dom:                       # some job sources give no domain: accept only an exact firm-name match
+            return org in _load_org_domains()
+        return dom == expected or dom.endswith("." + expected)
     return True
 
 
@@ -855,13 +873,17 @@ LINK_CHECK_MIN_AGE_DAYS = 7      # only check jobs at least this old (fresh ones
 LINK_CHECK_MAX_PER_RUN  = 600    # cap so a run stays quick and polite
 
 
+LINK_DETAIL: dict = {}      # url -> short reason for an 'unknown' result, for the log
+
+
 def _check_one(url: str) -> str:
     """Return 'gone', 'ok' or 'unknown'. 'gone' only on clear signals: 404/410, or Greenhouse's error redirect."""
     try:
         resp = requests.get(url, headers=HEADERS, timeout=12, allow_redirects=True, stream=True)
         status, final = resp.status_code, resp.url or url
         resp.close()
-    except requests.exceptions.RequestException:
+    except requests.exceptions.RequestException as e:
+        LINK_DETAIL[url] = type(e).__name__
         return "unknown"
     if status in (404, 410):
         return "gone"
@@ -869,6 +891,7 @@ def _check_one(url: str) -> str:
         return "gone"
     if 200 <= status < 300:
         return "ok"
+    LINK_DETAIL[url] = str(status)
     return "unknown"          # 403 / 429 / 5xx etc: say nothing rather than guess
 
 
@@ -896,6 +919,11 @@ def check_links(jobs: list[dict], today=None) -> list[dict]:
     from collections import Counter
     tally = Counter(results)
     print(f"  [Link check] ok={tally['ok']} gone={tally['gone']} unknown={tally['unknown']}")
+    if tally["unknown"]:
+        from urllib.parse import urlparse
+        why = Counter((urlparse(j["url"]).netloc.split(".")[-2:][0] if "." in urlparse(j["url"]).netloc else urlparse(j["url"]).netloc,
+                       LINK_DETAIL.get(j["url"], "?")) for j, r in zip(candidates, results) if r == "unknown")
+        print("  [Link check] unknown by site/reason: " + ", ".join(f"{h}:{d}={n}" for (h, d), n in why.most_common(10)))
     gone = [j for j, r in zip(candidates, results) if r == "gone"]
     for j in gone[:50]:
         print(f"    gone: {j['company']} | {j['title']} | {j['url']}")
