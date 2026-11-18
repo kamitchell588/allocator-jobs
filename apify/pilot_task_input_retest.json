@@ -1,0 +1,31 @@
+{
+  "limit": 200,
+  "timeRange": "6m",
+  "organizationSearch": [
+    "LSVP",
+    "Berkshire Group"
+  ],
+  "titleExclusionSearch": [
+    "clinical",
+    "marketing",
+    "software",
+    "patient",
+    "volunteer",
+    "events",
+    "coordinator",
+    "architect",
+    "HR",
+    "technician",
+    "HVAC",
+    "administrative",
+    "Assistant"
+  ],
+  "descriptionType": "text",
+  "aiVisaSponsorshipFilter": false,
+  "hasSalary": false,
+  "hasNoLocation": false,
+  "includeCompanyDetails": false,
+  "removeAgency": false,
+  "populateAiRemoteLocation": false,
+  "populateAiRemoteLocationDerived": false
+}
