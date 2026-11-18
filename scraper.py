@@ -28,30 +28,10 @@ _env_vars = dict(_re.findall(r'^([A-Z_]+)=(.+)$', _env.read_text(), _re.M)) if _
 APIFY_TOKEN    = _env_vars.get("APIFY_TOKEN", os.environ.get("APIFY_TOKEN", ""))
 GH_TOKEN       = _env_vars.get("GH_TOKEN", os.environ.get("GH_TOKEN", ""))
 # Actor Task IDs — stable IDs that always point to the latest run
-ACTOR_TASK_IDS = ["jDown13k7veexhpaZ", "iJ7jIqOFzpvnWWtpk", "7VDcxoQjS4RJCp3MQ", "7CkdmGSDpEHQVhgQH"]
+ACTOR_TASK_IDS = ["jDown13k7veexhpaZ", "iJ7jIqOFzpvnWWtpk", "7VDcxoQjS4RJCp3MQ", "7CkdmGSDpEHQVhgQH",
+                  "kmitchell123~career-site-job-listing-api-task-6"]  # pilot (6m backfill; switch to 24h after first ingest)
 # Fallback static dataset IDs — cleared once historical data is in the CSV
-FALLBACK_DATASET_IDS = [
-    "iYXtBNh4h8zqhLgKQ", "1s0tuGgDsvOOQyc1J",
-    "OtX2O44Ggmtc9BUOw", "IU7GKGSbl8mltq1vq",
-    "gfhSuCSle0oQlzVvs", "eNyIOm3LBjmwVtKRK",
-    "24zmXKTZsPJuQY7gf", "WqXdqJorrgaQgk8hT",
-    "XVOOzs4gNYeAUZeO1", "yUvDCmFc4lldI1Aln",
-    "VBpItcZwNLhyftdY9", "sXiuUWIJwruG39u3e",
-    "xZGACZxVgz0Tf2nfq", "SsqfsadC7bKtVxdEb",
-    "kzRn8UKrrDj2lfHof", "2Wx0D9eCLAqP931Pl",
-    "8jo0SaCMmb9b6LUxW", "dIEMwWDNKmVp3eSAz",
-    "sLxBvl6Qz7yAPiagc", "8iltqkljjsLoXNBQb",
-    "GFq3CWhfB3Waekbfi", "jXLSEIohyrQqTxmvt",
-    "Q9vEtlfbR5sZHPsPa", "EqBsPu70SaB9sgvJU",
-    "ZqwTkZiebujf5bwrj", "yb6jXkVvmJHiSCxTO",
-    "X3YepLdv584JYletK", "2NnEJDMCVfmbLdqVI",
-    "xoGJ3K1Zi5ysnJDPt", "aCBPIrV7ocPou7UiQ",
-    "3olp9dpmklGCJT33O", "pcKSlieHYBCL6kvOF",
-    "CVVEg8Z5c8MoHuuIK", "94dLwYmpkYvhSSDep",
-    "HPGceMCfreEN2bH0B", "V49LTiVUwkENjOuE4",
-    "mz5yIpXvvI3mYRVjV", "TsZg6HlgLl0qpzV80",
-    "KJ6g55CEVfxazQQMu", "Rv8RCSnC2ZSjjuYMn",
-]
+FALLBACK_DATASET_IDS = []   # old backfill IDs removed (all returned 404)
 MANUAL_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pub?output=csv"
 MANUAL_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRF3eiU7dmS8SZBWNz1lffxJHkSJ8yGsK8K_HVyIv5s-kei7TNdcjybHo1mitXO7O-uRmtQ_-eNgbp4/pubhtml"
 APIFY_BASE      = "https://api.apify.com/v2/datasets/{dataset_id}/items"
@@ -411,7 +391,12 @@ EXCLUDE_TITLE_KEYWORDS = [
     "retirement system",
 ]
 
-CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source", "date_added"]
+CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source", "date_added",
+               "job_country", "job_state", "seniority",
+               "org_priority", "org_sector", "org_region", "org_hq", "org_size_b"]
+EXTRA_COLUMNS = CSV_COLUMNS[9:]
+
+RUN_ERRORS: list[str] = []   # any fetch problem is recorded here; main() exits non-zero if non-empty
 
 # Browser-like headers to avoid 403s on stricter sites
 HEADERS = {
@@ -443,9 +428,11 @@ def _fetch_items(dataset_id: str, extra_params: dict = None) -> list[dict]:
             resp.raise_for_status()
         except requests.exceptions.HTTPError as e:
             print(f"  HTTP error: {e}")
+            RUN_ERRORS.append(f"dataset {dataset_id}: HTTP error {e}")
             return items
         except requests.exceptions.RequestException as e:
             print(f"  Request error: {e}")
+            RUN_ERRORS.append(f"dataset {dataset_id}: request error {e}")
             return items
 
         page = resp.json()
@@ -485,6 +472,7 @@ def _get_latest_dataset_id(task_id: str) -> str | None:
             return items[0].get("defaultDatasetId")
     except Exception as e:
         print(f"  [WARN] Could not fetch latest run for task {task_id}: {type(e).__name__}: {e}")
+        RUN_ERRORS.append(f"task {task_id}: could not fetch latest run ({type(e).__name__})")
     return None
 
 
@@ -502,6 +490,7 @@ def fetch_recent_items(days: int = 1) -> list[dict]:
             all_items.extend(items)
         else:
             print(f"  [WARN] No successful run found for task {task_id} — skipping.")
+            RUN_ERRORS.append(f"task {task_id}: no successful run found")
 
     return all_items
 
@@ -549,6 +538,7 @@ def load_csv_jobs() -> list[dict]:
                 "job_type":    row.get("job_type", ""),
                 "source":      row.get("source", "Apify"),
                 "date_added":  row.get("date_added", "") or datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+                **{c: row.get(c, "") for c in EXTRA_COLUMNS},
             })
     print(f"  Loaded {len(jobs)} jobs from existing CSV.")
     return jobs
@@ -610,6 +600,45 @@ def _org_text_from_item(item: dict) -> str:
 
 
 _ORG_DOMAINS = None
+_ORG_META = None
+
+
+def _load_org_meta() -> dict:
+    """search_term (lowercase) -> row from data/orgs.csv (priority, sector, region, hq, size_b)."""
+    global _ORG_META
+    if _ORG_META is None:
+        _ORG_META = {}
+        path = pathlib.Path(__file__).parent / "data" / "orgs.csv"
+        try:
+            with open(path, newline="", encoding="utf-8") as f:
+                for r in csv.DictReader(f):
+                    t = (r.get("search_term") or r.get("org_name") or "").strip().lower()
+                    if t:
+                        _ORG_META[t] = r
+        except FileNotFoundError:
+            pass
+    return _ORG_META
+
+
+def write_run_report(raw: list[dict], kept: list[dict]) -> None:
+    """Per-firm coverage: jobs returned by Apify vs jobs kept. Flags firms with zero."""
+    from collections import Counter
+    def _name(i): return str(i.get("organization") or i.get("company") or "").strip().lower()
+    raw_c, kept_c = Counter(_name(i) for i in raw), Counter(_name(i) for i in kept)
+    rows = []
+    for term, r in _load_org_meta().items():
+        rows.append({"firm": r.get("org_name", term), "search_term": r.get("search_term", ""),
+                     "priority": r.get("priority", ""), "raw_jobs": raw_c.get(term, 0),
+                     "kept_jobs": kept_c.get(term, 0)})
+    if not rows:
+        return
+    with open("run_report.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader(); w.writerows(rows)
+    silent = [r["firm"] for r in rows if r["raw_jobs"] == 0]
+    print(f"\n  [Coverage] {len(rows) - len(silent)} of {len(rows)} tracked firms returned jobs.")
+    if silent:
+        print(f"  [Coverage] No jobs from: {', '.join(silent)}")
 
 def _load_org_domains() -> dict:
     """search_term (lowercase) -> locked domain, from data/orgs.csv. Only firms with a locked domain."""
@@ -956,7 +985,7 @@ def scrape_ultipro(board_url: str, board_id: str, company: str, location: str) -
     for opp in opportunities:
         title       = (opp.get("Title") or opp.get("title") or "").strip()
         opp_id      = opp.get("Id") or opp.get("id") or ""
-        job_url     = f"{{board_url}}/OpportunityDetail?opportunityId={{opp_id}}" if opp_id else board_url
+        job_url     = f"{board_url}/OpportunityDetail?opportunityId={opp_id}" if opp_id else board_url
         date_raw    = opp.get("PostedDate") or opp.get("postedDate") or ""
         if date_raw and "T" in date_raw:
             date_raw = date_raw.split("T")[0]
@@ -1063,6 +1092,16 @@ def normalise(item: dict) -> dict:
         job_type = str(raw_et)
     job_type = job_type or item.get("jobType") or item.get("type") or ""
 
+    def _first(v):
+        if isinstance(v, list):
+            return str(v[0]) if v else ""
+        return str(v or "")
+
+    country = _first(item.get("countries_derived"))
+    parts = [p.strip() for p in _first(item.get("locations_derived")).split(",")]
+    state = parts[-2] if len(parts) >= 3 else ""
+    meta = _load_org_meta().get(str(company).strip().lower(), {})
+
     return {
         "title":       title,
         "company":     company,
@@ -1073,6 +1112,14 @@ def normalise(item: dict) -> dict:
         "job_type":    job_type,
         "source":      item.get("_source") or "Apify",
         "date_added":  datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "job_country": country,
+        "job_state":   state,
+        "seniority":   _first(item.get("ai_experience_level")),
+        "org_priority": meta.get("priority", ""),
+        "org_sector":   meta.get("sector", ""),
+        "org_region":   meta.get("region", ""),
+        "org_hq":       meta.get("hq", ""),
+        "org_size_b":   meta.get("size_b", ""),
     }
 
 
@@ -2191,7 +2238,9 @@ def main():
     # ── 1. Load historical jobs from CSV + fetch last 24 hours from Apify ──
     print("\n[Apify] Fetching last 24 hours …")
     recent_raw  = fetch_recent_items(days=1)
-    recent_jobs = [normalise(j) for j in filter_jobs(recent_raw)] if recent_raw else []
+    recent_kept = filter_jobs(recent_raw) if recent_raw else []
+    recent_jobs = [normalise(j) for j in recent_kept]
+    write_run_report(recent_raw, recent_kept)
     print(f"  [Apify] {len(recent_jobs)} new/recent jobs after filtering.")
 
     # Backfill from any one-time datasets (cleared after use)
@@ -2289,6 +2338,12 @@ def main():
     print(f"  Dashboard : {HTML_PATH}")
     print(f"  Admin     : {ADMIN_PATH}")
     print("=" * 60)
+
+    if RUN_ERRORS:
+        print("\nRUN FAILED — Apify problems this run:")
+        for e in RUN_ERRORS:
+            print(f"  - {e}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
