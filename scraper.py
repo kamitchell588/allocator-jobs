@@ -604,14 +604,15 @@ _ORG_META = None
 
 
 def _match_org(table: dict, company: str):
-    """Look up a company in a search_term-keyed table. Exact match, or the company name
-    starts with the term followed by a space or comma (e.g. 'Berkshire Group, LLC' for 'Berkshire Group')."""
+    """Look up a company in a search_term-keyed table: exact match first, then the longest term that
+    appears in the company name as whole words ('Careers at KKR' -> 'kkr', 'Berkshire Group, LLC' ->
+    'berkshire group'). With locked domains this also catches look-alikes such as 'Weber Blackstone'."""
     c = (company or "").strip().lower()
     if c in table:
         return table[c]
-    for term, val in table.items():
-        if c.startswith(term) and c[len(term):len(term) + 1] in (" ", ","):
-            return val
+    for term in sorted(table, key=len, reverse=True):
+        if _re.search(r"(?<![a-z0-9])" + _re.escape(term) + r"(?![a-z0-9])", c):
+            return table[term]
     return None
 
 
@@ -626,7 +627,7 @@ def _load_org_meta() -> dict:
                 for r in csv.DictReader(f):
                     t = (r.get("search_term") or r.get("org_name") or "").strip().lower()
                     if t:
-                        _ORG_META[t] = r
+                        _ORG_META.setdefault(t, r)      # first row wins when firms share a term (parent listed first)
         except FileNotFoundError:
             pass
     return _ORG_META
@@ -636,19 +637,18 @@ def write_run_report(raw: list[dict], kept: list[dict]) -> None:
     """Per-firm coverage: jobs returned by Apify vs jobs kept. Flags firms with zero."""
     from collections import Counter
     def _name(i): return str(i.get("organization") or i.get("company") or "").strip().lower()
-    terms = list(_load_org_meta().keys())
+    terms = {t: t for t in _load_org_meta()}
     def _term(i):
         n = _name(i)
-        for t in terms:
-            if n == t or (n.startswith(t) and n[len(t):len(t) + 1] in (" ", ",")):
-                return t
-        return n
-    raw_c, kept_c = Counter(_term(i) for i in raw), Counter(_term(i) for i in kept)
+        return _match_org(terms, n) or n
+    valid = [i for i in raw if passes_layer1(i)]
+    raw_c, kept_c = Counter(_term(i) for i in valid), Counter(_term(i) for i in kept)
+    reject_c = Counter(_term(i) for i in raw if not passes_layer1(i))
     rows = []
     for term, r in _load_org_meta().items():
         rows.append({"firm": r.get("org_name", term), "search_term": r.get("search_term", ""),
                      "priority": r.get("priority", ""), "raw_jobs": raw_c.get(term, 0),
-                     "kept_jobs": kept_c.get(term, 0)})
+                     "kept_jobs": kept_c.get(term, 0), "lookalikes_rejected": reject_c.get(term, 0)})
     if not rows:
         return
     with open("run_report.csv", "w", newline="", encoding="utf-8") as f:
@@ -684,8 +684,8 @@ def passes_layer1(item: dict) -> bool:
     org = str(item.get("organization") or "").strip().lower()
     dom = str(item.get("domain_derived") or "").strip().lower()
     expected = _match_org(_load_org_domains(), org)
-    if expected and dom:
-        return dom == expected or dom.endswith("." + expected)
+    if expected:
+        return bool(dom) and (dom == expected or dom.endswith("." + expected))
     return True
 
 
