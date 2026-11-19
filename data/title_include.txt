@@ -1,0 +1,211 @@
+# Title INCLUDE list: a job is kept only if its title contains at least one of these phrases.
+# One phrase per line, lowercase. Lines starting with # are comments. Edit freely - no code change needed.
+
+# Core investment titles
+investment
+portfolio
+analyst
+associate
+cio
+chief investment officer
+chief investment
+deputy cio
+deputy chief investment
+co-cio
+investment officer
+investment manager
+investment director
+investment principal
+investment professional
+investment specialist
+investment associate
+investment consultant
+investment advisor
+investment strategist
+investment researcher
+investment analyst
+senior investment
+managing director investment
+# Asset classes
+alternatives
+alternative investments
+private equity
+private credit
+private debt
+private markets
+infrastructure
+real assets
+real estate
+hedge fund
+hedge funds
+fixed income
+equities
+equity
+multi-asset
+multi asset
+credit
+structured credit
+direct lending
+venture capital
+venture growth
+venture
+growth equity
+buyout
+secondaries
+co-investment
+co investment
+natural resources
+commodities
+timber
+farmland
+distressed
+mezzanine
+emerging markets
+global macro
+long short
+absolute return
+# Research & due diligence
+due diligence
+manager research
+manager selection
+fund research
+fund selection
+manager due diligence
+investment research
+research analyst
+research associate
+research director
+market research
+security selection
+stock selection
+sector research
+fundamental research
+quantitative research
+esg research
+# Portfolio & allocation
+asset allocation
+capital markets
+portfolio management
+portfolio construction
+portfolio analyst
+portfolio associate
+portfolio manager
+portfolio officer
+portfolio strategist
+strategic investments
+tactical allocation
+strategic allocation
+liability driven
+liability-driven
+# Risk & performance
+risk management
+risk analyst
+risk officer
+risk associate
+market risk
+investment risk
+performance analyst
+performance attribution
+performance measurement
+investment performance
+# Quant & data
+quant
+quantitative
+quantitative analyst
+quantitative associate
+quantitative strategist
+quantitative researcher
+quantitative portfolio
+data science
+data analyst
+factor investing
+systematic
+algorithmic
+derivatives
+options
+futures
+# Senior / leadership titles
+head of investments
+head of investment
+director of investments
+director of investment
+managing director
+executive director
+vice president investment
+vp investment
+principal
+partner investment
+senior portfolio
+senior analyst
+senior associate
+senior manager investment
+senior director investment
+# Allocator-specific org terms in titles
+endowment
+pension
+foundation investments
+sovereign wealth
+ocio
+outsourced cio
+outsourced chief investment
+institutional
+fund of funds
+fund of hedge funds
+asset owner
+asset management
+family office investment
+endowment management
+treasury investment
+# Investment ops & support
+investment operations
+investment governance
+investment compliance
+investment reporting
+investment accounting
+investment analytics
+investment technology
+investment solutions
+investment consulting
+investment strategy
+# Trading
+trader
+trading
+fixed income trader
+equity trader
+currency trader
+fx trader
+derivatives trader
+portfolio trader
+# Finance leadership
+cfo
+chief financial officer
+vp finance
+head of finance
+finance director
+# ESG / impact / sustainable
+sustainable investment
+mission aligned
+mission-aligned
+impact investment
+impact investing
+esg
+responsible investment
+# Valuation & operations
+valuation
+private markets valuation
+third party governance
+third party risk
+governance
+public investments
+public markets
+tangible assets
+head of operations
+coo
+chief operating officer
+treasurer
+# Broad seniority/function titles (kept intentionally broad)
+director
+vice president
+head of
+md
+vp
