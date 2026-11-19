@@ -19,6 +19,7 @@ A job board for institutional allocator roles (endowments, pensions, family offi
 | Titles to drop | `data/title_exclude.txt` | Substring match; a leading `=` (e.g. `=hr`) means whole word only. |
 | Look-alike companies to reject | `data/exclude_companies.txt` | Matched anywhere in the company name; also purges history. |
 | Hand-set sector | `data/sector_overrides.csv` | |
+| Location filter (metros) | `data/metros.csv` | city + state -> metro. Unlisted places show as Other US / Other Canada. |
 | Hidden jobs | `hidden_jobs.txt` | Admin Hide button writes this. |
 | Manual jobs | Google Sheet | Expire 60 days after first seen. |
 Apify tasks are an input, not a master: their firm lists and exclusions should come from the files above. Snapshot of the older tasks' inputs (as of 2026-11-19): `apify/archive/current_tasks_2026-11-19.json`.

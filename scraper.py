@@ -98,7 +98,7 @@ def _company_excluded(name: str) -> bool:
 
 CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source", "date_added",
                "job_country", "job_state", "seniority",
-               "org_priority", "org_sector", "org_region", "org_hq", "org_size_b", "experience_years", "status"]
+               "org_priority", "org_sector", "org_region", "org_hq", "org_size_b", "experience_years", "status", "metro"]
 EXTRA_COLUMNS = CSV_COLUMNS[9:]
 
 RUN_ERRORS: list[str] = []   # any fetch problem is recorded here; main() exits non-zero if non-empty
@@ -1051,7 +1051,7 @@ def _stats(jobs: list[dict]) -> dict:
 
 
 # ── Seniority + sector labels ────────────────────────────────────────────────
-SENIORITY_LEVELS = ["Intern / Entry", "Analyst / Associate", "Senior / Manager",
+SENIORITY_LEVELS = ["Intern / Entry", "Analyst / Associate", "Senior Associate / Manager",
                     "Director / VP / Principal", "Executive / Head"]
 
 def seniority_label(title: str, years: str = "") -> str:
@@ -1079,6 +1079,7 @@ _SECTOR_BY_NAME = [
     ("Family Office", [r"family office"]),
     ("Sovereign Wealth", [r"sovereign", r"investment authority", r"\bgic\b", r"mubadala", r"temasek"]),
     ("Insurance", [r"insurance", r"assurance"]),
+    ("Secondaries", [r"\bcoller\b", r"landmark partners", r"lexington partners", r"harbourvest", r"pantheon", r"strategic partners"]),
 ]
 _SECTOR_BY_TEXT = [
     ("Real Estate", [r"real estate", r"\breit\b"]),
@@ -1123,6 +1124,62 @@ def sector_label(j: dict) -> str:
     return "Not classified"
 
 
+# ── Location -> metro area (data/metros.csv) ────────────────────────────────
+_US_STATES = {"alabama": "al", "alaska": "ak", "arizona": "az", "arkansas": "ar", "california": "ca", "colorado": "co",
+    "connecticut": "ct", "delaware": "de", "district of columbia": "dc", "florida": "fl", "georgia": "ga", "hawaii": "hi",
+    "idaho": "id", "illinois": "il", "indiana": "in", "iowa": "ia", "kansas": "ks", "kentucky": "ky", "louisiana": "la",
+    "maine": "me", "maryland": "md", "massachusetts": "ma", "michigan": "mi", "minnesota": "mn", "mississippi": "ms",
+    "missouri": "mo", "montana": "mt", "nebraska": "ne", "nevada": "nv", "new hampshire": "nh", "new jersey": "nj",
+    "new mexico": "nm", "new york": "ny", "north carolina": "nc", "north dakota": "nd", "ohio": "oh", "oklahoma": "ok",
+    "oregon": "or", "pennsylvania": "pa", "rhode island": "ri", "south carolina": "sc", "south dakota": "sd",
+    "tennessee": "tn", "texas": "tx", "utah": "ut", "vermont": "vt", "virginia": "va", "washington": "wa",
+    "west virginia": "wv", "wisconsin": "wi", "wyoming": "wy"}
+_CA_PROVINCES = {"alberta": "ab", "british columbia": "bc", "manitoba": "mb", "new brunswick": "nb",
+    "newfoundland and labrador": "nl", "nova scotia": "ns", "ontario": "on", "prince edward island": "pe",
+    "quebec": "qc", "québec": "qc", "saskatchewan": "sk"}
+_STATE_LOOKUP = {}
+for _full, _ab in _US_STATES.items():
+    _STATE_LOOKUP[_full] = (_full, "us"); _STATE_LOOKUP[_ab] = (_full, "us")
+for _full, _ab in _CA_PROVINCES.items():
+    _STATE_LOOKUP[_full] = (_full, "ca"); _STATE_LOOKUP[_ab] = (_full, "ca")
+_METROS = None
+
+
+def _load_metros() -> dict:
+    """(city, state) lowercase -> metro name, from data/metros.csv."""
+    global _METROS
+    if _METROS is None:
+        _METROS = {}
+        path = pathlib.Path(__file__).parent / "data" / "metros.csv"
+        try:
+            with open(path, newline="", encoding="utf-8") as f:
+                lines = [l for l in f if not l.startswith("#")]
+            for r in csv.DictReader(lines):
+                st = _STATE_LOOKUP.get((r.get("state") or "").strip().lower())
+                if st and r.get("city") and r.get("metro"):
+                    _METROS[(r["city"].strip().lower(), st[0])] = r["metro"].strip()
+        except FileNotFoundError:
+            pass
+    return _METROS
+
+
+def metro_label(location: str) -> str:
+    """'Cambridge, Massachusetts, United States' -> 'Boston'. Unlisted places fall back to 'Other US' /
+    'Other Canada'; no usable location -> 'Remote / Unknown'."""
+    parts = [p.strip() for p in (location or "").split(",") if p.strip() and p.strip().lower() != "n/a"]
+    country = ""
+    if parts and parts[-1].lower() in ("united states", "usa", "us", "u.s.", "canada"):
+        country = "ca" if parts.pop().lower() == "canada" else "us"
+    state = ""
+    if parts and parts[-1].lower() in _STATE_LOOKUP:
+        state, st_country = _STATE_LOOKUP[parts.pop().lower()]
+        country = country or st_country
+    city = parts[-1].lower() if parts else ""
+    if state and city and (city, state) in _load_metros():
+        return _load_metros()[(city, state)]
+    return {"us": "Other US", "ca": "Other Canada"}.get(country, "Remote / Unknown")
+
+
 def enrich(j: dict) -> dict:
     """Fill seniority and sector labels (also repairs older CSV rows that lack them)."""
     cur = (j.get("seniority") or "").strip()
@@ -1131,6 +1188,7 @@ def enrich(j: dict) -> dict:
     if cur not in SENIORITY_LEVELS and cur != "Not specified":
         j["seniority"] = seniority_label(j.get("title", ""), j.get("experience_years", ""))
     j["org_sector"] = sector_label(j)
+    j["metro"] = metro_label(j.get("location", ""))
     return j
 
 
@@ -1163,7 +1221,7 @@ def _rows_html(jobs: list[dict]) -> str:
             f'<tr class="age-{age_class}">'
             f'<td>{title_cell}</td>'
             f'<td>{escape(j["company"])}</td>'
-            f'<td>{escape(j["location"])}</td>'
+            f'<td data-metro="{escape(j.get("metro") or "")}">{escape(j["location"])}</td>'
             f'<td>{escape(j.get("seniority") or "")}</td>'
             f'<td>{escape(j.get("org_sector") or "")}</td>'
             f'<td data-sort="{escape(raw_date)}">{escape(raw_date)}</td>'
@@ -1513,39 +1571,20 @@ document.getElementById("gate-email").addEventListener("keydown", e => {{ if (e.
 </div>
 
 <script>
-// ── Region classification ──
-const US_KW   = ["united states","new york","new jersey","connecticut","california","illinois",
-                  "texas","massachusetts","florida","georgia","pennsylvania","ohio","virginia",
-                  "washington","boston","chicago","los angeles","san francisco","miami","dallas",
-                  "houston","seattle","denver","charlotte","atlanta"," ny,"," nj,"," ct,",
-                  " ca,"," il,"," tx,"," ma,"," fl,"," ga,"," pa,"," oh,"," va,"," wa,"];
-const CANADA_KW = ["canada","ontario","british columbia","alberta","quebec","manitoba",
-                    "saskatchewan","nova scotia","new brunswick","newfoundland","prince edward island",
-                    "toronto","vancouver","montreal","calgary","edmonton","ottawa","winnipeg",
-                    "hamilton","london, on","kitchener","victoria, bc","halifax"];
-
-function classifyRegion(loc) {{
-  const l = loc.toLowerCase();
-  if (CANADA_KW.some(k => l.includes(k))) return "canada";
-  if (US_KW.some(k => l.includes(k)))     return "us";
-  return "other";
-}}
-
 // ── Search + multi-select filters ──
 const searchBox = document.getElementById("searchBox");
 const tableBody = document.getElementById("tableBody");
 const noResults = document.getElementById("noResults");
 const filterBar = document.getElementById("filterBar");
 
-const regionLabel = {{ us: "United States", canada: "Canada", other: "Other / Unknown" }};
-const SENIORITY_ORDER = ["Intern / Entry","Analyst / Associate","Senior / Manager","Director / VP / Principal","Executive / Head","Not specified"];
+const SENIORITY_ORDER = ["Intern / Entry","Analyst / Associate","Senior Associate / Manager","Director / VP / Principal","Executive / Head","Not specified"];
 
 // Each filter: label, how to read a value list from a row, optional fixed option order
 const FILTERS = [
   {{ key: "company",   label: "Company",   get: r => [r.cells[1].textContent.trim()] }},
-  {{ key: "region",    label: "Region",    get: r => [regionLabel[classifyRegion(r.cells[2].textContent)]] }},
+  {{ key: "metro",     label: "Location",  get: r => [r.cells[2].dataset.metro || "Remote / Unknown"], byCount: true, last: ["Other US", "Other Canada", "Remote / Unknown"] }},
   {{ key: "seniority", label: "Seniority", get: r => [r.cells[3].textContent.trim() || "Not specified"], order: SENIORITY_ORDER }},
-  {{ key: "sector",    label: "Sector",    get: r => [r.cells[4].textContent.trim() || "Not classified"] }},
+  {{ key: "sector",    label: "Sector",    get: r => [r.cells[4].textContent.trim() || "Not classified"], always: ["Infrastructure", "Secondaries"] }},
   {{ key: "type",      label: "Type",      get: r => (r.cells[6].textContent.split(",").map(x => x.trim()).filter(Boolean)) }},
 ];
 const selected = {{}};   // key -> Set of chosen values (empty = no restriction)
@@ -1556,9 +1595,12 @@ function buildFilters() {{
     selected[f.key] = new Set();
     const counts = {{}};
     rows.forEach(r => {{ f.get(r).forEach(v => {{ if (v) counts[v] = (counts[v] || 0) + 1; }}); }});
+    (f.always || []).forEach(v => {{ if (!(v in counts)) counts[v] = 0; }});
     let opts = Object.keys(counts);
+    const lastIdx = o => (f.last || []).indexOf(o);
     opts = f.order ? opts.filter(o => f.order.includes(o)).sort((a, b) => f.order.indexOf(a) - f.order.indexOf(b))
-                   : opts.sort((a, b) => a.localeCompare(b));
+         : f.byCount ? opts.sort((a, b) => (lastIdx(a) >= 0) - (lastIdx(b) >= 0) || lastIdx(a) - lastIdx(b) || counts[b] - counts[a] || a.localeCompare(b))
+                     : opts.sort((a, b) => a.localeCompare(b));
     if (!opts.length) return;
     const wrap = document.createElement("div"); wrap.className = "ms";
     const btn = document.createElement("button"); btn.type = "button"; btn.className = "ms-btn";
