@@ -38,6 +38,7 @@ check("firms already in an older task are NOT in the generated tasks", not any(f
 check("--priority P1,P2 adds P2 firms", len(s.build_tasks(("P1", "P2"))[0]["firms"]) >= 1 and sum(len(t["firms"]) for t in s.build_tasks(("P1", "P2"))) >= len(firms))
 check("old_task values are only the known older tasks", {x for r in allrows if r["old_task"] for x in r["old_task"].split("/")} <= {"pilot-p1", "batch1-daily", "task-2", "task-3", "task-4", "task-5"})
 check("Citadel (inactive) is not searched", not any("Citadel" == t for tk in tasks for t in tk["input"].get("organizationSearch", [])))
+check("tracker 'Live (existing Apify tasks)' firms ICONIQ Growth and TPG Real Estate are not in generated tasks", not any(f["org_name"] in ("ICONIQ Growth", "TPG Real Estate") for f in firms))
 check("no task has more than 40 firms", all(len(t["firms"]) <= s.MAX_FIRMS_PER_TASK for t in tasks))
 check("task names are unique and start with fram-", len({t["name"] for t in tasks}) == len(tasks) and all(t["name"].startswith("fram-") for t in tasks))
 from collections import defaultdict
