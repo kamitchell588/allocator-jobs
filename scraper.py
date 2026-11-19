@@ -377,17 +377,30 @@ _ORG_DOMAINS = None
 _ORG_META = None
 
 
+_MATCHERS: dict = {}
+
+
 def _match_org(table: dict, company: str):
     """Look up a company in a search_term-keyed table: exact match first, then the longest term that
     appears in the company name as whole words ('Careers at KKR' -> 'kkr', 'Berkshire Group, LLC' ->
-    'berkshire group'). With locked domains this also catches look-alikes such as 'Weber Blackstone'."""
+    'berkshire group'). With locked domains this also catches look-alikes such as 'Weber Blackstone'.
+    One compiled pattern per table (cached), so a large firm list stays fast."""
     c = (company or "").strip().lower()
     if c in table:
         return table[c]
-    for term in sorted(table, key=len, reverse=True):
-        if _re.search(r"(?<![a-z0-9])" + _re.escape(term) + r"(?![a-z0-9])", c):
-            return table[term]
-    return None
+    cached = _MATCHERS.get(id(table))
+    if cached is None or cached[0] is not table:
+        terms = sorted(table, key=len, reverse=True)
+        rx = _re.compile(r"(?=(?<![a-z0-9])(" + "|".join(_re.escape(x) for x in terms) + r")(?![a-z0-9]))") if terms else None
+        cached = (table, rx, {})
+        _MATCHERS[id(table)] = cached
+    _, rx, memo = cached
+    if rx is None:
+        return None
+    if c not in memo:
+        hits = [m.group(1) for m in rx.finditer(c)]
+        memo[c] = table[max(hits, key=len)] if hits else None
+    return memo[c]
 
 
 def _load_org_meta() -> dict:

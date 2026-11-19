@@ -125,3 +125,37 @@ pension administration
 plan administrator
 retirement analyst
 retirement system
+
+# Added 2026-11-19 from the older Apify tasks' title exclusions (tasks 4 and 5)
+# '=' means whole word only (so '=hr' does not match 'three')
+administrative
+advocacy
+apprentice
+architect
+bill pay
+cashier
+cloud
+commander
+creative
+cybersecurity
+document
+editor
+employee
+employee relations
+events
+finops
+hvac
+instructor
+it service
+janitor
+painter
+payroll
+personal banker
+strategy officer
+visual
+volunteer
+=hr
+=hris
+=oil
+=gas
+=grant

@@ -11,6 +11,19 @@ A job board for institutional allocator roles (endowments, pensions, family offi
 - **`hidden_jobs.txt`** — newline-separated list of URLs suppressed from public dashboard. Hiding is a status (`status` column in the CSV), not a deletion: remove the URL to bring the job back.
 - **`.env`** — `APIFY_TOKEN` and `GH_TOKEN` (never committed)
 
+## Where things are edited (master files)
+| What | File | Notes |
+|---|---|---|
+| Firms | `data/orgs.csv` | One row per firm. `search_term` = what Apify searches; `aliases` = other names (separate with `|`); `domain` locks the firm to its website; `active` Y/N = included in Apify tasks (N = tracked but not searched). |
+| Titles to keep | `data/title_include.txt` | Substring match. |
+| Titles to drop | `data/title_exclude.txt` | Substring match; a leading `=` (e.g. `=hr`) means whole word only. |
+| Look-alike companies to reject | `data/exclude_companies.txt` | Matched anywhere in the company name; also purges history. |
+| Hand-set sector | `data/sector_overrides.csv` | |
+| Hidden jobs | `hidden_jobs.txt` | Admin Hide button writes this. |
+| Manual jobs | Google Sheet | Expire 60 days after first seen. |
+Apify tasks are an input, not a master: their firm lists and exclusions should come from the files above. Snapshot of the older tasks' inputs (as of 2026-11-19): `apify/archive/current_tasks_2026-11-19.json`.
+Tests: `python tests/test_master.py` (firm list + filter files).
+
 ## Current Apify dataset IDs
 ```python
 DATASET_IDS = ["XLbyFxagcoq3KhIE9", "eybd42F9fMwxLzZhz", "iEwxgRc58jXmMHOK0", "EpFF1d5hVuM3OHXiP"]
