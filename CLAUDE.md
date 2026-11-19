@@ -57,4 +57,5 @@ bash run.sh
 - **Dedup** is on the job link; only a job with no link falls back to title + company + location.
 - **Shrink guard**: if a run would cut the public board by more than 30% vs the last saved CSV, it stops (exit 1), writes nothing, and the workflow skips the commit. For an intended drop: `ALLOW_SHRINK=1 bash run.sh`.
 - **Tests** (no network): `python tests/test_step1.py`. Comparison against a saved baseline: `python tests/run_pipeline.py <dir>` then `python tests/compare.py <baseline> <dir>`.
+- **Manual / supplemental jobs expire 60 days after first seen** (`status=expired`: kept in the CSV so the clock isn't reset while the Google Sheet still lists the row, but off the public board and admin). Delete the row from the sheet to remove it entirely. Tests: `python tests/test_expiry.py`.
 - Old Apify task inputs are kept in `apify/archive/` for reference only.

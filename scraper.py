@@ -2235,11 +2235,18 @@ def _dedup(jobs: list[dict]) -> list[dict]:
     return unique
 
 
+NON_APIFY_SOURCES = ("Manual", "NCPERS", "AllocatorJobs", "UTIMCO")
+
+
+def _job_key(j: dict):
+    return _url_key(j["url"]) or (j["title"].lower().strip(), j["company"].lower().strip())
+
+
 def _previous_active_count() -> int:
     """Jobs on the public board as of the last saved CSV (rows not marked hidden)."""
     try:
         with open(CSV_PATH, newline="", encoding="utf-8") as f:
-            return sum(1 for r in csv.DictReader(f) if r.get("status", "") != "hidden")
+            return sum(1 for r in csv.DictReader(f) if r.get("status", "") not in ("hidden", "expired"))
     except OSError:
         return 0
 
@@ -2270,6 +2277,8 @@ def main():
         backfill_jobs = []
 
     csv_jobs = load_csv_jobs()
+    # When each manual / supplemental job was first seen (their rows are rebuilt every run, so keep the original date)
+    first_seen = {_job_key(j): j["date_added"] for j in csv_jobs if j["source"] in NON_APIFY_SOURCES and j["date_added"]}
     # Drop jobs older than JOB_MAX_AGE_DAYS based on date_posted
     from datetime import timedelta
     cutoff = (datetime.now(timezone.utc) - timedelta(days=JOB_MAX_AGE_DAYS)).date()
@@ -2279,7 +2288,7 @@ def main():
     csv_jobs = [j for j in csv_jobs if _age_date(j) and datetime.strptime(_age_date(j), "%Y-%m-%d").date() >= cutoff]
     print(f"  Dropped {before - len(csv_jobs)} jobs older than {JOB_MAX_AGE_DAYS} days from CSV.")
     # Strip out old Manual/supplemental entries from CSV — they'll be re-fetched fresh
-    csv_apify_jobs = [j for j in csv_jobs if j["source"] not in ("Manual", "NCPERS", "AllocatorJobs", "UTIMCO")]
+    csv_apify_jobs = [j for j in csv_jobs if j["source"] not in NON_APIFY_SOURCES]
 
     # Merge: recent + backfill take precedence over CSV (placed first for dedup)
     apify_jobs = _dedup(recent_jobs + backfill_jobs + csv_apify_jobs)
@@ -2337,8 +2346,25 @@ def main():
     # Hiding is a status, not a deletion: hidden jobs stay in the CSV and the admin page, and
     # come back to the public board when their URL is removed from hidden_jobs.txt.
     hidden = load_hidden_jobs()
+    # Manual and supplemental jobs have no reliable posting date, so they expire JOB_MAX_AGE_DAYS after
+    # they were first seen. Expired rows stay in the CSV (so the clock isn't reset while the source still
+    # lists them) but are left off the public board and the admin page.
+    today = datetime.now(timezone.utc).date()
     for j in all_jobs:
-        j["status"] = "hidden" if _url_key(j["url"]) in hidden else "active"
+        if j["source"] in NON_APIFY_SOURCES:
+            j["date_added"] = first_seen.get(_job_key(j), j["date_added"])
+    def _expired(j):
+        if j["source"] not in NON_APIFY_SOURCES:
+            return False
+        try:
+            return (today - datetime.strptime(j["date_added"][:10], "%Y-%m-%d").date()).days > JOB_MAX_AGE_DAYS
+        except ValueError:
+            return False
+    for j in all_jobs:
+        j["status"] = "expired" if _expired(j) else ("hidden" if _url_key(j["url"]) in hidden else "active")
+    n_exp = sum(j["status"] == "expired" for j in all_jobs)
+    if n_exp:
+        print(f"  {n_exp} manual/supplemental job(s) expired (first seen more than {JOB_MAX_AGE_DAYS} days ago).")
     n_hidden = sum(j["status"] == "hidden" for j in all_jobs)
     if n_hidden:
         print(f"  {n_hidden} job(s) marked hidden (kept in CSV and admin, not on the public dashboard).")
@@ -2356,7 +2382,7 @@ def main():
 
     save_csv(all_jobs)
     generate_html(public_jobs)           # public dashboard (no source, no delete)
-    generate_admin_html(all_jobs)        # admin dashboard (source + hide buttons)
+    generate_admin_html([j for j in all_jobs if j["status"] != "expired"])   # admin dashboard (source + hide buttons)
 
     # Summary by source
     from collections import Counter
