@@ -1,0 +1,28 @@
+name: Sync Apify tasks
+
+# Builds the Apify tasks (named fram-*) from data/orgs.csv and the data/ filter files.
+# Run it from the Actions tab: leave "apply" off for a dry run that only prints the plan.
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Create/update the tasks (leave off for a dry run)"
+        type: boolean
+        default: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Sync tasks
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          if [ "${{ inputs.apply }}" = "true" ]; then python sync_apify_tasks.py --apply; else python sync_apify_tasks.py; fi

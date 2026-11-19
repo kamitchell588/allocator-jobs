@@ -22,8 +22,9 @@ A job board for institutional allocator roles (endowments, pensions, family offi
 | Location filter (metros) | `data/metros.csv` | city + state -> metro. Unlisted places show as Other US / Other Canada. |
 | Hidden jobs | `hidden_jobs.txt` | Admin Hide button writes this. |
 | Manual jobs | Google Sheet | Expire 60 days after first seen. |
+| Apify task groups | `data/task_groups.csv` | sector -> task group. Tasks are generated, not hand-edited: Actions tab -> "Sync Apify tasks" (dry run unless "apply" is ticked). Creates/updates only tasks named `fram-*`. |
 Apify tasks are an input, not a master: their firm lists and exclusions should come from the files above. Snapshot of the older tasks' inputs (as of 2026-11-19): `apify/archive/current_tasks_2026-11-19.json`.
-Tests: `python tests/test_master.py` (firm list + filter files).
+Tests: `python tests/test_master.py` (firm list + filter files), `python tests/test_sync.py` (task generator, against a fake Apify).
 
 ## Current Apify dataset IDs
 ```python
