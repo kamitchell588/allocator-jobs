@@ -29,13 +29,21 @@ class Fake:
 tasks = s.build_tasks()
 firms = [f for t in tasks for f in t["firms"]]
 import csv
-active = [r for r in csv.DictReader(open(ROOT / "data" / "orgs.csv", encoding="utf-8", newline="")) if r["active"] == "Y"]
-check("every active firm lands in exactly one task", len(firms) == len(active) and len({f["org_name"] for f in firms}) == len(active))
+allrows = list(csv.DictReader(open(ROOT / "data" / "orgs.csv", encoding="utf-8", newline="")))
+want = [r for r in allrows if r["active"] == "Y" and r["priority"] == "P1" and not r["old_task"]]
+check("every active P1 firm not in an old task lands in exactly one task", len(firms) == len(want) and len({f["org_name"] for f in firms}) == len(want))
 check("no inactive firm is searched", not any(f["active"] != "Y" for f in firms))
+check("only P1 firms by default", all(f["priority"] == "P1" for f in firms))
+check("firms already in an older task are NOT in the generated tasks", not any(f["old_task"] for f in firms))
+check("--priority P1,P2 adds P2 firms", len(s.build_tasks(("P1", "P2"))[0]["firms"]) >= 1 and sum(len(t["firms"]) for t in s.build_tasks(("P1", "P2"))) >= len(firms))
+check("firms listed in the older tasks (old_task filled) number 199", sum(1 for r in allrows if r["old_task"]) == 199)
 check("Citadel (inactive) is not searched", not any("Citadel" == t for tk in tasks for t in tk["input"]["organizationSearch"]))
 check("no task has more than 40 firms", all(len(t["firms"]) <= s.MAX_FIRMS_PER_TASK for t in tasks))
 check("task names are unique and start with fram-", len({t["name"] for t in tasks}) == len(tasks) and all(t["name"].startswith("fram-") for t in tasks))
-check("split tasks are balanced (no tiny leftover task)", all(len(t["firms"]) >= 10 for t in tasks))
+from collections import defaultdict
+_g = defaultdict(list)
+for t in tasks: _g[t["name"].rsplit("-", 1)[0]].append(len(t["firms"]))
+check("tasks of the same group are split evenly (sizes differ by at most 1)", all(max(v) - min(v) <= 1 for v in _g.values()))
 check("every sector maps to a known group (nothing falls to 'other')", not any(t["name"].startswith("fram-other") for t in tasks))
 t0 = tasks[0]["input"]
 check("input carries the exclusion files (titles, companies)", len(t0["titleExclusionSearch"]) > 100 and "citadel credit union" in t0["organizationExclusionSearch"])

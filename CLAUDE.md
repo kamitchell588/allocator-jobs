@@ -14,7 +14,7 @@ A job board for institutional allocator roles (endowments, pensions, family offi
 ## Where things are edited (master files)
 | What | File | Notes |
 |---|---|---|
-| Firms | `data/orgs.csv` | One row per firm. `search_term` = what Apify searches; `aliases` = other names (separate with `|`); `domain` locks the firm to its website; `active` Y/N = included in Apify tasks (N = tracked but not searched). |
+| Firms | `data/orgs.csv` | One row per firm. `search_term` = what Apify searches; `aliases` = other names (separate with `|`); `domain` locks the firm to its website; `active` Y/N = wanted in the generated Apify tasks (N = tracked, not searched); `old_task` = firm is already in one of the older hand-built tasks (the generator skips it until you clear this). |
 | Titles to keep | `data/title_include.txt` | Substring match. |
 | Titles to drop | `data/title_exclude.txt` | Substring match; a leading `=` (e.g. `=hr`) means whole word only. |
 | Look-alike companies to reject | `data/exclude_companies.txt` | Matched anywhere in the company name; also purges history. |

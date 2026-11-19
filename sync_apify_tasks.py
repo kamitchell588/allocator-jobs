@@ -3,9 +3,13 @@
   python sync_apify_tasks.py            dry run: prints what it would create/update, changes nothing
   python sync_apify_tasks.py --apply    creates/updates the tasks (no schedule yet: run them by hand first)
   --only fram-hedge-funds-1[,name2]     limit to these tasks (test one batch at a time)
+  --priority P1,P2                      which priorities to include (default P1)
   --schedule                            also create the daily schedule for the selected tasks
 
-Reads:   data/orgs.csv (rows with active=Y), data/task_groups.csv, data/title_exclude.txt, data/exclude_companies.txt
+Reads:   data/orgs.csv, data/task_groups.csv, data/title_exclude.txt, data/exclude_companies.txt
+Which firms: active=Y, priority P1 (change with --priority P1,P2), and not already in one of your older hand-built
+         tasks (the old_task column is filled). To move a firm from an old task to a generated one, retire the old
+         task's copy and clear old_task.
 Touches: only Apify tasks (and schedules) whose name starts with 'fram-'. Your other tasks are never read or changed.
 Needs:   APIFY_TOKEN in the environment or .env
 """
@@ -42,9 +46,12 @@ def load_groups() -> dict:
     return {r["sector"].strip(): r["group"].strip() for r in csv.DictReader(lines)}
 
 
-def load_active_firms() -> list[dict]:
+def load_active_firms(priorities=("P1",)) -> list[dict]:
+    """Firms the generated tasks should search: active, wanted priority, not already in an older task."""
     with open(ROOT / "data" / "orgs.csv", newline="", encoding="utf-8") as f:
-        return [r for r in csv.DictReader(f) if (r.get("active") or "").strip().upper() == "Y"]
+        return [r for r in csv.DictReader(f)
+                if (r.get("active") or "").strip().upper() == "Y" and (r.get("priority") or "") in priorities
+                and not (r.get("old_task") or "").strip()]
 
 
 def title_exclusions() -> list[str]:
@@ -57,11 +64,11 @@ def title_exclusions() -> list[str]:
     return out
 
 
-def build_tasks() -> list[dict]:
+def build_tasks(priorities=("P1",)) -> list[dict]:
     """[{name, input, firms}] for every active firm, grouped by sector family and split at 40 firms."""
     groups = load_groups()
     by_group: dict[str, list[dict]] = {}
-    for r in load_active_firms():
+    for r in load_active_firms(priorities):
         by_group.setdefault(groups.get(r["sector"].strip(), "other"), []).append(r)
     excl_titles, excl_orgs = title_exclusions(), _read_lines("exclude_companies.txt")
     tasks = []
@@ -136,7 +143,7 @@ def sync(api, tasks, apply=False, schedule=False, all_names=None, out=print) -> 
 
 
 def report(tasks, result, apply, out=print):
-    out(f"{'APPLIED' if apply else 'DRY RUN (nothing changed)'}: {len(tasks)} task(s) from {sum(len(t['firms']) for t in tasks)} active firms")
+    out(f"{'APPLIED' if apply else 'DRY RUN (nothing changed)'}: {len(tasks)} task(s) from {sum(len(t['firms']) for t in tasks)} firms not yet in an older task")
     worst = 0.0
     for t in tasks:
         lim = t["input"]["limit"]; worst += lim * COST_PER_1000_JOBS / 1000
@@ -149,7 +156,8 @@ def report(tasks, result, apply, out=print):
 
 def main(argv):
     apply = "--apply" in argv
-    tasks = build_tasks()
+    prio = tuple(x.strip() for x in argv[argv.index("--priority") + 1].split(",")) if "--priority" in argv else ("P1",)
+    tasks = build_tasks(prio)
     all_names = [t["name"] for t in tasks]
     if "--only" in argv:
         only = {n.strip() for n in argv[argv.index("--only") + 1].split(",") if n.strip()}

@@ -13,6 +13,10 @@ on:
         description: "Only these tasks, comma-separated (e.g. fram-hedge-funds-1). Blank = all"
         type: string
         default: ""
+      priority:
+        description: "Priorities to include, comma-separated"
+        type: string
+        default: "P1"
       schedule:
         description: "Also create the daily schedule (turn on once a task's test run looks right)"
         type: boolean
@@ -35,9 +39,11 @@ jobs:
           APPLY: ${{ inputs.apply }}
           ONLY: ${{ inputs.only }}
           SCHEDULE: ${{ inputs.schedule }}
+          PRIORITY: ${{ inputs.priority }}
         run: |
           args=""
           [ "$APPLY" = "true" ] && args="$args --apply"
           [ "$SCHEDULE" = "true" ] && args="$args --schedule"
+          [ -n "$PRIORITY" ] && args="$args --priority $PRIORITY"
           [ -n "$ONLY" ] && args="$args --only $ONLY"
           python sync_apify_tasks.py $args
