@@ -8,7 +8,7 @@ Coatue,P1,Hedge Fund,United States,"New York, NY",128.7,Praxis Rock SEC Form ADV
 Viking Global Investors,P1,Hedge Fund,United States,"Stamford, CT",81.7,Praxis Rock SEC Form ADV directories (2026),vikingglobal.com,,,Y,Viking Global Investors,Covered by Apify,Returns jobs,pilot,,Y,pilot-p1
 Pershing Square Capital Management,P1,Hedge Fund,United States,"New York, NY",25.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,Pershing Square,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y,pilot-p1
 Blue Owl Capital,P1,Multi-strategy Alternatives,United States,"New York, NY",,PEI 300 (2026) top 30,blueowl.com,,,Y,Blue Owl Capital,Covered by Apify,Returns jobs,pilot,,Y,pilot-p1
-Bain Capital Credit,P1,Private Credit,United States,"Boston, MA",76.3,Praxis Rock SEC Form ADV directories (2026),baincapital.com,,,Y,Bain Capital,Covered by Apify,Returns jobs,pilot,,Y,pilot-p1
+Bain Capital,P1,Multi-strategy Alternatives,United States,"Boston, MA",76.3,Praxis Rock SEC Form ADV directories (2026),baincapital.com,,,Y,Bain Capital,Covered by Apify,"Returns jobs. One careers site (baincapital.com) covers credit, private equity and the other Bain Capital businesses, so this is one firm",pilot,Bain Capital Credit,Y,pilot-p1
 Churchill Asset Management,P1,Private Credit,United States,"New York, NY",55.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,Nuveen Churchill,Parent company,"Roles posted under Nuveen/TIAA (UltiPro, Workday); would need a Nuveen search plus a Churchill text check",pilot,,Y,pilot-p1
 Onex Credit,P1,Private Credit,Canada,"Toronto, Canada",30.1,Praxis Rock SEC Form ADV directories (2026),onex.com,,,Y,Onex,Covered by Apify,Returns jobs,pilot,,Y,pilot-p1
 Arcmont Asset Management,P1,Private Credit,Europe,"London, UK",28,Praxis Rock SEC Form ADV directories (2026),,,,Y,Arcmont Asset Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y,pilot-p1
@@ -58,7 +58,6 @@ Andreessen Horowitz,P1,Venture Capital,United States,"Menlo Park, CA",106.5,,,,,
 Vista Equity Partners,P1,Private Equity,United States,"San Francisco, CA",106,,vistaequitypartners.com,,,N,Vista Equity Partners,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y,batch1-daily
 Tiger Global Management,P1,Hedge Fund,United States,"New York, NY",102.2,,,,,N,Tiger Global,No jobs returned,No match in batch 1; check name or board,1,,Y,batch1-daily
 Oak Hill Advisors,P1,Private Credit,United States,"New York, NY",100.7,,oakhilladvisors.com,,,N,Oak Hill,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y,batch1-daily
-Bain Capital,P1,Private Equity,United States,"Boston, MA",99.5,,,,,N,Bain Capital,No jobs returned,No match in batch 1; check name or board,1,,Y,batch1-daily
 Renaissance Technologies,P1,Hedge Fund,United States,"New York, NY",96.4,,,,,N,Renaissance Technologies,No jobs returned,No match in batch 1; check name or board,1,,Y,batch1-daily
 Insight Partners,P1,Private Equity,United States,"New York, NY",92.2,,,,,N,Insight Partners,No jobs returned,No match in batch 1; check name or board,1,,Y,batch1-daily
 Advent International,P1,Private Equity,United States,"Boston, MA",91.6,,,,,N,Advent International,No jobs returned,No match in batch 1; check name or board,1,,Y,batch1-daily
@@ -315,7 +314,7 @@ Eldridge Industries,P1,Multi-strategy Alternatives,United States,"Greenwich, CT"
 Silver Point Capital,P1,Private Credit,United States,"Greenwich, CT",50.8,Praxis Rock SEC Form ADV directories (2026),,,,,Silver Point Capital,Not yet tested,,,,Y,
 Crescent Capital Group,P1,Private Credit,United States,"Los Angeles, CA",49.7,Praxis Rock SEC Form ADV directories (2026),,,,,Crescent Capital Group,Not yet tested,,,,Y,
 Antares Capital,P1,Private Credit,United States,"Chicago, IL",47.4,Praxis Rock SEC Form ADV directories (2026),,,,,Antares Capital,Not yet tested,,,,Y,
-Blue Owl Credit,P1,Private Credit,United States,"New York, NY",46.1,Praxis Rock SEC Form ADV directories (2026),,,,,Blue Owl Credit,Not yet tested,,,,Y,
+Blue Owl Credit,P1,Private Credit,United States,"New York, NY",46.1,Praxis Rock SEC Form ADV directories (2026),blueowl.com,,,,Blue Owl Credit,Covered by Apify,Already pulled by the Blue Owl search in batch1-daily,,,Y,batch1-daily
 CIFC Asset Management,P1,Private Credit,United States,"Miami, FL",44.6,Praxis Rock SEC Form ADV directories (2026),,,,,CIFC Asset Management,Not yet tested,,,,Y,
 Cheyne Capital,P1,Private Credit,Europe,"London, UK",39.9,Praxis Rock SEC Form ADV directories (2026); Altss largest hedge funds in Europe,,,,,Cheyne Capital,Not yet tested,,,,N,
 Sound Point Capital Management,P1,Private Credit,United States,"New York, NY",37,Praxis Rock SEC Form ADV directories (2026),,,,,Sound Point Capital Management,Not yet tested,,,,Y,
