@@ -59,12 +59,42 @@ def _load_phrase_list(filename: str) -> list[str]:
     return phrases
 
 
+def _phrase_regex(phrases: list[str]):
+    """One regex for a phrase list. A plain phrase matches anywhere in the title; a phrase written
+    with a leading '=' (e.g. '=hr') matches only as a whole word, for short terms that would
+    otherwise hit the middle of other words."""
+    plain = [_re.escape(p) for p in phrases if not p.startswith("=")]
+    whole = [_re.escape(p[1:].strip()) for p in phrases if p.startswith("=")]
+    parts = plain + ([r"\b(?:" + "|".join(whole) + r")\b"] if whole else [])
+    return _re.compile("|".join(parts))
+
+
+def _load_optional_phrases(filename: str) -> list[str]:
+    """Like _load_phrase_list but the file may be missing or empty (a blocklist has nothing by default)."""
+    path = pathlib.Path(__file__).parent / "data" / filename
+    try:
+        return [l.strip().lower() for l in path.read_text(encoding="utf-8").splitlines()
+                if l.strip() and not l.strip().startswith("#")]
+    except OSError:
+        return []
+
+
 
 # ── Role-type keywords (must appear in job title): edit data/title_include.txt ──
 LAYER2_TITLE_KEYWORDS = _load_phrase_list("title_include.txt")
+_INCLUDE_RE = _phrase_regex(LAYER2_TITLE_KEYWORDS)
 
 # ── Exclusion keywords: edit data/title_exclude.txt (no code change needed) ──
 EXCLUDE_TITLE_KEYWORDS = _load_phrase_list("title_exclude.txt")
+_EXCLUDE_RE = _phrase_regex(EXCLUDE_TITLE_KEYWORDS)
+
+# ── Companies never to accept (look-alike names): edit data/exclude_companies.txt ──
+EXCLUDE_COMPANIES = _load_optional_phrases("exclude_companies.txt")
+
+
+def _company_excluded(name: str) -> bool:
+    name = (name or "").lower()
+    return any(p in name for p in EXCLUDE_COMPANIES)
 
 CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source", "date_added",
                "job_country", "job_state", "seniority",
@@ -372,6 +402,9 @@ def _load_org_meta() -> dict:
                     t = (r.get("search_term") or r.get("org_name") or "").strip().lower()
                     if t:
                         _ORG_META.setdefault(t, r)      # first row wins when firms share a term (parent listed first)
+                    for a in (r.get("aliases") or "").split("|"):
+                        if a.strip():
+                            _ORG_META.setdefault(a.strip().lower(), r)
         except FileNotFoundError:
             pass
     return _ORG_META
@@ -427,6 +460,8 @@ def passes_layer1(item: dict) -> bool:
     (blocks look-alike companies, e.g. wrong 'Citadel'). Other orgs pass."""
     org = str(item.get("organization") or "").strip().lower()
     dom = str(item.get("domain_derived") or "").strip().lower()
+    if _company_excluded(org):
+        return False
     expected = _match_org(_load_org_domains(), org)
     if expected:
         if not dom:                       # some job sources give no domain: accept only an exact firm-name match
@@ -438,13 +473,13 @@ def passes_layer1(item: dict) -> bool:
 def passes_layer2(item: dict) -> bool:
     """Layer 2: title must contain at least one relevant investment keyword."""
     title = _title_from_item(item)
-    return any(kw in title for kw in LAYER2_TITLE_KEYWORDS)
+    return bool(_INCLUDE_RE.search(title))
 
 
 def passes_exclusions(item: dict) -> bool:
     """Return False if the title contains any exclusion keyword."""
     title = _title_from_item(item)
-    return not any(kw in title for kw in EXCLUDE_TITLE_KEYWORDS)
+    return not _EXCLUDE_RE.search(title)
 
 
 # US states (full names + abbreviations) and Canadian provinces
@@ -2278,6 +2313,10 @@ def main():
 
     csv_jobs = load_csv_jobs()
     # When each manual / supplemental job was first seen (their rows are rebuilt every run, so keep the original date)
+    n0 = len(csv_jobs)
+    csv_jobs = [j for j in csv_jobs if j["source"] == "Manual" or not _company_excluded(j["company"])]
+    if len(csv_jobs) < n0:
+        print(f"  Removed {n0 - len(csv_jobs)} history job(s) from excluded companies (data/exclude_companies.txt).")
     first_seen = {_job_key(j): j["date_added"] for j in csv_jobs if j["source"] in NON_APIFY_SOURCES and j["date_added"]}
     # Drop jobs older than JOB_MAX_AGE_DAYS based on date_posted
     from datetime import timedelta
@@ -2304,9 +2343,9 @@ def main():
         if j.get("source") == "Manual":
             return True
         title = j["title"].lower()
-        if not any(kw in title for kw in LAYER2_TITLE_KEYWORDS):
+        if not _INCLUDE_RE.search(title):
             return False
-        if any(kw in title for kw in EXCLUDE_TITLE_KEYWORDS):
+        if _EXCLUDE_RE.search(title):
             return False
         if not passes_geo_dict(j):
             return False
