@@ -59,16 +59,46 @@ def _load_phrase_list(filename: str) -> list[str]:
     return phrases
 
 
+def _phrase_regex(phrases: list[str]):
+    """One regex for a phrase list. A plain phrase matches anywhere in the title; a phrase written
+    with a leading '=' (e.g. '=hr') matches only as a whole word, for short terms that would
+    otherwise hit the middle of other words."""
+    plain = [_re.escape(p) for p in phrases if not p.startswith("=")]
+    whole = [_re.escape(p[1:].strip()) for p in phrases if p.startswith("=")]
+    parts = plain + ([r"\b(?:" + "|".join(whole) + r")\b"] if whole else [])
+    return _re.compile("|".join(parts))
+
+
+def _load_optional_phrases(filename: str) -> list[str]:
+    """Like _load_phrase_list but the file may be missing or empty (a blocklist has nothing by default)."""
+    path = pathlib.Path(__file__).parent / "data" / filename
+    try:
+        return [l.strip().lower() for l in path.read_text(encoding="utf-8").splitlines()
+                if l.strip() and not l.strip().startswith("#")]
+    except OSError:
+        return []
+
+
 
 # ── Role-type keywords (must appear in job title): edit data/title_include.txt ──
 LAYER2_TITLE_KEYWORDS = _load_phrase_list("title_include.txt")
+_INCLUDE_RE = _phrase_regex(LAYER2_TITLE_KEYWORDS)
 
 # ── Exclusion keywords: edit data/title_exclude.txt (no code change needed) ──
 EXCLUDE_TITLE_KEYWORDS = _load_phrase_list("title_exclude.txt")
+_EXCLUDE_RE = _phrase_regex(EXCLUDE_TITLE_KEYWORDS)
+
+# ── Companies never to accept (look-alike names): edit data/exclude_companies.txt ──
+EXCLUDE_COMPANIES = _load_optional_phrases("exclude_companies.txt")
+
+
+def _company_excluded(name: str) -> bool:
+    name = (name or "").lower()
+    return any(p in name for p in EXCLUDE_COMPANIES)
 
 CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source", "date_added",
                "job_country", "job_state", "seniority",
-               "org_priority", "org_sector", "org_region", "org_hq", "org_size_b", "experience_years", "status"]
+               "org_priority", "org_sector", "org_region", "org_hq", "org_size_b", "experience_years", "status", "metro"]
 EXTRA_COLUMNS = CSV_COLUMNS[9:]
 
 RUN_ERRORS: list[str] = []   # any fetch problem is recorded here; main() exits non-zero if non-empty
@@ -347,17 +377,30 @@ _ORG_DOMAINS = None
 _ORG_META = None
 
 
+_MATCHERS: dict = {}
+
+
 def _match_org(table: dict, company: str):
     """Look up a company in a search_term-keyed table: exact match first, then the longest term that
     appears in the company name as whole words ('Careers at KKR' -> 'kkr', 'Berkshire Group, LLC' ->
-    'berkshire group'). With locked domains this also catches look-alikes such as 'Weber Blackstone'."""
+    'berkshire group'). With locked domains this also catches look-alikes such as 'Weber Blackstone'.
+    One compiled pattern per table (cached), so a large firm list stays fast."""
     c = (company or "").strip().lower()
     if c in table:
         return table[c]
-    for term in sorted(table, key=len, reverse=True):
-        if _re.search(r"(?<![a-z0-9])" + _re.escape(term) + r"(?![a-z0-9])", c):
-            return table[term]
-    return None
+    cached = _MATCHERS.get(id(table))
+    if cached is None or cached[0] is not table:
+        terms = sorted(table, key=len, reverse=True)
+        rx = _re.compile(r"(?=(?<![a-z0-9])(" + "|".join(_re.escape(x) for x in terms) + r")(?![a-z0-9]))") if terms else None
+        cached = (table, rx, {})
+        _MATCHERS[id(table)] = cached
+    _, rx, memo = cached
+    if rx is None:
+        return None
+    if c not in memo:
+        hits = [m.group(1) for m in rx.finditer(c)]
+        memo[c] = table[max(hits, key=len)] if hits else None
+    return memo[c]
 
 
 def _load_org_meta() -> dict:
@@ -372,6 +415,9 @@ def _load_org_meta() -> dict:
                     t = (r.get("search_term") or r.get("org_name") or "").strip().lower()
                     if t:
                         _ORG_META.setdefault(t, r)      # first row wins when firms share a term (parent listed first)
+                    for a in (r.get("aliases") or "").split("|"):
+                        if a.strip():
+                            _ORG_META.setdefault(a.strip().lower(), r)
         except FileNotFoundError:
             pass
     return _ORG_META
@@ -427,6 +473,8 @@ def passes_layer1(item: dict) -> bool:
     (blocks look-alike companies, e.g. wrong 'Citadel'). Other orgs pass."""
     org = str(item.get("organization") or "").strip().lower()
     dom = str(item.get("domain_derived") or "").strip().lower()
+    if _company_excluded(org):
+        return False
     expected = _match_org(_load_org_domains(), org)
     if expected:
         if not dom:                       # some job sources give no domain: accept only an exact firm-name match
@@ -438,13 +486,13 @@ def passes_layer1(item: dict) -> bool:
 def passes_layer2(item: dict) -> bool:
     """Layer 2: title must contain at least one relevant investment keyword."""
     title = _title_from_item(item)
-    return any(kw in title for kw in LAYER2_TITLE_KEYWORDS)
+    return bool(_INCLUDE_RE.search(title))
 
 
 def passes_exclusions(item: dict) -> bool:
     """Return False if the title contains any exclusion keyword."""
     title = _title_from_item(item)
-    return not any(kw in title for kw in EXCLUDE_TITLE_KEYWORDS)
+    return not _EXCLUDE_RE.search(title)
 
 
 # US states (full names + abbreviations) and Canadian provinces
@@ -1003,7 +1051,7 @@ def _stats(jobs: list[dict]) -> dict:
 
 
 # ── Seniority + sector labels ────────────────────────────────────────────────
-SENIORITY_LEVELS = ["Intern / Entry", "Analyst / Associate", "Senior / Manager",
+SENIORITY_LEVELS = ["Intern / Entry", "Analyst / Associate", "Senior Associate / Manager",
                     "Director / VP / Principal", "Executive / Head"]
 
 def seniority_label(title: str, years: str = "") -> str:
@@ -1031,6 +1079,7 @@ _SECTOR_BY_NAME = [
     ("Family Office", [r"family office"]),
     ("Sovereign Wealth", [r"sovereign", r"investment authority", r"\bgic\b", r"mubadala", r"temasek"]),
     ("Insurance", [r"insurance", r"assurance"]),
+    ("Secondaries", [r"\bcoller\b", r"landmark partners", r"lexington partners", r"harbourvest", r"pantheon", r"strategic partners"]),
 ]
 _SECTOR_BY_TEXT = [
     ("Real Estate", [r"real estate", r"\breit\b"]),
@@ -1075,6 +1124,62 @@ def sector_label(j: dict) -> str:
     return "Not classified"
 
 
+# ── Location -> metro area (data/metros.csv) ────────────────────────────────
+_US_STATES = {"alabama": "al", "alaska": "ak", "arizona": "az", "arkansas": "ar", "california": "ca", "colorado": "co",
+    "connecticut": "ct", "delaware": "de", "district of columbia": "dc", "florida": "fl", "georgia": "ga", "hawaii": "hi",
+    "idaho": "id", "illinois": "il", "indiana": "in", "iowa": "ia", "kansas": "ks", "kentucky": "ky", "louisiana": "la",
+    "maine": "me", "maryland": "md", "massachusetts": "ma", "michigan": "mi", "minnesota": "mn", "mississippi": "ms",
+    "missouri": "mo", "montana": "mt", "nebraska": "ne", "nevada": "nv", "new hampshire": "nh", "new jersey": "nj",
+    "new mexico": "nm", "new york": "ny", "north carolina": "nc", "north dakota": "nd", "ohio": "oh", "oklahoma": "ok",
+    "oregon": "or", "pennsylvania": "pa", "rhode island": "ri", "south carolina": "sc", "south dakota": "sd",
+    "tennessee": "tn", "texas": "tx", "utah": "ut", "vermont": "vt", "virginia": "va", "washington": "wa",
+    "west virginia": "wv", "wisconsin": "wi", "wyoming": "wy"}
+_CA_PROVINCES = {"alberta": "ab", "british columbia": "bc", "manitoba": "mb", "new brunswick": "nb",
+    "newfoundland and labrador": "nl", "nova scotia": "ns", "ontario": "on", "prince edward island": "pe",
+    "quebec": "qc", "québec": "qc", "saskatchewan": "sk"}
+_STATE_LOOKUP = {}
+for _full, _ab in _US_STATES.items():
+    _STATE_LOOKUP[_full] = (_full, "us"); _STATE_LOOKUP[_ab] = (_full, "us")
+for _full, _ab in _CA_PROVINCES.items():
+    _STATE_LOOKUP[_full] = (_full, "ca"); _STATE_LOOKUP[_ab] = (_full, "ca")
+_METROS = None
+
+
+def _load_metros() -> dict:
+    """(city, state) lowercase -> metro name, from data/metros.csv."""
+    global _METROS
+    if _METROS is None:
+        _METROS = {}
+        path = pathlib.Path(__file__).parent / "data" / "metros.csv"
+        try:
+            with open(path, newline="", encoding="utf-8") as f:
+                lines = [l for l in f if not l.startswith("#")]
+            for r in csv.DictReader(lines):
+                st = _STATE_LOOKUP.get((r.get("state") or "").strip().lower())
+                if st and r.get("city") and r.get("metro"):
+                    _METROS[(r["city"].strip().lower(), st[0])] = r["metro"].strip()
+        except FileNotFoundError:
+            pass
+    return _METROS
+
+
+def metro_label(location: str) -> str:
+    """'Cambridge, Massachusetts, United States' -> 'Boston'. Unlisted places fall back to 'Other US' /
+    'Other Canada'; no usable location -> 'Remote / Unknown'."""
+    parts = [p.strip() for p in (location or "").split(",") if p.strip() and p.strip().lower() != "n/a"]
+    country = ""
+    if parts and parts[-1].lower() in ("united states", "usa", "us", "u.s.", "canada"):
+        country = "ca" if parts.pop().lower() == "canada" else "us"
+    state = ""
+    if parts and parts[-1].lower() in _STATE_LOOKUP:
+        state, st_country = _STATE_LOOKUP[parts.pop().lower()]
+        country = country or st_country
+    city = parts[-1].lower() if parts else ""
+    if state and city and (city, state) in _load_metros():
+        return _load_metros()[(city, state)]
+    return {"us": "Other US", "ca": "Other Canada"}.get(country, "Remote / Unknown")
+
+
 def enrich(j: dict) -> dict:
     """Fill seniority and sector labels (also repairs older CSV rows that lack them)."""
     cur = (j.get("seniority") or "").strip()
@@ -1083,6 +1188,7 @@ def enrich(j: dict) -> dict:
     if cur not in SENIORITY_LEVELS and cur != "Not specified":
         j["seniority"] = seniority_label(j.get("title", ""), j.get("experience_years", ""))
     j["org_sector"] = sector_label(j)
+    j["metro"] = metro_label(j.get("location", ""))
     return j
 
 
@@ -1115,7 +1221,7 @@ def _rows_html(jobs: list[dict]) -> str:
             f'<tr class="age-{age_class}">'
             f'<td>{title_cell}</td>'
             f'<td>{escape(j["company"])}</td>'
-            f'<td>{escape(j["location"])}</td>'
+            f'<td data-metro="{escape(j.get("metro") or "")}">{escape(j["location"])}</td>'
             f'<td>{escape(j.get("seniority") or "")}</td>'
             f'<td>{escape(j.get("org_sector") or "")}</td>'
             f'<td data-sort="{escape(raw_date)}">{escape(raw_date)}</td>'
@@ -1465,39 +1571,20 @@ document.getElementById("gate-email").addEventListener("keydown", e => {{ if (e.
 </div>
 
 <script>
-// ── Region classification ──
-const US_KW   = ["united states","new york","new jersey","connecticut","california","illinois",
-                  "texas","massachusetts","florida","georgia","pennsylvania","ohio","virginia",
-                  "washington","boston","chicago","los angeles","san francisco","miami","dallas",
-                  "houston","seattle","denver","charlotte","atlanta"," ny,"," nj,"," ct,",
-                  " ca,"," il,"," tx,"," ma,"," fl,"," ga,"," pa,"," oh,"," va,"," wa,"];
-const CANADA_KW = ["canada","ontario","british columbia","alberta","quebec","manitoba",
-                    "saskatchewan","nova scotia","new brunswick","newfoundland","prince edward island",
-                    "toronto","vancouver","montreal","calgary","edmonton","ottawa","winnipeg",
-                    "hamilton","london, on","kitchener","victoria, bc","halifax"];
-
-function classifyRegion(loc) {{
-  const l = loc.toLowerCase();
-  if (CANADA_KW.some(k => l.includes(k))) return "canada";
-  if (US_KW.some(k => l.includes(k)))     return "us";
-  return "other";
-}}
-
 // ── Search + multi-select filters ──
 const searchBox = document.getElementById("searchBox");
 const tableBody = document.getElementById("tableBody");
 const noResults = document.getElementById("noResults");
 const filterBar = document.getElementById("filterBar");
 
-const regionLabel = {{ us: "United States", canada: "Canada", other: "Other / Unknown" }};
-const SENIORITY_ORDER = ["Intern / Entry","Analyst / Associate","Senior / Manager","Director / VP / Principal","Executive / Head","Not specified"];
+const SENIORITY_ORDER = ["Intern / Entry","Analyst / Associate","Senior Associate / Manager","Director / VP / Principal","Executive / Head","Not specified"];
 
 // Each filter: label, how to read a value list from a row, optional fixed option order
 const FILTERS = [
   {{ key: "company",   label: "Company",   get: r => [r.cells[1].textContent.trim()] }},
-  {{ key: "region",    label: "Region",    get: r => [regionLabel[classifyRegion(r.cells[2].textContent)]] }},
+  {{ key: "metro",     label: "Location",  get: r => [r.cells[2].dataset.metro || "Remote / Unknown"], byCount: true, last: ["Other US", "Other Canada", "Remote / Unknown"] }},
   {{ key: "seniority", label: "Seniority", get: r => [r.cells[3].textContent.trim() || "Not specified"], order: SENIORITY_ORDER }},
-  {{ key: "sector",    label: "Sector",    get: r => [r.cells[4].textContent.trim() || "Not classified"] }},
+  {{ key: "sector",    label: "Sector",    get: r => [r.cells[4].textContent.trim() || "Not classified"], always: ["Infrastructure", "Secondaries"] }},
   {{ key: "type",      label: "Type",      get: r => (r.cells[6].textContent.split(",").map(x => x.trim()).filter(Boolean)) }},
 ];
 const selected = {{}};   // key -> Set of chosen values (empty = no restriction)
@@ -1508,9 +1595,12 @@ function buildFilters() {{
     selected[f.key] = new Set();
     const counts = {{}};
     rows.forEach(r => {{ f.get(r).forEach(v => {{ if (v) counts[v] = (counts[v] || 0) + 1; }}); }});
+    (f.always || []).forEach(v => {{ if (!(v in counts)) counts[v] = 0; }});
     let opts = Object.keys(counts);
+    const lastIdx = o => (f.last || []).indexOf(o);
     opts = f.order ? opts.filter(o => f.order.includes(o)).sort((a, b) => f.order.indexOf(a) - f.order.indexOf(b))
-                   : opts.sort((a, b) => a.localeCompare(b));
+         : f.byCount ? opts.sort((a, b) => (lastIdx(a) >= 0) - (lastIdx(b) >= 0) || lastIdx(a) - lastIdx(b) || counts[b] - counts[a] || a.localeCompare(b))
+                     : opts.sort((a, b) => a.localeCompare(b));
     if (!opts.length) return;
     const wrap = document.createElement("div"); wrap.className = "ms";
     const btn = document.createElement("button"); btn.type = "button"; btn.className = "ms-btn";
@@ -2278,6 +2368,10 @@ def main():
 
     csv_jobs = load_csv_jobs()
     # When each manual / supplemental job was first seen (their rows are rebuilt every run, so keep the original date)
+    n0 = len(csv_jobs)
+    csv_jobs = [j for j in csv_jobs if j["source"] == "Manual" or not _company_excluded(j["company"])]
+    if len(csv_jobs) < n0:
+        print(f"  Removed {n0 - len(csv_jobs)} history job(s) from excluded companies (data/exclude_companies.txt).")
     first_seen = {_job_key(j): j["date_added"] for j in csv_jobs if j["source"] in NON_APIFY_SOURCES and j["date_added"]}
     # Drop jobs older than JOB_MAX_AGE_DAYS based on date_posted
     from datetime import timedelta
@@ -2304,9 +2398,9 @@ def main():
         if j.get("source") == "Manual":
             return True
         title = j["title"].lower()
-        if not any(kw in title for kw in LAYER2_TITLE_KEYWORDS):
+        if not _INCLUDE_RE.search(title):
             return False
-        if any(kw in title for kw in EXCLUDE_TITLE_KEYWORDS):
+        if _EXCLUDE_RE.search(title):
             return False
         if not passes_geo_dict(j):
             return False

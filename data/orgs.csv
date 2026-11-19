@@ -1,81 +1,891 @@
-org_name,priority,sector,region,hq,size_b,source,domain,already_in_apify,name_risk,pilot,search_term,coverage,coverage_note,batch
-Summit Partners,P1,Growth Equity,United States,"Boston, MA",42,Praxis Rock SEC Form ADV directories (2026),summitpartners.com,,,Y,Summit Partners,Covered by Apify,Returns jobs,pilot
-TCV,P1,Growth Equity,United States,"Menlo Park, CA",22.5,Praxis Rock SEC Form ADV directories (2026); Altss largest VC firms (US),,,Y,Y,TCV,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-Citadel,P1,Hedge Fund,United States,"Miami, FL",1094.3,Praxis Rock SEC Form ADV directories (2026),citadel.com,,Y,Y,Citadel,Own career site,Needs a direct scraper or manual add,pilot
-Millennium Management,P1,Hedge Fund,United States,"New York, NY",720.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Millennium,Own career site,Needs a direct scraper or manual add,pilot
-Point72 Asset Management,P1,Hedge Fund,United States,"Stamford, CT",324.4,Praxis Rock SEC Form ADV directories (2026),point72.com,,,Y,Point72,Covered by Apify,Returns jobs,pilot
-Coatue,P1,Hedge Fund,United States,"New York, NY",128.7,Praxis Rock SEC Form ADV directories (2026); Global Alts Miami 2026 speaker list,,,Y,Y,Coatue,Own career site,Needs a direct scraper or manual add,pilot
-Viking Global Investors,P1,Hedge Fund,United States,"Stamford, CT",81.7,Praxis Rock SEC Form ADV directories (2026),vikingglobal.com,,,Y,Viking Global Investors,Covered by Apify,Returns jobs,pilot
-Pershing Square Capital Management,P1,Hedge Fund,United States,"New York, NY",25.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,Pershing Square,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-Blue Owl Capital,P1,Multi-strategy Alternatives,United States,"New York, NY",,PEI 300 (2026) top 30,blueowl.com,,,Y,Blue Owl Capital,Covered by Apify,Returns jobs,pilot
-Bain Capital Credit,P1,Private Credit,United States,"Boston, MA",76.3,Praxis Rock SEC Form ADV directories (2026),baincapital.com,,,Y,Bain Capital,Covered by Apify,Returns jobs,pilot
-Churchill Asset Management,P1,Private Credit,United States,"New York, NY",55.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,Nuveen Churchill,Parent company,"Roles posted under Nuveen/TIAA (UltiPro, Workday); would need a Nuveen search plus a Churchill text check",pilot
-Onex Credit,P1,Private Credit,Canada,"Toronto, Canada",30.1,Praxis Rock SEC Form ADV directories (2026),onex.com,,,Y,Onex,Covered by Apify,Returns jobs,pilot
-Arcmont Asset Management,P1,Private Credit,Europe,"London, UK",28,Praxis Rock SEC Form ADV directories (2026),,,,Y,Arcmont Asset Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-AGL Credit Management,P1,Private Credit,United States,"New York, NY",25.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,AGL Credit Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-Strategic Value Partners,P1,Private Credit,United States,"Greenwich, CT",25.6,Praxis Rock SEC Form ADV directories (2026),,,,Y,Strategic Value Partners,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-Quantum Capital Group,P1,Private Equity,United States,"Houston, TX",28.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Quantum Capital Group,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-TowerBrook Capital Partners,P1,Private Equity,United States,"New York, NY",27.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,TowerBrook Capital Partners,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-IK Partners,P1,Private Equity,Europe,"London, UK",14.5,Praxis Rock SEC Form ADV directories (2026),ikpartners.com,,,Y,IK Partners,Covered by Apify,Returns jobs,pilot
-Grain Management,P1,Private Equity,United States,"Washington, DC",11.4,Praxis Rock SEC Form ADV directories (2026),,,,Y,Grain Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-JLL Partners,P1,Private Equity,United States,"New York, NY",10.9,Praxis Rock SEC Form ADV directories (2026),jllpartners.com,,,Y,JLL Partners,No public board found,Beware name collision with JLL (Jones Lang LaSalle); needs domain lock jllpartners.com,pilot
-Goldman Sachs Alternatives,P1,Private Equity,United States,"New York, NY",,PEI 300 (2026) top 30,,,,Y,Goldman Sachs Alternatives,Own career site,Needs a direct scraper or manual add,pilot
-Affinius Capital,P1,Real Estate,United States,"San Antonio, TX",30.4,Praxis Rock SEC Form ADV directories (2026),affiniuscapital.com,,,Y,Affinius Capital,Covered by Apify,Returns jobs,pilot
-BGO (BentallGreenOak),P1,Real Estate,Canada,"Toronto, Canada",24.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,BentallGreenOak,Own career site,Only seen on Canadian job boards; likely own ATS,pilot
-Stockbridge Capital Group,P1,Real Estate,United States,"San Francisco, CA",21.5,Praxis Rock SEC Form ADV directories (2026),,,,Y,Stockbridge Capital Group,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-Berkshire Residential Investments,P1,Real Estate,United States,"Boston, MA",19.2,Praxis Rock SEC Form ADV directories (2026),berkshire.com,,,Y,Berkshire Group,Covered by Apify,"Returns jobs as 'Berkshire Group, LLC' (mostly property management)",pilot
-Founders Fund,P1,Venture Capital,United States,"San Francisco, CA",58.9,Praxis Rock SEC Form ADV directories (2026),,,,Y,Founders Fund,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-Lightspeed Venture Partners,P1,Venture Capital,United States,"Menlo Park, CA",50,Praxis Rock SEC Form ADV directories (2026),,,,Y,LSVP,No public board found,Lever board 'LSVP' returned nothing; Lever may not be indexed or no openings,pilot
-Ribbit Capital,P1,Venture Capital,United States,"Palo Alto, CA",20.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Ribbit Capital,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-Greenoaks,P1,Venture Capital,United States,"San Francisco, CA",18.3,Praxis Rock SEC Form ADV directories (2026),,,Y,Y,Greenoaks,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot
-Flagship Pioneering,P1,Venture Capital,United States,"Cambridge, MA",13.4,Praxis Rock SEC Form ADV directories (2026),flagshippioneering.com,,,Y,Flagship Pioneering,Covered by Apify,Returns jobs,pilot
-Apollo Global Management,P1,Multi-strategy Alternatives,United States,"New York, NY",718.5,,,,,N,Apollo Global Management,Retest,No jobs returned; try 'Apollo',1
-KKR,P1,Private Equity,United States,"New York, NY",518.1,,kkr.com,,Y,N,KKR,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Ares Management,P1,Multi-strategy Alternatives,United States,"Los Angeles, CA",458.8,,ares.com,,,N,Ares Management,Covered by Apify,Returned jobs in batch 1; domain locked,1
-AQR Capital Management,P1,Hedge Fund,United States,"Greenwich, CT",311.7,,aqr.com,,,N,AQR,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Two Sigma,P1,Hedge Fund,United States,"New York, NY",310.9,,,,,N,Two Sigma,No jobs returned,No match in batch 1; check name or board,1
-Schonfeld Strategic Advisors,P1,Hedge Fund,United States,"New York, NY",296.5,,schonfeld.com,,,N,Schonfeld,Covered by Apify,Returned jobs in batch 1; domain locked,1
-The Carlyle Group,P1,Multi-strategy Alternatives,United States,"Washington, DC",283.8,,carlyle.com,,,N,Carlyle,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Balyasny Asset Management,P1,Hedge Fund,United States,"Chicago, IL",277.6,,,,,N,Balyasny,No jobs returned,No match in batch 1; check name or board,1
-KKR Credit,P1,Private Credit,United States,"San Francisco, CA",270.9,,kkr.com,,,N,KKR,Covered by Apify,Returned jobs in batch 1; domain locked,1
-D.E. Shaw & Co.,P1,Hedge Fund,United States,"New York, NY",213.4,,,,,N,D. E. Shaw,No jobs returned,No match in batch 1; check name or board,1
-Oaktree Capital Management,P1,Private Credit,United States,"Los Angeles, CA",183.3,,oaktreecapital.com,,,N,Oaktree,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Thoma Bravo,P1,Private Equity,United States,"Chicago, IL",182.9,,,,,N,Thoma Bravo,No jobs returned,No match in batch 1; check name or board,1
-ExodusPoint Capital Management,P1,Hedge Fund,United States,"New York, NY",181.8,,exoduspoint.com,,,N,ExodusPoint,Covered by Apify,Returned jobs in batch 1; domain locked,1
-HPS Investment Partners,P1,Private Credit,United States,"New York, NY",175.7,,hpspartners.com,,,N,HPS Investment Partners,Covered by Apify,Returned jobs in batch 1; domain locked,1
-NB Alternatives (Neuberger Berman Private Markets),P1,Private Equity,United States,"Dallas, TX",160.2,,,,,N,NB Alternatives,No jobs returned,No match in batch 1; check name or board,1
-Bridgewater Associates,P1,Hedge Fund,United States,"Westport, CT",150.2,,bridgewater.com,,,N,Bridgewater Associates,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Blackstone,P1,Private Equity,United States,"New York, NY",145.7,,blackstone.com,,Y,N,Blackstone,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Global Infrastructure Partners,P1,Infrastructure,United States,"New York, NY",142.2,,,,,N,Global Infrastructure Partners,No jobs returned,No match in batch 1; check name or board,1
-Verition Fund Management,P1,Hedge Fund,United States,"Greenwich, CT",139.4,,,,,N,Verition Fund,No jobs returned,No match in batch 1; check name or board,1
-Blackstone Real Estate,P1,Real Estate,United States,"New York, NY",130.7,,blackstone.com,,,N,Blackstone,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Golub Capital,P1,Private Credit,United States,"Chicago, IL",128,,golubcapital.com,,,N,Golub Capital,Covered by Apify,Returned jobs in batch 1; domain locked,1
-General Atlantic,P1,Growth Equity,United States,"New York, NY",125.3,,generalatlantic.com,,,N,General Atlantic,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Silver Lake,P1,Private Equity,United States,"Menlo Park, CA",117.7,,silverlake.com,,,N,Silver Lake,Covered by Apify,Verify domain; lookalikes (Silver Lake Resources etc.) returned,1
-Warburg Pincus,P1,Private Equity,United States,"New York, NY",112.3,,warburgpincus.com,,Y,N,Warburg Pincus,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Hellman & Friedman,P1,Private Equity,United States,"San Francisco, CA",110.4,,,,,N,Hellman & Friedman,No jobs returned,No match in batch 1; check name or board,1
-Andreessen Horowitz,P1,Venture Capital,United States,"Menlo Park, CA",106.5,,,,,N,Andreessen Horowitz,No jobs returned,No match in batch 1; check name or board,1
-Vista Equity Partners,P1,Private Equity,United States,"San Francisco, CA",106,,vistaequitypartners.com,,,N,Vista Equity Partners,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Tiger Global Management,P1,Hedge Fund,United States,"New York, NY",102.2,,,,,N,Tiger Global,No jobs returned,No match in batch 1; check name or board,1
-Oak Hill Advisors,P1,Private Credit,United States,"New York, NY",100.7,,oakhilladvisors.com,,,N,Oak Hill,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Bain Capital,P1,Private Equity,United States,"Boston, MA",99.5,,,,,N,Bain Capital,No jobs returned,No match in batch 1; check name or board,1
-Renaissance Technologies,P1,Hedge Fund,United States,"New York, NY",96.4,,,,,N,Renaissance Technologies,No jobs returned,No match in batch 1; check name or board,1
-Insight Partners,P1,Private Equity,United States,"New York, NY",92.2,,,,,N,Insight Partners,No jobs returned,No match in batch 1; check name or board,1
-Advent International,P1,Private Equity,United States,"Boston, MA",91.6,,,,,N,Advent International,No jobs returned,No match in batch 1; check name or board,1
-"Clayton, Dubilier & Rice",P1,Private Equity,United States,"New York, NY",87.4,,,,,N,"Clayton, Dubilier & Rice",No jobs returned,No match in batch 1; check name or board,1
-Leonard Green & Partners,P1,Private Equity,United States,"Los Angeles, CA",85.6,,,,,N,Leonard Green & Partners,No jobs returned,No match in batch 1; check name or board,1
-Clearlake Capital,P1,Private Equity,United States,"Santa Monica, CA",83.6,,,,,N,Clearlake Capital,No jobs returned,No match in batch 1; check name or board,1
-Sequoia Capital,P1,Venture Capital,United States,"Menlo Park, CA",82.2,,,,,N,Sequoia Capital,No jobs returned,No match in batch 1; check name or board,1
-Starwood Capital Group,P1,Real Estate,United States,"Miami Beach, FL",79.2,,starwoodcapital.com,,,N,Starwood Capital,Covered by Apify,Returned jobs in batch 1; domain locked,1
-PineBridge Investments,P1,Private Credit,United States,"New York, NY",76.7,,pinebridge.com,,,N,PineBridge,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Clarion Partners,P1,Real Estate,United States,"New York, NY",73.7,,,,,N,Clarion Partners,No jobs returned,No match in batch 1; check name or board,1
-GoldenTree Asset Management,P1,Private Credit,United States,"New York, NY",70.1,,,,,N,GoldenTree,No jobs returned,No match in batch 1; check name or board,1
-Stone Point Capital,P1,Private Equity,United States,"Greenwich, CT",69.2,,,,,N,Stone Point Capital,No jobs returned,No match in batch 1; check name or board,1
-Carlyle Global Credit,P1,Private Credit,United States,"New York, NY",68.4,,carlyle.com,,,N,Carlyle,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Blue Owl Real Estate,P1,Real Estate,United States,"Chicago, IL",67.9,,blueowl.com,,,N,Blue Owl,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Davidson Kempner Capital Management,P1,Hedge Fund,United States,"New York, NY",66.1,,davidsonkempner.com,,,N,Davidson Kempner,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Bayview Asset Management,P1,Private Credit,United States,"Coral Gables, FL",65.3,,bayview.com,,,N,Bayview Asset Management,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Farallon Capital Management,P1,Hedge Fund,United States,"San Francisco, CA",64.5,,farallon.com,,,N,Farallon,No public board found,Only 'Farallon Consulting' (unrelated) returned; domain locked to block it,1
-Valor Equity Partners,P1,Private Equity,United States,"Chicago, IL",63.5,,,,,N,Valor Equity Partners,No jobs returned,No match in batch 1; check name or board,1
-Bridge Investment Group,P1,Real Estate,United States,"Sandy, UT",62.7,,bridgeig.com,,,N,Bridge Investment Group,Covered by Apify,Returned jobs in batch 1; domain locked,1
-Blackstone Private Credit,P1,Private Credit,United States,"New York, NY",57.9,,blackstone.com,,,N,Blackstone,Covered by Apify,Returned jobs in batch 1; domain locked,1
+org_name,priority,sector,region,hq,size_b,source,domain,already_in_apify,name_risk,pilot,search_term,coverage,coverage_note,batch,aliases,active
+Summit Partners,P1,Growth Equity,United States,"Boston, MA",42,Praxis Rock SEC Form ADV directories (2026),summitpartners.com,,,Y,Summit Partners,Covered by Apify,Returns jobs,pilot,,Y
+TCV,P1,Growth Equity,United States,"Menlo Park, CA",22.5,Praxis Rock SEC Form ADV directories (2026); Altss largest VC firms (US),,,Y,Y,TCV,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+Citadel,P1,Hedge Fund,United States,"Miami, FL",1094.3,Praxis Rock SEC Form ADV directories (2026),citadel.com,,Y,Y,Citadel,Own career site,Hires on its own site (manual add). Left out of Apify tasks: searching 'Citadel' pays for look-alike jobs,pilot,,N
+Millennium Management,P1,Hedge Fund,United States,"New York, NY",720.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Millennium,Own career site,Needs a direct scraper or manual add,pilot,,Y
+Point72 Asset Management,P1,Hedge Fund,United States,"Stamford, CT",324.4,Praxis Rock SEC Form ADV directories (2026),point72.com,,,Y,Point72,Covered by Apify,Returns jobs,pilot,,Y
+Coatue,P1,Hedge Fund,United States,"New York, NY",128.7,Praxis Rock SEC Form ADV directories (2026); Global Alts Miami 2026 speaker list,,,Y,Y,Coatue,Own career site,Needs a direct scraper or manual add,pilot,,Y
+Viking Global Investors,P1,Hedge Fund,United States,"Stamford, CT",81.7,Praxis Rock SEC Form ADV directories (2026),vikingglobal.com,,,Y,Viking Global Investors,Covered by Apify,Returns jobs,pilot,,Y
+Pershing Square Capital Management,P1,Hedge Fund,United States,"New York, NY",25.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,Pershing Square,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+Blue Owl Capital,P1,Multi-strategy Alternatives,United States,"New York, NY",,PEI 300 (2026) top 30,blueowl.com,,,Y,Blue Owl Capital,Covered by Apify,Returns jobs,pilot,,Y
+Bain Capital Credit,P1,Private Credit,United States,"Boston, MA",76.3,Praxis Rock SEC Form ADV directories (2026),baincapital.com,,,Y,Bain Capital,Covered by Apify,Returns jobs,pilot,,Y
+Churchill Asset Management,P1,Private Credit,United States,"New York, NY",55.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,Nuveen Churchill,Parent company,"Roles posted under Nuveen/TIAA (UltiPro, Workday); would need a Nuveen search plus a Churchill text check",pilot,,Y
+Onex Credit,P1,Private Credit,Canada,"Toronto, Canada",30.1,Praxis Rock SEC Form ADV directories (2026),onex.com,,,Y,Onex,Covered by Apify,Returns jobs,pilot,,Y
+Arcmont Asset Management,P1,Private Credit,Europe,"London, UK",28,Praxis Rock SEC Form ADV directories (2026),,,,Y,Arcmont Asset Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+AGL Credit Management,P1,Private Credit,United States,"New York, NY",25.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,AGL Credit Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+Strategic Value Partners,P1,Private Credit,United States,"Greenwich, CT",25.6,Praxis Rock SEC Form ADV directories (2026),,,,Y,Strategic Value Partners,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+Quantum Capital Group,P1,Private Equity,United States,"Houston, TX",28.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Quantum Capital Group,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+TowerBrook Capital Partners,P1,Private Equity,United States,"New York, NY",27.7,Praxis Rock SEC Form ADV directories (2026),,,,Y,TowerBrook Capital Partners,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+IK Partners,P1,Private Equity,Europe,"London, UK",14.5,Praxis Rock SEC Form ADV directories (2026),ikpartners.com,,,Y,IK Partners,Covered by Apify,Returns jobs,pilot,,Y
+Grain Management,P1,Private Equity,United States,"Washington, DC",11.4,Praxis Rock SEC Form ADV directories (2026),,,,Y,Grain Management,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+JLL Partners,P1,Private Equity,United States,"New York, NY",10.9,Praxis Rock SEC Form ADV directories (2026),jllpartners.com,,,Y,JLL Partners,No public board found,Beware name collision with JLL (Jones Lang LaSalle); needs domain lock jllpartners.com,pilot,,Y
+Goldman Sachs Alternatives,P1,Private Equity,United States,"New York, NY",,PEI 300 (2026) top 30,,,,Y,Goldman Sachs Alternatives,Own career site,Needs a direct scraper or manual add,pilot,,Y
+Affinius Capital,P1,Real Estate,United States,"San Antonio, TX",30.4,Praxis Rock SEC Form ADV directories (2026),affiniuscapital.com,,,Y,Affinius Capital,Covered by Apify,Returns jobs,pilot,,Y
+BGO (BentallGreenOak),P1,Real Estate,Canada,"Toronto, Canada",24.1,Praxis Rock SEC Form ADV directories (2026),,,,Y,BentallGreenOak,Own career site,Only seen on Canadian job boards; likely own ATS,pilot,,Y
+Stockbridge Capital Group,P1,Real Estate,United States,"San Francisco, CA",21.5,Praxis Rock SEC Form ADV directories (2026),,,,Y,Stockbridge Capital Group,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+Berkshire Residential Investments,P1,Real Estate,United States,"Boston, MA",19.2,Praxis Rock SEC Form ADV directories (2026),berkshire.com,,,Y,Berkshire Group,Covered by Apify,"Returns jobs as 'Berkshire Group, LLC' (mostly property management)",pilot,,Y
+Founders Fund,P1,Venture Capital,United States,"San Francisco, CA",58.9,Praxis Rock SEC Form ADV directories (2026),,,,Y,Founders Fund,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+Lightspeed Venture Partners,P1,Venture Capital,United States,"Menlo Park, CA",50,Praxis Rock SEC Form ADV directories (2026),,,,Y,LSVP,No public board found,Lever board 'LSVP' returned nothing; Lever may not be indexed or no openings,pilot,,Y
+Ribbit Capital,P1,Venture Capital,United States,"Palo Alto, CA",20.8,Praxis Rock SEC Form ADV directories (2026),,,,Y,Ribbit Capital,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+Greenoaks,P1,Venture Capital,United States,"San Francisco, CA",18.3,Praxis Rock SEC Form ADV directories (2026),,,Y,Y,Greenoaks,No public board found,No board on the ATS platforms Apify indexes; may hire rarely or via recruiters,pilot,,Y
+Flagship Pioneering,P1,Venture Capital,United States,"Cambridge, MA",13.4,Praxis Rock SEC Form ADV directories (2026),flagshippioneering.com,,,Y,Flagship Pioneering,Covered by Apify,Returns jobs,pilot,,Y
+Apollo Global Management,P1,Multi-strategy Alternatives,United States,"New York, NY",718.5,,,,,N,Apollo Global Management,Retest,No jobs returned; try 'Apollo',1,,Y
+KKR,P1,Private Equity,United States,"New York, NY",518.1,,kkr.com,,Y,N,KKR,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Ares Management,P1,Multi-strategy Alternatives,United States,"Los Angeles, CA",458.8,,ares.com,,,N,Ares Management,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+AQR Capital Management,P1,Hedge Fund,United States,"Greenwich, CT",311.7,,aqr.com,,,N,AQR,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Two Sigma,P1,Hedge Fund,United States,"New York, NY",310.9,,,,,N,Two Sigma,No jobs returned,No match in batch 1; check name or board,1,,Y
+Schonfeld Strategic Advisors,P1,Hedge Fund,United States,"New York, NY",296.5,,schonfeld.com,,,N,Schonfeld,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+The Carlyle Group,P1,Multi-strategy Alternatives,United States,"Washington, DC",283.8,,carlyle.com,,,N,Carlyle,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Balyasny Asset Management,P1,Hedge Fund,United States,"Chicago, IL",277.6,,,,,N,Balyasny,No jobs returned,No match in batch 1; check name or board,1,,Y
+KKR Credit,P1,Private Credit,United States,"San Francisco, CA",270.9,,kkr.com,,,N,KKR,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+D.E. Shaw & Co.,P1,Hedge Fund,United States,"New York, NY",213.4,,,,,N,D. E. Shaw,No jobs returned,No match in batch 1; check name or board,1,,Y
+Oaktree Capital Management,P1,Private Credit,United States,"Los Angeles, CA",183.3,,oaktreecapital.com,,,N,Oaktree,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Thoma Bravo,P1,Private Equity,United States,"Chicago, IL",182.9,,,,,N,Thoma Bravo,No jobs returned,No match in batch 1; check name or board,1,,Y
+ExodusPoint Capital Management,P1,Hedge Fund,United States,"New York, NY",181.8,,exoduspoint.com,,,N,ExodusPoint,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+HPS Investment Partners,P1,Private Credit,United States,"New York, NY",175.7,,hpspartners.com,,,N,HPS Investment Partners,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+NB Alternatives (Neuberger Berman Private Markets),P1,Private Equity,United States,"Dallas, TX",160.2,,,,,N,NB Alternatives,No jobs returned,No match in batch 1; check name or board,1,,Y
+Bridgewater Associates,P1,Hedge Fund,United States,"Westport, CT",150.2,,bridgewater.com,,,N,Bridgewater Associates,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Blackstone,P1,Private Equity,United States,"New York, NY",145.7,,blackstone.com,,Y,N,Blackstone,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Global Infrastructure Partners,P1,Infrastructure,United States,"New York, NY",142.2,,,,,N,Global Infrastructure Partners,No jobs returned,No match in batch 1; check name or board,1,,Y
+Verition Fund Management,P1,Hedge Fund,United States,"Greenwich, CT",139.4,,,,,N,Verition Fund,No jobs returned,No match in batch 1; check name or board,1,,Y
+Blackstone Real Estate,P1,Real Estate,United States,"New York, NY",130.7,,blackstone.com,,,N,Blackstone,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Golub Capital,P1,Private Credit,United States,"Chicago, IL",128,,golubcapital.com,,,N,Golub Capital,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+General Atlantic,P1,Growth Equity,United States,"New York, NY",125.3,,generalatlantic.com,,,N,General Atlantic,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Silver Lake,P1,Private Equity,United States,"Menlo Park, CA",117.7,,silverlake.com,,,N,Silver Lake,Covered by Apify,Verify domain; lookalikes (Silver Lake Resources etc.) returned,1,,Y
+Warburg Pincus,P1,Private Equity,United States,"New York, NY",112.3,,warburgpincus.com,,Y,N,Warburg Pincus,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Hellman & Friedman,P1,Private Equity,United States,"San Francisco, CA",110.4,,,,,N,Hellman & Friedman,No jobs returned,No match in batch 1; check name or board,1,,Y
+Andreessen Horowitz,P1,Venture Capital,United States,"Menlo Park, CA",106.5,,,,,N,Andreessen Horowitz,No jobs returned,No match in batch 1; check name or board,1,,Y
+Vista Equity Partners,P1,Private Equity,United States,"San Francisco, CA",106,,vistaequitypartners.com,,,N,Vista Equity Partners,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Tiger Global Management,P1,Hedge Fund,United States,"New York, NY",102.2,,,,,N,Tiger Global,No jobs returned,No match in batch 1; check name or board,1,,Y
+Oak Hill Advisors,P1,Private Credit,United States,"New York, NY",100.7,,oakhilladvisors.com,,,N,Oak Hill,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Bain Capital,P1,Private Equity,United States,"Boston, MA",99.5,,,,,N,Bain Capital,No jobs returned,No match in batch 1; check name or board,1,,Y
+Renaissance Technologies,P1,Hedge Fund,United States,"New York, NY",96.4,,,,,N,Renaissance Technologies,No jobs returned,No match in batch 1; check name or board,1,,Y
+Insight Partners,P1,Private Equity,United States,"New York, NY",92.2,,,,,N,Insight Partners,No jobs returned,No match in batch 1; check name or board,1,,Y
+Advent International,P1,Private Equity,United States,"Boston, MA",91.6,,,,,N,Advent International,No jobs returned,No match in batch 1; check name or board,1,,Y
+"Clayton, Dubilier & Rice",P1,Private Equity,United States,"New York, NY",87.4,,,,,N,"Clayton, Dubilier & Rice",No jobs returned,No match in batch 1; check name or board,1,,Y
+Leonard Green & Partners,P1,Private Equity,United States,"Los Angeles, CA",85.6,,,,,N,Leonard Green & Partners,No jobs returned,No match in batch 1; check name or board,1,,Y
+Clearlake Capital,P1,Private Equity,United States,"Santa Monica, CA",83.6,,,,,N,Clearlake Capital,No jobs returned,No match in batch 1; check name or board,1,,Y
+Sequoia Capital,P1,Venture Capital,United States,"Menlo Park, CA",82.2,,,,,N,Sequoia Capital,No jobs returned,No match in batch 1; check name or board,1,,Y
+Starwood Capital Group,P1,Real Estate,United States,"Miami Beach, FL",79.2,,starwoodcapital.com,,,N,Starwood Capital,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+PineBridge Investments,P1,Private Credit,United States,"New York, NY",76.7,,pinebridge.com,,,N,PineBridge,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Clarion Partners,P1,Real Estate,United States,"New York, NY",73.7,,,,,N,Clarion Partners,No jobs returned,No match in batch 1; check name or board,1,,Y
+GoldenTree Asset Management,P1,Private Credit,United States,"New York, NY",70.1,,,,,N,GoldenTree,No jobs returned,No match in batch 1; check name or board,1,,Y
+Stone Point Capital,P1,Private Equity,United States,"Greenwich, CT",69.2,,,,,N,Stone Point Capital,No jobs returned,No match in batch 1; check name or board,1,,Y
+Carlyle Global Credit,P1,Private Credit,United States,"New York, NY",68.4,,carlyle.com,,,N,Carlyle,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Blue Owl Real Estate,P1,Real Estate,United States,"Chicago, IL",67.9,,blueowl.com,,,N,Blue Owl,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Davidson Kempner Capital Management,P1,Hedge Fund,United States,"New York, NY",66.1,,davidsonkempner.com,,,N,Davidson Kempner,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Bayview Asset Management,P1,Private Credit,United States,"Coral Gables, FL",65.3,,bayview.com,,,N,Bayview Asset Management,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Farallon Capital Management,P1,Hedge Fund,United States,"San Francisco, CA",64.5,,farallon.com,,,N,Farallon,No public board found,Only 'Farallon Consulting' (unrelated) returned; domain locked to block it,1,,Y
+Valor Equity Partners,P1,Private Equity,United States,"Chicago, IL",63.5,,,,,N,Valor Equity Partners,No jobs returned,No match in batch 1; check name or board,1,,Y
+Bridge Investment Group,P1,Real Estate,United States,"Sandy, UT",62.7,,bridgeig.com,,,N,Bridge Investment Group,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+Blackstone Private Credit,P1,Private Credit,United States,"New York, NY",57.9,,blackstone.com,,,N,Blackstone,Covered by Apify,Returned jobs in batch 1; domain locked,1,,Y
+CPP Investments,P1,Pension / Retirement,Canada,,,Older Apify task 2,,Y,,N,CPP Investments,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+PSP Investments (Public Sector Pension Investment Board),P1,Pension / Retirement,Canada,,,Older Apify task 2,,Y,,N,Public Sector Pension Investment Board,Unverified,Sector/region/priority assigned by Claude - review.,legacy,PSP Investments,Y
+Ontario Teachers' Pension Plan,P1,Pension / Retirement,Canada,,,Older Apify task 2,,Y,,N,Ontario Teachers Pension Plan,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+British Columbia Investment Management (BCI),P1,Pension / Retirement,Canada,,,Older Apify task 2,,Y,,N,British Columbia Investment Management,Unverified,Sector/region/priority assigned by Claude - review.,legacy,BCI,Y
+CalSTRS,P1,Pension / Retirement,United States,,,Older Apify task 2,,Y,,N,CalSTRS,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Teacher Retirement System of Texas,P1,Pension / Retirement,United States,,,Older Apify task 2,,Y,,N,Texas Teacher Retirement System,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Texas Municipal Retirement System,P1,Pension / Retirement,United States,,,Older Apify task 2,,Y,,N,Texas Municipal Retirement System,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Florida State Board of Administration,P1,Pension / Retirement,United States,,,Older Apify task 2,,Y,,N,State Board of Administration Florida,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Washington State Investment Board,P1,Pension / Retirement,United States,,,Older Apify task 2,,Y,,N,Washington State Investment Board,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+State of Wisconsin Investment Board,P1,Pension / Retirement,United States,,,Older Apify task 2,,Y,,N,Wisconsin State Investment Board,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+LACERA,P1,Pension / Retirement,United States,,,Older Apify task 2,,Y,,N,LACERA,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Oregon State Treasury,P1,Pension / Retirement,United States,,,Older Apify task 2,,Y,,N,Oregon State Treasury,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Mass PRIM,P1,Pension / Retirement,United States,,,Older Apify task 2,,Y,,N,Mass PRIM,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+New Mexico State Investment Council,P1,Pension / Retirement,United States,,,Older Apify task 2,,Y,,N,New Mexico State Investment Council,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+University of California Office of the President,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,University of California Office of the President,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Harvard Management Company,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,Harvard Management Company,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+UTIMCO,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,UTIMCO,Unverified,Sector/region/priority assigned by Claude - review. Also scraped directly (UltiPro) and added manually; domain lock not applied,legacy,,Y
+Stanford Management Company,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,Stanford Management Company,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Princeton University Investment Company,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,Princeton University Investment Company,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+MIT Investment Management Company,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,MIT Investment Management Company,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+University of Pennsylvania Office of Investments,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,University of Pennsylvania Office of Investments,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Duke University Management Company,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,Duke University Management Company,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+University of Chicago Investment Office,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,University of Chicago Investment Office,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+University of Virginia Investment Management Company,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,University of Virginia Investment Management Company,Unverified,Sector/region/priority assigned by Claude - review.,legacy,UVIMCO,Y
+Walton Enterprises,P1,Family Office,United States,,,Older Apify task 2,,Y,,N,Walton Enterprises,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+ICONIQ,P1,Family Office,United States,,,Older Apify task 2/5,,Y,,N,ICONIQ,Unverified,Sector/region/priority assigned by Claude - review. In two older tasks,legacy,ICONIQ Capital,Y
+Ford Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 2,,Y,,N,Ford Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Cambridge Associates,P2,Investment Consultant / OCIO,United States,,,Older Apify task 2,,Y,,N,Cambridge Associates,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Partners Capital,P2,Investment Consultant / OCIO,United States,,,Older Apify task 2,,Y,,N,Partners Capital,Unverified,Sector/region/priority assigned by Claude - review. HQ London/Boston; region assumed,legacy,,Y
+Wilshire,P2,Investment Consultant / OCIO,United States,,,Older Apify task 2,,Y,,N,Wilshire,Unverified,Sector/region/priority assigned by Claude - review. Short name; check look-alikes,legacy,,Y
+FEG,P2,Investment Consultant / OCIO,United States,,,Older Apify task 2/3,,Y,,N,FEG,Unverified,"Sector/region/priority assigned by Claude - review. In two older tasks; short name, check look-alikes",legacy,Fund Evaluation Group,Y
+Adams Street Partners,P2,Private Equity,United States,,,Older Apify task 2/3,,Y,,N,Adams Street Partners,Unverified,Sector/region/priority assigned by Claude - review. Older tasks exclude org 'stonebridge adams street',legacy,Adams Street,Y
+LGT Capital Partners,P2,Private Equity,Europe,,,Older Apify task 2/4,,Y,,N,LGT Capital Partners,Unverified,"Sector/region/priority assigned by Claude - review. In two older tasks; HQ Switzerland, US roles possible",legacy,LGT Capital,Y
+Aksia,P2,Investment Consultant / OCIO,United States,,,Older Apify task 2,,Y,,N,Aksia,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+StepStone Group,P2,Private Equity,United States,,,Older Apify task 2,,Y,,N,StepStone Group,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Hamilton Lane,P2,Private Equity,United States,,,Older Apify task 2,,Y,,N,Hamilton Lane,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+TIFF Investment Management,P2,Investment Consultant / OCIO,United States,,,Older Apify task 2/4,,Y,,N,TIFF Investment Management,Unverified,Sector/region/priority assigned by Claude - review. In two older tasks,legacy,TIFF,Y
+Investure,P2,Investment Consultant / OCIO,United States,,,Older Apify task 2,,Y,,N,Investure,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+HighVista Strategies,P2,Investment Consultant / OCIO,United States,,,Older Apify task 2/4,,Y,,N,HighVista Strategies,Unverified,Sector/region/priority assigned by Claude - review. In two older tasks,legacy,HighVista,Y
+Commonfund,P2,Investment Consultant / OCIO,United States,,,Older Apify task 2,,Y,,N,Commonfund,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Makena Capital Management,P2,Investment Consultant / OCIO,United States,,,Older Apify task 2/4,,Y,,N,Makena Capital Management,Unverified,Sector/region/priority assigned by Claude - review. In two older tasks,legacy,Makena Capital,Y
+Fidelity Institutional,P2,Wealth Management,United States,,,Older Apify task 2,,Y,,N,Fidelity Institutional,Unverified,Sector/region/priority assigned by Claude - review. Broad parent name; check look-alikes,legacy,,Y
+Alphacore Capital,P2,Private Credit,United States,,,Older Apify task 2,,Y,,N,Alphacore Capital,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+ICG (Intermediate Capital Group),P2,Private Credit,Europe,,,Older Apify task 2/5,,Y,,N,ICG,Unverified,Sector/region/priority assigned by Claude - review. Short name; also matches ICG Advisors; check look-alikes,legacy,,Y
+Main Street Advisors,P2,Wealth Management,United States,,,Older Apify task 2,,Y,,N,Main Street Advisors,Unverified,Sector/region/priority assigned by Claude - review. Generic name; check look-alikes,legacy,,Y
+TrueBridge Capital Partners,P2,Venture Capital,United States,,,Older Apify task 2/3,,Y,,N,TrueBridge Capital Partners,Unverified,Sector/region/priority assigned by Claude - review. In two older tasks,legacy,TrueBridge,Y
+JMI Equity,P2,Growth Equity,United States,,,Older Apify task 2,,Y,,N,JMI Equity,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+TPG,P2,Private Equity,United States,,,Older Apify task 2,,Y,,N,TPG,Unverified,Sector/region/priority assigned by Claude - review. Short name; check look-alikes,legacy,,Y
+ADIA,P1,Sovereign Wealth,Middle East,,,Older Apify task 2,,Y,,N,ADIA,Unverified,Sector/region/priority assigned by Claude - review. Short name; check look-alikes,legacy,Abu Dhabi Investment Authority,Y
+GIC,P1,Sovereign Wealth,Asia,,,Older Apify task 2,,Y,,N,GIC,Unverified,Sector/region/priority assigned by Claude - review. Short name; check look-alikes,legacy,,Y
+Temasek,P1,Sovereign Wealth,Asia,,,Older Apify task 2,,Y,,N,Temasek,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Liberty Mutual Investments,P2,Insurance,United States,,,Older Apify task 2,,Y,,N,Liberty Mutual Investments,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+New York Life Investments,P2,Insurance,United States,,,Older Apify task 2,,Y,,N,New York Life Investments,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+OMERS,P1,Pension / Retirement,Canada,,,Older Apify task 3,,Y,,N,OMERS,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+HOOPP (Healthcare of Ontario Pension Plan),P1,Pension / Retirement,Canada,,,Older Apify task 3,,Y,,N,Healthcare of Ontario Pension Plan,Unverified,Sector/region/priority assigned by Claude - review.,legacy,HOOPP,Y
+IMCO (Investment Management Corporation of Ontario),P1,Pension / Retirement,Canada,,,Older Apify task 3,,Y,,N,investment management corporation of ontario,Unverified,Sector/region/priority assigned by Claude - review. Older task 3 excludes org 'IMCO Carbide Tool Inc.',legacy,IMCO,Y
+Ontario Pension Board,P1,Pension / Retirement,Canada,,,Older Apify task 3,,Y,,N,Ontario Pension Board,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+OPTrust,P1,Pension / Retirement,Canada,,,Older Apify task 3,,Y,,N,OPTrust,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Alberta Heritage Savings Trust Fund,P1,Sovereign Wealth,Canada,,,Older Apify task 3,,Y,,N,Alberta Heritage Savings Trust Fund,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+NEPC,P2,Investment Consultant / OCIO,United States,,,Older Apify task 3,,Y,,N,NEPC,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Callan,P2,Investment Consultant / OCIO,United States,,,Older Apify task 3,,Y,,N,Callan,Unverified,Sector/region/priority assigned by Claude - review. Short name; check look-alikes,legacy,,Y
+Meketa,P2,Investment Consultant / OCIO,United States,,,Older Apify task 3,,Y,,N,Meketa,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Strategic Investment Group,P2,Investment Consultant / OCIO,United States,,,Older Apify task 3,,Y,,N,Strategic Investment Group,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Hirtle Callaghan,P2,Investment Consultant / OCIO,United States,,,Older Apify task 3,,Y,,N,Hirtle Callaghan,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Spider Management,P2,Investment Consultant / OCIO,United States,,,Older Apify task 3,,Y,,N,Spider Management,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Global Endowment Management,P2,Investment Consultant / OCIO,United States,,,Older Apify task 3,,Y,,N,Global Endowment Management,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Summit Rock Advisors,P2,Investment Consultant / OCIO,United States,,,Older Apify task 3,,Y,,N,Summit Rock,Unverified,Sector/region/priority assigned by Claude - review. Sector assumed,legacy,,Y
+ICG Advisors,P2,Investment Consultant / OCIO,United States,,,Older Apify task 3,,Y,,N,ICG Advisors,Unverified,Sector/region/priority assigned by Claude - review. Not the same as ICG above,legacy,,Y
+Pathway Capital Management,P2,Private Equity,United States,,,Older Apify task 3/4,,Y,,N,Pathway Capital,Unverified,Sector/region/priority assigned by Claude - review. In two older tasks,legacy,,Y
+CF Private Equity,P2,Private Equity,United States,,,Older Apify task 3,,Y,,N,CF Private Equity,Unverified,Sector/region/priority assigned by Claude - review. Firm unclear; sector assumed,legacy,,Y
+Russell Investments,P2,Investment Consultant / OCIO,United States,,,Older Apify task 3,,Y,,N,Russell Investments,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+MAI Capital Management,P2,Wealth Management,United States,,,Older Apify task 3,,Y,,N,MAI Capital,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Cerity Partners,P2,Wealth Management,United States,,,Older Apify task 3,,Y,,N,Cerity Partners,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Glenmede,P2,Wealth Management,United States,,,Older Apify task 3,,Y,,N,Glenmede,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Mubadala,P1,Sovereign Wealth,Middle East,,,Older Apify task 4,,Y,,N,Mubadala,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Public Investment Fund,P1,Sovereign Wealth,Middle East,,,Older Apify task 4,,Y,,N,Public Investment Fund,Unverified,Sector/region/priority assigned by Claude - review.,legacy,PIF,Y
+Norges Bank Investment Management,P1,Sovereign Wealth,Europe,,,Older Apify task 4,,Y,,N,Norges Bank Investment Management,Unverified,Sector/region/priority assigned by Claude - review.,legacy,NBIM,Y
+Korea Investment Corporation,P1,Sovereign Wealth,Asia,,,Older Apify task 4,,Y,,N,Korea Investment Corporation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,KIC,Y
+Kuwait Investment Authority,P1,Sovereign Wealth,Middle East,,,Older Apify task 4,,Y,,N,Kuwait Investment Authority,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Wafra,P2,Multi-strategy Alternatives,United States,,,Older Apify task 4,,Y,,N,Wafra,Unverified,Sector/region/priority assigned by Claude - review. Sector assumed,legacy,,Y
+Caisse de dépôt et placement du Québec (CDPQ),P1,Pension / Retirement,Canada,,,Older Apify task 4,,Y,,N,Caisse de dépôt,Unverified,Sector/region/priority assigned by Claude - review.,legacy,CDPQ,Y
+Wallace Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,Wallace Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Rockefeller Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,Rockefeller Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Gates Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,Bill & Melinda Gates Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,Gates Foundation,Y
+Lilly Endowment,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,Lilly Endowment,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+J. Paul Getty Trust,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,J. Paul Getty Trust,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Robert Wood Johnson Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,Robert Wood Johnson Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+William and Flora Hewlett Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,William and Flora Hewlett Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Andrew W. Mellon Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,Andrew W. Mellon Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+John D. and Catherine T. MacArthur Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,John D. and Catherine T. MacArthur Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Gordon and Betty Moore Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,Gordon and Betty Moore Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+David and Lucile Packard Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,David and Lucile Packard Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+W.K. Kellogg Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,W.K. Kellogg Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Leona M. and Harry B. Helmsley Charitable Trust,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,Leona M. and Harry B. Helmsley Charitable Trust,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+The California Endowment,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,The California Endowment,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+The Kresge Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,The Kresge Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Doris Duke Charitable Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,Doris Duke Charitable Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Alfred P. Sloan Foundation,P1,Endowment / Foundation,United States,,,Older Apify task 4,,Y,,N,Alfred P. Sloan Foundation,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Brown Advisory,P2,Wealth Management,United States,,,Older Apify task 4,,Y,,N,Brown Advisory,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+HarbourVest Partners,P2,Secondaries,United States,,,Older Apify task 4,,Y,,N,Harbourvest,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Lexington Partners,P2,Secondaries,United States,,,Older Apify task 4,,Y,,N,Lexington Partners,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Lombard Odier,P2,Wealth Management,Europe,,,Older Apify task 4,,Y,,N,Lombard Odier,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Blue Pool Capital,P1,Family Office,Asia,,,Older Apify task 4,,Y,,N,Blue Pool Capital,Unverified,Sector/region/priority assigned by Claude - review. Region assumed,legacy,,Y
+JFG Advisors,P2,Wealth Management,United States,,,Older Apify task 4/5,,Y,,N,JFG Advisors,Unverified,Sector/region/priority assigned by Claude - review. In two older tasks; sector assumed,legacy,,Y
+AlTi Tiedemann Global,P2,Wealth Management,United States,,,Older Apify task 4,,Y,,N,AlTi Tiedemann Global,Unverified,Sector/region/priority assigned by Claude - review.,legacy,AlTi,Y
+Homrich Berg,P2,Wealth Management,United States,,,Older Apify task 4,,Y,,N,Homrich Berg,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+WE Family Offices,P1,Family Office,United States,,,Older Apify task 4,,Y,,N,WE Family Offices,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Tolleson Wealth Management,P2,Wealth Management,United States,,,Older Apify task 4,,Y,,N,Tolleson Wealth Management,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Bow River Capital,P2,Private Equity,United States,,,Older Apify task 4,,Y,,N,Bow River,Unverified,Sector/region/priority assigned by Claude - review. Sector assumed; short name,legacy,,Y
+IEQ Capital,P2,Wealth Management,United States,,,Older Apify task 4,,Y,,N,IEQ Capital,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Jasper Ridge Partners,P2,Wealth Management,United States,,,Older Apify task 4,,Y,,N,Jasper Ridge,Unverified,Sector/region/priority assigned by Claude - review. Sector assumed,legacy,,Y
+Lincoln Financial Group,P2,Insurance,United States,,,Older Apify task 4,,Y,,N,Lincoln Financial Group,Unverified,Sector/region/priority assigned by Claude - review. Large insurer; expect many non-investment roles,legacy,,Y
+Bayshore Global Management,P2,Wealth Management,United States,,,Older Apify task 5,,Y,,N,Bayshore Global,Unverified,Sector/region/priority assigned by Claude - review. Sector assumed,legacy,,Y
+Willett Advisors,P1,Family Office,United States,,,Older Apify task 5,,Y,,N,Willett Advisors,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Soros Fund Management,P2,Hedge Fund,United States,,,Older Apify task 5,,Y,,N,Soros Fund Management,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+NewEdge Capital Group,P2,Wealth Management,United States,,,Older Apify task 5,,Y,,N,NewEdge Capital Group,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Beacon Pointe Advisors,P2,Wealth Management,United States,,,Older Apify task 5,,Y,,N,Beacon Pointe Advisors,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+HB Wealth,P2,Wealth Management,United States,,,Older Apify task 5,,Y,,N,HB Wealth,Unverified,Sector/region/priority assigned by Claude - review.,legacy,,Y
+Cascade Asset Management,P2,Wealth Management,United States,,,Older Apify task 5,,Y,,N,Cascade Asset Management,Unverified,Sector/region/priority assigned by Claude - review. Firm unclear (not Cascade Investment); sector assumed,legacy,,Y
+PSG Equity,P1,Growth Equity,United States,"Boston, MA",30.2,Praxis Rock SEC Form ADV directories (2026),,,,,PSG Equity,Not yet tested,,,,N
+FTV Capital,P1,Growth Equity,United States,"San Francisco, CA",11.9,Praxis Rock SEC Form ADV directories (2026),,,,,FTV Capital,Not yet tested,,,,N
+Stripes,P2,Growth Equity,United States,"New York, NY",8.1,Praxis Rock SEC Form ADV directories (2026),,,Y,,Stripes,Not yet tested,,,,N
+Spectrum Equity,P2,Growth Equity,United States,"Boston, MA",7.3,Praxis Rock SEC Form ADV directories (2026),,,,,Spectrum Equity,Not yet tested,,,,N
+Silversmith Capital Partners,P2,Growth Equity,United States,"Boston, MA",7.2,Praxis Rock SEC Form ADV directories (2026),,,,,Silversmith Capital Partners,Not yet tested,,,,N
+Lead Edge Capital,P2,Growth Equity,United States,"New York, NY",6.8,Praxis Rock SEC Form ADV directories (2026),,,,,Lead Edge Capital,Not yet tested,,,,N
+Level Equity,P2,Growth Equity,United States,"New York, NY",6.5,Praxis Rock SEC Form ADV directories (2026),,,,,Level Equity,Not yet tested,,,,N
+Glade Brook Capital Partners,P2,Growth Equity,United States,"Greenwich, CT",4,Praxis Rock SEC Form ADV directories (2026),,,,,Glade Brook Capital Partners,Not yet tested,,,,N
+Mainsail Partners,P3,Growth Equity,United States,"Austin, TX",4,Praxis Rock SEC Form ADV directories (2026),,,,,Mainsail Partners,Not yet tested,,,,N
+Verdane,P3,Growth Equity,Europe,"Oslo, Norway",4,Praxis Rock SEC Form ADV directories (2026),,,Y,,Verdane,Not yet tested,,,,N
+Edison Partners,P3,Growth Equity,United States,"Princeton, NJ",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,Edison Partners,Not yet tested,,,,N
+SageView Capital,P3,Growth Equity,United States,"Greenwich, CT",2.3,Praxis Rock SEC Form ADV directories (2026),,,,,SageView Capital,Not yet tested,,,,N
+Volition Capital,P3,Growth Equity,United States,"Boston, MA",2.3,Praxis Rock SEC Form ADV directories (2026),,,,,Volition Capital,Not yet tested,,,,N
+Long Ridge Equity Partners,P3,Growth Equity,United States,"New York, NY",2.1,Praxis Rock SEC Form ADV directories (2026),,,,,Long Ridge Equity Partners,Not yet tested,,,,N
+Qube Research & Technologies,P1,Hedge Fund,Europe,"London, UK",580.4,Praxis Rock SEC Form ADV directories (2026),,,,,Qube Research & Technologies,Not yet tested,,,,N
+Capula Investment Management,P1,Hedge Fund,Europe,"London, UK",568.9,Praxis Rock SEC Form ADV directories (2026),,,,,Capula Investment Management,Not yet tested,,,,N
+Symmetry Investments,P2,Hedge Fund,Europe,"St Helier, Jersey",394.9,Praxis Rock SEC Form ADV directories (2026),,,,,Symmetry Investments,Not yet tested,,,,N
+LMR Partners,P2,Hedge Fund,United States,"New York, NY",374.1,Praxis Rock SEC Form ADV directories (2026),,,,,LMR Partners,Not yet tested,,,,N
+Arrowstreet Capital,P2,Hedge Fund,United States,"Boston, MA",351.3,Praxis Rock SEC Form ADV directories (2026),,,,,Arrowstreet Capital,Not yet tested,,,,N
+Marshall Wace,P1,Hedge Fund,Europe,"London, UK",316.3,Praxis Rock SEC Form ADV directories (2026); Altss largest hedge funds in Europe,,,,,Marshall Wace,Not yet tested,,,,N
+Brevan Howard,P1,Hedge Fund,Europe,"St Helier, Jersey",295.9,Praxis Rock SEC Form ADV directories (2026),,,,,Brevan Howard,Not yet tested,,,,N
+Squarepoint,P2,Hedge Fund,United States,"New York, NY",227,Praxis Rock SEC Form ADV directories (2026),,,Y,,Squarepoint,Not yet tested,,,,N
+Rokos Capital Management,P1,Hedge Fund,Europe,"London, UK",219.4,Praxis Rock SEC Form ADV directories (2026),,,,,Rokos Capital Management,Not yet tested,,,,N
+Garda Capital Partners,P2,Hedge Fund,United States,"Wayzata, MN",207.1,Praxis Rock SEC Form ADV directories (2026),,,,,Garda Capital Partners,Not yet tested,,,,N
+Mariner Investment Group,P2,Hedge Fund,United States,"New York, NY",176.3,Praxis Rock SEC Form ADV directories (2026),,,,,Mariner Investment Group,Not yet tested,,,,N
+Alphadyne Asset Management,P2,Hedge Fund,United States,"New York, NY",164.8,Praxis Rock SEC Form ADV directories (2026),,,,,Alphadyne Asset Management,Not yet tested,,,,N
+TPG Angelo Gordon,P2,Hedge Fund,United States,"New York, NY",115.9,Praxis Rock SEC Form ADV directories (2026),,Y,,,TPG Angelo Gordon,Not yet tested,,,,N
+Bracebridge Capital,P2,Hedge Fund,United States,"Boston, MA",114.9,Praxis Rock SEC Form ADV directories (2026),,,,,Bracebridge Capital,Not yet tested,,,,N
+Lighthouse Investment Partners,P2,Hedge Fund,United States,"Palm Beach Gardens, FL",107.4,Praxis Rock SEC Form ADV directories (2026),,,,,Lighthouse Investment Partners,Not yet tested,,,,N
+Tudor Investment Corporation,P2,Hedge Fund,United States,"Stamford, CT",106.8,Praxis Rock SEC Form ADV directories (2026),,,,,Tudor Investment Corporation,Not yet tested,,,,N
+Kedalion Capital Management,P2,Hedge Fund,Europe,"London, UK",104.5,Praxis Rock SEC Form ADV directories (2026),,,,,Kedalion Capital Management,Not yet tested,,,,N
+Capstone Investment Advisors,P2,Hedge Fund,United States,"New York, NY",91.5,Praxis Rock SEC Form ADV directories (2026),,,,,Capstone Investment Advisors,Not yet tested,,,,N
+III Capital Management,P2,Hedge Fund,United States,"Boca Raton, FL",88.2,Praxis Rock SEC Form ADV directories (2026),,,,,III Capital Management,Not yet tested,,,,N
+TCI Fund Management,P1,Hedge Fund,Europe,"London, UK",77.7,Praxis Rock SEC Form ADV directories (2026); Altss largest hedge funds in Europe,,,,,TCI Fund Management,Not yet tested,,,,N
+OC Investment Management,P2,Hedge Fund,United States,"Miami, FL",75.9,Praxis Rock SEC Form ADV directories (2026),,,,,OC Investment Management,Not yet tested,,,,N
+Caxton Associates,P2,Hedge Fund,Europe,"London, UK",71.6,Praxis Rock SEC Form ADV directories (2026),,,,,Caxton Associates,Not yet tested,,,,N
+Adage Capital Management,P2,Hedge Fund,United States,"Boston, MA",70.4,Praxis Rock SEC Form ADV directories (2026),,,,,Adage Capital Management,Not yet tested,,,,N
+Fulcrum Asset Management,P2,Hedge Fund,Europe,"London, UK",69.1,Praxis Rock SEC Form ADV directories (2026),,,,,Fulcrum Asset Management,Not yet tested,,,,N
+Man Group (AHL),P1,Hedge Fund,Europe,"London, UK",68,Praxis Rock SEC Form ADV directories (2026); Altss largest hedge funds in Europe,,,,,Man Group (AHL),Not yet tested,,,,N
+Elan Capital Management,P2,Hedge Fund,Europe,"London, UK",59.5,Praxis Rock SEC Form ADV directories (2026),,,,,Elan Capital Management,Not yet tested,,,,N
+Tenaron Capital Management,P2,Hedge Fund,United States,"New York, NY",56.4,Praxis Rock SEC Form ADV directories (2026),,,,,Tenaron Capital Management,Not yet tested,,,,N
+Walleye Capital,P2,Hedge Fund,United States,"Wayzata, MN",53.3,Praxis Rock SEC Form ADV directories (2026),,,,,Walleye Capital,Not yet tested,,,,N
+Holocene Advisors,P2,Hedge Fund,United States,"New York, NY",50.4,Praxis Rock SEC Form ADV directories (2026),,,,,Holocene Advisors,Not yet tested,,,,N
+Element Capital Management,P2,Hedge Fund,United States,"New York, NY",46.4,Praxis Rock SEC Form ADV directories (2026),,,,,Element Capital Management,Not yet tested,,,,N
+Graham Capital Management,P2,Hedge Fund,United States,"Rowayton, CT",42.9,Praxis Rock SEC Form ADV directories (2026),,,,,Graham Capital Management,Not yet tested,,,,N
+Alyeska Investment Group,P2,Hedge Fund,United States,"Chicago, IL",41.7,Praxis Rock SEC Form ADV directories (2026),,,,,Alyeska Investment Group,Not yet tested,,,,N
+Hudson Bay Capital Management,P2,Hedge Fund,United States,"Stamford, CT",41.7,Praxis Rock SEC Form ADV directories (2026),,,,,Hudson Bay Capital Management,Not yet tested,,,,N
+Linden Advisors,P2,Hedge Fund,United States,"New York, NY",38.8,Praxis Rock SEC Form ADV directories (2026),,,,,Linden Advisors,Not yet tested,,,,N
+Polar Asset Management Partners,P2,Hedge Fund,Canada,"Toronto, Canada",37.9,Praxis Rock SEC Form ADV directories (2026),,,,,Polar Asset Management Partners,Not yet tested,,,,N
+Woodline Partners,P2,Hedge Fund,United States,"San Francisco, CA",36.7,Praxis Rock SEC Form ADV directories (2026),,,,,Woodline Partners,Not yet tested,,,,N
+Select Equity Group,P2,Hedge Fund,United States,"New York, NY",36.4,Praxis Rock SEC Form ADV directories (2026),,,,,Select Equity Group,Not yet tested,,,,N
+Voloridge Investment Management,P2,Hedge Fund,United States,"Jupiter, FL",36.2,Praxis Rock SEC Form ADV directories (2026),,,,,Voloridge Investment Management,Not yet tested,,,,N
+HBK Capital Management,P2,Hedge Fund,United States,"Dallas, TX",35.6,Praxis Rock SEC Form ADV directories (2026),,,,,HBK Capital Management,Not yet tested,,,,N
+King Street Capital Management,P2,Hedge Fund,United States,"New York, NY",34.7,Praxis Rock SEC Form ADV directories (2026),,,,,King Street Capital Management,Not yet tested,,,,N
+Alkeon Capital Management,P2,Hedge Fund,United States,"New York, NY",34.4,Praxis Rock SEC Form ADV directories (2026),,,,,Alkeon Capital Management,Not yet tested,,,,N
+Pacific Way Capital Management,P2,Hedge Fund,United States,"New York, NY",33.6,Praxis Rock SEC Form ADV directories (2026),,,,,Pacific Way Capital Management,Not yet tested,,,,N
+Jain Global,P3,Hedge Fund,United States,"New York, NY",32.4,Praxis Rock SEC Form ADV directories (2026),,,,,Jain Global,Not yet tested,,,,N
+Magnetar Capital,P3,Hedge Fund,United States,"Evanston, IL",32,Praxis Rock SEC Form ADV directories (2026),,,,,Magnetar Capital,Not yet tested,,,,N
+Paloma Partners,P3,Hedge Fund,United States,"Greenwich, CT",32,Praxis Rock SEC Form ADV directories (2026),,,,,Paloma Partners,Not yet tested,,,,N
+Voleon Capital Management,P3,Hedge Fund,United States,"Berkeley, CA",29.4,Praxis Rock SEC Form ADV directories (2026),,,,,Voleon Capital Management,Not yet tested,,,,N
+Third Point,P1,Hedge Fund,United States,"New York, NY",28.7,Praxis Rock SEC Form ADV directories (2026),,,,,Third Point,Not yet tested,,,,N
+Baker Brothers Investments,P3,Hedge Fund,United States,"New York, NY",28.1,Praxis Rock SEC Form ADV directories (2026),,,,,Baker Brothers Investments,Not yet tested,,,,N
+Compass Rose Asset Management,P3,Hedge Fund,United States,"New York, NY",27.5,Praxis Rock SEC Form ADV directories (2026),,,,,Compass Rose Asset Management,Not yet tested,,,,N
+Algebris Investments,P3,Hedge Fund,Europe,"London, UK",27.3,Praxis Rock SEC Form ADV directories (2026),,,,,Algebris Investments,Not yet tested,,,,N
+Kirkoswald Asset Management,P3,Hedge Fund,United States,"New York, NY",27.2,Praxis Rock SEC Form ADV directories (2026),,,,,Kirkoswald Asset Management,Not yet tested,,,,N
+Lone Pine Capital,P1,Hedge Fund,United States,"Greenwich, CT",26.1,Praxis Rock SEC Form ADV directories (2026),,,,,Lone Pine Capital,Not yet tested,,,,N
+The Baupost Group,P1,Hedge Fund,United States,"Boston, MA",24.7,Praxis Rock SEC Form ADV directories (2026),,,,,The Baupost Group,Not yet tested,,,,N
+Systematica Investments,P3,Hedge Fund,Europe,"Geneva, Switzerland",23.8,Praxis Rock SEC Form ADV directories (2026),,,,,Systematica Investments,Not yet tested,,,,N
+Soroban Capital Partners,P3,Hedge Fund,United States,"New York, NY",23.3,Praxis Rock SEC Form ADV directories (2026),,,,,Soroban Capital Partners,Not yet tested,,,,N
+Engineers Gate,P3,Hedge Fund,United States,"New York, NY",23.2,Praxis Rock SEC Form ADV directories (2026),,,,,Engineers Gate,Not yet tested,,,,N
+Himalaya Capital,P3,Hedge Fund,United States,"Seattle, WA",21.4,Praxis Rock SEC Form ADV directories (2026),,,,,Himalaya Capital,Not yet tested,,,,N
+Universa Investments,P3,Hedge Fund,United States,"Miami, FL",21.3,Praxis Rock SEC Form ADV directories (2026),,,,,Universa Investments,Not yet tested,,,,N
+Ellington Management Group,P3,Hedge Fund,United States,"Old Greenwich, CT",20.8,Praxis Rock SEC Form ADV directories (2026),,,,,Ellington Management Group,Not yet tested,,,,N
+Centiva Capital,P3,Hedge Fund,United States,"New York, NY",20.6,Praxis Rock SEC Form ADV directories (2026),,,,,Centiva Capital,Not yet tested,,,,N
+PDT Partners,P3,Hedge Fund,United States,"New York, NY",20.1,Praxis Rock SEC Form ADV directories (2026),,,,,PDT Partners,Not yet tested,,,,N
+Pentwater Capital Management,P3,Hedge Fund,United States,"Naples, FL",19.3,Praxis Rock SEC Form ADV directories (2026),,,,,Pentwater Capital Management,Not yet tested,,,,N
+Deerfield Management,P3,Hedge Fund,United States,"New York, NY",19.2,Praxis Rock SEC Form ADV directories (2026),,,,,Deerfield Management,Not yet tested,,,,N
+Egerton Capital,P1,Hedge Fund,Europe,"London, UK",19.1,Praxis Rock SEC Form ADV directories (2026); Altss largest hedge funds in Europe,,,,,Egerton Capital,Not yet tested,,,,N
+JJJ Capital Management,P3,Hedge Fund,Europe,"London, UK",18.6,Praxis Rock SEC Form ADV directories (2026),,,,,JJJ Capital Management,Not yet tested,,,,N
+Durable Capital Partners,P3,Hedge Fund,United States,"Bethesda, MD",18.4,Praxis Rock SEC Form ADV directories (2026),,,,,Durable Capital Partners,Not yet tested,,,,N
+Saba Capital Management,P1,Hedge Fund,United States,"New York, NY",18.3,Praxis Rock SEC Form ADV directories (2026); Global Alts Miami 2026 speaker list,,,,,Saba Capital Management,Not yet tested,,,,N
+Boothbay Fund Management,P3,Hedge Fund,United States,"New York, NY",18,Praxis Rock SEC Form ADV directories (2026),,,,,Boothbay Fund Management,Not yet tested,,,,N
+Cevian Capital,P1,Hedge Fund,Europe,"St Helier, Jersey",17.8,Praxis Rock SEC Form ADV directories (2026),,,,,Cevian Capital,Not yet tested,,,,N
+Darsana Capital Partners,P3,Hedge Fund,United States,"New York, NY",16.7,Praxis Rock SEC Form ADV directories (2026),,,,,Darsana Capital Partners,Not yet tested,,,,N
+Freestone Grove Partners,P3,Hedge Fund,United States,"San Francisco, CA",16.5,Praxis Rock SEC Form ADV directories (2026),,,,,Freestone Grove Partners,Not yet tested,,,,N
+Jericho Capital Asset Management,P3,Hedge Fund,United States,"Los Angeles, CA",16.3,Praxis Rock SEC Form ADV directories (2026),,,,,Jericho Capital Asset Management,Not yet tested,,,,N
+Maverick Capital,P3,Hedge Fund,United States,"Dallas, TX",15.8,Praxis Rock SEC Form ADV directories (2026),,,,,Maverick Capital,Not yet tested,,,,N
+Whitebox Advisors,P3,Hedge Fund,United States,"Minneapolis, MN",15.7,Praxis Rock SEC Form ADV directories (2026),,,,,Whitebox Advisors,Not yet tested,,,,N
+Weiss Asset Management,P3,Hedge Fund,United States,"Boston, MA",15.6,Praxis Rock SEC Form ADV directories (2026),,,,,Weiss Asset Management,Not yet tested,,,,N
+Wolverine Asset Management,P3,Hedge Fund,United States,"Chicago, IL",14.8,Praxis Rock SEC Form ADV directories (2026),,,,,Wolverine Asset Management,Not yet tested,,,,N
+Capital Fund Management (CFM),P3,Hedge Fund,Europe,"Paris, France",14.7,Praxis Rock SEC Form ADV directories (2026),,,,,Capital Fund Management (CFM),Not yet tested,,,,N
+Pharo Management,P3,Hedge Fund,Europe,"London, UK",14.6,Praxis Rock SEC Form ADV directories (2026); Altss largest hedge funds in Europe,,,,,Pharo Management,Not yet tested,,,,N
+Maplecap Partners,P3,Hedge Fund,Europe,"Pfaeffikon, Switzerland",14.1,Praxis Rock SEC Form ADV directories (2026),,,,,Maplecap Partners,Not yet tested,,,,N
+SRS Investment Management,P3,Hedge Fund,United States,"New York, NY",14,Praxis Rock SEC Form ADV directories (2026),,,,,SRS Investment Management,Not yet tested,,,,N
+Abrams Capital Management,P3,Hedge Fund,United States,"Boston, MA",13.7,Praxis Rock SEC Form ADV directories (2026),,,,,Abrams Capital Management,Not yet tested,,,,N
+Avoro Capital Advisors,P3,Hedge Fund,United States,"New York, NY",13.6,Praxis Rock SEC Form ADV directories (2026),,,,,Avoro Capital Advisors,Not yet tested,,,,N
+Haidar Capital Management,P3,Hedge Fund,United States,"Pearl River, NY",13.4,Praxis Rock SEC Form ADV directories (2026),,,,,Haidar Capital Management,Not yet tested,,,,N
+AKO Capital,P1,Hedge Fund,Europe,"London, UK",,Altss largest hedge funds in Europe,,,,,AKO Capital,Not yet tested,,,,N
+Atreides Management,P1,Hedge Fund,United States,"Boston, MA",,Global Alts Miami 2026 speaker list,,,,,Atreides Management,Not yet tested,,,,N
+Lansdowne Partners,P1,Hedge Fund,Europe,"London, UK",,Altss largest hedge funds in Europe,,,,,Lansdowne Partners,Not yet tested,,,,N
+Winton,P1,Hedge Fund,Europe,"London, UK",,Altss largest hedge funds in Europe,,,Y,,Winton,Not yet tested,,,,N
+Stonepeak,P2,Infrastructure,United States,"New York, NY",81.9,Praxis Rock SEC Form ADV directories (2026),,,Y,,Stonepeak,Not yet tested,,,,Y
+I Squared Capital,P2,Infrastructure,United States,"Miami, FL",66.4,Praxis Rock SEC Form ADV directories (2026),,,,,I Squared Capital,Not yet tested,,,,Y
+DigitalBridge,P3,Infrastructure,United States,"Boca Raton, FL",61.1,Praxis Rock SEC Form ADV directories (2026),,,Y,,DigitalBridge,Not yet tested,,,,N
+Brookfield Asset Management,P2,Multi-strategy Alternatives,Canada,"Toronto, Canada",152.1,Praxis Rock SEC Form ADV directories (2026),,,,,Brookfield Asset Management,Not yet tested,,,,N
+Elliott Investment Management,P2,Multi-strategy Alternatives,United States,"West Palm Beach, FL",128.6,Praxis Rock SEC Form ADV directories (2026),,,,,Elliott Investment Management,Not yet tested,,,,N
+Sixth Street,P2,Multi-strategy Alternatives,United States,"Dallas, TX",101.6,Praxis Rock SEC Form ADV directories (2026),,,,,Sixth Street,Not yet tested,,,,N
+Fortress Investment Group,P2,Multi-strategy Alternatives,United States,"New York, NY",99.4,Praxis Rock SEC Form ADV directories (2026),,,,,Fortress Investment Group,Not yet tested,,,,N
+Cerberus Capital Management,P2,Multi-strategy Alternatives,United States,"New York, NY",97.7,Praxis Rock SEC Form ADV directories (2026),,,,,Cerberus Capital Management,Not yet tested,,,,N
+Blue Owl GP Strategic Capital,P3,Multi-strategy Alternatives,United States,"New York, NY",95.1,Praxis Rock SEC Form ADV directories (2026),,,,,Blue Owl GP Strategic Capital,Not yet tested,,,,N
+H.I.G. Capital,P3,Multi-strategy Alternatives,United States,"Miami, FL",72.3,Praxis Rock SEC Form ADV directories (2026),,,,,H.I.G. Capital,Not yet tested,,,,N
+Sculptor Capital,P3,Multi-strategy Alternatives,United States,"New York, NY",68.5,Praxis Rock SEC Form ADV directories (2026),,,,,Sculptor Capital,Not yet tested,,,,N
+Ardian,P3,Multi-strategy Alternatives,Europe,"Paris, France",67.1,Praxis Rock SEC Form ADV directories (2026),,,Y,,Ardian,Not yet tested,,,,N
+Eldridge Industries,P1,Multi-strategy Alternatives,United States,"Greenwich, CT",8.5,Praxis Rock SEC Form ADV directories (2026); Global Alts Miami 2026 speaker list,,,,,Eldridge Industries,Not yet tested,,,,N
+Silver Point Capital,P1,Private Credit,United States,"Greenwich, CT",50.8,Praxis Rock SEC Form ADV directories (2026),,,,,Silver Point Capital,Not yet tested,,,,N
+Crescent Capital Group,P1,Private Credit,United States,"Los Angeles, CA",49.7,Praxis Rock SEC Form ADV directories (2026),,,,,Crescent Capital Group,Not yet tested,,,,N
+Antares Capital,P1,Private Credit,United States,"Chicago, IL",47.4,Praxis Rock SEC Form ADV directories (2026),,,,,Antares Capital,Not yet tested,,,,N
+Blue Owl Credit,P1,Private Credit,United States,"New York, NY",46.1,Praxis Rock SEC Form ADV directories (2026),,,,,Blue Owl Credit,Not yet tested,,,,N
+CIFC Asset Management,P1,Private Credit,United States,"Miami, FL",44.6,Praxis Rock SEC Form ADV directories (2026),,,,,CIFC Asset Management,Not yet tested,,,,N
+Cheyne Capital,P1,Private Credit,Europe,"London, UK",39.9,Praxis Rock SEC Form ADV directories (2026); Altss largest hedge funds in Europe,,,,,Cheyne Capital,Not yet tested,,,,N
+Sound Point Capital Management,P1,Private Credit,United States,"New York, NY",37,Praxis Rock SEC Form ADV directories (2026),,,,,Sound Point Capital Management,Not yet tested,,,,N
+Arini Capital Management,P1,Private Credit,Europe,"London, UK",35.5,Praxis Rock SEC Form ADV directories (2026),,,,,Arini Capital Management,Not yet tested,,,,N
+Castlelake,P1,Private Credit,United States,"Minneapolis, MN",35.3,Praxis Rock SEC Form ADV directories (2026),,,Y,,Castlelake,Not yet tested,,,,N
+Octagon Credit Investors,P1,Private Credit,United States,"New York, NY",35.1,Praxis Rock SEC Form ADV directories (2026),,,,,Octagon Credit Investors,Not yet tested,,,,N
+Monarch Alternative Capital,P1,Private Credit,United States,"New York, NY",34.4,Praxis Rock SEC Form ADV directories (2026),,,,,Monarch Alternative Capital,Not yet tested,,,,N
+Sona Asset Management,P1,Private Credit,Europe,"London, UK",33.5,Praxis Rock SEC Form ADV directories (2026); Altss largest hedge funds in Europe,,,,,Sona Asset Management,Not yet tested,,,,N
+Redding Ridge Asset Management,P1,Private Credit,United States,"New York, NY",33.3,Praxis Rock SEC Form ADV directories (2026),,,,,Redding Ridge Asset Management,Not yet tested,,,,N
+Brigade Capital Management,P1,Private Credit,United States,"New York, NY",33,Praxis Rock SEC Form ADV directories (2026),,,,,Brigade Capital Management,Not yet tested,,,,N
+Muzinich & Co.,P1,Private Credit,United States,"New York, NY",31.3,Praxis Rock SEC Form ADV directories (2026),,,,,Muzinich & Co.,Not yet tested,,,,N
+Marathon Asset Management,P1,Private Credit,United States,"New York, NY",30.5,Praxis Rock SEC Form ADV directories (2026),,,,,Marathon Asset Management,Not yet tested,,,,N
+Diameter Capital Partners,P1,Private Credit,United States,"New York, NY",30.1,Praxis Rock SEC Form ADV directories (2026),,,,,Diameter Capital Partners,Not yet tested,,,,N
+Beach Point Capital Management,P1,Private Credit,United States,"Santa Monica, CA",29.8,Praxis Rock SEC Form ADV directories (2026),,,,,Beach Point Capital Management,Not yet tested,,,,N
+Benefit Street Partners,P1,Private Credit,United States,"New York, NY",28.3,Praxis Rock SEC Form ADV directories (2026),,,,,Benefit Street Partners,Not yet tested,,,,N
+Anchorage Capital,P1,Private Credit,United States,"New York, NY",27.8,Praxis Rock SEC Form ADV directories (2026),,,,,Anchorage Capital,Not yet tested,,,,N
+The Palisades Group,P1,Private Credit,United States,"Austin, TX",27.8,Praxis Rock SEC Form ADV directories (2026),,,,,The Palisades Group,Not yet tested,,,,N
+Audax Private Debt,P1,Private Credit,United States,"New York, NY",26,Praxis Rock SEC Form ADV directories (2026),,,,,Audax Private Debt,Not yet tested,,,,N
+Palmer Square Capital Management,P1,Private Credit,United States,"Mission Woods, KS",25.6,Praxis Rock SEC Form ADV directories (2026),,,,,Palmer Square Capital Management,Not yet tested,,,,N
+Park Square Capital,P1,Private Credit,Europe,"London, UK",22.7,Praxis Rock SEC Form ADV directories (2026),,,,,Park Square Capital,Not yet tested,,,,N
+Crestline Investors,P1,Private Credit,United States,"Fort Worth, TX",22.5,Praxis Rock SEC Form ADV directories (2026),,,,,Crestline Investors,Not yet tested,,,,N
+Prime Finance,P2,Private Credit,United States,"San Francisco, CA",22.2,Praxis Rock SEC Form ADV directories (2026),,,,,Prime Finance,Not yet tested,,,,N
+Waterfall Asset Management,P2,Private Credit,United States,"New York, NY",22,Praxis Rock SEC Form ADV directories (2026),,,,,Waterfall Asset Management,Not yet tested,,,,N
+Hildene Capital Management,P2,Private Credit,United States,"Stamford, CT",20.2,Praxis Rock SEC Form ADV directories (2026),,,,,Hildene Capital Management,Not yet tested,,,,N
+Knighthead Capital Management,P2,Private Credit,United States,"New York, NY",19,Praxis Rock SEC Form ADV directories (2026),,,,,Knighthead Capital Management,Not yet tested,,,,N
+AB CarVal Investors,P2,Private Credit,United States,"Minneapolis, MN",18.4,Praxis Rock SEC Form ADV directories (2026),,,,,AB CarVal Investors,Not yet tested,,,,N
+Acore Capital,P2,Private Credit,United States,"New York, NY",18.3,Praxis Rock SEC Form ADV directories (2026),,,,,Acore Capital,Not yet tested,,,,N
+LibreMax Capital,P2,Private Credit,United States,"New York, NY",17.4,Praxis Rock SEC Form ADV directories (2026),,,,,LibreMax Capital,Not yet tested,,,,N
+Fiera Capital,P2,Private Credit,Canada,"Montreal, Canada",17.3,Praxis Rock SEC Form ADV directories (2026),,,,,Fiera Capital,Not yet tested,,,,N
+Varde Partners,P2,Private Credit,United States,"Minneapolis, MN",16.1,Praxis Rock SEC Form ADV directories (2026),,,,,Varde Partners,Not yet tested,,,,N
+Napier Park Global Capital,P2,Private Credit,United States,"New York, NY",14.6,Praxis Rock SEC Form ADV directories (2026),,,,,Napier Park Global Capital,Not yet tested,,,,N
+Permira Credit,P2,Private Credit,Europe,"London, UK",14.5,Praxis Rock SEC Form ADV directories (2026),,,,,Permira Credit,Not yet tested,,,,N
+Kayne Anderson Capital Advisors,P2,Private Credit,United States,"Houston, TX",14.3,Praxis Rock SEC Form ADV directories (2026),,,,,Kayne Anderson Capital Advisors,Not yet tested,,,,N
+Eagle Point Credit Management,P2,Private Credit,United States,"Greenwich, CT",13.2,Praxis Rock SEC Form ADV directories (2026),,,,,Eagle Point Credit Management,Not yet tested,,,,N
+Post Advisory Group,P2,Private Credit,United States,"Los Angeles, CA",13,Praxis Rock SEC Form ADV directories (2026),,,,,Post Advisory Group,Not yet tested,,,,N
+Tikehau Capital,P2,Private Credit,Europe,"Paris, France",12.2,Praxis Rock SEC Form ADV directories (2026),,,,,Tikehau Capital,Not yet tested,,,,N
+Canyon Partners,P2,Private Credit,United States,"Dallas, TX",11.9,Praxis Rock SEC Form ADV directories (2026),,,,,Canyon Partners,Not yet tested,,,,N
+Chatham Asset Management,P2,Private Credit,United States,"Chatham, NJ",11.5,Praxis Rock SEC Form ADV directories (2026),,,,,Chatham Asset Management,Not yet tested,,,,N
+Kennedy Lewis Investment Management,P2,Private Credit,United States,"New York, NY",11.5,Praxis Rock SEC Form ADV directories (2026),,,,,Kennedy Lewis Investment Management,Not yet tested,,,,N
+400 Capital Management,P2,Private Credit,United States,"New York, NY",11.3,Praxis Rock SEC Form ADV directories (2026),,,,,400 Capital Management,Not yet tested,,,,N
+"Christofferson, Robb & Company",P2,Private Credit,United States,"New York, NY",11.3,Praxis Rock SEC Form ADV directories (2026),,,,,"Christofferson, Robb & Company",Not yet tested,,,,N
+Guggenheim Investments (Corporate Funding),P2,Private Credit,United States,"New York, NY",11.3,Praxis Rock SEC Form ADV directories (2026),,,,,Guggenheim Investments (Corporate Funding),Not yet tested,,,,N
+One William Street Capital Management,P2,Private Credit,United States,"New York, NY",11.3,Praxis Rock SEC Form ADV directories (2026),,,,,One William Street Capital Management,Not yet tested,,,,N
+Redwood Capital Management,P2,Private Credit,United States,"New York, NY",11,Praxis Rock SEC Form ADV directories (2026),,,,,Redwood Capital Management,Not yet tested,,,,N
+Pemberton Asset Management,P2,Private Credit,Europe,"London, UK",10.3,Praxis Rock SEC Form ADV directories (2026),,,,,Pemberton Asset Management,Not yet tested,,,,N
+Axonic Capital,P2,Private Credit,United States,"New York, NY",10,Praxis Rock SEC Form ADV directories (2026),,,,,Axonic Capital,Not yet tested,,,,N
+MJX Asset Management,P2,Private Credit,United States,"New York, NY",9.7,Praxis Rock SEC Form ADV directories (2026),,,,,MJX Asset Management,Not yet tested,,,,N
+SLR Capital Partners,P2,Private Credit,United States,"New York, NY",9.4,Praxis Rock SEC Form ADV directories (2026),,,,,SLR Capital Partners,Not yet tested,,,,N
+Comvest Partners,P2,Private Credit,United States,"West Palm Beach, FL",9.3,Praxis Rock SEC Form ADV directories (2026),,,,,Comvest Partners,Not yet tested,,,,N
+Ogam,P2,Private Credit,United States,"Houston, TX",8.7,Praxis Rock SEC Form ADV directories (2026),,,Y,,Ogam,Not yet tested,,,,N
+Blue Torch Capital,P2,Private Credit,United States,"New York, NY",8.6,Praxis Rock SEC Form ADV directories (2026),,,,,Blue Torch Capital,Not yet tested,,,,N
+MidOcean Partners (Credit),P2,Private Credit,United States,"New York, NY",8.5,Praxis Rock SEC Form ADV directories (2026),,,,,MidOcean Partners (Credit),Not yet tested,,,,N
+Balbec Capital,P2,Private Credit,United States,"Scottsdale, AZ",8,Praxis Rock SEC Form ADV directories (2026),,,,,Balbec Capital,Not yet tested,,,,N
+MGG Investment Group,P2,Private Credit,United States,"New York, NY",7.6,Praxis Rock SEC Form ADV directories (2026),,,,,MGG Investment Group,Not yet tested,,,,N
+Arbour Lane Capital Management,P2,Private Credit,United States,"Stamford, CT",7.3,Praxis Rock SEC Form ADV directories (2026),,,,,Arbour Lane Capital Management,Not yet tested,,,,N
+Invictus Capital Partners,P2,Private Credit,United States,"Washington, DC",7.2,Praxis Rock SEC Form ADV directories (2026),,,,,Invictus Capital Partners,Not yet tested,,,,N
+Caspian Capital,P2,Private Credit,United States,"New York, NY",7,Praxis Rock SEC Form ADV directories (2026),,,,,Caspian Capital,Not yet tested,,,,N
+Cross Ocean Partners,P2,Private Credit,Europe,"London, UK",6.7,Praxis Rock SEC Form ADV directories (2026),,,,,Cross Ocean Partners,Not yet tested,,,,N
+NXT Capital,P2,Private Credit,United States,"Chicago, IL",6.6,Praxis Rock SEC Form ADV directories (2026),,,,,NXT Capital,Not yet tested,,,,N
+Nassau Global Credit,P2,Private Credit,United States,"New York, NY",6.4,Praxis Rock SEC Form ADV directories (2026),,,,,Nassau Global Credit,Not yet tested,,,,N
+Brightwood Capital Advisors,P2,Private Credit,United States,"New York, NY",6.3,Praxis Rock SEC Form ADV directories (2026),,,,,Brightwood Capital Advisors,Not yet tested,,,,N
+Brinley Partners,P2,Private Credit,United States,"New York, NY",6.3,Praxis Rock SEC Form ADV directories (2026),,,,,Brinley Partners,Not yet tested,,,,N
+PennantPark Investment Advisers,P2,Private Credit,United States,"Miami Beach, FL",6.2,Praxis Rock SEC Form ADV directories (2026),,,,,PennantPark Investment Advisers,Not yet tested,,,,N
+Aperture Investors,P2,Private Credit,United States,"New York, NY",6.1,Praxis Rock SEC Form ADV directories (2026),,,,,Aperture Investors,Not yet tested,,,,N
+MC Credit Partners,P2,Private Credit,United States,"Stamford, CT",6,Praxis Rock SEC Form ADV directories (2026),,,,,MC Credit Partners,Not yet tested,,,,N
+Fasanara Capital,P2,Private Credit,Europe,"London, UK",5.8,Praxis Rock SEC Form ADV directories (2026),,,,,Fasanara Capital,Not yet tested,,,,N
+Saluda Grade,P2,Private Credit,United States,"New York, NY",5.8,Praxis Rock SEC Form ADV directories (2026),,,,,Saluda Grade,Not yet tested,,,,N
+Obra Capital,P3,Private Credit,United States,"New York, NY",5.7,Praxis Rock SEC Form ADV directories (2026),,,,,Obra Capital,Not yet tested,,,,N
+Avenue Capital Group,P3,Private Credit,United States,"New York, NY",5.3,Praxis Rock SEC Form ADV directories (2026),,,,,Avenue Capital Group,Not yet tested,,,,N
+Polus Capital Management,P3,Private Credit,Europe,"London, UK",5.3,Praxis Rock SEC Form ADV directories (2026),,,,,Polus Capital Management,Not yet tested,,,,N
+ZAIS Group,P3,Private Credit,United States,"Holmdel, NJ",5.3,Praxis Rock SEC Form ADV directories (2026),,,,,ZAIS Group,Not yet tested,,,,N
+Bear Creek Asset Management,P3,Private Credit,United States,"Denver, CO",5.2,Praxis Rock SEC Form ADV directories (2026),,,,,Bear Creek Asset Management,Not yet tested,,,,N
+White Oak Global Advisors,P3,Private Credit,United States,"San Francisco, CA",5.1,Praxis Rock SEC Form ADV directories (2026),,,,,White Oak Global Advisors,Not yet tested,,,,N
+Taconic Capital Advisors,P3,Private Credit,United States,"New York, NY",4.9,Praxis Rock SEC Form ADV directories (2026),,,,,Taconic Capital Advisors,Not yet tested,,,,N
+Contrarian Capital Management,P3,Private Credit,United States,"Greenwich, CT",4.8,Praxis Rock SEC Form ADV directories (2026),,,,,Contrarian Capital Management,Not yet tested,,,,N
+3650 Capital,P3,Private Credit,United States,"Miami, FL",4.5,Praxis Rock SEC Form ADV directories (2026),,,,,3650 Capital,Not yet tested,,,,N
+ACRES Capital,P3,Private Credit,United States,"Uniondale, NY",4.4,Praxis Rock SEC Form ADV directories (2026),,,,,ACRES Capital,Not yet tested,,,,N
+Prophet Capital Asset Management,P3,Private Credit,United States,"Austin, TX",4.2,Praxis Rock SEC Form ADV directories (2026),,,,,Prophet Capital Asset Management,Not yet tested,,,,N
+Star Mountain Capital,P3,Private Credit,United States,"New York, NY",4.2,Praxis Rock SEC Form ADV directories (2026),,,,,Star Mountain Capital,Not yet tested,,,,N
+Evolution Credit Partners,P3,Private Credit,United States,"Boston, MA",4.1,Praxis Rock SEC Form ADV directories (2026),,,,,Evolution Credit Partners,Not yet tested,,,,N
+Freeport Financial Partners,P3,Private Credit,United States,"Chicago, IL",4.1,Praxis Rock SEC Form ADV directories (2026),,,,,Freeport Financial Partners,Not yet tested,,,,N
+Fundamental Advisors,P3,Private Credit,United States,"New York, NY",4.1,Praxis Rock SEC Form ADV directories (2026),,,,,Fundamental Advisors,Not yet tested,,,,N
+Kartesia,P3,Private Credit,Europe,Luxembourg,4.1,Praxis Rock SEC Form ADV directories (2026),,,Y,,Kartesia,Not yet tested,,,,N
+Leucadia Asset Management,P3,Private Credit,United States,"New York, NY",4.1,Praxis Rock SEC Form ADV directories (2026),,,,,Leucadia Asset Management,Not yet tested,,,,N
+Hudson Structured Capital Management,P3,Private Credit,United States,"Stamford, CT",4,Praxis Rock SEC Form ADV directories (2026),,,,,Hudson Structured Capital Management,Not yet tested,,,,N
+Sycamore Tree Capital Partners,P3,Private Credit,United States,"Dallas, TX",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Sycamore Tree Capital Partners,Not yet tested,,,,N
+Tree Line Capital Partners,P3,Private Credit,United States,"San Francisco, CA",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Tree Line Capital Partners,Not yet tested,,,,N
+Axar Capital Management,P3,Private Credit,United States,"New York, NY",3.6,Praxis Rock SEC Form ADV directories (2026),,,,,Axar Capital Management,Not yet tested,,,,N
+Victory Park Capital,P3,Private Credit,United States,"Chicago, IL",3.6,Praxis Rock SEC Form ADV directories (2026),,,,,Victory Park Capital,Not yet tested,,,,N
+Falcon Investment Advisors,P3,Private Credit,United States,"Boston, MA",3.3,Praxis Rock SEC Form ADV directories (2026),,,,,Falcon Investment Advisors,Not yet tested,,,,N
+Mudrick Capital,P3,Private Credit,United States,"New York, NY",3.3,Praxis Rock SEC Form ADV directories (2026),,,,,Mudrick Capital,Not yet tested,,,,N
+Maxim Capital Group,P3,Private Credit,United States,"New York, NY",3.2,Praxis Rock SEC Form ADV directories (2026),,,,,Maxim Capital Group,Not yet tested,,,,N
+Oberland Capital,P3,Private Credit,United States,"New York, NY",3.2,Praxis Rock SEC Form ADV directories (2026),,,,,Oberland Capital,Not yet tested,,,,N
+Apera Asset Management,P3,Private Credit,Europe,"London, UK",3.1,Praxis Rock SEC Form ADV directories (2026),,,,,Apera Asset Management,Not yet tested,,,,N
+Pharmakon Advisors,P3,Private Credit,United States,"New York, NY",3,Praxis Rock SEC Form ADV directories (2026),,,,,Pharmakon Advisors,Not yet tested,,,,N
+Colbeck Capital Management,P3,Private Credit,United States,"New York, NY",2.9,Praxis Rock SEC Form ADV directories (2026),,,,,Colbeck Capital Management,Not yet tested,,,,N
+Marblegate Asset Management,P3,Private Credit,United States,"Greenwich, CT",2.9,Praxis Rock SEC Form ADV directories (2026),,,,,Marblegate Asset Management,Not yet tested,,,,N
+Newmarket Investment Management,P3,Private Credit,United States,"Philadelphia, PA",2.8,Praxis Rock SEC Form ADV directories (2026),,,,,Newmarket Investment Management,Not yet tested,,,,N
+Pearl Diver Capital,P3,Private Credit,Europe,"London, UK",2.8,Praxis Rock SEC Form ADV directories (2026),,,,,Pearl Diver Capital,Not yet tested,,,,N
+Chorus Capital,P3,Private Credit,Europe,"London, UK",2.7,Praxis Rock SEC Form ADV directories (2026),,,,,Chorus Capital,Not yet tested,,,,N
+LL Funds,P3,Private Credit,United States,"Philadelphia, PA",2.7,Praxis Rock SEC Form ADV directories (2026),,,,,LL Funds,Not yet tested,,,,N
+Brevet Capital,P3,Private Credit,United States,"New York, NY",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,Brevet Capital,Not yet tested,,,,N
+Oxford Finance,P3,Private Credit,United States,"Alexandria, VA",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,Oxford Finance,Not yet tested,,,,N
+P Capital Partners,P3,Private Credit,Europe,"Stockholm, Sweden",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,P Capital Partners,Not yet tested,,,,N
+Crayhill Capital Management,P3,Private Credit,United States,"New York, NY",2.5,Praxis Rock SEC Form ADV directories (2026),,,,,Crayhill Capital Management,Not yet tested,,,,N
+Medalist Partners,P3,Private Credit,United States,"New York, NY",2.4,Praxis Rock SEC Form ADV directories (2026),,,,,Medalist Partners,Not yet tested,,,,N
+Sandton Capital Partners,P3,Private Credit,United States,"New York, NY",2.3,Praxis Rock SEC Form ADV directories (2026),,,,,Sandton Capital Partners,Not yet tested,,,,N
+Varadero Capital,P3,Private Credit,United States,"New York, NY",2.3,Praxis Rock SEC Form ADV directories (2026),,,,,Varadero Capital,Not yet tested,,,,N
+Whitehawk Capital Partners,P3,Private Credit,United States,"Los Angeles, CA",2.3,Praxis Rock SEC Form ADV directories (2026),,,,,Whitehawk Capital Partners,Not yet tested,,,,N
+Clear Haven Capital Management,P3,Private Credit,United States,"New York, NY",2.2,Praxis Rock SEC Form ADV directories (2026),,,,,Clear Haven Capital Management,Not yet tested,,,,N
+CRG,P3,Private Credit,United States,"Houston, TX",2.2,Praxis Rock SEC Form ADV directories (2026),,,Y,,CRG,Not yet tested,,,,N
+Western Technology Investment,P3,Private Credit,United States,"Portola Valley, CA",2,Praxis Rock SEC Form ADV directories (2026),,,,,Western Technology Investment,Not yet tested,,,,N
+Barings,P1,Private Credit,United States,"Charlotte, NC",,Altss largest private credit managers,,,Y,,Barings,Not yet tested,,,,N
+Churchill / Nuveen Private Capital,P1,Private Credit,United States,"New York, NY",,Altss largest private credit managers,,,,,Churchill / Nuveen Private Capital,Not yet tested,,,,N
+Hayfin Capital Management,P1,Private Credit,Europe,"London, UK",,Altss largest private credit managers,,,,,Hayfin Capital Management,Not yet tested,,,,N
+PGIM Private Capital,P1,Private Credit,United States,"Newark, NJ",,Altss largest private credit managers,,,,,PGIM Private Capital,Not yet tested,,,,N
+Partners Group,P1,Private Equity,Europe,"Baar, Switzerland",186,Altss largest PE firms in Europe; PEI 300 (2026) top 30,,,,,Partners Group,Not yet tested,,,,N
+CVC Capital Partners,P1,Private Equity,Europe,"St Helier, Jersey",105.7,Praxis Rock SEC Form ADV directories (2026),,,,,CVC Capital Partners,Not yet tested,,,,N
+EQT,P1,Private Equity,Europe,"Stockholm, Sweden",101.7,Praxis Rock SEC Form ADV directories (2026),,,Y,,EQT,Not yet tested,,,,N
+Permira,P1,Private Equity,Europe,"London, UK",73.4,Praxis Rock SEC Form ADV directories (2026),,,Y,,Permira,Not yet tested,,,,N
+Hg,P1,Private Equity,Europe,"London, UK",57.5,Praxis Rock SEC Form ADV directories (2026); PEI 300 (2026) top 30,,,Y,,Hg,Not yet tested,,,,N
+TA Associates,P1,Private Equity,United States,"Boston, MA",55.6,Praxis Rock SEC Form ADV directories (2026),,,,,TA Associates,Not yet tested,,,,N
+Veritas Capital,P1,Private Equity,United States,"New York, NY",53.8,Praxis Rock SEC Form ADV directories (2026),,,,,Veritas Capital,Not yet tested,,,,N
+SoftBank Investment Advisers (US),P2,Private Equity,United States,"Menlo Park, CA",53.5,Praxis Rock SEC Form ADV directories (2026),,,,,SoftBank Investment Advisers (US),Not yet tested,,,,N
+L Catterton,P1,Private Equity,United States,"Greenwich, CT",51.7,Praxis Rock SEC Form ADV directories (2026),,,,,L Catterton,Not yet tested,,,,N
+Genstar Capital,P1,Private Equity,United States,"San Francisco, CA",51.3,Praxis Rock SEC Form ADV directories (2026),,,,,Genstar Capital,Not yet tested,,,,N
+Platinum Equity,P1,Private Equity,United States,"Beverly Hills, CA",47.7,Praxis Rock SEC Form ADV directories (2026),,,,,Platinum Equity,Not yet tested,,,,N
+Francisco Partners,P1,Private Equity,United States,"San Francisco, CA",47.1,Praxis Rock SEC Form ADV directories (2026),,,,,Francisco Partners,Not yet tested,,,,N
+New Mountain Capital,P1,Private Equity,United States,"New York, NY",46.4,Praxis Rock SEC Form ADV directories (2026),,,,,New Mountain Capital,Not yet tested,,,,N
+Cinven,P1,Private Equity,Europe,"London, UK",42.7,Praxis Rock SEC Form ADV directories (2026); Altss largest PE firms in Europe,,,Y,,Cinven,Not yet tested,,,,N
+Lone Star Funds,P1,Private Equity,United States,"Dallas, TX",39.9,Praxis Rock SEC Form ADV directories (2026),,,,,Lone Star Funds,Not yet tested,,,,N
+Morgan Stanley Capital Partners,P1,Private Equity,United States,"New York, NY",38.8,Praxis Rock SEC Form ADV directories (2026),,,,,Morgan Stanley Capital Partners,Not yet tested,,,,N
+Nordic Capital,P1,Private Equity,Europe,"Stockholm, Sweden",33.9,Praxis Rock SEC Form ADV directories (2026); Altss largest PE firms in Europe,,,,,Nordic Capital,Not yet tested,,,,N
+26North,P1,Private Equity,United States,"New York, NY",32.7,Praxis Rock SEC Form ADV directories (2026),,,Y,,26North,Not yet tested,,,,N
+CapVest Partners,P1,Private Equity,Europe,"London, UK",31.2,Praxis Rock SEC Form ADV directories (2026),,,,,CapVest Partners,Not yet tested,,,,N
+BC Partners,P1,Private Equity,Europe,"London, UK",31.1,Praxis Rock SEC Form ADV directories (2026),,,,,BC Partners,Not yet tested,,,,N
+TJC (The Jordan Company),P1,Private Equity,United States,"New York, NY",30.8,Praxis Rock SEC Form ADV directories (2026),,,,,TJC (The Jordan Company),Not yet tested,,,,N
+Astorg,P1,Private Equity,Europe,"Paris, France",29.4,Praxis Rock SEC Form ADV directories (2026),,,Y,,Astorg,Not yet tested,,,,N
+Apax Partners,P1,Private Equity,Europe,"London, UK",28.4,Praxis Rock SEC Form ADV directories (2026); Altss largest PE firms in Europe,,,,,Apax Partners,Not yet tested,,,,N
+Vitruvian Partners,P1,Private Equity,Europe,"London, UK",26.7,Praxis Rock SEC Form ADV directories (2026),,,,,Vitruvian Partners,Not yet tested,,,,N
+Arcline Investment Management,P1,Private Equity,United States,"Nashville, TN",26.5,Praxis Rock SEC Form ADV directories (2026),,,,,Arcline Investment Management,Not yet tested,,,,N
+K1 Investment Management,P1,Private Equity,United States,"Manhattan Beach, CA",24.4,Praxis Rock SEC Form ADV directories (2026),,,,,K1 Investment Management,Not yet tested,,,,N
+Bridgepoint,P1,Private Equity,Europe,"London, UK",24.2,Praxis Rock SEC Form ADV directories (2026); Altss largest PE firms in Europe,,,Y,,Bridgepoint,Not yet tested,,,,N
+Accel-KKR,P1,Private Equity,United States,"Menlo Park, CA",23.8,Praxis Rock SEC Form ADV directories (2026),,,Y,,Accel-KKR,Not yet tested,,,,N
+TDR Capital,P1,Private Equity,Europe,"London, UK",23.3,Praxis Rock SEC Form ADV directories (2026),,,,,TDR Capital,Not yet tested,,,,N
+Onex Partners,P1,Private Equity,Canada,"Toronto, Canada",22.6,Praxis Rock SEC Form ADV directories (2026),,,,,Onex Partners,Not yet tested,,,,N
+Triton Partners,P1,Private Equity,Europe,"London, UK",22.2,Praxis Rock SEC Form ADV directories (2026); Altss largest PE firms in Europe,,,,,Triton Partners,Not yet tested,,,,N
+Harvest Partners,P1,Private Equity,United States,"New York, NY",20.2,Praxis Rock SEC Form ADV directories (2026),,,,,Harvest Partners,Not yet tested,,,,N
+RCP Advisors,P1,Private Equity,United States,"Chicago, IL",19.8,Praxis Rock SEC Form ADV directories (2026),,,,,RCP Advisors,Not yet tested,,,,N
+KPS Capital Partners,P1,Private Equity,United States,"New York, NY",19.1,Praxis Rock SEC Form ADV directories (2026),,,,,KPS Capital Partners,Not yet tested,,,,N
+Alpine Investors,P1,Private Equity,United States,"San Francisco, CA",18.9,Praxis Rock SEC Form ADV directories (2026),,,,,Alpine Investors,Not yet tested,,,,N
+American Securities,P1,Private Equity,United States,"New York, NY",18.9,Praxis Rock SEC Form ADV directories (2026),,,,,American Securities,Not yet tested,,,,N
+Arlington Capital Partners,P1,Private Equity,United States,"Bethesda, MD",18.2,Praxis Rock SEC Form ADV directories (2026),,,,,Arlington Capital Partners,Not yet tested,,,,N
+Atlas Holdings,P1,Private Equity,United States,"Greenwich, CT",18.1,Praxis Rock SEC Form ADV directories (2026),,,,,Atlas Holdings,Not yet tested,,,,N
+3i,P1,Private Equity,Europe,"London, UK",18,Praxis Rock SEC Form ADV directories (2026),,,Y,,3i,Not yet tested,,,,N
+Searchlight Capital Partners,P1,Private Equity,United States,"New York, NY",18,Praxis Rock SEC Form ADV directories (2026),,,,,Searchlight Capital Partners,Not yet tested,,,,N
+Inflexion,P1,Private Equity,Europe,"London, UK",17.8,Praxis Rock SEC Form ADV directories (2026),,,Y,,Inflexion,Not yet tested,,,,N
+American Industrial Partners,P1,Private Equity,United States,"New York, NY",17.5,Praxis Rock SEC Form ADV directories (2026),,,,,American Industrial Partners,Not yet tested,,,,N
+Patient Square Capital,P1,Private Equity,United States,"Menlo Park, CA",17.5,Praxis Rock SEC Form ADV directories (2026),,,,,Patient Square Capital,Not yet tested,,,,N
+Kohlberg & Company,P1,Private Equity,United States,"Mount Kisco, NY",17.1,Praxis Rock SEC Form ADV directories (2026),,,,,Kohlberg & Company,Not yet tested,,,,N
+Niobrara Capital Partners,P1,Private Equity,United States,"New York, NY",17.1,Praxis Rock SEC Form ADV directories (2026),,,,,Niobrara Capital Partners,Not yet tested,,,,N
+Kelso & Company,P1,Private Equity,United States,"New York, NY",16.6,Praxis Rock SEC Form ADV directories (2026),,,,,Kelso & Company,Not yet tested,,,,N
+3G Capital,P1,Private Equity,United States,"New York, NY",16.3,Praxis Rock SEC Form ADV directories (2026),,,,,3G Capital,Not yet tested,,,,N
+Greenbriar Equity Group,P1,Private Equity,United States,"Greenwich, CT",15.7,Praxis Rock SEC Form ADV directories (2026),,,,,Greenbriar Equity Group,Not yet tested,,,,N
+OEP Capital Advisors,P1,Private Equity,United States,"New York, NY",15.7,Praxis Rock SEC Form ADV directories (2026),,,,,OEP Capital Advisors,Not yet tested,,,,N
+Waterland Private Equity,P1,Private Equity,Europe,"Bussum, Netherlands",15.7,Praxis Rock SEC Form ADV directories (2026); Altss largest PE firms in Europe,,,,,Waterland Private Equity,Not yet tested,,,,N
+AEA Investors,P1,Private Equity,United States,"New York, NY",15.5,Praxis Rock SEC Form ADV directories (2026),,,,,AEA Investors,Not yet tested,,,,N
+"Welsh, Carson, Anderson & Stowe",P1,Private Equity,United States,"New York, NY",15.5,Praxis Rock SEC Form ADV directories (2026),,,,,"Welsh, Carson, Anderson & Stowe",Not yet tested,,,,N
+JAB,P1,Private Equity,Europe,Luxembourg,15.2,Praxis Rock SEC Form ADV directories (2026),,,Y,,JAB,Not yet tested,,,,N
+PAI Partners,P1,Private Equity,Europe,"Paris, France",15,Praxis Rock SEC Form ADV directories (2026); Altss largest PE firms in Europe,,,,,PAI Partners,Not yet tested,,,,N
+Sycamore Partners,P1,Private Equity,United States,"New York, NY",14.3,Praxis Rock SEC Form ADV directories (2026),,,,,Sycamore Partners,Not yet tested,,,,N
+TSG Consumer Partners,P1,Private Equity,United States,"Larkspur, CA",14.3,Praxis Rock SEC Form ADV directories (2026),,,,,TSG Consumer Partners,Not yet tested,,,,N
+Great Hill Partners,P1,Private Equity,United States,"Boston, MA",14.1,Praxis Rock SEC Form ADV directories (2026),,,,,Great Hill Partners,Not yet tested,,,,N
+STG Partners,P1,Private Equity,United States,"Menlo Park, CA",14.1,Praxis Rock SEC Form ADV directories (2026),,,,,STG Partners,Not yet tested,,,,N
+RedBird Capital Partners,P1,Private Equity,United States,"New York, NY",14,Praxis Rock SEC Form ADV directories (2026),,,,,RedBird Capital Partners,Not yet tested,,,,N
+The Riverside Company,P1,Private Equity,United States,"New York, NY",13.5,Praxis Rock SEC Form ADV directories (2026),,,,,The Riverside Company,Not yet tested,,,,N
+Parthenon Capital,P1,Private Equity,United States,"San Francisco, CA",13.4,Praxis Rock SEC Form ADV directories (2026),,,,,Parthenon Capital,Not yet tested,,,,N
+Novacap,P1,Private Equity,Canada,"Montreal, Canada",13.2,Praxis Rock SEC Form ADV directories (2026),,,Y,,Novacap,Not yet tested,,,,N
+The Energy & Minerals Group,P1,Private Equity,United States,"Houston, TX",13.1,Praxis Rock SEC Form ADV directories (2026),,,,,The Energy & Minerals Group,Not yet tested,,,,N
+Aquiline Capital Partners,P1,Private Equity,United States,"New York, NY",12.3,Praxis Rock SEC Form ADV directories (2026),,,,,Aquiline Capital Partners,Not yet tested,,,,N
+Goldberg Lindsay & Co.,P1,Private Equity,United States,"New York, NY",11.9,Praxis Rock SEC Form ADV directories (2026),,,,,Goldberg Lindsay & Co.,Not yet tested,,,,N
+Levine Leichtman Capital Partners,P1,Private Equity,United States,"Beverly Hills, CA",11.9,Praxis Rock SEC Form ADV directories (2026),,,,,Levine Leichtman Capital Partners,Not yet tested,,,,N
+Kinderhook Industries,P1,Private Equity,United States,"New York, NY",11.5,Praxis Rock SEC Form ADV directories (2026),,,,,Kinderhook Industries,Not yet tested,,,,N
+Golden Gate Capital,P1,Private Equity,United States,"San Francisco, CA",11.2,Praxis Rock SEC Form ADV directories (2026),,,,,Golden Gate Capital,Not yet tested,,,,N
+NGP,P1,Private Equity,United States,"Dallas, TX",10.9,Praxis Rock SEC Form ADV directories (2026),,,Y,,NGP,Not yet tested,,,,N
+HGGC,P1,Private Equity,United States,"Palo Alto, CA",10.8,Praxis Rock SEC Form ADV directories (2026),,,Y,,HGGC,Not yet tested,,,,N
+Ridgemont Equity Partners,P1,Private Equity,United States,"Charlotte, NC",10.3,Praxis Rock SEC Form ADV directories (2026),,,,,Ridgemont Equity Partners,Not yet tested,,,,N
+Court Square Capital Partners,P1,Private Equity,United States,"New York, NY",10.1,Praxis Rock SEC Form ADV directories (2026),,,,,Court Square Capital Partners,Not yet tested,,,,N
+Arsenal Capital Partners,P1,Private Equity,United States,"New York, NY",9.7,Praxis Rock SEC Form ADV directories (2026),,,,,Arsenal Capital Partners,Not yet tested,,,,N
+One Rock Capital Partners,P1,Private Equity,United States,"New York, NY",9.7,Praxis Rock SEC Form ADV directories (2026),,,,,One Rock Capital Partners,Not yet tested,,,,N
+Gridiron Capital,P1,Private Equity,United States,"New Canaan, CT",9.5,Praxis Rock SEC Form ADV directories (2026),,,,,Gridiron Capital,Not yet tested,,,,N
+Altaris,P1,Private Equity,United States,"New York, NY",9.3,Praxis Rock SEC Form ADV directories (2026),,,Y,,Altaris,Not yet tested,,,,N
+Gryphon Investors,P2,Private Equity,United States,"San Francisco, CA",9.3,Praxis Rock SEC Form ADV directories (2026),,,,,Gryphon Investors,Not yet tested,,,,N
+Olympus Partners,P2,Private Equity,United States,"Stamford, CT",9.2,Praxis Rock SEC Form ADV directories (2026),,,,,Olympus Partners,Not yet tested,,,,N
+Montagu Private Equity,P2,Private Equity,Europe,"London, UK",9.1,Praxis Rock SEC Form ADV directories (2026); Altss largest PE firms in Europe,,,,,Montagu Private Equity,Not yet tested,,,,N
+J.F. Lehman & Company,P2,Private Equity,United States,"New York, NY",9,Praxis Rock SEC Form ADV directories (2026),,,,,J.F. Lehman & Company,Not yet tested,,,,N
+Littlejohn & Co.,P2,Private Equity,United States,"Greenwich, CT",9,Praxis Rock SEC Form ADV directories (2026),,,,,Littlejohn & Co.,Not yet tested,,,,N
+Marlin Equity Partners,P2,Private Equity,United States,"Hermosa Beach, CA",9,Praxis Rock SEC Form ADV directories (2026),,,,,Marlin Equity Partners,Not yet tested,,,,N
+Norvestor,P2,Private Equity,Europe,"Oslo, Norway",9,Praxis Rock SEC Form ADV directories (2026),,,Y,,Norvestor,Not yet tested,,,,N
+Sentinel Capital Partners,P2,Private Equity,United States,"New York, NY",9,Praxis Rock SEC Form ADV directories (2026),,,,,Sentinel Capital Partners,Not yet tested,,,,N
+The Sterling Group,P2,Private Equity,United States,"Houston, TX",9,Praxis Rock SEC Form ADV directories (2026),,,,,The Sterling Group,Not yet tested,,,,N
+Seidler Equity Partners,P2,Private Equity,United States,"Marina Del Rey, CA",8.8,Praxis Rock SEC Form ADV directories (2026),,,,,Seidler Equity Partners,Not yet tested,,,,N
+SK Capital Partners,P2,Private Equity,United States,"New York, NY",8.8,Praxis Rock SEC Form ADV directories (2026),,,,,SK Capital Partners,Not yet tested,,,,N
+Flexpoint Ford,P2,Private Equity,United States,"Miami, FL",8.7,Praxis Rock SEC Form ADV directories (2026),,,,,Flexpoint Ford,Not yet tested,,,,N
+Investindustrial,P2,Private Equity,Europe,"London, UK",8.4,Praxis Rock SEC Form ADV directories (2026),,,Y,,Investindustrial,Not yet tested,,,,N
+Charterhouse Capital Partners,P2,Private Equity,Europe,"London, UK",8.2,Praxis Rock SEC Form ADV directories (2026),,,,,Charterhouse Capital Partners,Not yet tested,,,,N
+Rhone Group,P2,Private Equity,United States,"New York, NY",8.2,Praxis Rock SEC Form ADV directories (2026),,,,,Rhone Group,Not yet tested,,,,N
+Lightyear Capital,P2,Private Equity,United States,"New York, NY",8.1,Praxis Rock SEC Form ADV directories (2026),,,,,Lightyear Capital,Not yet tested,,,,N
+Trive Capital,P2,Private Equity,United States,"Dallas, TX",8.1,Praxis Rock SEC Form ADV directories (2026),,,,,Trive Capital,Not yet tested,,,,N
+ARA Partners,P2,Private Equity,United States,"Houston, TX",7.9,Praxis Rock SEC Form ADV directories (2026),,,,,ARA Partners,Not yet tested,,,,N
+Odyssey Investment Partners,P2,Private Equity,United States,"New York, NY",7.9,Praxis Rock SEC Form ADV directories (2026),,,,,Odyssey Investment Partners,Not yet tested,,,,N
+Butterfly Equity,P2,Private Equity,United States,"Beverly Hills, CA",7.8,Praxis Rock SEC Form ADV directories (2026),,,,,Butterfly Equity,Not yet tested,,,,N
+AE Industrial Partners,P2,Private Equity,United States,"Boca Raton, FL",7.7,Praxis Rock SEC Form ADV directories (2026),,,,,AE Industrial Partners,Not yet tested,,,,N
+Corsair Capital,P2,Private Equity,United States,"New York, NY",7.7,Praxis Rock SEC Form ADV directories (2026),,,,,Corsair Capital,Not yet tested,,,,N
+Archimed,P2,Private Equity,Europe,"Lyon, France",7.6,Praxis Rock SEC Form ADV directories (2026),,,Y,,Archimed,Not yet tested,,,,N
+LLR Partners,P2,Private Equity,United States,"Philadelphia, PA",7.6,Praxis Rock SEC Form ADV directories (2026),,,,,LLR Partners,Not yet tested,,,,N
+Peak Rock Capital,P2,Private Equity,United States,"Austin, TX",7.5,Praxis Rock SEC Form ADV directories (2026),,,,,Peak Rock Capital,Not yet tested,,,,N
+Westcap,P2,Private Equity,United States,"San Francisco, CA",7.4,Praxis Rock SEC Form ADV directories (2026),,,Y,,Westcap,Not yet tested,,,,N
+A&M Capital,P2,Private Equity,United States,"Greenwich, CT",7.2,Praxis Rock SEC Form ADV directories (2026),,,,,A&M Capital,Not yet tested,,,,N
+Certares,P2,Private Equity,United States,"New York, NY",7.2,Praxis Rock SEC Form ADV directories (2026),,,Y,,Certares,Not yet tested,,,,N
+Revelstoke Capital Partners,P2,Private Equity,United States,"Denver, CO",7.2,Praxis Rock SEC Form ADV directories (2026),,,,,Revelstoke Capital Partners,Not yet tested,,,,N
+Crestview Partners,P2,Private Equity,United States,"New York, NY",7.1,Praxis Rock SEC Form ADV directories (2026),,,,,Crestview Partners,Not yet tested,,,,N
+Five Point Energy,P2,Private Equity,United States,"Houston, TX",7.1,Praxis Rock SEC Form ADV directories (2026),,,,,Five Point Energy,Not yet tested,,,,N
+First Reserve,P2,Private Equity,United States,"Stamford, CT",7,Praxis Rock SEC Form ADV directories (2026),,,,,First Reserve,Not yet tested,,,,N
+Keensight Capital,P2,Private Equity,Europe,"Paris, France",7,Praxis Rock SEC Form ADV directories (2026),,,,,Keensight Capital,Not yet tested,,,,N
+Windrose Health Investors,P2,Private Equity,United States,"New York, NY",7,Praxis Rock SEC Form ADV directories (2026),,,,,Windrose Health Investors,Not yet tested,,,,N
+Oceansound Partners,P2,Private Equity,United States,"New York, NY",6.9,Praxis Rock SEC Form ADV directories (2026),,,,,Oceansound Partners,Not yet tested,,,,N
+Prysm Capital,P2,Private Equity,United States,"Princeton, NJ",6.9,Praxis Rock SEC Form ADV directories (2026),,,,,Prysm Capital,Not yet tested,,,,N
+Stellex Capital,P2,Private Equity,United States,"New York, NY",6.9,Praxis Rock SEC Form ADV directories (2026),,,,,Stellex Capital,Not yet tested,,,,N
+Silver Rock Capital Partners,P2,Private Equity,United States,"Los Angeles, CA",6.8,Praxis Rock SEC Form ADV directories (2026),,,,,Silver Rock Capital Partners,Not yet tested,,,,N
+Avista Healthcare Partners,P2,Private Equity,United States,"New York, NY",6.7,Praxis Rock SEC Form ADV directories (2026),,,,,Avista Healthcare Partners,Not yet tested,,,,N
+Leeds Equity Partners,P2,Private Equity,United States,"New York, NY",6.7,Praxis Rock SEC Form ADV directories (2026),,,,,Leeds Equity Partners,Not yet tested,,,,N
+Shamrock Capital,P2,Private Equity,United States,"Los Angeles, CA",6.7,Praxis Rock SEC Form ADV directories (2026),,,,,Shamrock Capital,Not yet tested,,,,N
+Cortec Group,P2,Private Equity,United States,"New York, NY",6.6,Praxis Rock SEC Form ADV directories (2026),,,,,Cortec Group,Not yet tested,,,,N
+Turn/River Capital,P2,Private Equity,United States,"San Francisco, CA",6.6,Praxis Rock SEC Form ADV directories (2026),,,,,Turn/River Capital,Not yet tested,,,,N
+Investcorp,P2,Private Equity,United States,"New York, NY",6.5,Praxis Rock SEC Form ADV directories (2026),,,Y,,Investcorp,Not yet tested,,,,N
+J.C. Flowers & Co.,P2,Private Equity,United States,"New York, NY",6.5,Praxis Rock SEC Form ADV directories (2026),,,,,J.C. Flowers & Co.,Not yet tested,,,,N
+Pollen Street Capital,P2,Private Equity,Europe,"London, UK",6.5,Praxis Rock SEC Form ADV directories (2026),,,,,Pollen Street Capital,Not yet tested,,,,N
+Development Partners International,P2,Private Equity,Europe,"London, UK",6.4,Praxis Rock SEC Form ADV directories (2026),,,,,Development Partners International,Not yet tested,,,,N
+Aurora Capital Partners,P2,Private Equity,United States,"Los Angeles, CA",6.2,Praxis Rock SEC Form ADV directories (2026),,,,,Aurora Capital Partners,Not yet tested,,,,N
+Cornell Capital,P2,Private Equity,United States,"New York, NY",6.2,Praxis Rock SEC Form ADV directories (2026),,,,,Cornell Capital,Not yet tested,,,,N
+Freeman Spogli & Co.,P2,Private Equity,United States,"Los Angeles, CA",6.2,Praxis Rock SEC Form ADV directories (2026),,,,,Freeman Spogli & Co.,Not yet tested,,,,N
+Riverwood Capital,P2,Private Equity,United States,"Menlo Park, CA",6.2,Praxis Rock SEC Form ADV directories (2026),,,,,Riverwood Capital,Not yet tested,,,,N
+Tomales Bay Capital,P2,Private Equity,United States,"Miami, FL",6.2,Praxis Rock SEC Form ADV directories (2026),,,,,Tomales Bay Capital,Not yet tested,,,,N
+Warren Equity Partners,P2,Private Equity,United States,"Jacksonville Beach, FL",6.1,Praxis Rock SEC Form ADV directories (2026),,,,,Warren Equity Partners,Not yet tested,,,,N
+Haveli Investments,P2,Private Equity,United States,"Austin, TX",6,Praxis Rock SEC Form ADV directories (2026),,,,,Haveli Investments,Not yet tested,,,,N
+Lovell Minnick Partners,P2,Private Equity,United States,"Radnor, PA",6,Praxis Rock SEC Form ADV directories (2026),,,,,Lovell Minnick Partners,Not yet tested,,,,N
+Trivest Partners,P2,Private Equity,United States,"Coral Gables, FL",6,Praxis Rock SEC Form ADV directories (2026),,,,,Trivest Partners,Not yet tested,,,,N
+EMK Capital,P2,Private Equity,Europe,"London, UK",5.9,Praxis Rock SEC Form ADV directories (2026),,,,,EMK Capital,Not yet tested,,,,N
+Trilantic North America,P2,Private Equity,United States,"New York, NY",5.9,Praxis Rock SEC Form ADV directories (2026),,,,,Trilantic North America,Not yet tested,,,,N
+LEE Equity Partners,P2,Private Equity,United States,"New York, NY",5.8,Praxis Rock SEC Form ADV directories (2026),,,,,LEE Equity Partners,Not yet tested,,,,N
+Sun Capital Partners,P2,Private Equity,United States,"Boca Raton, FL",5.8,Praxis Rock SEC Form ADV directories (2026),,,,,Sun Capital Partners,Not yet tested,,,,N
+Main Capital Partners,P2,Private Equity,Europe,"The Hague, Netherlands",5.6,Praxis Rock SEC Form ADV directories (2026),,,,,Main Capital Partners,Not yet tested,,,,N
+Bansk Group,P2,Private Equity,United States,"New York, NY",5.5,Praxis Rock SEC Form ADV directories (2026),,,,,Bansk Group,Not yet tested,,,,N
+Integrum Holdings,P2,Private Equity,United States,"New York, NY",5.5,Praxis Rock SEC Form ADV directories (2026),,,,,Integrum Holdings,Not yet tested,,,,N
+Lime Rock Partners,P2,Private Equity,United States,"Westport, CT",5.5,Praxis Rock SEC Form ADV directories (2026),,,,,Lime Rock Partners,Not yet tested,,,,N
+Monomoy Capital Partners,P2,Private Equity,United States,"Greenwich, CT",5.5,Praxis Rock SEC Form ADV directories (2026),,,,,Monomoy Capital Partners,Not yet tested,,,,N
+Motive Partners,P2,Private Equity,United States,"New York, NY",5.4,Praxis Rock SEC Form ADV directories (2026),,,,,Motive Partners,Not yet tested,,,,N
+Tailwind Capital,P2,Private Equity,United States,"New York, NY",5.4,Praxis Rock SEC Form ADV directories (2026),,,,,Tailwind Capital,Not yet tested,,,,N
+MHR Fund Management,P2,Private Equity,United States,"New York, NY",5.3,Praxis Rock SEC Form ADV directories (2026),,,,,MHR Fund Management,Not yet tested,,,,N
+Pamlico Capital,P2,Private Equity,United States,"Charlotte, NC",5.3,Praxis Rock SEC Form ADV directories (2026),,,,,Pamlico Capital,Not yet tested,,,,N
+ACON Investments,P2,Private Equity,United States,"Washington, DC",5.2,Praxis Rock SEC Form ADV directories (2026),,,,,ACON Investments,Not yet tested,,,,N
+Paine Schwartz Partners,P2,Private Equity,United States,"New York, NY",5.2,Praxis Rock SEC Form ADV directories (2026),,,,,Paine Schwartz Partners,Not yet tested,,,,N
+Gemspring Capital,P2,Private Equity,United States,"Westport, CT",5.1,Praxis Rock SEC Form ADV directories (2026),,,,,Gemspring Capital,Not yet tested,,,,N
+Nexus Capital Management,P2,Private Equity,United States,"Los Angeles, CA",5.1,Praxis Rock SEC Form ADV directories (2026),,,,,Nexus Capital Management,Not yet tested,,,,N
+Percheron Capital,P2,Private Equity,United States,"San Francisco, CA",5.1,Praxis Rock SEC Form ADV directories (2026),,,,,Percheron Capital,Not yet tested,,,,N
+Serent Capital,P2,Private Equity,United States,"San Francisco, CA",5.1,Praxis Rock SEC Form ADV directories (2026),,,,,Serent Capital,Not yet tested,,,,N
+FSN Capital,P2,Private Equity,Europe,"Oslo, Norway",5,Praxis Rock SEC Form ADV directories (2026),,,,,FSN Capital,Not yet tested,,,,N
+MSouth / MSR Capital Partners,P2,Private Equity,United States,"New York, NY",5,Praxis Rock SEC Form ADV directories (2026),,,,,MSouth / MSR Capital Partners,Not yet tested,,,,N
+Bregal Unternehmerkapital,P2,Private Equity,Europe,"Munich, Germany",4.9,Praxis Rock SEC Form ADV directories (2026),,,,,Bregal Unternehmerkapital,Not yet tested,,,,N
+MML Capital,P2,Private Equity,Europe,"London, UK",4.9,Praxis Rock SEC Form ADV directories (2026),,,,,MML Capital,Not yet tested,,,,N
+Brightstar Capital Partners,P2,Private Equity,United States,"New York, NY",4.8,Praxis Rock SEC Form ADV directories (2026),,,,,Brightstar Capital Partners,Not yet tested,,,,N
+Eagletree Capital,P2,Private Equity,United States,"New York, NY",4.8,Praxis Rock SEC Form ADV directories (2026),,,,,Eagletree Capital,Not yet tested,,,,N
+Rubicon Technology Partners,P2,Private Equity,United States,"Boulder, CO",4.8,Praxis Rock SEC Form ADV directories (2026),,,,,Rubicon Technology Partners,Not yet tested,,,,N
+Siris Capital Group,P2,Private Equity,United States,"West Palm Beach, FL",4.8,Praxis Rock SEC Form ADV directories (2026),,,,,Siris Capital Group,Not yet tested,,,,N
+QHP Capital,P2,Private Equity,United States,"Raleigh, NC",4.7,Praxis Rock SEC Form ADV directories (2026),,,,,QHP Capital,Not yet tested,,,,N
+Washington Harbour Partners,P2,Private Equity,United States,"Arlington, VA",4.7,Praxis Rock SEC Form ADV directories (2026),,,,,Washington Harbour Partners,Not yet tested,,,,N
+Altas Partners,P2,Private Equity,Canada,"Toronto, Canada",4.6,Praxis Rock SEC Form ADV directories (2026),,,,,Altas Partners,Not yet tested,,,,N
+Hull Street Energy,P2,Private Equity,United States,"Bethesda, MD",4.6,Praxis Rock SEC Form ADV directories (2026),,,,,Hull Street Energy,Not yet tested,,,,N
+Seven2,P2,Private Equity,Europe,"Paris, France",4.6,Praxis Rock SEC Form ADV directories (2026),,,Y,,Seven2,Not yet tested,,,,N
+Tenex Capital Management,P2,Private Equity,United States,"New York, NY",4.6,Praxis Rock SEC Form ADV directories (2026),,,,,Tenex Capital Management,Not yet tested,,,,N
+Thompson Street Capital Partners,P2,Private Equity,United States,"St. Louis, MO",4.6,Praxis Rock SEC Form ADV directories (2026),,,,,Thompson Street Capital Partners,Not yet tested,,,,N
+Brighton Park Capital,P2,Private Equity,United States,"Greenwich, CT",4.5,Praxis Rock SEC Form ADV directories (2026),,,,,Brighton Park Capital,Not yet tested,,,,N
+Bertram Capital,P2,Private Equity,United States,"Foster City, CA",4.4,Praxis Rock SEC Form ADV directories (2026),,,,,Bertram Capital,Not yet tested,,,,N
+Revelar Capital,P2,Private Equity,United States,"New York, NY",4.4,Praxis Rock SEC Form ADV directories (2026),,,,,Revelar Capital,Not yet tested,,,,N
+Skyknight Capital,P2,Private Equity,United States,"Burlingame, CA",4.4,Praxis Rock SEC Form ADV directories (2026),,,,,Skyknight Capital,Not yet tested,,,,N
+Andera Partners,P2,Private Equity,Europe,"Paris, France",4.3,Praxis Rock SEC Form ADV directories (2026),,,,,Andera Partners,Not yet tested,,,,N
+Quilvest Capital Partners,P2,Private Equity,United States,"New York, NY",4.3,Praxis Rock SEC Form ADV directories (2026),,,,,Quilvest Capital Partners,Not yet tested,,,,N
+Altamont Capital Partners,P2,Private Equity,United States,"Palo Alto, CA",4.2,Praxis Rock SEC Form ADV directories (2026),,,,,Altamont Capital Partners,Not yet tested,,,,N
+Garnett Station Partners,P2,Private Equity,United States,"New York, NY",4.2,Praxis Rock SEC Form ADV directories (2026),,,,,Garnett Station Partners,Not yet tested,,,,N
+Tailwater Capital,P3,Private Equity,United States,"Dallas, TX",4.2,Praxis Rock SEC Form ADV directories (2026),,,,,Tailwater Capital,Not yet tested,,,,N
+Tinicum,P3,Private Equity,United States,"New York, NY",4.2,Praxis Rock SEC Form ADV directories (2026),,,Y,,Tinicum,Not yet tested,,,,N
+TruelinkCapital,P3,Private Equity,United States,"Los Angeles, CA",4.2,Praxis Rock SEC Form ADV directories (2026),,,Y,,TruelinkCapital,Not yet tested,,,,N
+Blue Wolf Capital Partners,P3,Private Equity,United States,"New York, NY",4.1,Praxis Rock SEC Form ADV directories (2026),,,,,Blue Wolf Capital Partners,Not yet tested,,,,N
+Castik Capital,P3,Private Equity,Europe,Luxembourg,4.1,Praxis Rock SEC Form ADV directories (2026),,,,,Castik Capital,Not yet tested,,,,N
+FFL Partners,P3,Private Equity,United States,"San Francisco, CA",4.1,Praxis Rock SEC Form ADV directories (2026),,,,,FFL Partners,Not yet tested,,,,N
+Terra Firma Capital Partners,P3,Private Equity,Europe,"London, UK",4.1,Praxis Rock SEC Form ADV directories (2026),,,,,Terra Firma Capital Partners,Not yet tested,,,,N
+Brentwood Associates,P3,Private Equity,United States,"Los Angeles, CA",4,Praxis Rock SEC Form ADV directories (2026),,,,,Brentwood Associates,Not yet tested,,,,N
+Exponent Private Equity,P3,Private Equity,Europe,"London, UK",4,Praxis Rock SEC Form ADV directories (2026),,,,,Exponent Private Equity,Not yet tested,,,,N
+Truarc Partners,P3,Private Equity,United States,"New York, NY",4,Praxis Rock SEC Form ADV directories (2026),,,,,Truarc Partners,Not yet tested,,,,N
+Centre Lane Partners,P3,Private Equity,United States,"New York, NY",3.9,Praxis Rock SEC Form ADV directories (2026),,,,,Centre Lane Partners,Not yet tested,,,,N
+Epiris,P3,Private Equity,Europe,"London, UK",3.9,Praxis Rock SEC Form ADV directories (2026),,,Y,,Epiris,Not yet tested,,,,N
+Hildred Capital Management,P3,Private Equity,United States,"New York, NY",3.9,Praxis Rock SEC Form ADV directories (2026),,,,,Hildred Capital Management,Not yet tested,,,,N
+Latour Capital,P3,Private Equity,Europe,"Paris, France",3.9,Praxis Rock SEC Form ADV directories (2026),,,,,Latour Capital,Not yet tested,,,,N
+Bedford Ridge Capital,P3,Private Equity,United States,"New York, NY",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Bedford Ridge Capital,Not yet tested,,,,N
+Birch Hill Equity Partners,P3,Private Equity,Canada,"Toronto, Canada",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Birch Hill Equity Partners,Not yet tested,,,,N
+ECI Partners,P3,Private Equity,Europe,"London, UK",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,ECI Partners,Not yet tested,,,,N
+Kingswood Capital Management,P3,Private Equity,United States,"Los Angeles, CA",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Kingswood Capital Management,Not yet tested,,,,N
+Luminate Capital Partners,P3,Private Equity,United States,"San Francisco, CA",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Luminate Capital Partners,Not yet tested,,,,N
+Neos Partners,P3,Private Equity,United States,"San Diego, CA",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Neos Partners,Not yet tested,,,,N
+Vector Capital,P3,Private Equity,United States,"San Francisco, CA",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Vector Capital,Not yet tested,,,,N
+Argosy Private Equity,P3,Private Equity,United States,"Wayne, PA",3.7,Praxis Rock SEC Form ADV directories (2026),,,,,Argosy Private Equity,Not yet tested,,,,N
+Falfurrias Capital Partners,P3,Private Equity,United States,"Charlotte, NC",3.7,Praxis Rock SEC Form ADV directories (2026),,,,,Falfurrias Capital Partners,Not yet tested,,,,N
+Oncap,P3,Private Equity,Canada,"Toronto, Canada",3.7,Praxis Rock SEC Form ADV directories (2026),,,Y,,Oncap,Not yet tested,,,,N
+HitecVision,P3,Private Equity,Europe,"Stavanger, Norway",3.6,Praxis Rock SEC Form ADV directories (2026),,,Y,,HitecVision,Not yet tested,,,,N
+Livingbridge,P3,Private Equity,Europe,"London, UK",3.6,Praxis Rock SEC Form ADV directories (2026),,,Y,,Livingbridge,Not yet tested,,,,N
+Palladium Equity Partners,P3,Private Equity,United States,"New York, NY",3.6,Praxis Rock SEC Form ADV directories (2026),,,,,Palladium Equity Partners,Not yet tested,,,,N
+Arbor Investments,P3,Private Equity,United States,"Palm Beach, FL",3.5,Praxis Rock SEC Form ADV directories (2026),,,,,Arbor Investments,Not yet tested,,,,N
+Georgian,P3,Private Equity,Canada,"Toronto, Canada",3.5,Praxis Rock SEC Form ADV directories (2026),,,Y,,Georgian,Not yet tested,,,,N
+Liberty Strategic Capital,P3,Private Equity,United States,"Washington, DC",3.5,Praxis Rock SEC Form ADV directories (2026),,,,,Liberty Strategic Capital,Not yet tested,,,,N
+Main Post Partners,P3,Private Equity,United States,"San Francisco, CA",3.5,Praxis Rock SEC Form ADV directories (2026),,,,,Main Post Partners,Not yet tested,,,,N
+Mill Point Capital,P3,Private Equity,United States,"New York, NY",3.5,Praxis Rock SEC Form ADV directories (2026),,,,,Mill Point Capital,Not yet tested,,,,N
+Banneker Partners,P3,Private Equity,United States,"San Francisco, CA",3.4,Praxis Rock SEC Form ADV directories (2026),,,,,Banneker Partners,Not yet tested,,,,N
+Diversis Capital,P3,Private Equity,United States,"Los Angeles, CA",3.4,Praxis Rock SEC Form ADV directories (2026),,,,,Diversis Capital,Not yet tested,,,,N
+Gauge Capital,P3,Private Equity,United States,"Southlake, TX",3.4,Praxis Rock SEC Form ADV directories (2026),,,,,Gauge Capital,Not yet tested,,,,N
+Knox Lane,P3,Private Equity,United States,"San Francisco, CA",3.4,Praxis Rock SEC Form ADV directories (2026),,,,,Knox Lane,Not yet tested,,,,N
+Star Capital,P3,Private Equity,Europe,"London, UK",3.4,Praxis Rock SEC Form ADV directories (2026),,,,,Star Capital,Not yet tested,,,,N
+Sumeru Equity Partners,P3,Private Equity,United States,"San Mateo, CA",3.4,Praxis Rock SEC Form ADV directories (2026),,,,,Sumeru Equity Partners,Not yet tested,,,,N
+Fremman Capital,P3,Private Equity,Europe,"London, UK",3.3,Praxis Rock SEC Form ADV directories (2026),,,,,Fremman Capital,Not yet tested,,,,N
+NewSpring Capital,P3,Private Equity,United States,"Radnor, PA",3.3,Praxis Rock SEC Form ADV directories (2026),,,,,NewSpring Capital,Not yet tested,,,,N
+Recognize Partners,P3,Private Equity,United States,"New York, NY",3.3,Praxis Rock SEC Form ADV directories (2026),,,,,Recognize Partners,Not yet tested,,,,N
+Avesi Partners,P3,Private Equity,United States,"Stamford, CT",3.2,Praxis Rock SEC Form ADV directories (2026),,,,,Avesi Partners,Not yet tested,,,,N
+Chequers Capital,P3,Private Equity,Europe,"Paris, France",3.2,Praxis Rock SEC Form ADV directories (2026),,,,,Chequers Capital,Not yet tested,,,,N
+Greenbelt Capital Partners,P3,Private Equity,United States,"Austin, TX",3.2,Praxis Rock SEC Form ADV directories (2026),,,,,Greenbelt Capital Partners,Not yet tested,,,,N
+Ufenau Capital Partners,P3,Private Equity,Europe,"Pfaeffikon, Switzerland",3.2,Praxis Rock SEC Form ADV directories (2026),,,,,Ufenau Capital Partners,Not yet tested,,,,N
+Vance Street Capital,P3,Private Equity,United States,"Los Angeles, CA",3.2,Praxis Rock SEC Form ADV directories (2026),,,,,Vance Street Capital,Not yet tested,,,,N
+VMG Partners,P3,Private Equity,United States,"San Francisco, CA",3.2,Praxis Rock SEC Form ADV directories (2026),,,,,VMG Partners,Not yet tested,,,,N
+Calera Capital,P3,Private Equity,United States,"San Francisco, CA",3.1,Praxis Rock SEC Form ADV directories (2026),,,,,Calera Capital,Not yet tested,,,,N
+DPE Deutsche Private Equity,P3,Private Equity,Europe,"Munich, Germany",3.1,Praxis Rock SEC Form ADV directories (2026),,,,,DPE Deutsche Private Equity,Not yet tested,,,,N
+Kingsway Capital,P3,Private Equity,Europe,"London, UK",3.1,Praxis Rock SEC Form ADV directories (2026),,,,,Kingsway Capital,Not yet tested,,,,N
+Windjammer Capital,P3,Private Equity,United States,"Newport Beach, CA",3.1,Praxis Rock SEC Form ADV directories (2026),,,,,Windjammer Capital,Not yet tested,,,,N
+Gamut Capital Management,P3,Private Equity,United States,"New York, NY",3,Praxis Rock SEC Form ADV directories (2026),,,,,Gamut Capital Management,Not yet tested,,,,N
+Pacific Avenue Capital Partners,P3,Private Equity,United States,"Manhattan Beach, CA",3,Praxis Rock SEC Form ADV directories (2026),,,,,Pacific Avenue Capital Partners,Not yet tested,,,,N
+Trinity Hunt Partners,P3,Private Equity,United States,"Dallas, TX",3,Praxis Rock SEC Form ADV directories (2026),,,,,Trinity Hunt Partners,Not yet tested,,,,N
+DFW Capital Partners,P3,Private Equity,United States,"New York, NY",2.9,Praxis Rock SEC Form ADV directories (2026),,,,,DFW Capital Partners,Not yet tested,,,,N
+CapitalSpring,P3,Private Equity,United States,"Nashville, TN",2.8,Praxis Rock SEC Form ADV directories (2026),,,Y,,CapitalSpring,Not yet tested,,,,N
+EIV Capital,P3,Private Equity,United States,"Houston, TX",2.8,Praxis Rock SEC Form ADV directories (2026),,,,,EIV Capital,Not yet tested,,,,N
+Pamplona Capital Management,P3,Private Equity,Europe,"London, UK",2.8,Praxis Rock SEC Form ADV directories (2026),,,,,Pamplona Capital Management,Not yet tested,,,,N
+1789 Capital,P3,Private Equity,United States,"Palm Beach, FL",2.7,Praxis Rock SEC Form ADV directories (2026),,,,,1789 Capital,Not yet tested,,,,N
+Equistone Partners Europe,P3,Private Equity,Europe,"London, UK",2.7,Praxis Rock SEC Form ADV directories (2026),,,,,Equistone Partners Europe,Not yet tested,,,,N
+Paceline Equity Partners,P3,Private Equity,United States,"Dallas, TX",2.7,Praxis Rock SEC Form ADV directories (2026),,,,,Paceline Equity Partners,Not yet tested,,,,N
+Rivean Capital,P3,Private Equity,Europe,"Amsterdam, Netherlands",2.7,Praxis Rock SEC Form ADV directories (2026),,,,,Rivean Capital,Not yet tested,,,,N
+Sprints Capital,P3,Private Equity,Europe,"London, UK",2.7,Praxis Rock SEC Form ADV directories (2026),,,,,Sprints Capital,Not yet tested,,,,N
+Yorktown Partners,P3,Private Equity,United States,"New York, NY",2.7,Praxis Rock SEC Form ADV directories (2026),,,,,Yorktown Partners,Not yet tested,,,,N
+Renovus Capital Partners,P3,Private Equity,United States,"Wayne, PA",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,Renovus Capital Partners,Not yet tested,,,,N
+The Catalyst Capital Group,P3,Private Equity,Canada,"Toronto, Canada",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,The Catalyst Capital Group,Not yet tested,,,,N
+Updata Partners,P3,Private Equity,United States,"Washington, DC",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,Updata Partners,Not yet tested,,,,N
+Vestar Capital Partners,P3,Private Equity,United States,"New York, NY",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,Vestar Capital Partners,Not yet tested,,,,N
+ZMC,P3,Private Equity,United States,"New York, NY",2.6,Praxis Rock SEC Form ADV directories (2026),,,Y,,ZMC,Not yet tested,,,,N
+Amulet Capital Partners,P3,Private Equity,United States,"Greenwich, CT",2.5,Praxis Rock SEC Form ADV directories (2026),,,,,Amulet Capital Partners,Not yet tested,,,,N
+Metalmark Capital,P3,Private Equity,United States,"New York, NY",2.5,Praxis Rock SEC Form ADV directories (2026),,,,,Metalmark Capital,Not yet tested,,,,N
+Stirling Square Capital Partners,P3,Private Equity,Europe,"London, UK",2.5,Praxis Rock SEC Form ADV directories (2026),,,,,Stirling Square Capital Partners,Not yet tested,,,,N
+Summa Equity,P3,Private Equity,Europe,"Stockholm, Sweden",2.5,Praxis Rock SEC Form ADV directories (2026),,,,,Summa Equity,Not yet tested,,,,N
+TZP Group,P3,Private Equity,United States,"New York, NY",2.5,Praxis Rock SEC Form ADV directories (2026),,,,,TZP Group,Not yet tested,,,,N
+Align Capital Partners,P3,Private Equity,United States,"Shaker Heights, OH",2.4,Praxis Rock SEC Form ADV directories (2026),,,,,Align Capital Partners,Not yet tested,,,,N
+Bowmark Capital,P3,Private Equity,Europe,"London, UK",2.4,Praxis Rock SEC Form ADV directories (2026),,,,,Bowmark Capital,Not yet tested,,,,N
+G Square Capital,P3,Private Equity,Europe,"London, UK",2.4,Praxis Rock SEC Form ADV directories (2026),,,,,G Square Capital,Not yet tested,,,,N
+Valeas Capital Partners,P3,Private Equity,United States,"San Francisco, CA",2.4,Praxis Rock SEC Form ADV directories (2026),,,,,Valeas Capital Partners,Not yet tested,,,,N
+Excellere Partners,P3,Private Equity,United States,"Denver, CO",2.3,Praxis Rock SEC Form ADV directories (2026),,,,,Excellere Partners,Not yet tested,,,,N
+TorQuest Partners,P3,Private Equity,Canada,"Toronto, Canada",2.3,Praxis Rock SEC Form ADV directories (2026),,,,,TorQuest Partners,Not yet tested,,,,N
+Carnelian Energy Capital,P3,Private Equity,United States,"Houston, TX",2.2,Praxis Rock SEC Form ADV directories (2026),,,,,Carnelian Energy Capital,Not yet tested,,,,N
+Enlightenment Capital,P3,Private Equity,United States,"Chevy Chase, MD",2.2,Praxis Rock SEC Form ADV directories (2026),,,,,Enlightenment Capital,Not yet tested,,,,N
+Further Global Capital Management,P3,Private Equity,United States,"New York, NY",2.2,Praxis Rock SEC Form ADV directories (2026),,,,,Further Global Capital Management,Not yet tested,,,,N
+LongRange Capital,P3,Private Equity,United States,"Stamford, CT",2.2,Praxis Rock SEC Form ADV directories (2026),,,,,LongRange Capital,Not yet tested,,,,N
+Blue Water Energy,P3,Private Equity,Europe,"London, UK",2.1,Praxis Rock SEC Form ADV directories (2026),,,,,Blue Water Energy,Not yet tested,,,,N
+Carrick Capital Partners,P3,Private Equity,United States,"San Francisco, CA",2.1,Praxis Rock SEC Form ADV directories (2026),,,,,Carrick Capital Partners,Not yet tested,,,,N
+Klar Partners,P3,Private Equity,Europe,"London, UK",2.1,Praxis Rock SEC Form ADV directories (2026),,,,,Klar Partners,Not yet tested,,,,N
+Nexphase Capital,P3,Private Equity,United States,"New York, NY",2.1,Praxis Rock SEC Form ADV directories (2026),,,,,Nexphase Capital,Not yet tested,,,,N
+Southfield Capital,P3,Private Equity,United States,"Greenwich, CT",2.1,Praxis Rock SEC Form ADV directories (2026),,,,,Southfield Capital,Not yet tested,,,,N
+True Wind Capital,P3,Private Equity,United States,"San Francisco, CA",2.1,Praxis Rock SEC Form ADV directories (2026),,,,,True Wind Capital,Not yet tested,,,,N
+Brynwood Partners,P3,Private Equity,United States,"Greenwich, CT",2,Praxis Rock SEC Form ADV directories (2026),,,,,Brynwood Partners,Not yet tested,,,,N
+CenterOak Partners,P3,Private Equity,United States,"Dallas, TX",2,Praxis Rock SEC Form ADV directories (2026),,,,,CenterOak Partners,Not yet tested,,,,N
+Clearview Capital,P3,Private Equity,United States,"Stamford, CT",2,Praxis Rock SEC Form ADV directories (2026),,,,,Clearview Capital,Not yet tested,,,,N
+Freshstream,P3,Private Equity,Europe,"London, UK",2,Praxis Rock SEC Form ADV directories (2026),,,Y,,Freshstream,Not yet tested,,,,N
+Kainos Capital,P3,Private Equity,United States,"Dallas, TX",2,Praxis Rock SEC Form ADV directories (2026),,,,,Kainos Capital,Not yet tested,,,,N
+L Squared Capital Partners,P3,Private Equity,United States,"Newport Beach, CA",2,Praxis Rock SEC Form ADV directories (2026),,,,,L Squared Capital Partners,Not yet tested,,,,N
+Miura Partners,P3,Private Equity,Europe,"Barcelona, Spain",2,Praxis Rock SEC Form ADV directories (2026),,,,,Miura Partners,Not yet tested,,,,N
+New State Capital Partners,P3,Private Equity,United States,"New Rochelle, NY",2,Praxis Rock SEC Form ADV directories (2026),,,,,New State Capital Partners,Not yet tested,,,,N
+Sole Source Capital,P3,Private Equity,United States,"Los Angeles, CA",2,Praxis Rock SEC Form ADV directories (2026),,,,,Sole Source Capital,Not yet tested,,,,N
+BNP Paribas Real Estate Investment Management,P1,Real Estate,Europe,"Boulogne-Billancourt, France",79.2,Praxis Rock SEC Form ADV directories (2026),,,,,BNP Paribas Real Estate Investment Management,Not yet tested,,,,N
+CBRE Investment Management,P1,Real Estate,Europe,"London, UK",50.4,Praxis Rock SEC Form ADV directories (2026),,,,,CBRE Investment Management,Not yet tested,,,,N
+Greystar Investment Group,P1,Real Estate,United States,"Charleston, SC",36.5,Praxis Rock SEC Form ADV directories (2026),,,,,Greystar Investment Group,Not yet tested,,,,N
+Exeter Property Group,P1,Real Estate,United States,"Radnor, PA",35.1,Praxis Rock SEC Form ADV directories (2026),,,,,Exeter Property Group,Not yet tested,,,,N
+Kayne Anderson Real Estate,P1,Real Estate,United States,"Boca Raton, FL",23.9,Praxis Rock SEC Form ADV directories (2026),,,,,Kayne Anderson Real Estate,Not yet tested,,,,N
+Rialto Capital Management,P1,Real Estate,United States,"Miami, FL",21.7,Praxis Rock SEC Form ADV directories (2026),,,,,Rialto Capital Management,Not yet tested,,,,N
+PCCP,P1,Real Estate,United States,"Los Angeles, CA",20.1,Praxis Rock SEC Form ADV directories (2026),,,Y,,PCCP,Not yet tested,,,,N
+TPG Real Estate,P1,Real Estate,United States,"Fort Worth, TX",17,Praxis Rock SEC Form ADV directories (2026),,Y,,,TPG Real Estate,Not yet tested,,,,N
+Divco West,P1,Real Estate,United States,"San Francisco, CA",16.3,Praxis Rock SEC Form ADV directories (2026),,,,,Divco West,Not yet tested,,,,N
+Tishman Speyer,P1,Real Estate,United States,"New York, NY",15.4,Praxis Rock SEC Form ADV directories (2026),,,,,Tishman Speyer,Not yet tested,,,,N
+Aermont Capital,P1,Real Estate,Europe,Luxembourg,15.1,Praxis Rock SEC Form ADV directories (2026),,,,,Aermont Capital,Not yet tested,,,,N
+Related Fund Management,P1,Real Estate,United States,"New York, NY",14,Praxis Rock SEC Form ADV directories (2026),,,,,Related Fund Management,Not yet tested,,,,N
+Rockpoint,P1,Real Estate,United States,"Boston, MA",13.3,Praxis Rock SEC Form ADV directories (2026),,,Y,,Rockpoint,Not yet tested,,,,N
+Urban Partners,P1,Real Estate,Europe,Luxembourg,12.6,Praxis Rock SEC Form ADV directories (2026),,,,,Urban Partners,Not yet tested,,,,N
+Artemis Real Estate Partners,P2,Real Estate,United States,"Chevy Chase, MD",11.4,Praxis Rock SEC Form ADV directories (2026),,,,,Artemis Real Estate Partners,Not yet tested,,,,N
+Realterm,P2,Real Estate,United States,"Annapolis, MD",10.9,Praxis Rock SEC Form ADV directories (2026),,,Y,,Realterm,Not yet tested,,,,N
+Rockwood Capital,P2,Real Estate,United States,"New York, NY",10.6,Praxis Rock SEC Form ADV directories (2026),,,,,Rockwood Capital,Not yet tested,,,,N
+AXA IM Alts (Real Estate),P2,Real Estate,Europe,"Paris, France",10.4,Praxis Rock SEC Form ADV directories (2026),,,,,AXA IM Alts (Real Estate),Not yet tested,,,,N
+Bain Capital Real Estate,P2,Real Estate,United States,"Boston, MA",10,Praxis Rock SEC Form ADV directories (2026),,,,,Bain Capital Real Estate,Not yet tested,,,,N
+Walton Street Capital,P2,Real Estate,United States,"Chicago, IL",9.8,Praxis Rock SEC Form ADV directories (2026),,,,,Walton Street Capital,Not yet tested,,,,N
+Cabot Properties,P2,Real Estate,United States,"Boston, MA",9.1,Praxis Rock SEC Form ADV directories (2026),,,,,Cabot Properties,Not yet tested,,,,N
+Hines,P2,Real Estate,United States,"Houston, TX",9,Praxis Rock SEC Form ADV directories (2026),,,Y,,Hines,Not yet tested,,,,N
+Northwood Investors,P2,Real Estate,United States,"Denver, CO",9,Praxis Rock SEC Form ADV directories (2026),,,,,Northwood Investors,Not yet tested,,,,N
+Asana Partners,P2,Real Estate,United States,"Charlotte, NC",8.4,Praxis Rock SEC Form ADV directories (2026),,,,,Asana Partners,Not yet tested,,,,N
+Carmel Partners,P2,Real Estate,United States,"San Francisco, CA",8,Praxis Rock SEC Form ADV directories (2026),,,,,Carmel Partners,Not yet tested,,,,N
+Elmtree Funds,P2,Real Estate,United States,"St. Louis, MO",7.8,Praxis Rock SEC Form ADV directories (2026),,,,,Elmtree Funds,Not yet tested,,,,N
+Corum Asset Management,P2,Real Estate,Europe,"Paris, France",7.3,Praxis Rock SEC Form ADV directories (2026),,,,,Corum Asset Management,Not yet tested,,,,N
+Abacus Capital Group,P2,Real Estate,United States,"New York, NY",6.9,Praxis Rock SEC Form ADV directories (2026),,,,,Abacus Capital Group,Not yet tested,,,,N
+Crescent Real Estate,P2,Real Estate,United States,"Fort Worth, TX",6.6,Praxis Rock SEC Form ADV directories (2026),,,,,Crescent Real Estate,Not yet tested,,,,N
+NIAM,P2,Real Estate,Europe,"Stockholm, Sweden",6.5,Praxis Rock SEC Form ADV directories (2026),,,Y,,NIAM,Not yet tested,,,,N
+GEM Realty Capital,P2,Real Estate,United States,"Chicago, IL",6.3,Praxis Rock SEC Form ADV directories (2026),,,,,GEM Realty Capital,Not yet tested,,,,N
+Madison International Realty,P2,Real Estate,United States,"New York, NY",6.3,Praxis Rock SEC Form ADV directories (2026),,,,,Madison International Realty,Not yet tested,,,,N
+Beacon Capital Partners,P2,Real Estate,United States,"Boston, MA",6.2,Praxis Rock SEC Form ADV directories (2026),,,,,Beacon Capital Partners,Not yet tested,,,,N
+Fairfield Residential,P2,Real Estate,United States,"San Diego, CA",6.2,Praxis Rock SEC Form ADV directories (2026),,,,,Fairfield Residential,Not yet tested,,,,N
+Bell Partners,P2,Real Estate,United States,"Greensboro, NC",6.1,Praxis Rock SEC Form ADV directories (2026),,,,,Bell Partners,Not yet tested,,,,N
+Heitman,P2,Real Estate,United States,"Chicago, IL",6.1,Praxis Rock SEC Form ADV directories (2026),,,Y,,Heitman,Not yet tested,,,,N
+Meadow Partners,P2,Real Estate,United States,"New York, NY",6,Praxis Rock SEC Form ADV directories (2026),,,,,Meadow Partners,Not yet tested,,,,N
+GID Investment Advisers,P3,Real Estate,United States,"Boston, MA",5.9,Praxis Rock SEC Form ADV directories (2026),,,,,GID Investment Advisers,Not yet tested,,,,N
+Sabal Investment Holdings,P3,Real Estate,United States,"Irvine, CA",5.8,Praxis Rock SEC Form ADV directories (2026),,,,,Sabal Investment Holdings,Not yet tested,,,,N
+Cortland,P3,Real Estate,United States,"Atlanta, GA",5.7,Praxis Rock SEC Form ADV directories (2026),,,Y,,Cortland,Not yet tested,,,,N
+Longpoint Partners,P3,Real Estate,United States,"Boston, MA",5.7,Praxis Rock SEC Form ADV directories (2026),,,,,Longpoint Partners,Not yet tested,,,,N
+Areim,P3,Real Estate,Europe,"Stockholm, Sweden",5.3,Praxis Rock SEC Form ADV directories (2026),,,Y,,Areim,Not yet tested,,,,N
+Rockbridge,P3,Real Estate,United States,"Columbus, OH",5.2,Praxis Rock SEC Form ADV directories (2026),,,Y,,Rockbridge,Not yet tested,,,,N
+Pennybacker Capital,P3,Real Estate,United States,"Austin, TX",4.9,Praxis Rock SEC Form ADV directories (2026),,,,,Pennybacker Capital,Not yet tested,,,,N
+ACRE,P3,Real Estate,United States,"New York, NY",4.7,Praxis Rock SEC Form ADV directories (2026),,,Y,,ACRE,Not yet tested,,,,N
+Menlo Equities,P3,Real Estate,United States,"Menlo Park, CA",4.7,Praxis Rock SEC Form ADV directories (2026),,,,,Menlo Equities,Not yet tested,,,,N
+MCR,P3,Real Estate,United States,"Dallas, TX",4.6,Praxis Rock SEC Form ADV directories (2026),,,Y,,MCR,Not yet tested,,,,N
+Banner Oak Capital Partners,P3,Real Estate,United States,"Dallas, TX",4.5,Praxis Rock SEC Form ADV directories (2026),,,,,Banner Oak Capital Partners,Not yet tested,,,,N
+Waterton,P3,Real Estate,United States,"Chicago, IL",4.3,Praxis Rock SEC Form ADV directories (2026),,,Y,,Waterton,Not yet tested,,,,N
+Sentinel Real Estate,P3,Real Estate,United States,"New York, NY",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Sentinel Real Estate,Not yet tested,,,,N
+Avanath Capital Management,P3,Real Estate,United States,"Irvine, CA",3.7,Praxis Rock SEC Form ADV directories (2026),,,,,Avanath Capital Management,Not yet tested,,,,N
+TGM Associates,P3,Real Estate,United States,"New York, NY",3.7,Praxis Rock SEC Form ADV directories (2026),,,,,TGM Associates,Not yet tested,,,,N
+Patron Capital,P3,Real Estate,Europe,"London, UK",3.6,Praxis Rock SEC Form ADV directories (2026),,,,,Patron Capital,Not yet tested,,,,N
+Proprium Capital Partners,P3,Real Estate,United States,"Stamford, CT",3.4,Praxis Rock SEC Form ADV directories (2026),,,,,Proprium Capital Partners,Not yet tested,,,,N
+RXR,P3,Real Estate,United States,"Uniondale, NY",2.9,Praxis Rock SEC Form ADV directories (2026),,,Y,,RXR,Not yet tested,,,,N
+Lubert-Adler,P3,Real Estate,United States,"Philadelphia, PA",2.8,Praxis Rock SEC Form ADV directories (2026),,,Y,,Lubert-Adler,Not yet tested,,,,N
+AJ Capital Partners,P3,Real Estate,United States,"Nashville, TN",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,AJ Capital Partners,Not yet tested,,,,N
+Orion Capital Managers,P3,Real Estate,Europe,"London, UK",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,Orion Capital Managers,Not yet tested,,,,N
+Dune Real Estate Partners,P3,Real Estate,United States,"New York, NY",2,Praxis Rock SEC Form ADV directories (2026),,,,,Dune Real Estate Partners,Not yet tested,,,,N
+The Davis Companies,P3,Real Estate,United States,"Boston, MA",2,Praxis Rock SEC Form ADV directories (2026),,,,,The Davis Companies,Not yet tested,,,,N
+Thrive Capital,P1,Venture Capital,United States,"New York, NY",50.5,Praxis Rock SEC Form ADV directories (2026),,,,,Thrive Capital,Not yet tested,,,,N
+General Catalyst,P1,Venture Capital,United States,"Cambridge, MA",49.1,Praxis Rock SEC Form ADV directories (2026); Altss largest VC firms (US),,,,,General Catalyst,Not yet tested,,,,N
+Accel,P1,Venture Capital,United States,"Palo Alto, CA",38,Praxis Rock SEC Form ADV directories (2026),,,Y,,Accel,Not yet tested,,,,N
+New Enterprise Associates (NEA),P1,Venture Capital,United States,"Menlo Park, CA",35.6,Praxis Rock SEC Form ADV directories (2026),,,,,New Enterprise Associates (NEA),Not yet tested,,,,N
+Index Ventures,P1,Venture Capital,Europe,"Geneva, Switzerland",25.3,Praxis Rock SEC Form ADV directories (2026); Altss largest VC firms (US),,,,,Index Ventures,Not yet tested,,,,N
+Y Combinator,P1,Venture Capital,United States,"Mountain View, CA",22,Praxis Rock SEC Form ADV directories (2026),,,,,Y Combinator,Not yet tested,,,,N
+Khosla Ventures,P1,Venture Capital,United States,"Menlo Park, CA",21.7,Praxis Rock SEC Form ADV directories (2026),,,,,Khosla Ventures,Not yet tested,,,,N
+Kleiner Perkins,P1,Venture Capital,United States,"Menlo Park, CA",20.7,Praxis Rock SEC Form ADV directories (2026),,,,,Kleiner Perkins,Not yet tested,,,,N
+Bessemer Venture Partners,P1,Venture Capital,United States,"San Francisco, CA",20.3,Praxis Rock SEC Form ADV directories (2026),,,,,Bessemer Venture Partners,Not yet tested,,,,N
+Impresa Management,P2,Venture Capital,United States,"Boston, MA",16.4,Praxis Rock SEC Form ADV directories (2026),,,,,Impresa Management,Not yet tested,,,,N
+DFJ Growth,P2,Venture Capital,United States,"San Mateo, CA",16.3,Praxis Rock SEC Form ADV directories (2026),,,,,DFJ Growth,Not yet tested,,,,N
+Battery Ventures,P1,Venture Capital,United States,"Boston, MA",15.6,Praxis Rock SEC Form ADV directories (2026),,,,,Battery Ventures,Not yet tested,,,,N
+Spark Capital,P1,Venture Capital,United States,"Boston, MA",15.6,Praxis Rock SEC Form ADV directories (2026),,,,,Spark Capital,Not yet tested,,,,N
+Gigafund,P2,Venture Capital,United States,"Austin, TX",15,Praxis Rock SEC Form ADV directories (2026),,,Y,,Gigafund,Not yet tested,,,,N
+Paradigm,P1,Venture Capital,United States,"San Francisco, CA",14.8,Praxis Rock SEC Form ADV directories (2026),,,Y,,Paradigm,Not yet tested,,,,N
+Columbia Capital,P2,Venture Capital,United States,"Alexandria, VA",13.8,Praxis Rock SEC Form ADV directories (2026),,,,,Columbia Capital,Not yet tested,,,,N
+8VC,P1,Venture Capital,United States,"Austin, TX",13.4,Praxis Rock SEC Form ADV directories (2026); Global Alts Miami 2026 speaker list,,,Y,,8VC,Not yet tested,,,,N
+Draper Fisher Jurvetson (DFJ),P2,Venture Capital,United States,"San Mateo, CA",11.6,Praxis Rock SEC Form ADV directories (2026),,,,,Draper Fisher Jurvetson (DFJ),Not yet tested,,,,N
+Lux Capital,P1,Venture Capital,United States,"New York, NY",11.2,Praxis Rock SEC Form ADV directories (2026),,,,,Lux Capital,Not yet tested,,,,N
+Menlo Ventures,P1,Venture Capital,United States,"Menlo Park, CA",10.8,Praxis Rock SEC Form ADV directories (2026),,,,,Menlo Ventures,Not yet tested,,,,N
+ARCH Venture Partners,P1,Venture Capital,United States,"Chicago, IL",10.5,Praxis Rock SEC Form ADV directories (2026),,,,,ARCH Venture Partners,Not yet tested,,,,N
+Greylock Partners,P1,Venture Capital,United States,"San Francisco, CA",10.5,Praxis Rock SEC Form ADV directories (2026),,,,,Greylock Partners,Not yet tested,,,,N
+Sapphire Ventures,P1,Venture Capital,United States,"Austin, TX",10.4,Praxis Rock SEC Form ADV directories (2026),,,,,Sapphire Ventures,Not yet tested,,,,N
+Notable Capital,P1,Venture Capital,United States,"Menlo Park, CA",10.3,Praxis Rock SEC Form ADV directories (2026),,,,,Notable Capital,Not yet tested,,,,N
+Bain Capital Ventures,P1,Venture Capital,United States,"Boston, MA",9.9,Praxis Rock SEC Form ADV directories (2026),,,,,Bain Capital Ventures,Not yet tested,,,,N
+Oak HC/FT,P1,Venture Capital,United States,"Stamford, CT",9.7,Praxis Rock SEC Form ADV directories (2026),,,,,Oak HC/FT,Not yet tested,,,,N
+Addition,P1,Venture Capital,United States,"New York, NY",9.2,Praxis Rock SEC Form ADV directories (2026),,,Y,,Addition,Not yet tested,,,,N
+DBL Partners,P2,Venture Capital,United States,"San Francisco, CA",9.2,Praxis Rock SEC Form ADV directories (2026),,,,,DBL Partners,Not yet tested,,,,N
+Crosspoint Capital Partners,P2,Venture Capital,United States,"Menlo Park, CA",8.7,Praxis Rock SEC Form ADV directories (2026),,,,,Crosspoint Capital Partners,Not yet tested,,,,N
+Balderton Capital,P1,Venture Capital,Europe,"London, UK",8.5,Praxis Rock SEC Form ADV directories (2026),,,,,Balderton Capital,Not yet tested,,,,N
+B Capital,P2,Venture Capital,United States,"Manhattan Beach, CA",8.2,Praxis Rock SEC Form ADV directories (2026),,,,,B Capital,Not yet tested,,,,N
+Bond,P1,Venture Capital,United States,"San Francisco, CA",8,Praxis Rock SEC Form ADV directories (2026),,,Y,,Bond,Not yet tested,,,,N
+CRV,P1,Venture Capital,United States,"Palo Alto, CA",8,Praxis Rock SEC Form ADV directories (2026),,,Y,,CRV,Not yet tested,,,,N
+Redpoint Ventures,P1,Venture Capital,United States,"Woodside, CA",8,Praxis Rock SEC Form ADV directories (2026),,,,,Redpoint Ventures,Not yet tested,,,,N
+Benchmark,P1,Venture Capital,United States,"Woodside, CA",7.6,Praxis Rock SEC Form ADV directories (2026),,,Y,,Benchmark,Not yet tested,,,,N
+Eclipse,P1,Venture Capital,United States,"Palo Alto, CA",7.4,Praxis Rock SEC Form ADV directories (2026),,,Y,,Eclipse,Not yet tested,,,,N
+HOF Capital,P2,Venture Capital,United States,"New York, NY",7.3,Praxis Rock SEC Form ADV directories (2026),,,,,HOF Capital,Not yet tested,,,,N
+Craft Ventures,P1,Venture Capital,United States,"San Francisco, CA",7.2,Praxis Rock SEC Form ADV directories (2026),,,,,Craft Ventures,Not yet tested,,,,N
+Hedosophia,P2,Venture Capital,Europe,Guernsey,7,Praxis Rock SEC Form ADV directories (2026),,,Y,,Hedosophia,Not yet tested,,,,N
+Forbion,P2,Venture Capital,Europe,"Naarden, Netherlands",6.9,Praxis Rock SEC Form ADV directories (2026),,,Y,,Forbion,Not yet tested,,,,N
+Felicis Ventures,P1,Venture Capital,United States,"Menlo Park, CA",6.7,Praxis Rock SEC Form ADV directories (2026),,,,,Felicis Ventures,Not yet tested,,,,N
+Future Ventures,P2,Venture Capital,United States,"Los Altos, CA",6.6,Praxis Rock SEC Form ADV directories (2026),,,,,Future Ventures,Not yet tested,,,,N
+Matrix Partners,P2,Venture Capital,United States,"Cambridge, MA",6.6,Praxis Rock SEC Form ADV directories (2026),,,,,Matrix Partners,Not yet tested,,,,N
+Amplify Partners,P2,Venture Capital,United States,"Menlo Park, CA",6.3,Praxis Rock SEC Form ADV directories (2026),,,,,Amplify Partners,Not yet tested,,,,N
+Breakthrough Energy Ventures,P2,Venture Capital,United States,"Kirkland, WA",5.8,Praxis Rock SEC Form ADV directories (2026),,,,,Breakthrough Energy Ventures,Not yet tested,,,,N
+K5 Global,P2,Venture Capital,United States,"Miami Beach, FL",5.8,Praxis Rock SEC Form ADV directories (2026),,,,,K5 Global,Not yet tested,,,,N
+Canaan Partners,P2,Venture Capital,United States,"Stamford, CT",5.5,Praxis Rock SEC Form ADV directories (2026),,,,,Canaan Partners,Not yet tested,,,,N
+Goodwater Capital,P2,Venture Capital,United States,"Burlingame, CA",5.4,Praxis Rock SEC Form ADV directories (2026),,,,,Goodwater Capital,Not yet tested,,,,N
+Quiet Capital,P2,Venture Capital,United States,"San Francisco, CA",5.4,Praxis Rock SEC Form ADV directories (2026),,,,,Quiet Capital,Not yet tested,,,,N
+FirstMark Capital,P2,Venture Capital,United States,"New York, NY",5,Praxis Rock SEC Form ADV directories (2026),,,,,FirstMark Capital,Not yet tested,,,,N
+Energy Impact Partners,P2,Venture Capital,United States,"New York, NY",4.9,Praxis Rock SEC Form ADV directories (2026),,,,,Energy Impact Partners,Not yet tested,,,,N
+Foundation Capital,P2,Venture Capital,United States,"Palo Alto, CA",4.8,Praxis Rock SEC Form ADV directories (2026),,,,,Foundation Capital,Not yet tested,,,,N
+Meritech Capital,P2,Venture Capital,United States,"Palo Alto, CA",4.6,Praxis Rock SEC Form ADV directories (2026),,,,,Meritech Capital,Not yet tested,,,,N
+Greycroft,P2,Venture Capital,United States,"New York, NY",4.5,Praxis Rock SEC Form ADV directories (2026),,,Y,,Greycroft,Not yet tested,,,,N
+SignalFire,P2,Venture Capital,United States,"San Francisco, CA",4.5,Praxis Rock SEC Form ADV directories (2026),,,Y,,SignalFire,Not yet tested,,,,N
+Venrock,P2,Venture Capital,United States,"Palo Alto, CA",4.5,Praxis Rock SEC Form ADV directories (2026),,,Y,,Venrock,Not yet tested,,,,N
+Drive Capital,P2,Venture Capital,United States,"Columbus, OH",4.4,Praxis Rock SEC Form ADV directories (2026),,,,,Drive Capital,Not yet tested,,,,N
+Human Capital,P2,Venture Capital,United States,"San Francisco, CA",4.4,Praxis Rock SEC Form ADV directories (2026),,,,,Human Capital,Not yet tested,,,,N
+HV Capital,P2,Venture Capital,Europe,"Munich, Germany",4.3,Praxis Rock SEC Form ADV directories (2026),,,,,HV Capital,Not yet tested,,,,N
+Madrona Venture Group,P2,Venture Capital,United States,"Seattle, WA",4.3,Praxis Rock SEC Form ADV directories (2026),,,,,Madrona Venture Group,Not yet tested,,,,N
+Mayfield,P2,Venture Capital,United States,"Menlo Park, CA",4.3,Praxis Rock SEC Form ADV directories (2026),,,Y,,Mayfield,Not yet tested,,,,N
+Forerunner Ventures,P2,Venture Capital,United States,"San Francisco, CA",4.2,Praxis Rock SEC Form ADV directories (2026),,,,,Forerunner Ventures,Not yet tested,,,,N
+Lowercase Capital,P2,Venture Capital,United States,"Los Angeles, CA",4.1,Praxis Rock SEC Form ADV directories (2026),,,,,Lowercase Capital,Not yet tested,,,,N
+Valar Ventures,P2,Venture Capital,United States,"New York, NY",4.1,Praxis Rock SEC Form ADV directories (2026),,,,,Valar Ventures,Not yet tested,,,,N
+Zeev Ventures,P2,Venture Capital,United States,"Palo Alto, CA",4.1,Praxis Rock SEC Form ADV directories (2026),,,,,Zeev Ventures,Not yet tested,,,,N
+Avenir,P2,Venture Capital,United States,"New York, NY",3.9,Praxis Rock SEC Form ADV directories (2026),,,Y,,Avenir,Not yet tested,,,,N
+Caffeinated Capital,P2,Venture Capital,United States,"San Francisco, CA",3.9,Praxis Rock SEC Form ADV directories (2026),,,,,Caffeinated Capital,Not yet tested,,,,N
+Crosslink Capital,P2,Venture Capital,United States,"Menlo Park, CA",3.9,Praxis Rock SEC Form ADV directories (2026),,,,,Crosslink Capital,Not yet tested,,,,N
+DCVC,P2,Venture Capital,United States,"Palo Alto, CA",3.9,Praxis Rock SEC Form ADV directories (2026),,,Y,,DCVC,Not yet tested,,,,N
+NewView Capital,P3,Venture Capital,United States,"Burlingame, CA",3.9,Praxis Rock SEC Form ADV directories (2026),,,,,NewView Capital,Not yet tested,,,,N
+True Ventures,P3,Venture Capital,United States,"Palo Alto, CA",3.9,Praxis Rock SEC Form ADV directories (2026),,,,,True Ventures,Not yet tested,,,,N
+Versant Ventures,P3,Venture Capital,United States,"San Francisco, CA",3.9,Praxis Rock SEC Form ADV directories (2026),,,,,Versant Ventures,Not yet tested,,,,N
+Emergence Capital,P3,Venture Capital,United States,"San Francisco, CA",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Emergence Capital,Not yet tested,,,,N
+First Round Capital,P1,Venture Capital,United States,"Philadelphia, PA",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,First Round Capital,Not yet tested,,,,N
+IVP (Institutional Venture Partners),P2,Venture Capital,United States,"Menlo Park, CA",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,IVP (Institutional Venture Partners),Not yet tested,,,,N
+Left Lane Capital,P3,Venture Capital,United States,"New York, NY",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Left Lane Capital,Not yet tested,,,,N
+Norwest Venture Partners,P2,Venture Capital,United States,"Palo Alto, CA",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Norwest Venture Partners,Not yet tested,,,,N
+Tribe Capital,P3,Venture Capital,United States,"San Mateo, CA",3.8,Praxis Rock SEC Form ADV directories (2026),,,,,Tribe Capital,Not yet tested,,,,N
+Sutter Hill Ventures,P1,Venture Capital,United States,"Palo Alto, CA",3.7,Praxis Rock SEC Form ADV directories (2026),,,,,Sutter Hill Ventures,Not yet tested,,,,N
+Dragonfly,P2,Venture Capital,United States,"San Francisco, CA",3.5,Praxis Rock SEC Form ADV directories (2026),,,Y,,Dragonfly,Not yet tested,,,,N
+Upfront Ventures,P3,Venture Capital,United States,"Los Angeles, CA",3.4,Praxis Rock SEC Form ADV directories (2026),,,,,Upfront Ventures,Not yet tested,,,,N
+Playground Global,P3,Venture Capital,United States,"Palo Alto, CA",3.3,Praxis Rock SEC Form ADV directories (2026),,,,,Playground Global,Not yet tested,,,,N
+QED Investors,P3,Venture Capital,United States,"Alexandria, VA",3.3,Praxis Rock SEC Form ADV directories (2026),,,,,QED Investors,Not yet tested,,,,N
+The Column Group,P3,Venture Capital,United States,"San Francisco, CA",3.3,Praxis Rock SEC Form ADV directories (2026),,,,,The Column Group,Not yet tested,,,,N
+Foresite Capital,P3,Venture Capital,United States,"West Hollywood, CA",3.2,Praxis Rock SEC Form ADV directories (2026),,,,,Foresite Capital,Not yet tested,,,,N
+Union Square Ventures,P1,Venture Capital,United States,"New York, NY",3.2,Praxis Rock SEC Form ADV directories (2026),,,,,Union Square Ventures,Not yet tested,,,,N
+Initialized Capital,P3,Venture Capital,United States,"San Francisco, CA",3.1,Praxis Rock SEC Form ADV directories (2026),,,,,Initialized Capital,Not yet tested,,,,N
+Primary Venture Partners,P3,Venture Capital,United States,"New York, NY",3.1,Praxis Rock SEC Form ADV directories (2026),,,,,Primary Venture Partners,Not yet tested,,,,N
+Transformation Capital,P3,Venture Capital,United States,"Boston, MA",3.1,Praxis Rock SEC Form ADV directories (2026),,,,,Transformation Capital,Not yet tested,,,,N
+Anthos Capital,P3,Venture Capital,United States,"Santa Monica, CA",3,Praxis Rock SEC Form ADV directories (2026),,,,,Anthos Capital,Not yet tested,,,,N
+Atlas Venture,P1,Venture Capital,United States,"Cambridge, MA",3,Praxis Rock SEC Form ADV directories (2026),,,,,Atlas Venture,Not yet tested,,,,N
+BoxGroup,P3,Venture Capital,United States,"New York, NY",3,Praxis Rock SEC Form ADV directories (2026),,,Y,,BoxGroup,Not yet tested,,,,N
+Optum Ventures,P3,Venture Capital,United States,"Boston, MA",3,Praxis Rock SEC Form ADV directories (2026),,,,,Optum Ventures,Not yet tested,,,,N
+Blockchain Capital,P3,Venture Capital,United States,"San Francisco, CA",2.9,Praxis Rock SEC Form ADV directories (2026),,,,,Blockchain Capital,Not yet tested,,,,N
+Electric Capital,P3,Venture Capital,United States,"Palo Alto, CA",2.9,Praxis Rock SEC Form ADV directories (2026),,,,,Electric Capital,Not yet tested,,,,N
+Owl Ventures,P3,Venture Capital,United States,"San Francisco, CA",2.9,Praxis Rock SEC Form ADV directories (2026),,,,,Owl Ventures,Not yet tested,,,,N
+Partech,P3,Venture Capital,Europe,"Paris, France",2.9,Praxis Rock SEC Form ADV directories (2026),,,Y,,Partech,Not yet tested,,,,N
+Scale Venture Partners,P3,Venture Capital,United States,"Foster City, CA",2.9,Praxis Rock SEC Form ADV directories (2026),,,,,Scale Venture Partners,Not yet tested,,,,N
+Project A Ventures,P3,Venture Capital,Europe,"Berlin, Germany",2.8,Praxis Rock SEC Form ADV directories (2026),,,,,Project A Ventures,Not yet tested,,,,N
+DCM Ventures,P3,Venture Capital,United States,"Menlo Park, CA",2.7,Praxis Rock SEC Form ADV directories (2026),,,,,DCM Ventures,Not yet tested,,,,N
+Wing Venture Capital,P3,Venture Capital,United States,"Palo Alto, CA",2.7,Praxis Rock SEC Form ADV directories (2026),,,,,Wing Venture Capital,Not yet tested,,,,N
+Atomico,P1,Venture Capital,Europe,"London, UK",2.6,Praxis Rock SEC Form ADV directories (2026),,,Y,,Atomico,Not yet tested,,,,N
+Bedrock Capital,P3,Venture Capital,United States,"Los Angeles, CA",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,Bedrock Capital,Not yet tested,,,,N
+Costanoa Ventures,P3,Venture Capital,United States,"Palo Alto, CA",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,Costanoa Ventures,Not yet tested,,,,N
+March Capital,P3,Venture Capital,United States,"Santa Monica, CA",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,March Capital,Not yet tested,,,,N
+PeakSpan Capital,P3,Venture Capital,United States,"New York, NY",2.6,Praxis Rock SEC Form ADV directories (2026),,,,,PeakSpan Capital,Not yet tested,,,,N
+Haun Ventures,P2,Venture Capital,United States,"Menlo Park, CA",2.5,Praxis Rock SEC Form ADV directories (2026),,,,,Haun Ventures,Not yet tested,,,,N
+Section 32,P3,Venture Capital,United States,"Palo Alto, CA",2.5,Praxis Rock SEC Form ADV directories (2026),,,,,Section 32,Not yet tested,,,,N
+Accomplice,P3,Venture Capital,United States,"Boston, MA",2.4,Praxis Rock SEC Form ADV directories (2026),,,Y,,Accomplice,Not yet tested,,,,N
+Gilde Healthcare,P3,Venture Capital,Europe,"Utrecht, Netherlands",2.4,Praxis Rock SEC Form ADV directories (2026),,,,,Gilde Healthcare,Not yet tested,,,,N
+Longitude Capital,P3,Venture Capital,United States,"Menlo Park, CA",2.4,Praxis Rock SEC Form ADV directories (2026),,,,,Longitude Capital,Not yet tested,,,,N
+Medicxi,P3,Venture Capital,Europe,"London, UK",2.4,Praxis Rock SEC Form ADV directories (2026),,,Y,,Medicxi,Not yet tested,,,,N
+SR One,P3,Venture Capital,United States,"Redwood City, CA",2.4,Praxis Rock SEC Form ADV directories (2026),,,,,SR One,Not yet tested,,,,N
+Creandum,P3,Venture Capital,Europe,"Stockholm, Sweden",2.3,Praxis Rock SEC Form ADV directories (2026),,,Y,,Creandum,Not yet tested,,,,N
+Evolution Equity Partners,P3,Venture Capital,United States,"New York, NY",2.3,Praxis Rock SEC Form ADV directories (2026),,,,,Evolution Equity Partners,Not yet tested,,,,N
+NFX,P3,Venture Capital,United States,"San Francisco, CA",2.2,Praxis Rock SEC Form ADV directories (2026),,,Y,,NFX,Not yet tested,,,,N
+RRE Ventures,P3,Venture Capital,United States,"New York, NY",2.2,Praxis Rock SEC Form ADV directories (2026),,,,,RRE Ventures,Not yet tested,,,,N
+Felix Capital,P3,Venture Capital,Europe,"London, UK",2.1,Praxis Rock SEC Form ADV directories (2026),,,,,Felix Capital,Not yet tested,,,,N
+500 Global,P3,Venture Capital,United States,"San Francisco, CA",2,Praxis Rock SEC Form ADV directories (2026),,,,,500 Global,Not yet tested,,,,N
+Dawn Capital,P3,Venture Capital,Europe,"London, UK",2,Praxis Rock SEC Form ADV directories (2026),,,,,Dawn Capital,Not yet tested,,,,N
+Nextech Invest,P3,Venture Capital,Europe,"Zurich, Switzerland",2,Praxis Rock SEC Form ADV directories (2026),,,,,Nextech Invest,Not yet tested,,,,N
+Sierra Ventures,P3,Venture Capital,United States,"San Mateo, CA",2,Praxis Rock SEC Form ADV directories (2026),,,,,Sierra Ventures,Not yet tested,,,,N
+ICONIQ Growth,P1,Venture Capital,United States,"San Francisco, CA",,Altss largest VC firms (US),,Y,,,ICONIQ Growth,Not yet tested,,,,N
+Seven Seven Six,P1,Venture Capital,United States,"New York, NY",,Global Alts Miami 2026 speaker list,,,,,Seven Seven Six,Not yet tested,,,,N

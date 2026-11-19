@@ -1,0 +1,12 @@
+# Company names that must never be accepted (look-alikes of firms we track).
+# One phrase per line, lowercase, matched anywhere in the company name. Lines starting with # are comments.
+# Applies to new jobs and to jobs already in the history. Manual Google Sheet rows are never affected.
+
+# from the older Apify tasks' organization exclusions
+freedom equity group
+stonebridge adams street
+imco carbide tool
+
+# not Citadel LLC (Citadel's website is citadel.com)
+citadel credit union
+citadel federal solutions
