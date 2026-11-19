@@ -68,8 +68,12 @@ def build_tasks(priorities=("P1",)) -> list[dict]:
     """[{name, input, firms}] for every active firm, grouped by sector family and split at 40 firms."""
     groups = load_groups()
     by_group: dict[str, list[dict]] = {}
+    exact = []                       # name-risk firms with a locked domain: searched by website, not by name
     for r in load_active_firms(priorities):
-        by_group.setdefault(groups.get(r["sector"].strip(), "other"), []).append(r)
+        if (r.get("name_risk") or "").strip().upper() == "Y" and (r.get("domain") or "").strip():
+            exact.append(r)
+        else:
+            by_group.setdefault(groups.get(r["sector"].strip(), "other"), []).append(r)
     excl_titles, excl_orgs = title_exclusions(), _read_lines("exclude_companies.txt")
     tasks = []
     for g in sorted(by_group, key=lambda g: (GROUP_ORDER.index(g) if g in GROUP_ORDER else 99, g)):
@@ -93,6 +97,14 @@ def build_tasks(priorities=("P1",)) -> list[dict]:
                 inp["organizationExclusionSearch"] = excl_orgs
             inp["titleExclusionSearch"] = excl_titles
             tasks.append({"name": f"{PREFIX}{g}-{k + 1}", "input": inp, "firms": chunk})
+    if exact:
+        exact.sort(key=lambda r: r["org_name"].lower())
+        domains = sorted({r["domain"].strip().lower() for r in exact})
+        inp = dict(BASE_INPUT)
+        inp["limit"] = max(MIN_LIMIT, min(MAX_LIMIT, len(domains) * JOBS_PER_FIRM_PER_DAY))
+        inp["domainFilter"] = domains            # exact website match: no look-alike companies
+        inp["titleExclusionSearch"] = excl_titles
+        tasks.append({"name": f"{PREFIX}exact-domain-1", "input": inp, "firms": exact})
     return tasks
 
 

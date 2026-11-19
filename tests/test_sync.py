@@ -37,7 +37,7 @@ check("only P1 firms by default", all(f["priority"] == "P1" for f in firms))
 check("firms already in an older task are NOT in the generated tasks", not any(f["old_task"] for f in firms))
 check("--priority P1,P2 adds P2 firms", len(s.build_tasks(("P1", "P2"))[0]["firms"]) >= 1 and sum(len(t["firms"]) for t in s.build_tasks(("P1", "P2"))) >= len(firms))
 check("firms listed in the older tasks (old_task filled) number 199", sum(1 for r in allrows if r["old_task"]) == 199)
-check("Citadel (inactive) is not searched", not any("Citadel" == t for tk in tasks for t in tk["input"]["organizationSearch"]))
+check("Citadel (inactive) is not searched", not any("Citadel" == t for tk in tasks for t in tk["input"].get("organizationSearch", [])))
 check("no task has more than 40 firms", all(len(t["firms"]) <= s.MAX_FIRMS_PER_TASK for t in tasks))
 check("task names are unique and start with fram-", len({t["name"] for t in tasks}) == len(tasks) and all(t["name"].startswith("fram-") for t in tasks))
 from collections import defaultdict
