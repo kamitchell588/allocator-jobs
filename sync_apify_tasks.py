@@ -75,9 +75,12 @@ def build_tasks(priorities=("P1",)) -> list[dict]:
     for g in sorted(by_group, key=lambda g: (GROUP_ORDER.index(g) if g in GROUP_ORDER else 99, g)):
         firms = sorted(by_group[g], key=lambda r: (r.get("priority") or "P9", r["org_name"].lower()))
         n_tasks = -(-len(firms) // MAX_FIRMS_PER_TASK)          # as few tasks as possible, split evenly
-        size = -(-len(firms) // n_tasks)
-        for i in range(0, len(firms), size):
-            chunk = firms[i:i + size]
+        base, extra = divmod(len(firms), n_tasks)                 # first `extra` tasks get one more firm
+        start = 0
+        for k in range(n_tasks):
+            size = base + (1 if k < extra else 0)
+            chunk, i = firms[start:start + size], k * size
+            start += size
             terms, seen = [], set()
             for r in chunk:
                 t = (r.get("search_term") or r["org_name"]).strip()
@@ -89,7 +92,7 @@ def build_tasks(priorities=("P1",)) -> list[dict]:
             if excl_orgs:
                 inp["organizationExclusionSearch"] = excl_orgs
             inp["titleExclusionSearch"] = excl_titles
-            tasks.append({"name": f"{PREFIX}{g}-{i // size + 1}", "input": inp, "firms": chunk})
+            tasks.append({"name": f"{PREFIX}{g}-{k + 1}", "input": inp, "firms": chunk})
     return tasks
 
 
