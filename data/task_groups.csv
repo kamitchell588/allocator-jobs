@@ -1,0 +1,19 @@
+# Which Apify task group each sector belongs to. Edit freely. A group becomes one or more tasks (max 40 firms each),
+# named fram-<group>-1, fram-<group>-2 ... A sector not listed here goes to the 'other' group.
+sector,group
+Hedge Fund,hedge-funds
+Private Equity,private-equity
+Growth Equity,private-equity
+Venture Capital,private-equity
+Secondaries,private-equity
+Private Credit,credit-real-assets
+Real Estate,credit-real-assets
+Infrastructure,credit-real-assets
+Multi-strategy Alternatives,credit-real-assets
+Pension / Retirement,institutions
+Endowment / Foundation,institutions
+Sovereign Wealth,institutions
+Insurance,institutions
+Investment Consultant / OCIO,advisors
+Wealth Management,advisors
+Family Office,advisors

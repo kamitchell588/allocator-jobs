@@ -14,7 +14,7 @@ A job board for institutional allocator roles (endowments, pensions, family offi
 ## Where things are edited (master files)
 | What | File | Notes |
 |---|---|---|
-| Firms | `data/orgs.csv` | One row per firm. `search_term` = what Apify searches; `aliases` = other names (separate with `|`); `domain` locks the firm to its website; `active` Y/N = included in Apify tasks (N = tracked but not searched). |
+| Firms | `data/orgs.csv` | One row per firm. `search_term` = what Apify searches; `aliases` = other names (separate with `|`); `domain` locks the firm to its website; `active` Y/N = wanted in the generated Apify tasks (N = tracked, not searched); `old_task` = firm is already in one of the older hand-built tasks (the generator skips it until you clear this). |
 | Titles to keep | `data/title_include.txt` | Substring match. |
 | Titles to drop | `data/title_exclude.txt` | Substring match; a leading `=` (e.g. `=hr`) means whole word only. |
 | Look-alike companies to reject | `data/exclude_companies.txt` | Matched anywhere in the company name; also purges history. |
@@ -22,8 +22,9 @@ A job board for institutional allocator roles (endowments, pensions, family offi
 | Location filter (metros) | `data/metros.csv` | city + state -> metro. Unlisted places show as Other US / Other Canada. |
 | Hidden jobs | `hidden_jobs.txt` | Admin Hide button writes this. |
 | Manual jobs | Google Sheet | Expire 60 days after first seen. |
+| Apify task groups | `data/task_groups.csv` | sector -> task group. Tasks are generated, not hand-edited: Actions tab -> "Sync Apify tasks" (dry run unless "apply" is ticked; "only" = one task, "schedule" = add the daily schedule). Creates/updates only tasks named `fram-*`. |
 Apify tasks are an input, not a master: their firm lists and exclusions should come from the files above. Snapshot of the older tasks' inputs (as of 2026-11-19): `apify/archive/current_tasks_2026-11-19.json`.
-Tests: `python tests/test_master.py` (firm list + filter files).
+Tests: `python tests/test_master.py` (firm list + filter files), `python tests/test_sync.py` (task generator, against a fake Apify).
 
 ## Current Apify dataset IDs
 ```python
