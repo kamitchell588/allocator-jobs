@@ -1,7 +1,9 @@
 """Build the Apify tasks from the master files, so the tasks never drift from the repo.
 
   python sync_apify_tasks.py            dry run: prints what it would create/update, changes nothing
-  python sync_apify_tasks.py --apply    creates/updates the tasks and their daily schedules
+  python sync_apify_tasks.py --apply    creates/updates the tasks (no schedule yet: run them by hand first)
+  --only fram-hedge-funds-1[,name2]     limit to these tasks (test one batch at a time)
+  --schedule                            also create the daily schedule for the selected tasks
 
 Reads:   data/orgs.csv (rows with active=Y), data/task_groups.csv, data/title_exclude.txt, data/exclude_companies.txt
 Touches: only Apify tasks (and schedules) whose name starts with 'fram-'. Your other tasks are never read or changed.
@@ -102,7 +104,7 @@ def _items(resp):
     return d.get("items", d) if isinstance(d, dict) else d
 
 
-def sync(api, tasks, apply=False, out=print) -> dict:
+def sync(api, tasks, apply=False, schedule=False, all_names=None, out=print) -> dict:
     existing = {t["name"]: t for t in _items(api.call("GET", "/actor-tasks?limit=1000")) if t["name"].startswith(PREFIX)}
     schedules = {s["name"]: s for s in _items(api.call("GET", "/schedules?limit=1000")) if s["name"].startswith(PREFIX)}
     result = {"created": [], "updated": [], "unchanged": [], "stale": [], "scheduled": []}
@@ -123,12 +125,12 @@ def sync(api, tasks, apply=False, out=print) -> dict:
                 tid = api.call("POST", "/actor-tasks", {"actId": ACTOR, "name": name, "input": inp})["data"]["id"]
                 existing[name] = {"id": tid, "name": name}
         sname = f"{PREFIX}daily-{name[len(PREFIX):]}"
-        if sname not in schedules:
+        if schedule and sname not in schedules:
             result["scheduled"].append(sname)
             if apply and name in existing:
                 api.call("POST", "/schedules", {"name": sname, "cronExpression": SCHEDULE_CRON, "isEnabled": True, "isExclusive": True,
                          "actions": [{"type": "RUN_ACTOR_TASK", "actorTaskId": existing[name]["id"]}]})
-    wanted = {t["name"] for t in tasks}
+    wanted = set(all_names) if all_names else {t["name"] for t in tasks}
     result["stale"] = sorted(n for n in existing if n not in wanted)
     return result
 
@@ -148,13 +150,20 @@ def report(tasks, result, apply, out=print):
 def main(argv):
     apply = "--apply" in argv
     tasks = build_tasks()
+    all_names = [t["name"] for t in tasks]
+    if "--only" in argv:
+        only = {n.strip() for n in argv[argv.index("--only") + 1].split(",") if n.strip()}
+        unknown = only - set(all_names)
+        if unknown:
+            sys.exit(f"Unknown task(s): {', '.join(sorted(unknown))}. Known: {', '.join(all_names)}")
+        tasks = [t for t in tasks if t["name"] in only]
     token = os.environ.get("APIFY_TOKEN", "")
     if not token and (ROOT / ".env").exists():
         m = re.search(r"^APIFY_TOKEN=(.+)$", (ROOT / ".env").read_text(), re.M)
         token = m.group(1).strip() if m else ""
     if not token:
         sys.exit("APIFY_TOKEN is not set")
-    report(tasks, sync(Apify(token), tasks, apply=apply), apply)
+    report(tasks, sync(Apify(token), tasks, apply=apply, schedule="--schedule" in argv, all_names=all_names), apply)
 
 
 if __name__ == "__main__":

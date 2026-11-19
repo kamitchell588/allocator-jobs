@@ -9,6 +9,14 @@ on:
         description: "Create/update the tasks (leave off for a dry run)"
         type: boolean
         default: false
+      only:
+        description: "Only these tasks, comma-separated (e.g. fram-hedge-funds-1). Blank = all"
+        type: string
+        default: ""
+      schedule:
+        description: "Also create the daily schedule (turn on once a task's test run looks right)"
+        type: boolean
+        default: false
 
 jobs:
   sync:
@@ -24,5 +32,12 @@ jobs:
       - name: Sync tasks
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APPLY: ${{ inputs.apply }}
+          ONLY: ${{ inputs.only }}
+          SCHEDULE: ${{ inputs.schedule }}
         run: |
-          if [ "${{ inputs.apply }}" = "true" ]; then python sync_apify_tasks.py --apply; else python sync_apify_tasks.py; fi
+          args=""
+          [ "$APPLY" = "true" ] && args="$args --apply"
+          [ "$SCHEDULE" = "true" ] && args="$args --schedule"
+          [ -n "$ONLY" ] && args="$args --only $ONLY"
+          python sync_apify_tasks.py $args
