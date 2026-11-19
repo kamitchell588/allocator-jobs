@@ -6,7 +6,7 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 FIX = REPO / "tests" / "fixtures"
 
 
-def run(out, hidden_text=None, history_csv=None, include_text=None, allow_shrink=True, items=None):
+def run(out, hidden_text=None, history_csv=None, include_text=None, allow_shrink=True, items=None, supplemental=None):
     """Run main() on frozen inputs in a throwaway copy. Returns (exit_code, log_text)."""
     out = pathlib.Path(out); out.mkdir(parents=True, exist_ok=True)
     work = pathlib.Path(tempfile.mkdtemp())
@@ -34,7 +34,7 @@ def run(out, hidden_text=None, history_csv=None, include_text=None, allow_shrink
                 s.fetch_recent_items = lambda days=1, now=None: list(data)
             else:
                 s.fetch_recent_items = lambda now=None: list(data)
-            s.scrape_all_supplemental = lambda: []
+            s.scrape_all_supplemental = lambda: [dict(j) for j in (supplemental or [])]
             s.main()
         except SystemExit as e:
             code = e.code if isinstance(e.code, int) else 1
