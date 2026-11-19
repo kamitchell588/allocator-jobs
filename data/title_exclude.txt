@@ -1,0 +1,127 @@
+# Title EXCLUDE list: a job is dropped if its title contains any of these phrases.
+# One phrase per line, lowercase. Lines starting with # are comments. Edit freely - no code change needed.
+
+# Retail / wealth advisory
+series 7
+wealth advisor
+wealth adviser
+financial advisor
+financial adviser
+private client
+private banker
+wealth management
+# Sales / BD / client-facing
+account executive
+account manager
+relationship manager
+client service
+customer service
+sales
+business development
+# Legal / compliance / audit / tax
+counsel
+attorney
+legal
+compliance
+audit
+auditor
+tax
+# Admin / facilities
+office manager
+executive assistant
+receptionist
+paralegal
+# Benefits / HR / insurance
+benefits
+health solution
+human resources
+recruiter
+talent
+# Tech / IT
+information technology
+software engineer
+software developer
+data engineer
+devops
+technical business analyst
+systems analyst
+# Marketing
+marketing
+communications
+# Retail / branch
+retail
+branch
+# Medical / clinical / healthcare
+clinical
+medical
+physician
+nurse
+nursing
+patient
+healthcare
+health care
+clinical research
+clinical trial
+research coordinator
+laboratory
+lab technician
+radiology
+pharmacy
+pharmacist
+surgical
+dental
+mental health
+social worker
+therapist
+therapy
+public health
+epidemiolog
+biomedical
+# Visitor / tours / campus / alumni engagement
+visitor engagement
+visitor services
+tour guide
+campus tour
+alumni engagement
+program development
+program coordinator
+event coordinator
+event associate
+reception
+# Customer / client relations (non-investment)
+customer relations
+client relations
+client advisor
+client associate
+client engagement
+customer experience
+relationship coordinator
+# HR / people / workplace
+human capital
+people operations
+workplace experience
+talent acquisition
+talent management
+# Tech / engineering (non-investment)
+full stack
+software
+engineer
+data governance
+data strategy
+community connect
+# Student / intern / academic
+student
+coop
+co-op
+post doctoral
+postdoctoral
+post doc
+# Operations management (non-investment)
+operations unit manager
+operations manager
+coordinator
+# Retirement admin (non-investment)
+pension administration
+plan administrator
+retirement analyst
+retirement system

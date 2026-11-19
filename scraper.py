@@ -45,355 +45,30 @@ HIDDEN_JOBS_PATH  = os.path.join(OUTPUT_DIR, "hidden_jobs.txt")
 
 FETCH_LIMIT = 1000   # items per page
 
-# ── Layer 1: Removed — org filtering is handled upstream in Apify ──
-LAYER1_ORG_KEYWORDS = [""]   # always passes
+def _load_phrase_list(filename: str) -> list[str]:
+    """Read a keyword list from data/<filename>: one phrase per line, '#' starts a comment.
+    Stops the run if the file is missing or empty - an empty include list would drop every job."""
+    path = pathlib.Path(__file__).parent / "data" / filename
+    try:
+        phrases = [l.strip().lower() for l in path.read_text(encoding="utf-8").splitlines()
+                   if l.strip() and not l.strip().startswith("#")]
+    except OSError as e:
+        sys.exit(f"STOP: cannot read data/{filename}: {e}")
+    if not phrases:
+        sys.exit(f"STOP: data/{filename} has no phrases - refusing to run (would filter out every job).")
+    return phrases
 
-# ── Layer 2: Role-type keywords (must appear in job title) ──
-LAYER2_TITLE_KEYWORDS = [
-    # Core investment titles
-    "investment",
-    "portfolio",
-    "analyst",
-    "associate",
-    "cio",
-    "chief investment officer",
-    "chief investment",
-    "deputy cio",
-    "deputy chief investment",
-    "co-cio",
-    "investment officer",
-    "investment manager",
-    "investment director",
-    "investment principal",
-    "investment professional",
-    "investment specialist",
-    "investment associate",
-    "investment consultant",
-    "investment advisor",
-    "investment strategist",
-    "investment researcher",
-    "investment analyst",
-    "senior investment",
-    "managing director investment",
-    # Asset classes
-    "alternatives",
-    "alternative investments",
-    "private equity",
-    "private credit",
-    "private debt",
-    "private markets",
-    "infrastructure",
-    "real assets",
-    "real estate",
-    "hedge fund",
-    "hedge funds",
-    "fixed income",
-    "equities",
-    "equity",
-    "multi-asset",
-    "multi asset",
-    "credit",
-    "structured credit",
-    "direct lending",
-    "venture capital",
-    "venture growth",
-    "venture",
-    "growth equity",
-    "buyout",
-    "secondaries",
-    "co-investment",
-    "co investment",
-    "natural resources",
-    "commodities",
-    "timber",
-    "farmland",
-    "distressed",
-    "mezzanine",
-    "emerging markets",
-    "global macro",
-    "long short",
-    "absolute return",
-    # Research & due diligence
-    "due diligence",
-    "manager research",
-    "manager selection",
-    "fund research",
-    "fund selection",
-    "manager due diligence",
-    "investment research",
-    "research analyst",
-    "research associate",
-    "research director",
-    "market research",
-    "security selection",
-    "stock selection",
-    "sector research",
-    "fundamental research",
-    "quantitative research",
-    "esg research",
-    # Portfolio & allocation
-    "asset allocation",
-    "capital markets",
-    "portfolio management",
-    "portfolio construction",
-    "portfolio analyst",
-    "portfolio associate",
-    "portfolio manager",
-    "portfolio officer",
-    "portfolio strategist",
-    "strategic investments",
-    "tactical allocation",
-    "strategic allocation",
-    "liability driven",
-    "liability-driven",
-    # Risk & performance
-    "risk management",
-    "risk analyst",
-    "risk officer",
-    "risk associate",
-    "market risk",
-    "investment risk",
-    "performance analyst",
-    "performance attribution",
-    "performance measurement",
-    "investment performance",
-    # Quant & data
-    "quant",
-    "quantitative",
-    "quantitative analyst",
-    "quantitative associate",
-    "quantitative strategist",
-    "quantitative researcher",
-    "quantitative portfolio",
-    "data science",
-    "data analyst",
-    "factor investing",
-    "systematic",
-    "algorithmic",
-    "derivatives",
-    "options",
-    "futures",
-    # Senior / leadership titles
-    "head of investments",
-    "head of investment",
-    "director of investments",
-    "director of investment",
-    "managing director",
-    "executive director",
-    "vice president investment",
-    "vp investment",
-    "principal",
-    "partner investment",
-    "senior portfolio",
-    "senior analyst",
-    "senior associate",
-    "senior investment",
-    "senior manager investment",
-    "senior director investment",
-    # Allocator-specific org terms in titles
-    "endowment",
-    "pension",
-    "foundation investments",
-    "sovereign wealth",
-    "ocio",
-    "outsourced cio",
-    "outsourced chief investment",
-    "institutional",
-    "fund of funds",
-    "fund of hedge funds",
-    "asset owner",
-    "asset management",
-    "family office investment",
-    "endowment management",
-    "treasury investment",
-    # Investment ops & support
-    "investment operations",
-    "investment governance",
-    "investment compliance",
-    "investment reporting",
-    "investment accounting",
-    "investment analytics",
-    "investment technology",
-    "investment solutions",
-    "investment consulting",
-    "investment strategy",
-    # Trading
-    "trader",
-    "trading",
-    "fixed income trader",
-    "equity trader",
-    "currency trader",
-    "fx trader",
-    "derivatives trader",
-    "portfolio trader",
-    # Finance leadership
-    "cfo",
-    "chief financial officer",
-    "vp finance",
-    "head of finance",
-    "finance director",
-    # ESG / impact / sustainable
-    "sustainable investment",
-    "mission aligned",
-    "mission-aligned",
-    "impact investment",
-    "impact investing",
-    "esg",
-    "responsible investment",
-    # Valuation & operations
-    "valuation",
-    "private markets valuation",
-    "third party governance",
-    "third party risk",
-    "governance",
-    "public investments",
-    "public markets",
-    "tangible assets",
-    "investment operations",
-    "head of operations",
-    "coo",
-    "chief operating officer",
-    "treasurer",
-    # Broad seniority/function titles (kept intentionally broad)
-    "managing director",
-    "director",
-    "vice president",
-    "head of",
-    "md",
-    "vp",
-]
 
-# ── Exclusion keywords — disqualify on title match ──
-EXCLUDE_TITLE_KEYWORDS = [
-    # Retail / wealth advisory
-    "series 7",
-    "wealth advisor",
-    "wealth adviser",
-    "financial advisor",
-    "financial adviser",
-    "private client",
-    "private banker",
-    "wealth management",
-    # Sales / BD / client-facing
-    "account executive",
-    "account manager",
-    "relationship manager",
-    "client service",
-    "customer service",
-    "sales",
-    "business development",
-    # Legal / compliance / audit / tax
-    "counsel",
-    "attorney",
-    "legal",
-    "compliance",
-    "audit",
-    "auditor",
-    "tax",
-    # Admin / facilities
-    "office manager",
-    "executive assistant",
-    "receptionist",
-    "paralegal",
-    # Benefits / HR / insurance
-    "benefits",
-    "health solution",
-    "human resources",
-    "recruiter",
-    "talent",
-    # Tech / IT
-    "information technology",
-    "software engineer",
-    "software developer",
-    "data engineer",
-    "devops",
-    "technical business analyst",
-    "systems analyst",
-    # Marketing
-    "marketing",
-    "communications",
-    # Retail / branch
-    "retail",
-    "branch",
-    # Medical / clinical / healthcare
-    "clinical",
-    "medical",
-    "physician",
-    "nurse",
-    "nursing",
-    "patient",
-    "healthcare",
-    "health care",
-    "clinical research",
-    "clinical trial",
-    "research coordinator",
-    "laboratory",
-    "lab technician",
-    "radiology",
-    "pharmacy",
-    "pharmacist",
-    "surgical",
-    "dental",
-    "mental health",
-    "social worker",
-    "therapist",
-    "therapy",
-    "public health",
-    "epidemiolog",
-    "biomedical",
-    # Visitor / tours / campus / alumni engagement
-    "visitor engagement",
-    "visitor services",
-    "tour guide",
-    "campus tour",
-    "alumni engagement",
-    "program development",
-    "program coordinator",
-    "event coordinator",
-    "event associate",
-    "reception",
-    # Customer / client relations (non-investment)
-    "customer relations",
-    "client relations",
-    "client advisor",
-    "client associate",
-    "client engagement",
-    "customer experience",
-    "relationship coordinator",
-    # HR / people / workplace
-    "human capital",
-    "people operations",
-    "workplace experience",
-    "talent acquisition",
-    "talent management",
-    # Tech / engineering (non-investment)
-    "full stack",
-    "software",
-    "engineer",
-    "data governance",
-    "data strategy",
-    "community connect",
-    # Student / intern / academic
-    "student",
-    "coop",
-    "co-op",
-    "post doctoral",
-    "postdoctoral",
-    "post doc",
-    # Operations management (non-investment)
-    "operations unit manager",
-    "operations manager",
-    "coordinator",
-    # Retirement admin (non-investment)
-    "pension administration",
-    "plan administrator",
-    "retirement analyst",
-    "retirement system",
-]
+
+# ── Role-type keywords (must appear in job title): edit data/title_include.txt ──
+LAYER2_TITLE_KEYWORDS = _load_phrase_list("title_include.txt")
+
+# ── Exclusion keywords: edit data/title_exclude.txt (no code change needed) ──
+EXCLUDE_TITLE_KEYWORDS = _load_phrase_list("title_exclude.txt")
 
 CSV_COLUMNS = ["title", "company", "location", "date_posted", "url", "description", "job_type", "source", "date_added",
                "job_country", "job_state", "seniority",
-               "org_priority", "org_sector", "org_region", "org_hq", "org_size_b", "experience_years"]
+               "org_priority", "org_sector", "org_region", "org_hq", "org_size_b", "experience_years", "status"]
 EXTRA_COLUMNS = CSV_COLUMNS[9:]
 
 RUN_ERRORS: list[str] = []   # any fetch problem is recorded here; main() exits non-zero if non-empty
@@ -524,7 +199,7 @@ def _has_any_run(task_id: str) -> bool:
         return True       # can't tell: be cautious and treat it as a real problem
 
 
-def fetch_recent_items(days: int = 1, now: datetime | None = None) -> list[dict]:
+def fetch_recent_items(now: datetime | None = None) -> list[dict]:
     """Fetch items from the latest run of every relevant task, found automatically:
     scheduled tasks always (and a stale one is flagged as a failure); unscheduled tasks only for a few
     days after their last run, so a manual backfill is ingested once and then drops out."""
@@ -2541,23 +2216,35 @@ def load_hidden_jobs() -> set:
     return {line.strip().lower().rstrip("/") for line in p.read_text().splitlines() if line.strip() and not line.startswith("#")}
 
 
+def _url_key(url: str) -> str:
+    return url.lower().rstrip("/") if url else ""
+
+
 def _dedup(jobs: list[dict]) -> list[dict]:
-    """Remove duplicate jobs by URL (case-insensitive), then by title+company."""
-    seen_urls    = set()
-    seen_titles  = set()
-    unique       = []
+    """Remove duplicates. The job link is the identity. Only a job with no link falls back to
+    title + company + location (so the same title in two cities is kept)."""
+    seen = set()
+    unique = []
     for j in jobs:
-        url_key   = j["url"].lower().rstrip("/") if j["url"] else ""
-        title_key = (j["title"].lower().strip(), j["company"].lower().strip())
-        if url_key and url_key in seen_urls:
+        key = _url_key(j["url"]) or (j["title"].lower().strip(), j["company"].lower().strip(),
+                                     (j.get("location") or "").lower().strip())
+        if key in seen:
             continue
-        if title_key in seen_titles:
-            continue
-        if url_key:
-            seen_urls.add(url_key)
-        seen_titles.add(title_key)
+        seen.add(key)
         unique.append(j)
     return unique
+
+
+def _previous_active_count() -> int:
+    """Jobs on the public board as of the last saved CSV (rows not marked hidden)."""
+    try:
+        with open(CSV_PATH, newline="", encoding="utf-8") as f:
+            return sum(1 for r in csv.DictReader(f) if r.get("status", "") != "hidden")
+    except OSError:
+        return 0
+
+
+SHRINK_LIMIT = 0.30   # stop if the board would lose more than this share of its jobs in one run
 
 
 def main():
@@ -2567,7 +2254,7 @@ def main():
 
     # ── 1. Load historical jobs from CSV + fetch last 24 hours from Apify ──
     print("\n[Apify] Fetching last 24 hours …")
-    recent_raw  = fetch_recent_items(days=1)
+    recent_raw  = fetch_recent_items()
     recent_kept = filter_jobs(recent_raw) if recent_raw else []
     recent_jobs = [normalise(j) for j in recent_kept]
     write_run_report(recent_raw, recent_kept)
@@ -2647,15 +2334,27 @@ def main():
     print(f"\n  Total unique jobs: {len(all_jobs)} ({before_cutoff - len(all_jobs)} dropped by age cutoff)")
 
     # ── 4. Apply hidden jobs filter for public dashboard ──────────
+    # Hiding is a status, not a deletion: hidden jobs stay in the CSV and the admin page, and
+    # come back to the public board when their URL is removed from hidden_jobs.txt.
     hidden = load_hidden_jobs()
-    if hidden:
-        print(f"  Suppressing {len(hidden)} hidden job(s) from public dashboard.")
-    public_jobs = [j for j in all_jobs if j["url"].lower().rstrip("/") not in hidden]
+    for j in all_jobs:
+        j["status"] = "hidden" if _url_key(j["url"]) in hidden else "active"
+    n_hidden = sum(j["status"] == "hidden" for j in all_jobs)
+    if n_hidden:
+        print(f"  {n_hidden} job(s) marked hidden (kept in CSV and admin, not on the public dashboard).")
 
     # ── 5. Output ─────────────────────────────────────────────────
     all_jobs = [enrich(j) for j in all_jobs]
-    public_jobs = [enrich(j) for j in public_jobs]
-    save_csv(public_jobs)
+    public_jobs = [j for j in all_jobs if j["status"] == "active"]
+
+    # Shrink guard: a run that would cut the board sharply is almost always a broken input, not real news.
+    prev = _previous_active_count()
+    if prev >= 100 and len(public_jobs) < prev * (1 - SHRINK_LIMIT) and not os.environ.get("ALLOW_SHRINK"):
+        print(f"\nSTOPPED: the board would drop from {prev} to {len(public_jobs)} jobs "
+              f"(more than {SHRINK_LIMIT:.0%}). Nothing was written. If this is intended, re-run with ALLOW_SHRINK=1.")
+        sys.exit(1)
+
+    save_csv(all_jobs)
     generate_html(public_jobs)           # public dashboard (no source, no delete)
     generate_admin_html(all_jobs)        # admin dashboard (source + hide buttons)
 
