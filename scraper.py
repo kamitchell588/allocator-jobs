@@ -1256,205 +1256,126 @@ def generate_html(jobs: list[dict]) -> None:
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ── FRAM Partners design tokens ── */
+  /* ── FRAM Partners × iConnections design: black & white, serif headlines ── */
   :root {{
-    --navy:      #1b2232;
-    --burgundy:  #4f1722;
-    --cream:     #f9f5f0;
+    --navy:      #14161f;
+    --burgundy:  #000000;
+    --cream:     #f7f5f1;
     --white:     #ffffff;
-    --border:    #e3e5e8;
-    --muted:     #676f7e;
+    --border:    #e4e4e7;
+    --muted:     #6b6f80;
     --font-display: "Source Serif 4", Georgia, serif;
     --font-body:    "Inter", system-ui, sans-serif;
   }}
 
-  /* ── Reset & base ── */
   *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  body {{ font-family: var(--font-body); background: var(--cream);
-         color: var(--navy); min-height: 100vh; }}
-  a {{ color: var(--burgundy); text-decoration: none; }}
+  body {{ font-family: var(--font-body); background: var(--white); color: var(--navy); min-height: 100vh; }}
+  a {{ color: #000; text-decoration: none; }}
   a:hover {{ text-decoration: underline; }}
 
-  /* ── Header ── */
-  header {{
-    background: var(--navy);
-    color: var(--white);
-    padding: 2.5rem 2rem 2rem;
-    border-bottom: 3px solid var(--burgundy);
-  }}
-  header h1 {{
-    font-family: var(--font-display);
-    font-size: 2rem; font-weight: 400; letter-spacing: -.5px;
-  }}
-  header .eyebrow {{
-    font-family: var(--font-body);
-    font-size: .7rem; font-weight: 500; letter-spacing: .15em;
-    text-transform: uppercase; color: var(--burgundy);
-    margin-bottom: .6rem;
-  }}
-  header p {{ margin-top: .4rem; color: rgba(255,255,255,.5); font-size: .85rem;
-              font-weight: 300; }}
-  .header-inner {{ max-width: 1400px; margin: 0 auto; }}
+  /* ── Top bar ── */
+  header {{ background: #000; color: #fff; padding: 1.1rem 2rem; }}
+  .header-inner {{ max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 1.4rem; }}
+  .header-inner .logo-fram {{ height: 32px; display: block; }}
+  .header-inner .divider {{ width: 1px; height: 28px; background: #444; }}
+  .header-inner .logo-ic {{ height: 26px; display: block; }}
 
-  /* ── Main container ── */
-  .container {{ max-width: 1400px; margin: 0 auto; padding: 2rem 2rem 4rem; }}
+  /* ── Hero ── */
+  .hero {{ max-width: 1400px; margin: 0 auto; padding: 4rem 2rem 2.2rem; }}
+  .hero .eyebrow {{ font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }}
+  .hero h1 {{ font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 4.6vw, 3.4rem);
+              line-height: 1.07; letter-spacing: -.02em; margin: 1rem 0 .9rem; max-width: 800px; }}
+  .hero p {{ color: var(--muted); font-size: 1.05rem; max-width: 640px; }}
+
+  .container {{ max-width: 1400px; margin: 0 auto; padding: 0 2rem 4rem; }}
 
   /* ── Stat cards ── */
-  .stats-grid {{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1px; margin-bottom: 2rem;
-    border: 1px solid var(--border); background: var(--border);
-  }}
-  .stat-card {{
-    background: var(--white);
-    padding: 1.5rem;
-    border-left: 3px solid transparent;
-  }}
-  .stat-card:first-child {{ border-left-color: var(--burgundy); }}
-  .stat-card .label {{
-    font-size: .65rem; text-transform: uppercase;
-    letter-spacing: .12em; color: var(--muted);
-    font-weight: 500; margin-bottom: .5rem;
-  }}
-  .stat-card .value {{
-    font-family: var(--font-display);
-    font-size: 1.9rem; font-weight: 400; color: var(--navy);
-  }}
+  .stats-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }}
+  .stat-card {{ background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+               padding: 1.5rem; box-shadow: 0 8px 24px rgba(20,22,31,.05); }}
+  .stat-card .label {{ font-size: .7rem; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 600; margin-bottom: .5rem; }}
+  .stat-card .value {{ font-family: var(--font-display); font-size: 2.6rem; font-weight: 500; letter-spacing: -.02em; }}
 
-  /* ── Companies section ── */
-  .section {{
-    background: var(--white); border: 1px solid var(--border);
-    padding: 1.5rem; margin-bottom: 1.5rem;
-  }}
-  .section h2 {{
-    font-family: var(--font-display);
-    font-size: .95rem; font-weight: 400; color: var(--navy);
-    margin-bottom: 1rem; padding-bottom: .6rem;
-    border-bottom: 1px solid var(--border);
-    letter-spacing: .01em;
-  }}
+  /* ── Top organizations ── */
+  .section {{ background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem; }}
+  .section h2 {{ font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; margin-bottom: 1rem; }}
   .companies-wrap {{ display: flex; flex-wrap: wrap; gap: .5rem; }}
-  .company-chip {{
-    display: flex; align-items: center; gap: .4rem;
-    background: var(--cream); border: 1px solid var(--border);
-    padding: .3rem .75rem; font-size: .8rem;
-  }}
-  .chip-name {{ color: var(--navy); font-weight: 500; }}
-  .chip-count {{
-    background: var(--burgundy); color: var(--white);
-    padding: .1rem .45rem; font-size: .68rem; font-weight: 600;
-  }}
+  .company-chip {{ display: flex; align-items: center; gap: .5rem; border: 1px solid #cfcfd6; border-radius: 999px;
+                   padding: .3rem .5rem .3rem .9rem; font-size: .82rem; background: var(--white); }}
+  .chip-name {{ font-weight: 500; }}
+  .chip-count {{ background: #000; color: #fff; border-radius: 999px; padding: .1rem .55rem; font-size: .7rem; font-weight: 600; }}
 
-  /* ── Table section ── */
-  .table-section {{ background: var(--white); border: 1px solid var(--border); overflow: hidden; }}
-  .table-toolbar {{
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 1rem;
-    padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
-    background: var(--white);
-  }}
-  .table-toolbar h2 {{
-    font-family: var(--font-display);
-    font-size: .95rem; font-weight: 400; color: var(--navy);
-  }}
-  #searchBox {{
-    padding: .5rem 1rem; border: 1px solid var(--border);
-    border-radius: 0; font-family: var(--font-body);
-    font-size: .8rem; outline: none; width: 280px; max-width: 100%;
-    transition: border-color .2s; background: var(--white); color: var(--navy);
-  }}
-  #searchBox:focus {{ border-color: var(--navy); box-shadow: none; }}
+  /* ── Table ── */
+  .table-section {{ background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }}
+  .table-toolbar {{ display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+                    padding: 1.25rem 1.5rem; background: var(--white); }}
+  .table-toolbar h2 {{ font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; }}
+  #searchBox {{ padding: .55rem 1rem; border: 1px solid #cfcfd6; border-radius: 999px; font-family: var(--font-body);
+                font-size: .82rem; outline: none; width: 300px; max-width: 100%; background: var(--white); color: var(--navy); }}
+  #searchBox:focus {{ border-color: #000; }}
 
   .table-wrap {{ overflow-x: auto; }}
-  table {{ width: 100%; border-collapse: collapse; font-size: .82rem; }}
-  th {{
-    background: var(--navy); color: rgba(255,255,255,.8);
-    font-family: var(--font-body); font-weight: 500;
-    font-size: .65rem; text-transform: uppercase; letter-spacing: .1em;
-    text-align: left; padding: .75rem 1rem;
-    white-space: nowrap; cursor: pointer; user-select: none;
-  }}
-  th:hover {{ background: #24304a; }}
-  th .sort-icon {{ margin-left: .3rem; opacity: .4; }}
+  table {{ width: 100%; border-collapse: collapse; font-size: .85rem; }}
+  th {{ background: var(--white); color: var(--muted); font-weight: 600; font-size: .68rem; text-transform: uppercase;
+        letter-spacing: .14em; text-align: left; padding: .85rem 1rem; white-space: nowrap; cursor: pointer; user-select: none;
+        border-bottom: 1.5px solid #000; }}
+  th:hover {{ color: #000; }}
+  th .sort-icon {{ margin-left: .3rem; opacity: .5; }}
   th.asc .sort-icon::after  {{ content: " ▲"; }}
   th.desc .sort-icon::after {{ content: " ▼"; }}
-  td {{ padding: .75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }}
+  td {{ padding: 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }}
   tr:last-child td {{ border-bottom: none; }}
   tr:hover td {{ background: var(--cream); }}
+  td:first-child a {{ font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; color: var(--navy); }}
+  td:first-child a:hover {{ text-decoration: underline; }}
   .desc-cell {{ color: var(--muted); font-size: .78rem; max-width: 320px; }}
 
-  /* ── Recency colour coding ── */
-  tr.age-fresh td:nth-child(4) {{ color: #2d6a4f; font-weight: 600; }}
-  tr.age-recent td:nth-child(4) {{ color: #92400e; }}
-  tr.age-old td:nth-child(4) {{ color: var(--muted); }}
-
-  /* left border accent per row */
-  tr.age-fresh  {{ border-left: 3px solid #2d6a4f; }}
-  tr.age-recent {{ border-left: 3px solid #d97706; }}
+  /* ── Recency: black and white only ── */
+  tr.age-fresh td:nth-child(6) {{ color: #000; font-weight: 700; }}
+  tr.age-recent td:nth-child(6) {{ color: var(--navy); }}
+  tr.age-old td:nth-child(6) {{ color: var(--muted); }}
+  tr.age-fresh  {{ border-left: 3px solid #000; }}
+  tr.age-recent {{ border-left: 3px solid #9a9aa6; }}
   tr.age-old    {{ border-left: 3px solid var(--border); }}
 
-  /* ── Footer ── */
-  footer {{
-    text-align: center; color: var(--muted); font-size: .75rem;
-    margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
-    font-weight: 300; letter-spacing: .03em;
-  }}
+  footer {{ text-align: center; color: var(--muted); font-size: .75rem; margin-top: 3rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--border); letter-spacing: .03em; }}
 
-  /* ── Responsive ── */
   @media (max-width: 640px) {{
-    header {{ padding: 1.5rem 1rem 1.25rem; }}
-    .container {{ padding: 1rem 1rem 2rem; }}
+    header {{ padding: 1rem; }}
+    .hero {{ padding: 2.2rem 1rem 1.4rem; }}
+    .container {{ padding: 0 1rem 2rem; }}
     #searchBox {{ width: 100%; }}
   }}
 
-  /* ── No results row ── */
   #noResults {{ display: none; text-align: center; padding: 2rem; color: var(--muted); }}
 
-  /* ── Source tag ── */
-  .source-tag {{
-    display: inline-block; padding: .15rem .5rem;
-    font-size: .68rem; font-weight: 500;
-    background: var(--cream); border: 1px solid var(--border);
-    color: var(--navy); white-space: nowrap; letter-spacing: .03em;
-  }}
-  .source-tag.manual {{
-    background: var(--burgundy); border-color: var(--burgundy);
-    color: #fff;
-  }}
-
+  .source-tag {{ display: inline-block; padding: .15rem .6rem; font-size: .7rem; font-weight: 500; border: 1px solid var(--border);
+                 border-radius: 999px; color: var(--muted); white-space: nowrap; }}
+  .source-tag.manual {{ background: #000; border-color: #000; color: #fff; }}
 
   /* ── Region dropdown inside Location th ── */
   .loc-th {{ position: relative; }}
-  .loc-th select {{
-    margin-left: .4rem; padding: .15rem .3rem;
-    border: 1px solid rgba(255,255,255,.3); border-radius: 0;
-    font-size: .7rem; font-weight: 500; font-family: var(--font-body);
-    color: var(--white); background: var(--navy);
-    cursor: pointer; vertical-align: middle;
-  }}
-  .loc-th select:focus {{ outline: none; border-color: var(--white); }}
-  .loc-th select option {{ background: var(--navy); color: var(--white); }}
+  .loc-th select {{ margin-left: .4rem; padding: .15rem .3rem; border: 1px solid #cfcfd6; border-radius: 4px;
+                    font-size: .7rem; font-weight: 500; font-family: var(--font-body); color: var(--navy); background: #fff; cursor: pointer; }}
 
-  /* ── Multi-select filters ── */
-  .filter-bar {{ display: flex; gap: .6rem; flex-wrap: wrap; align-items: center;
-                 padding: .9rem 1.5rem; border-bottom: 1px solid var(--border); background: var(--cream); }}
+  /* ── Filters ── */
+  .filter-bar {{ display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; padding: 1rem 1.5rem;
+                 border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--cream); }}
   .ms {{ position: relative; }}
-  .ms-btn {{ padding: .5rem .9rem; border: 1px solid var(--border); background: var(--white);
-             color: var(--navy); font-family: var(--font-body); font-size: .8rem; cursor: pointer; border-radius: 0; }}
-  .ms-btn.active {{ border-color: var(--navy); font-weight: 600; }}
-  .ms-panel {{ display: none; position: absolute; z-index: 20; top: calc(100% + 2px); left: 0;
-               min-width: 240px; max-width: 320px; background: var(--white);
-               border: 1px solid var(--navy); box-shadow: 0 6px 18px rgba(0,0,0,.12); }}
+  .ms-btn {{ padding: .5rem 1rem; border: 1px solid #cfcfd6; background: var(--white); color: var(--navy);
+             font-family: var(--font-body); font-size: .82rem; font-weight: 500; cursor: pointer; border-radius: 999px; }}
+  .ms-btn.active {{ background: #000; color: #fff; border-color: #000; }}
+  .ms-panel {{ display: none; position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; min-width: 240px; max-width: 320px;
+               background: var(--white); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 12px 32px rgba(20,22,31,.14); overflow: hidden; }}
   .ms.open .ms-panel {{ display: block; }}
-  .ms-search {{ width: 100%; box-sizing: border-box; padding: .5rem .7rem; border: 0;
-                border-bottom: 1px solid var(--border); font-size: .8rem; outline: none; font-family: var(--font-body); }}
+  .ms-search {{ width: 100%; padding: .6rem .8rem; border: 0; border-bottom: 1px solid var(--border); font-size: .82rem; outline: none; font-family: var(--font-body); }}
   .ms-list {{ max-height: 260px; overflow-y: auto; padding: .3rem 0; }}
-  .ms-opt {{ display: flex; gap: .5rem; align-items: center; padding: .3rem .8rem; font-size: .8rem; cursor: pointer; }}
+  .ms-opt {{ display: flex; gap: .5rem; align-items: center; padding: .35rem .9rem; font-size: .82rem; cursor: pointer; }}
   .ms-opt:hover {{ background: var(--cream); }}
-  .ms-foot {{ padding: .4rem .8rem; border-top: 1px solid var(--border); font-size: .75rem; }}
-  .ms-foot a {{ color: var(--navy); cursor: pointer; text-decoration: underline; }}
-  #clearAll {{ font-size: .78rem; color: var(--navy); cursor: pointer; text-decoration: underline; background: none; border: 0; }}
+  .ms-foot {{ padding: .5rem .9rem; border-top: 1px solid var(--border); font-size: .75rem; }}
+  .ms-foot a {{ color: #000; cursor: pointer; text-decoration: underline; }}
+  #clearAll {{ font-size: .78rem; color: #000; cursor: pointer; text-decoration: underline; background: none; border: 0; }}
 </style>
 </head>
 <body>
@@ -1505,11 +1426,17 @@ document.getElementById("gate-email").addEventListener("keydown", e => {{ if (e.
 
 <header>
   <div class="header-inner">
-    <img src="https://raw.githubusercontent.com/kamitchell588/allocator-jobs/main/Fram_F_Logo_WhitePNG%20(1).png" alt="FRAM Partners" style="height:36px;margin-bottom:1.25rem;display:block;" />
-    <h1>Institutional Allocator Jobs</h1>
-    <p>Endowments, pensions, family offices, sovereign wealth &amp; private markets — US &amp; Canada</p>
+    <img class="logo-fram" src="https://raw.githubusercontent.com/kamitchell588/allocator-jobs/main/Fram_F_Logo_WhitePNG%20(1).png" alt="FRAM Partners" />
+    <span class="divider"></span>
+    <img class="logo-ic" src="assets/iconnections_logo_white.png" alt="iConnections" />
   </div>
 </header>
+
+<div class="hero">
+  <div class="eyebrow">Allocator Job Board</div>
+  <h1>Institutional Allocator Jobs</h1>
+  <p>Endowments, pensions, family offices, sovereign wealth &amp; private markets — US &amp; Canada</p>
+</div>
 
 <div class="container">
 
@@ -1562,8 +1489,8 @@ document.getElementById("gate-email").addEventListener("keydown", e => {{ if (e.
   <footer>
     <p style="margin-top:1.5rem;">Generated by allocator-jobs scraper &bull; {updated}</p>
     <p style="margin-top:.4rem;">
-      <span style="color:#2d6a4f;">&#9632;</span> Posted &le; 7 days &nbsp;
-      <span style="color:#d97706;">&#9632;</span> Posted 8–30 days &nbsp;
+      <span style="color:#000;">&#9632;</span> Posted &le; 7 days &nbsp;
+      <span style="color:#9a9aa6;">&#9632;</span> Posted 8–30 days &nbsp;
       <span style="color:#e3e5e8;">&#9632;</span> Older
     </p>
   </footer>
@@ -1753,16 +1680,16 @@ def generate_admin_html(jobs: list[dict]) -> None:
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {{
-    --navy:     #1b2232;
-    --burgundy: #4f1722;
-    --cream:    #f9f5f0;
-    --border:   #e3e5e8;
-    --muted:    #676f7e;
+    --navy:     #14161f;
+    --burgundy: #000000;
+    --cream:    #f7f5f1;
+    --border:   #e4e4e7;
+    --muted:    #6b6f80;
     --font-display: "Source Serif 4", Georgia, serif;
     --font-body:    "Inter", system-ui, sans-serif;
   }}
   *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  body {{ font-family: var(--font-body); background: var(--cream); color: var(--navy); min-height: 100vh; }}
+  body {{ font-family: var(--font-body); background: #fff; color: var(--navy); min-height: 100vh; }}
   a {{ color: var(--burgundy); text-decoration: none; }}
   a:hover {{ text-decoration: underline; }}
 
@@ -1789,17 +1716,19 @@ def generate_admin_html(jobs: list[dict]) -> None:
   #gate-error {{ color: var(--burgundy); font-size: .8rem; margin-top: .6rem; display: none; }}
 
   /* Header */
-  header {{
-    background: var(--navy); color: #fff;
-    padding: 2rem 2rem 1.5rem;
-    border-bottom: 3px solid var(--burgundy);
-  }}
-  header h1 {{ font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; }}
-  header .sub {{ font-size: .75rem; color: #a0aec0; margin-top: .3rem; }}
+  header {{ background: #000; color: #fff; padding: 1.1rem 2rem; }}
+  .header-inner {{ max-width: 1300px; margin: 0 auto; display: flex; align-items: center; gap: 1.4rem; }}
+  .header-inner .logo-fram {{ height: 32px; display: block; }}
+  .header-inner .divider {{ width: 1px; height: 28px; background: #444; }}
+  .header-inner .logo-ic {{ height: 26px; display: block; }}
+  .hero {{ max-width: 1300px; margin: 0 auto; padding: 2.6rem 2rem 1rem; }}
+  .hero .eyebrow {{ font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }}
+  .hero h1 {{ font-family: var(--font-display); font-size: 2.4rem; font-weight: 500; letter-spacing: -.02em; margin-top: .7rem; }}
+  .hero .sub {{ font-size: .85rem; color: var(--muted); margin-top: .5rem; }}
   .admin-badge {{
-    display: inline-block; background: var(--burgundy); color: #fff;
-    font-size: .65rem; font-weight: 600; letter-spacing: .08em;
-    padding: .2rem .5rem; margin-left: .6rem; vertical-align: middle;
+    display: inline-block; border: 1.5px solid #000; color: #000;
+    font-size: .65rem; font-weight: 700; letter-spacing: .12em;
+    padding: .15rem .5rem; margin-left: .8rem; vertical-align: middle; border-radius: 4px;
   }}
 
   /* Main */
@@ -1807,11 +1736,11 @@ def generate_admin_html(jobs: list[dict]) -> None:
 
   /* Notice */
   .notice {{
-    background: #fff8e1; border-left: 4px solid #f59e0b;
-    padding: .8rem 1rem; font-size: .82rem; margin-bottom: 1.5rem; color: #92400e;
+    background: var(--cream); border: 1px solid var(--border); border-left: 3px solid #000; border-radius: 6px;
+    padding: .8rem 1rem; font-size: .82rem; margin-bottom: 1.5rem; color: var(--navy);
   }}
   .notice code {{
-    background: #fef3c7; padding: .1rem .3rem; font-size: .8rem; font-family: monospace;
+    background: #fff; padding: .1rem .3rem; font-size: .8rem; font-family: monospace;
   }}
 
   /* Toolbar */
@@ -1824,21 +1753,21 @@ def generate_admin_html(jobs: list[dict]) -> None:
 
   /* Table */
   .table-wrap {{ overflow-x: auto; }}
-  table {{ width: 100%; border-collapse: collapse; background: #fff; font-size: .82rem; }}
-  th {{ background: var(--navy); color: #fff; padding: .6rem .8rem; text-align: left; font-weight: 500; white-space: nowrap; }}
+  table {{ width: 100%; border-collapse: collapse; background: #fff; font-size: .85rem; }}
+  th {{ background: #fff; color: var(--muted); padding: .75rem .8rem; text-align: left; font-weight: 600; font-size: .68rem; text-transform: uppercase; letter-spacing: .14em; white-space: nowrap; border-bottom: 1.5px solid #000; }}
   td {{ padding: .55rem .8rem; border-bottom: 1px solid var(--border); vertical-align: top; }}
   tr:hover td {{ background: var(--cream); }}
 
   .source-tag {{
     display: inline-block; padding: .15rem .5rem;
     font-size: .68rem; font-weight: 500;
-    background: #eef2ff; border: 1px solid #c7d2fe;
-    color: var(--navy); white-space: nowrap;
+    background: #fff; border: 1px solid var(--border); border-radius: 999px;
+    color: var(--muted); white-space: nowrap;
   }}
 
   /* Sortable headers */
   th[data-col] {{ user-select: none; }}
-  th[data-col]:hover {{ background: #24304a; }}
+  th[data-col]:hover {{ color: #000; }}
   th[data-col].asc  .sort-icon::after {{ content: " ▲"; opacity: .7; }}
   th[data-col].desc .sort-icon::after {{ content: " ▼"; opacity: .7; }}
   th[data-col] .sort-icon {{ font-size: .65rem; }}
@@ -1846,15 +1775,15 @@ def generate_admin_html(jobs: list[dict]) -> None:
   /* Hide button */
   .hide-btn {{
     padding: .25rem .7rem; font-size: .75rem; font-family: var(--font-body);
-    cursor: pointer; border: 1px solid var(--burgundy); background: #fff;
-    color: var(--burgundy); font-weight: 500; white-space: nowrap;
+    cursor: pointer; border: 1px solid #000; background: #fff; border-radius: 999px;
+    color: #000; font-weight: 500; white-space: nowrap;
   }}
   .hide-btn:hover {{ background: var(--burgundy); color: #fff; }}
 
   /* Add Job by URL panel */
   .add-job-panel {{
-    background: #fff; border: 1px solid var(--border);
-    padding: 1.2rem 1.4rem; margin-bottom: 1.5rem;
+    background: #fff; border: 1px solid var(--border); border-radius: 10px;
+    padding: 1.2rem 1.4rem; margin-bottom: 1.5rem; box-shadow: 0 8px 24px rgba(20,22,31,.05);
   }}
   .add-job-panel h3 {{
     font-family: var(--font-display); font-size: 1rem; font-weight: 500;
@@ -1909,9 +1838,17 @@ def generate_admin_html(jobs: list[dict]) -> None:
 </div>
 
 <header>
+  <div class="header-inner">
+    <img class="logo-fram" src="https://raw.githubusercontent.com/kamitchell588/allocator-jobs/main/Fram_F_Logo_WhitePNG%20(1).png" alt="FRAM Partners" />
+    <span class="divider"></span>
+    <img class="logo-ic" src="assets/iconnections_logo_white.png" alt="iConnections" />
+  </div>
+</header>
+<div class="hero">
+  <div class="eyebrow">Internal</div>
   <h1>Allocator Jobs <span class="admin-badge">ADMIN</span></h1>
   <div class="sub">Last updated: {updated} &nbsp;·&nbsp; {len(jobs)} total jobs (including hidden)</div>
-</header>
+</div>
 
 <main>
   <div class="notice">
