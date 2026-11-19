@@ -1,0 +1,258 @@
+# City + state/province -> metro area for the Location filter. Edit freely: one row per city.
+# State/province may be the full name or abbreviation. Anything not listed shows as 'Other US' / 'Other Canada'.
+city,state,metro
+New York,New York,New York
+Brooklyn,New York,New York
+Queens,New York,New York
+Bronx,New York,New York
+Staten Island,New York,New York
+Long Island City,New York,New York
+White Plains,New York,New York
+Purchase,New York,New York
+Rye,New York,New York
+Harrison,New York,New York
+Melville,New York,New York
+Garden City,New York,New York
+Tarrytown,New York,New York
+Jersey City,New Jersey,New York
+Newark,New Jersey,New York
+Hoboken,New Jersey,New York
+Short Hills,New Jersey,New York
+Summit,New Jersey,New York
+Morristown,New Jersey,New York
+Princeton,New Jersey,New York
+Florham Park,New Jersey,New York
+Parsippany,New Jersey,New York
+Basking Ridge,New Jersey,New York
+Bridgewater,New Jersey,New York
+Iselin,New Jersey,New York
+Red Bank,New Jersey,New York
+Greenwich,Connecticut,"Fairfield County, CT"
+Stamford,Connecticut,"Fairfield County, CT"
+Westport,Connecticut,"Fairfield County, CT"
+Darien,Connecticut,"Fairfield County, CT"
+Norwalk,Connecticut,"Fairfield County, CT"
+New Canaan,Connecticut,"Fairfield County, CT"
+Fairfield,Connecticut,"Fairfield County, CT"
+Southport,Connecticut,"Fairfield County, CT"
+Wilton,Connecticut,"Fairfield County, CT"
+Ridgefield,Connecticut,"Fairfield County, CT"
+Old Greenwich,Connecticut,"Fairfield County, CT"
+Riverside,Connecticut,"Fairfield County, CT"
+Hartford,Connecticut,"Hartford / New Haven, CT"
+West Hartford,Connecticut,"Hartford / New Haven, CT"
+New Haven,Connecticut,"Hartford / New Haven, CT"
+Farmington,Connecticut,"Hartford / New Haven, CT"
+Glastonbury,Connecticut,"Hartford / New Haven, CT"
+Windsor,Connecticut,"Hartford / New Haven, CT"
+Avon,Connecticut,"Hartford / New Haven, CT"
+Boston,Massachusetts,Boston
+Cambridge,Massachusetts,Boston
+Watertown,Massachusetts,Boston
+Westwood,Massachusetts,Boston
+Newton,Massachusetts,Boston
+Somerville,Massachusetts,Boston
+Waltham,Massachusetts,Boston
+Wellesley,Massachusetts,Boston
+Burlington,Massachusetts,Boston
+Lexington,Massachusetts,Boston
+Needham,Massachusetts,Boston
+Quincy,Massachusetts,Boston
+Braintree,Massachusetts,Boston
+Woburn,Massachusetts,Boston
+Chestnut Hill,Massachusetts,Boston
+Brookline,Massachusetts,Boston
+Medford,Massachusetts,Boston
+Canton,Massachusetts,Boston
+Framingham,Massachusetts,Boston
+Andover,Massachusetts,Boston
+Philadelphia,Pennsylvania,Philadelphia
+Conshohocken,Pennsylvania,Philadelphia
+Lower Merion Township,Pennsylvania,Philadelphia
+Uwchlan Township,Pennsylvania,Philadelphia
+Radnor,Pennsylvania,Philadelphia
+Wayne,Pennsylvania,Philadelphia
+Malvern,Pennsylvania,Philadelphia
+King of Prussia,Pennsylvania,Philadelphia
+Bala Cynwyd,Pennsylvania,Philadelphia
+West Chester,Pennsylvania,Philadelphia
+Berwyn,Pennsylvania,Philadelphia
+Blue Bell,Pennsylvania,Philadelphia
+Plymouth Meeting,Pennsylvania,Philadelphia
+Newtown Square,Pennsylvania,Philadelphia
+Exton,Pennsylvania,Philadelphia
+Chesterbrook,Pennsylvania,Philadelphia
+Wynnewood,Pennsylvania,Philadelphia
+Narberth,Pennsylvania,Philadelphia
+Washington,District of Columbia,"Washington, DC"
+Arlington,Virginia,"Washington, DC"
+Arlington County,Virginia,"Washington, DC"
+Alexandria,Virginia,"Washington, DC"
+McLean,Virginia,"Washington, DC"
+Reston,Virginia,"Washington, DC"
+Tysons,Virginia,"Washington, DC"
+Vienna,Virginia,"Washington, DC"
+Fairfax,Virginia,"Washington, DC"
+Bethesda,Maryland,"Washington, DC"
+Chevy Chase,Maryland,"Washington, DC"
+Rockville,Maryland,"Washington, DC"
+Silver Spring,Maryland,"Washington, DC"
+Baltimore,Maryland,Baltimore
+Towson,Maryland,Baltimore
+Columbia,Maryland,Baltimore
+Annapolis,Maryland,Baltimore
+San Francisco,California,San Francisco Bay Area
+Menlo Park,California,San Francisco Bay Area
+Palo Alto,California,San Francisco Bay Area
+San Mateo,California,San Francisco Bay Area
+Oakland,California,San Francisco Bay Area
+San Jose,California,San Francisco Bay Area
+Mountain View,California,San Francisco Bay Area
+Redwood City,California,San Francisco Bay Area
+Sunnyvale,California,San Francisco Bay Area
+Santa Clara,California,San Francisco Bay Area
+Berkeley,California,San Francisco Bay Area
+Walnut Creek,California,San Francisco Bay Area
+Burlingame,California,San Francisco Bay Area
+Foster City,California,San Francisco Bay Area
+Emeryville,California,San Francisco Bay Area
+Cupertino,California,San Francisco Bay Area
+Los Altos,California,San Francisco Bay Area
+Sausalito,California,San Francisco Bay Area
+San Rafael,California,San Francisco Bay Area
+Los Angeles,California,Los Angeles
+Santa Monica,California,Los Angeles
+Irvine,California,Los Angeles
+Redondo Beach,California,Los Angeles
+Pasadena,California,Los Angeles
+Newport Beach,California,Los Angeles
+Beverly Hills,California,Los Angeles
+Culver City,California,Los Angeles
+El Segundo,California,Los Angeles
+Century City,California,Los Angeles
+Long Beach,California,Los Angeles
+Costa Mesa,California,Los Angeles
+Anaheim,California,Los Angeles
+Burbank,California,Los Angeles
+Glendale,California,Los Angeles
+Torrance,California,Los Angeles
+Manhattan Beach,California,Los Angeles
+Marina del Rey,California,Los Angeles
+Westlake Village,California,Los Angeles
+Santa Ana,California,Los Angeles
+San Diego,California,San Diego
+La Jolla,California,San Diego
+Carlsbad,California,San Diego
+Del Mar,California,San Diego
+Solana Beach,California,San Diego
+Chicago,Illinois,Chicago
+Oak Brook,Illinois,Chicago
+Lake Forest,Illinois,Chicago
+Evanston,Illinois,Chicago
+Schaumburg,Illinois,Chicago
+Naperville,Illinois,Chicago
+Rosemont,Illinois,Chicago
+Northbrook,Illinois,Chicago
+Deerfield,Illinois,Chicago
+Oakbrook Terrace,Illinois,Chicago
+Lisle,Illinois,Chicago
+Seattle,Washington,Seattle
+Bellevue,Washington,Seattle
+Redmond,Washington,Seattle
+Kirkland,Washington,Seattle
+Tacoma,Washington,Seattle
+Miami,Florida,Miami / South Florida
+Miami Beach,Florida,Miami / South Florida
+Coral Gables,Florida,Miami / South Florida
+Fort Lauderdale,Florida,Miami / South Florida
+West Palm Beach,Florida,Miami / South Florida
+Boca Raton,Florida,Miami / South Florida
+Palm Beach,Florida,Miami / South Florida
+Aventura,Florida,Miami / South Florida
+Doral,Florida,Miami / South Florida
+Hollywood,Florida,Miami / South Florida
+Brickell,Florida,Miami / South Florida
+Dallas,Texas,Dallas–Fort Worth
+Arlington,Texas,Dallas–Fort Worth
+Irving,Texas,Dallas–Fort Worth
+Plano,Texas,Dallas–Fort Worth
+Fort Worth,Texas,Dallas–Fort Worth
+Frisco,Texas,Dallas–Fort Worth
+Addison,Texas,Dallas–Fort Worth
+Richardson,Texas,Dallas–Fort Worth
+Little Elm,Texas,Dallas–Fort Worth
+Southlake,Texas,Dallas–Fort Worth
+Lewisville,Texas,Dallas–Fort Worth
+Las Colinas,Texas,Dallas–Fort Worth
+Grapevine,Texas,Dallas–Fort Worth
+Houston,Texas,Houston
+The Woodlands,Texas,Houston
+Sugar Land,Texas,Houston
+Katy,Texas,Houston
+Austin,Texas,Austin
+Round Rock,Texas,Austin
+Cedar Park,Texas,Austin
+San Antonio,Texas,San Antonio
+Atlanta,Georgia,Atlanta
+Alpharetta,Georgia,Atlanta
+Marietta,Georgia,Atlanta
+Sandy Springs,Georgia,Atlanta
+Duluth,Georgia,Atlanta
+Roswell,Georgia,Atlanta
+Denver,Colorado,Denver
+Boulder,Colorado,Denver
+Englewood,Colorado,Denver
+Greenwood Village,Colorado,Denver
+Lakewood,Colorado,Denver
+Aurora,Colorado,Denver
+Salt Lake City,Utah,Salt Lake City
+Sandy,Utah,Salt Lake City
+Draper,Utah,Salt Lake City
+Lehi,Utah,Salt Lake City
+Provo,Utah,Salt Lake City
+Murray,Utah,Salt Lake City
+Charlotte,North Carolina,Charlotte
+Durham,North Carolina,"Research Triangle, NC"
+Raleigh,North Carolina,"Research Triangle, NC"
+Chapel Hill,North Carolina,"Research Triangle, NC"
+Cary,North Carolina,"Research Triangle, NC"
+Minneapolis,Minnesota,Minneapolis
+St. Paul,Minnesota,Minneapolis
+Saint Paul,Minnesota,Minneapolis
+Bloomington,Minnesota,Minneapolis
+Nashville,Tennessee,Nashville
+Franklin,Tennessee,Nashville
+Brentwood,Tennessee,Nashville
+Pittsburgh,Pennsylvania,Pittsburgh
+Detroit,Michigan,Detroit
+Ann Arbor,Michigan,Detroit
+Troy,Michigan,Detroit
+Southfield,Michigan,Detroit
+Birmingham,Michigan,Detroit
+Toronto,Ontario,Toronto
+Mississauga,Ontario,Toronto
+Brampton,Ontario,Toronto
+Markham,Ontario,Toronto
+Vaughan,Ontario,Toronto
+North York,Ontario,Toronto
+Oakville,Ontario,Toronto
+Etobicoke,Ontario,Toronto
+Scarborough,Ontario,Toronto
+Burlington,Ontario,Toronto
+Richmond Hill,Ontario,Toronto
+Montreal,Quebec,Montreal
+Montréal,Quebec,Montreal
+Laval,Quebec,Montreal
+Longueuil,Quebec,Montreal
+Westmount,Quebec,Montreal
+Vancouver,British Columbia,Vancouver
+Burnaby,British Columbia,Vancouver
+Richmond,British Columbia,Vancouver
+Surrey,British Columbia,Vancouver
+Victoria,British Columbia,Vancouver
+Calgary,Alberta,Calgary
+Edmonton,Alberta,Edmonton
+Ottawa,Ontario,Ottawa
+Kanata,Ontario,Ottawa
+Gatineau,Ontario,Ottawa
+Winnipeg,Manitoba,Winnipeg
