@@ -5,6 +5,8 @@
   --only fram-hedge-funds-1[,name2]     limit to these tasks (test one batch at a time)
   --priority P1,P2                      which priorities to include (default P1)
   --schedule                            also create the daily schedule for the selected tasks
+  --backfill                            first-run versions: same firms, but 6 months of postings, never scheduled
+                                        (named fram-backfill-<task>). Run each once by hand; the daily task stays 24h.
 
 Reads:   data/orgs.csv, data/task_groups.csv, data/title_exclude.txt, data/exclude_companies.txt
 Which firms: active=Y, priority P1 (change with --priority P1,P2), and not already in one of your older hand-built
@@ -22,6 +24,8 @@ MAX_FIRMS_PER_TASK = 40
 JOBS_PER_FIRM_PER_DAY = 20      # job cap per task = firms x this (min 100): a ceiling on spend, not a target
 MIN_LIMIT = 100
 MAX_LIMIT = 1000
+BACKFILL_JOBS_PER_FIRM = 50     # first-run cap per firm (6 months of postings); MAX_BACKFILL_LIMIT is the ceiling
+MAX_BACKFILL_LIMIT = 2000
 COST_PER_1000_JOBS = 4.0        # USD, from the actor's pay-per-job price: used only for the worst-case estimate
 SCHEDULE_CRON = "0 11 * * *"    # 11:00 UTC daily, three hours before the 14:00 UTC scraper run
 GROUP_ORDER = ["hedge-funds", "private-equity", "credit-real-assets", "institutions", "advisors", "other"]
@@ -108,6 +112,18 @@ def build_tasks(priorities=("P1",)) -> list[dict]:
     return tasks
 
 
+def backfill_tasks(tasks: list[dict]) -> list[dict]:
+    """One-off 6-month twin of each task: same firms and filters, bigger cap, never scheduled."""
+    out = []
+    for t in tasks:
+        inp = dict(t["input"])
+        n = len(inp.get("organizationSearch") or inp.get("domainFilter") or [])
+        inp["timeRange"] = "6m"
+        inp["limit"] = max(MIN_LIMIT, min(MAX_BACKFILL_LIMIT, n * BACKFILL_JOBS_PER_FIRM))
+        out.append({"name": f"{PREFIX}backfill-{t['name'][len(PREFIX):]}", "input": inp, "firms": t["firms"], "backfill": True})
+    return out
+
+
 class Apify:
     """Minimal Apify API client (tests replace it with a fake)."""
     def __init__(self, token):
@@ -147,7 +163,7 @@ def sync(api, tasks, apply=False, schedule=False, all_names=None, out=print) -> 
                 tid = api.call("POST", "/actor-tasks", {"actId": ACTOR, "name": name, "input": inp})["data"]["id"]
                 existing[name] = {"id": tid, "name": name}
         sname = f"{PREFIX}daily-{name[len(PREFIX):]}"
-        if schedule and sname not in schedules:
+        if schedule and not t.get("backfill") and sname not in schedules:
             result["scheduled"].append(sname)
             if apply and name in existing:
                 api.call("POST", "/schedules", {"name": sname, "cronExpression": SCHEDULE_CRON, "isEnabled": True, "isExclusive": True,
@@ -162,7 +178,7 @@ def report(tasks, result, apply, out=print):
     worst = 0.0
     for t in tasks:
         lim = t["input"]["limit"]; worst += lim * COST_PER_1000_JOBS / 1000
-        out(f"  {t['name']:28s} {len(t['input']['organizationSearch']):3d} firms  limit {lim:4d}  title exclusions {len(t['input']['titleExclusionSearch'])}")
+        out(f"  {t['name']:28s} {len(t['input'].get('organizationSearch') or t['input'].get('domainFilter') or []):3d} firms  limit {lim:4d}  title exclusions {len(t['input']['titleExclusionSearch'])}")
     out(f"  worst-case spend if every task hits its limit: about ${worst:.2f}/day (real spend is usually far lower)")
     for k in ("created", "updated", "unchanged", "scheduled", "stale"):
         if result[k]: out(f"  {k}: {', '.join(result[k])}")
@@ -173,6 +189,8 @@ def main(argv):
     apply = "--apply" in argv
     prio = tuple(x.strip() for x in argv[argv.index("--priority") + 1].split(",")) if "--priority" in argv else ("P1",)
     tasks = build_tasks(prio)
+    if "--backfill" in argv:
+        tasks = tasks + backfill_tasks(tasks)
     all_names = [t["name"] for t in tasks]
     if "--only" in argv:
         only = {n.strip() for n in argv[argv.index("--only") + 1].split(",") if n.strip()}

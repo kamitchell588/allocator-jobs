@@ -74,4 +74,10 @@ r1 = s.sync(one, only, apply=True, all_names=[t["name"] for t in tasks])
 check("--only creates just the chosen task, no schedule, nothing marked stale", r1["created"] == [tasks[0]["name"]] and len(one.tasks) == 1 and not one.scheds and r1["stale"] == [])
 r2 = s.sync(one, only, apply=True, schedule=True, all_names=[t["name"] for t in tasks])
 check("later --schedule on that task adds only its schedule", len(one.scheds) == 1 and r2["unchanged"] == [tasks[0]["name"]])
+# backfill twins: 6 months, bigger cap, same firms, never scheduled
+bf = s.backfill_tasks(tasks); two = Fake()
+rb = s.sync(two, bf, apply=True, schedule=True)
+check("backfill tasks are 6m, named fram-backfill-*, and never scheduled",
+      all(t["input"]["timeRange"] == "6m" and t["name"].startswith("fram-backfill-") for t in bf) and not two.scheds and len(rb["created"]) == len(tasks))
+check("daily tasks stay 24h", all(t["input"]["timeRange"] == "24h" for t in tasks))
 print("\n%d failure(s)" % len(fails)); sys.exit(1 if fails else 0)

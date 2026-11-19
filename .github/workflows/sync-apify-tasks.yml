@@ -21,6 +21,10 @@ on:
         description: "Also create the daily schedule (turn on once a task's test run looks right)"
         type: boolean
         default: false
+      backfill:
+        description: "Also create fram-backfill-* twins: same firms, 6 months of postings, never scheduled (run each once by hand)"
+        type: boolean
+        default: false
 
 jobs:
   sync:
@@ -40,10 +44,12 @@ jobs:
           ONLY: ${{ inputs.only }}
           SCHEDULE: ${{ inputs.schedule }}
           PRIORITY: ${{ inputs.priority }}
+          BACKFILL: ${{ inputs.backfill }}
         run: |
           args=""
           [ "$APPLY" = "true" ] && args="$args --apply"
           [ "$SCHEDULE" = "true" ] && args="$args --schedule"
+          [ "$BACKFILL" = "true" ] && args="$args --backfill"
           [ -n "$PRIORITY" ] && args="$args --priority $PRIORITY"
           [ -n "$ONLY" ] && args="$args --only $ONLY"
           python sync_apify_tasks.py $args
