@@ -107,5 +107,50 @@
       "analyst program",
       "internship"
     ]
+  },
+  {
+    "name": "fram-custom-blackrock-test",
+    "note": "BlackRock private markets only (incl. HPS and GIP teams). One-off 6-month test, never scheduled. Run by hand, send the dataset, then we tighten (data/scoped_orgs.csv).",
+    "firms": [
+      "BlackRock Private Markets"
+    ],
+    "schedule": false,
+    "keep_titles": [],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "facilities",
+      "internship",
+      "analyst program"
+    ],
+    "input": {
+      "organizationSearch": [
+        "BlackRock"
+      ],
+      "titleSearch": [
+        "private markets",
+        "private equity",
+        "private credit",
+        "private financing",
+        "direct private",
+        "alternative",
+        "infrastructure",
+        "real assets",
+        "real estate",
+        "secondaries",
+        "HPS",
+        "GIP",
+        "Global Infrastructure",
+        "Private Capital",
+        "Investment Professionals"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ],
+      "timeRange": "6m",
+      "limit": 250
+    }
   }
 ]
