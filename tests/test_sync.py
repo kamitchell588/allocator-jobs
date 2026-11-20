@@ -26,7 +26,8 @@ class Fake:
         if method == "POST" and path == "/schedules": self.n += 1; self.scheds[body["name"]] = {"id": f"s{self.n}", **body}; return {"data": {}}
         raise AssertionError((method, path))
 
-tasks = s.build_tasks()
+all_tasks = s.build_tasks()
+tasks = [t for t in all_tasks if not t.get("custom")]
 firms = [f for t in tasks for f in t["firms"]]
 import csv
 allrows = list(csv.DictReader(open(ROOT / "data" / "orgs.csv", encoding="utf-8", newline="")))
@@ -75,6 +76,13 @@ r1 = s.sync(one, only, apply=True, all_names=[t["name"] for t in tasks])
 check("--only creates just the chosen task, no schedule, nothing marked stale", r1["created"] == [tasks[0]["name"]] and len(one.tasks) == 1 and not one.scheds and r1["stale"] == [])
 r2 = s.sync(one, only, apply=True, schedule=True, all_names=[t["name"] for t in tasks])
 check("later --schedule on that task adds only its schedule", len(one.scheds) == 1 and r2["unchanged"] == [tasks[0]["name"]])
+# custom tasks (data/custom_tasks.json)
+cust = [t for t in all_tasks if t.get("custom")]
+check("custom tasks are named fram-* and never scheduled unless they say so", all(t["name"].startswith("fram-") for t in cust))
+gs = [t for t in cust if t["name"] == "fram-custom-goldman-test"]
+check("Goldman test task searches AWM titles and does not exclude 'wealth management'", gs and "AWM" in gs[0]["input"]["titleSearch"] and not any("wealth management" in x for x in gs[0]["input"]["titleExclusionSearch"]))
+cs = Fake(); rc = s.sync(cs, cust, apply=True, schedule=True)
+check("custom task is created but not scheduled", len(rc["created"]) == len(cust) and not cs.scheds)
 # backfill twins: 6 months, bigger cap, same firms, never scheduled
 bf = s.backfill_tasks(tasks); two = Fake()
 rb = s.sync(two, bf, apply=True, schedule=True)

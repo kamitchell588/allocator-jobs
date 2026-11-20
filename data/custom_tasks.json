@@ -1,0 +1,40 @@
+[
+  {
+    "name": "fram-custom-goldman-test",
+    "note": "One-off test for Goldman Sachs Alternatives (AWM roles only). Run once by hand, send the dataset, then we tighten the filter. Never scheduled.",
+    "firms": [
+      "Goldman Sachs Alternatives"
+    ],
+    "schedule": false,
+    "input": {
+      "organizationSearch": [
+        "Goldman Sachs"
+      ],
+      "titleSearch": [
+        "AWM",
+        "Asset & Wealth Management"
+      ],
+      "timeRange": "6m",
+      "limit": 150,
+      "titleExclusionSearch": [
+        "software engineer",
+        "engineer",
+        "developer",
+        "operations",
+        "accountant",
+        "paralegal",
+        "recruiter",
+        "human resources",
+        "marketing",
+        "wealth advisor",
+        "private wealth",
+        "financial advisor",
+        "sales",
+        "client service",
+        "compliance",
+        "legal",
+        "counsel"
+      ]
+    }
+  }
+]
