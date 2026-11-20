@@ -27,6 +27,11 @@ audit
 auditor
 tax
 # Admin / facilities
+project manager
+project management
+program manager
+product manager
+administrative assistant
 office manager
 executive assistant
 receptionist
