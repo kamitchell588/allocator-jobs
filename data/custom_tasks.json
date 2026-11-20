@@ -16,38 +16,21 @@
       ],
       "timeRange": "6m",
       "limit": 300,
-      "titleExclusionSearch": [
-        "software engineer",
-        "engineer",
-        "developer",
-        "operations",
-        "accountant",
-        "paralegal",
-        "recruiter",
-        "human resources",
-        "marketing",
-        "wealth advisor",
-        "private wealth",
-        "financial advisor",
-        "sales",
-        "client service",
-        "compliance",
-        "legal",
-        "counsel",
-        "project manager",
-        "program manager",
-        "product manager",
-        "office manager",
-        "executive assistant",
-        "administrative assistant",
-        "receptionist",
-        "facilities"
-      ],
       "locationSearch": [
         "United States",
         "Canada"
       ]
-    }
+    },
+    "keep_titles": [
+      "wealth management"
+    ],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "private wealth",
+      "facilities"
+    ]
   },
   {
     "name": "fram-custom-goldman",
@@ -66,38 +49,21 @@
       ],
       "timeRange": "24h",
       "limit": 100,
-      "titleExclusionSearch": [
-        "software engineer",
-        "engineer",
-        "developer",
-        "operations",
-        "accountant",
-        "paralegal",
-        "recruiter",
-        "human resources",
-        "marketing",
-        "wealth advisor",
-        "private wealth",
-        "financial advisor",
-        "sales",
-        "client service",
-        "compliance",
-        "legal",
-        "counsel",
-        "project manager",
-        "program manager",
-        "product manager",
-        "office manager",
-        "executive assistant",
-        "administrative assistant",
-        "receptionist",
-        "facilities"
-      ],
       "locationSearch": [
         "United States",
         "Canada"
       ]
-    }
+    },
+    "keep_titles": [
+      "wealth management"
+    ],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "private wealth",
+      "facilities"
+    ]
   },
   {
     "name": "fram-custom-morganstanley-test",
@@ -124,41 +90,22 @@
         "Investment Management",
         "Parametric"
       ],
-      "titleExclusionSearch": [
-        "software engineer",
-        "engineer",
-        "developer",
-        "operations",
-        "accountant",
-        "paralegal",
-        "recruiter",
-        "human resources",
-        "marketing",
-        "wealth advisor",
-        "financial advisor",
-        "private wealth",
-        "sales",
-        "client service",
-        "compliance",
-        "legal",
-        "counsel",
-        "analyst program",
-        "internship",
-        "project manager",
-        "program manager",
-        "product manager",
-        "office manager",
-        "executive assistant",
-        "administrative assistant",
-        "receptionist",
-        "facilities"
-      ],
       "locationSearch": [
         "United States",
         "Canada"
       ],
       "timeRange": "6m",
       "limit": 200
-    }
+    },
+    "keep_titles": [],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "private wealth",
+      "facilities",
+      "analyst program",
+      "internship"
+    ]
   }
 ]

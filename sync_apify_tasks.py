@@ -71,7 +71,9 @@ def title_exclusions() -> list[str]:
 
 def load_custom_tasks() -> list[dict]:
     """Hand-designed tasks kept in data/custom_tasks.json (e.g. one firm's alternatives group only).
-    Each: {name (must start fram-), firms: [names], schedule: true/false, input: {...overrides of BASE_INPUT}}."""
+    Each: {name (must start fram-), firms: [names], schedule: true/false, input: {...overrides of BASE_INPUT},
+    keep_titles: [shared exclusions this task must NOT apply], exclude_also: [extra exclusions for this task]}.
+    Title exclusions come from data/title_exclude.txt unless input sets titleExclusionSearch itself."""
     p = ROOT / "data" / "custom_tasks.json"
     if not p.exists():
         return []
@@ -81,7 +83,11 @@ def load_custom_tasks() -> list[dict]:
             raise SystemExit(f"custom task {c['name']!r} must start with {PREFIX!r}")
         inp = dict(BASE_INPUT)
         inp.update(c["input"])
-        inp.setdefault("titleExclusionSearch", _read_lines("title_exclude.txt"))
+        if "titleExclusionSearch" not in inp:
+            # default: the shared list (data/title_exclude.txt), minus this task's keep_titles, plus its exclude_also
+            keep = {k.lower() for k in c.get("keep_titles", [])}
+            ex = [x for x in title_exclusions() if x.lower() not in keep]
+            inp["titleExclusionSearch"] = ex + [x for x in c.get("exclude_also", []) if x.lower() not in {e.lower() for e in ex}]
         out.append({"name": c["name"], "input": inp, "firms": [{"org_name": n} for n in c.get("firms", [])],
                     "custom": True, "schedule_ok": bool(c.get("schedule", False))})
     return out
