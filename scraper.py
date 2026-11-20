@@ -509,7 +509,12 @@ def scope_title_ok(sc: dict, title: str) -> bool:
     t = (title or "").lower()
     if sc["require"] and not sc["require"].search(t):
         return False
-    return not (sc["exclude"] and sc["exclude"].search(t))
+    if sc["exclude"] and sc["exclude"].search(t):
+        return False
+    # the shared exclusion list (data/title_exclude.txt) still applies, except that a firm's own division name
+    # ("Asset & Wealth Management") must not trip its 'wealth management' phrase
+    t = _re.sub(r"asset\s*(?:&|and)\s*wealth management", " ", t)
+    return not _EXCLUDE_RE.search(t)
 
 
 def apply_scope_caps(jobs: list[dict]) -> list[dict]:

@@ -23,3 +23,6 @@ gs = [j for j in kept if j["company"] == "Goldman Sachs"]
 assert len(gs) == 15 and min(j["date_posted"] for j in gs) == "2026-11-06", "keeps the 15 newest"
 assert any(j["company"] == "Other Fund" for j in kept), "other firms untouched"
 print("test_scoped OK")
+for bad in ["Investment Management, Project Manager", "Alternatives Platform Office Manager - New York"]:
+    assert S.filter_jobs([item(bad)]) == [], bad
+print("test_scoped (shared exclusions) OK")
