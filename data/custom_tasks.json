@@ -82,5 +82,59 @@
         "Canada"
       ]
     }
+  },
+  {
+    "name": "fram-custom-morganstanley-test",
+    "note": "Morgan Stanley Investment Management, alternatives only. One-off 6-month test, never scheduled. Run by hand, send the dataset, then we tighten (data/scoped_orgs.csv).",
+    "firms": [
+      "Morgan Stanley Investment Management (Alternatives)"
+    ],
+    "schedule": false,
+    "input": {
+      "organizationSearch": [
+        "Morgan Stanley"
+      ],
+      "titleSearch": [
+        "alternative",
+        "private equity",
+        "private credit",
+        "private markets",
+        "private real estate",
+        "infrastructure",
+        "hedge fund",
+        "growth equity",
+        "secondaries",
+        "AIP",
+        "Investment Management",
+        "Parametric"
+      ],
+      "titleExclusionSearch": [
+        "software engineer",
+        "engineer",
+        "developer",
+        "operations",
+        "accountant",
+        "paralegal",
+        "recruiter",
+        "human resources",
+        "marketing",
+        "wealth advisor",
+        "financial advisor",
+        "private wealth",
+        "sales",
+        "client service",
+        "compliance",
+        "legal",
+        "counsel",
+        "analyst program",
+        "internship"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ],
+      "timeRange": "6m",
+      "limit": 200
+    }
   }
 ]
