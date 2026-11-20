@@ -15,6 +15,7 @@ Which firms: active=Y, priority P1 (change with --priority P1,P2), and not alrea
 Touches: only Apify tasks (and schedules) whose name starts with 'fram-'. Your other tasks are never read or changed.
 Needs:   APIFY_TOKEN in the environment or .env
 """
+import json
 import csv, os, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).parent
@@ -68,6 +69,24 @@ def title_exclusions() -> list[str]:
     return out
 
 
+def load_custom_tasks() -> list[dict]:
+    """Hand-designed tasks kept in data/custom_tasks.json (e.g. one firm's alternatives group only).
+    Each: {name (must start fram-), firms: [names], schedule: true/false, input: {...overrides of BASE_INPUT}}."""
+    p = ROOT / "data" / "custom_tasks.json"
+    if not p.exists():
+        return []
+    out = []
+    for c in json.loads(p.read_text(encoding="utf-8")):
+        if not c["name"].startswith(PREFIX):
+            raise SystemExit(f"custom task {c['name']!r} must start with {PREFIX!r}")
+        inp = dict(BASE_INPUT)
+        inp.update(c["input"])
+        inp.setdefault("titleExclusionSearch", _read_lines("title_exclude.txt"))
+        out.append({"name": c["name"], "input": inp, "firms": [{"org_name": n} for n in c.get("firms", [])],
+                    "custom": True, "schedule_ok": bool(c.get("schedule", False))})
+    return out
+
+
 def build_tasks(priorities=("P1",)) -> list[dict]:
     """[{name, input, firms}] for every active firm, grouped by sector family and split at 40 firms."""
     groups = load_groups()
@@ -109,13 +128,14 @@ def build_tasks(priorities=("P1",)) -> list[dict]:
         inp["domainFilter"] = domains            # exact website match: no look-alike companies
         inp["titleExclusionSearch"] = excl_titles
         tasks.append({"name": f"{PREFIX}exact-domain-1", "input": inp, "firms": exact})
+    tasks += load_custom_tasks()
     return tasks
 
 
 def backfill_tasks(tasks: list[dict]) -> list[dict]:
     """One-off 6-month twin of each task: same firms and filters, bigger cap, never scheduled."""
     out = []
-    for t in tasks:
+    for t in [x for x in tasks if not x.get("custom")]:
         inp = dict(t["input"])
         n = len(inp.get("organizationSearch") or inp.get("domainFilter") or [])
         inp["timeRange"] = "6m"
@@ -163,7 +183,7 @@ def sync(api, tasks, apply=False, schedule=False, all_names=None, out=print) -> 
                 tid = api.call("POST", "/actor-tasks", {"actId": ACTOR, "name": name, "input": inp})["data"]["id"]
                 existing[name] = {"id": tid, "name": name}
         sname = f"{PREFIX}daily-{name[len(PREFIX):]}"
-        if schedule and not t.get("backfill") and sname not in schedules:
+        if schedule and not t.get("backfill") and t.get("schedule_ok", True) and sname not in schedules:
             result["scheduled"].append(sname)
             if apply and name in existing:
                 api.call("POST", "/schedules", {"name": sname, "cronExpression": SCHEDULE_CRON, "isEnabled": True, "isExclusive": True,
