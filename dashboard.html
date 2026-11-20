@@ -132,48 +132,23 @@
 </head>
 <body>
 
-<!-- ── Email gate ── -->
+<!-- ── Welcome gate: one click, no details collected ── -->
 <div id="gate" style="position:fixed;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:999;">
-  <div style="background:#fff;padding:2.5rem 2rem;width:360px;text-align:center;">
+  <div style="background:#fff;padding:2.5rem 2rem;width:360px;max-width:calc(100vw - 2rem);text-align:center;">
     <img src="https://framcompany.com/assets/fram-logo-BYQ0yDsY.png" alt="FRAM Partners" style="height:30px;margin-bottom:1.5rem;display:block;margin-left:auto;margin-right:auto;" />
-    <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--navy);margin-bottom:.4rem;">Allocator Job Board</h2>
-    <p style="font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;">Enter your details to access the board.</p>
-    <input id="gate-name" type="text" placeholder="Full name" style="width:100%;padding:.6rem .8rem;border:1px solid var(--border);font-family:var(--font-body);font-size:.88rem;margin-bottom:.6rem;outline:none;box-sizing:border-box;" />
-    <input id="gate-email" type="email" placeholder="Email address" style="width:100%;padding:.6rem .8rem;border:1px solid var(--border);font-family:var(--font-body);font-size:.88rem;margin-bottom:.8rem;outline:none;box-sizing:border-box;" />
-    <button onclick="submitGate()" style="width:100%;padding:.65rem;background:var(--navy);color:#fff;border:none;font-family:var(--font-body);font-size:.85rem;font-weight:500;cursor:pointer;letter-spacing:.04em;">View Jobs</button>
-    <div id="gate-error" style="color:var(--burgundy);font-size:.78rem;margin-top:.6rem;display:none;"></div>
+    <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--navy);margin-bottom:1.5rem;">Allocator Job Board</h2>
+    <button id="gate-btn" style="width:100%;padding:.65rem;background:var(--navy);color:#fff;border:none;font-family:var(--font-body);font-size:.85rem;font-weight:500;cursor:pointer;letter-spacing:.04em;">View Jobs</button>
   </div>
 </div>
 
 <script>
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyBlYbwlbXIhjWwiPeAcw4hRQkSMAW7nolA9XLZsYkMfiou-So5sSQqiYCrtN276bbOlw/exec";
-
-// Skip gate if already submitted
-if (localStorage.getItem("fram_gate_passed") === "1") {
+// One click to enter; remembered on this browser so returning visitors skip it.
+function openBoard() {
   document.getElementById("gate").style.display = "none";
+  try { localStorage.setItem("fram_gate_passed", "1"); } catch (e) {}
 }
-
-async function submitGate() {
-  const name  = document.getElementById("gate-name").value.trim();
-  const email = document.getElementById("gate-email").value.trim();
-  const err   = document.getElementById("gate-error");
-  if (!name) { err.textContent = "Please enter your name."; err.style.display = "block"; return; }
-  if (!email || !email.includes("@")) { err.textContent = "Please enter a valid email."; err.style.display = "block"; return; }
-  err.style.display = "none";
-
-  // Show the board immediately — don't make them wait for the sheet write
-  document.getElementById("gate").style.display = "none";
-  localStorage.setItem("fram_gate_passed", "1");
-
-  // Fire-and-forget to Google Sheet
-  fetch(APPS_SCRIPT_URL, {
-    method: "POST",
-    body: JSON.stringify({ name, email }),
-  }).catch(() => {});
-}
-
-document.getElementById("gate-name").addEventListener("keydown", e => { if (e.key === "Enter") document.getElementById("gate-email").focus(); });
-document.getElementById("gate-email").addEventListener("keydown", e => { if (e.key === "Enter") submitGate(); });
+try { if (localStorage.getItem("fram_gate_passed") === "1") openBoard(); } catch (e) {}
+document.getElementById("gate-btn").addEventListener("click", openBoard);
 </script>
 
 <header>
@@ -196,7 +171,7 @@ document.getElementById("gate-email").addEventListener("keydown", e => { if (e.k
   <div class="stats-grid">
     <div class="stat-card">
       <div class="label">Total Roles</div>
-      <div class="value">819</div>
+      <div class="value">818</div>
     </div>
   </div>
 
@@ -204,14 +179,14 @@ document.getElementById("gate-email").addEventListener("keydown", e => { if (e.k
   <div class="section">
     <h2>Top Hiring Organizations</h2>
     <div class="companies-wrap">
-      <div class="company-chip"><span class="chip-name">Ares Management Corporation</span><span class="chip-count">82</span></div><div class="company-chip"><span class="chip-name">Point72</span><span class="chip-count">46</span></div><div class="company-chip"><span class="chip-name">Flagship Pioneering, Inc.</span><span class="chip-count">44</span></div><div class="company-chip"><span class="chip-name">Careers at KKR</span><span class="chip-count">41</span></div><div class="company-chip"><span class="chip-name">Blackstone</span><span class="chip-count">40</span></div><div class="company-chip"><span class="chip-name">Blue Owl Capital</span><span class="chip-count">37</span></div><div class="company-chip"><span class="chip-name">CPP Investments | Investissements RPC</span><span class="chip-count">30</span></div><div class="company-chip"><span class="chip-name">Caisse de dépôt et placement du Québec (CDPQ)</span><span class="chip-count">27</span></div>
+      <div class="company-chip"><span class="chip-name">Ares Management Corporation</span><span class="chip-count">82</span></div><div class="company-chip"><span class="chip-name">Point72</span><span class="chip-count">46</span></div><div class="company-chip"><span class="chip-name">Flagship Pioneering, Inc.</span><span class="chip-count">43</span></div><div class="company-chip"><span class="chip-name">Careers at KKR</span><span class="chip-count">41</span></div><div class="company-chip"><span class="chip-name">Blackstone</span><span class="chip-count">40</span></div><div class="company-chip"><span class="chip-name">Blue Owl Capital</span><span class="chip-count">37</span></div><div class="company-chip"><span class="chip-name">CPP Investments | Investissements RPC</span><span class="chip-count">30</span></div><div class="company-chip"><span class="chip-name">Caisse de dépôt et placement du Québec (CDPQ)</span><span class="chip-count">27</span></div>
     </div>
   </div>
 
   <!-- Jobs table -->
   <div class="table-section">
     <div class="table-toolbar">
-      <h2>All Roles (819)</h2>
+      <h2>All Roles (818)</h2>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;">
         <input id="searchBox" type="search" placeholder="Search title, company, location …" />
       </div>
@@ -238,7 +213,6 @@ document.getElementById("gate-email").addEventListener("keydown", e => { if (e.k
 <tr class="age-fresh"><td><a href="https://job-boards.greenhouse.io/ieqcapital/jobs/8209492003" target="_blank" rel="noopener">Director, Capital Formation</a></td><td>IEQ Capital</td><td data-metro="Los Angeles">Newport Beach, California, United States</td><td>Director / VP / Principal</td><td>Wealth Management</td><td data-sort="2026-11-19">2026-11-19</td><td>FULL_TIME</td></tr>
 <tr class="age-fresh"><td><a href="https://job-boards.greenhouse.io/ieqcapital/jobs/8209490003" target="_blank" rel="noopener">Director, Capital Formation</a></td><td>IEQ Capital</td><td data-metro="San Francisco Bay Area">Foster City, California, United States</td><td>Director / VP / Principal</td><td>Wealth Management</td><td data-sort="2026-11-19">2026-11-19</td><td>FULL_TIME</td></tr>
 <tr class="age-fresh"><td><a href="https://job-boards.greenhouse.io/familyoffice/jobs/8202864003" target="_blank" rel="noopener">Quantitative Strategist – Securitized Products Focus</a></td><td>Soros Fund Management</td><td data-metro="New York">New York, New York, United States</td><td>Analyst / Associate</td><td>Hedge Fund</td><td data-sort="2026-11-19">2026-11-19</td><td>FULL_TIME</td></tr>
-<tr class="age-fresh"><td><a href="https://boards.greenhouse.io/flagshippioneeringinc/jobs/8950924002?gh_jid=8950924002" target="_blank" rel="noopener">Research Associate I/II, Cryo-EM</a></td><td>Flagship Pioneering, Inc.</td><td data-metro="Boston">Cambridge, Massachusetts, United States</td><td>Analyst / Associate</td><td>Venture Capital</td><td data-sort="2026-11-19">2026-11-19</td><td>FULL_TIME</td></tr>
 <tr class="age-fresh"><td><a href="https://boards.greenhouse.io/flagshippioneeringinc/jobs/8943761002?gh_jid=8943761002" target="_blank" rel="noopener">Associate Director, Program Management</a></td><td>Flagship Pioneering, Inc.</td><td data-metro="Boston">Cambridge, Massachusetts, United States</td><td>Director / VP / Principal</td><td>Venture Capital</td><td data-sort="2026-11-19">2026-11-19</td><td>FULL_TIME</td></tr>
 <tr class="age-fresh"><td><a href="https://careers.aqr.com/jobs?gh_jid=8161734&amp;gh_jid=8161734" target="_blank" rel="noopener">2027 Portfolio Finance Analyst</a></td><td>AQR</td><td data-metro="Fairfield County, CT">Greenwich, Connecticut, United States</td><td>Analyst / Associate</td><td>Hedge Fund</td><td data-sort="2026-11-19">2026-11-19</td><td>FULL_TIME</td></tr>
 <tr class="age-fresh"><td><a href="https://www.kkr.com/careers/career-opportunities/post?gh_jid=6256172004" target="_blank" rel="noopener">Portfolio Construction Analyst/Associate (Real Assets)</a></td><td>Careers at KKR</td><td data-metro="New York">New York, New York, United States</td><td>Analyst / Associate</td><td>Private Equity</td><td data-sort="2026-11-19">2026-11-19</td><td>FULL_TIME</td></tr>
@@ -1057,7 +1031,7 @@ document.getElementById("gate-email").addEventListener("keydown", e => { if (e.k
   </div>
 
   <footer>
-    <p style="margin-top:1.5rem;">Generated by allocator-jobs scraper &bull; November 20, 2026 at 05:18 PM</p>
+    <p style="margin-top:1.5rem;">Generated by allocator-jobs scraper &bull; November 20, 2026 at 05:28 PM</p>
     <p style="margin-top:.4rem;">
       <span style="color:#000;">&#9632;</span> Posted &le; 7 days &nbsp;
       <span style="color:#9a9aa6;">&#9632;</span> Posted 8–30 days &nbsp;
