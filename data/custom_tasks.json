@@ -1,7 +1,7 @@
 [
   {
     "name": "fram-custom-goldman-test",
-    "note": "Goldman Sachs Alternatives: AWM roles, US/Canada only. The scraper then keeps only alternatives titles and the 15 newest (data/scoped_orgs.csv).",
+    "note": "Goldman Sachs Alternatives BACKFILL: 6 months of AWM postings, US/Canada. Run by hand once; never scheduled. The scraper keeps alternatives titles only, 15 newest (data/scoped_orgs.csv).",
     "firms": [
       "Goldman Sachs Alternatives"
     ],
@@ -16,6 +16,48 @@
       ],
       "timeRange": "6m",
       "limit": 300,
+      "titleExclusionSearch": [
+        "software engineer",
+        "engineer",
+        "developer",
+        "operations",
+        "accountant",
+        "paralegal",
+        "recruiter",
+        "human resources",
+        "marketing",
+        "wealth advisor",
+        "private wealth",
+        "financial advisor",
+        "sales",
+        "client service",
+        "compliance",
+        "legal",
+        "counsel"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ]
+    }
+  },
+  {
+    "name": "fram-custom-goldman",
+    "note": "Goldman Sachs Alternatives DAILY: last 24h of AWM postings, US/Canada. Scheduled daily as fram-daily-custom-goldman. The scraper keeps alternatives titles only, 15 newest (data/scoped_orgs.csv).",
+    "firms": [
+      "Goldman Sachs Alternatives"
+    ],
+    "schedule": true,
+    "input": {
+      "organizationSearch": [
+        "Goldman Sachs"
+      ],
+      "titleSearch": [
+        "AWM",
+        "Asset & Wealth Management"
+      ],
+      "timeRange": "24h",
+      "limit": 100,
       "titleExclusionSearch": [
         "software engineer",
         "engineer",
