@@ -152,5 +152,52 @@
       "timeRange": "6m",
       "limit": 250
     }
+  },
+  {
+    "name": "fram-custom-apollo-test",
+    "note": "Apollo's jobs are posted under the company name 'Apollo' (Workday site athene.wd5.myworkdayjobs.com/Apollo_Careers), not 'Apollo Global Management', so the batch task found none. One-off 6m test to see the exact company name and domain Apify returns, then lock it. Never scheduled.",
+    "firms": [
+      "Apollo Global Management"
+    ],
+    "schedule": false,
+    "keep_titles": [],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "facilities",
+      "internship"
+    ],
+    "input": {
+      "organizationSearch": [
+        "Apollo",
+        "Apollo Global Management"
+      ],
+      "organizationExclusionSearch": [
+        "Apollo Hospitals",
+        "Apollo Tyres",
+        "Apollo Education Group",
+        "Apollo Medical",
+        "ApolloMD",
+        "Apollo Graph",
+        "Apollo GraphQL"
+      ],
+      "titleSearch": [
+        "invest",
+        "portfolio",
+        "credit",
+        "equity",
+        "principal",
+        "associate",
+        "analyst",
+        "origination"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ],
+      "timeRange": "6m",
+      "limit": 200
+    }
   }
 ]
