@@ -3,6 +3,11 @@ name: Sync Apify tasks
 # Builds the Apify tasks (named fram-*) from data/orgs.csv and the data/ filter files.
 # Run it from the Actions tab: leave "apply" off for a dry run that only prints the plan.
 on:
+  # Edit data/custom_tasks.json in GitHub and merge: the custom tasks are created/updated in Apify automatically.
+  # It never runs a task and never adds a schedule - you press Start (or add the schedule) in Apify.
+  push:
+    branches: [main]
+    paths: ["data/custom_tasks.json"]
   workflow_dispatch:
     inputs:
       apply:
@@ -37,7 +42,13 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r requirements.txt
+      - name: Sync custom tasks (on merge)
+        if: github.event_name == 'push'
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python sync_apify_tasks.py --custom-only --apply
       - name: Sync tasks
+        if: github.event_name != 'push'
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           APPLY: ${{ inputs.apply }}

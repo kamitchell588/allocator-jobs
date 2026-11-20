@@ -23,8 +23,9 @@ A job board for institutional allocator roles (endowments, pensions, family offi
 | Hidden jobs | `hidden_jobs.txt` | Admin Hide button writes this. |
 | Manual jobs | Google Sheet | Expire 60 days after first seen. |
 | Apify task groups | `data/task_groups.csv` | sector -> task group. Tasks are generated, not hand-edited: Actions tab -> "Sync Apify tasks" (dry run unless "apply" is ticked; "only" = one task, "schedule" = add the daily schedule). Creates/updates only tasks named `fram-*`. |
-| One-off / custom Apify tasks | `data/custom_tasks.json` | Hand-designed tasks (e.g. one firm's alternatives group only): `name` (fram-*), `firms`, `schedule` (default false), `input` (overrides). Synced by the same workflow; `--only fram-custom-goldman-test` for one. |
+| One-off / custom Apify tasks | `data/custom_tasks.json` | Hand-designed tasks (e.g. one firm's alternatives group only): `name` (fram-*), `firms`, `schedule` (default false), `input` (overrides). Merging a change to this file creates/updates these tasks in Apify automatically (never runs or schedules them: press Start / add the schedule in Apify). Also synced by the same workflow; `--only fram-custom-goldman-test` for one. |
 | One division of a big firm | `data/scoped_orgs.csv` | For firms where only one division is wanted (Goldman alternatives): `require_any` / `exclude_any` title phrases (`|` separated) replace the generic title lists for that firm; `cap` keeps its N newest roles. Tests: `python tests/test_scoped.py`. |
+| Which task covers which firm | `data/task_map.csv` | Generated, don't edit. Workflow "Audit Apify tasks" (daily 12:30 UTC + Run workflow) reads Apify read-only and writes firm -> tasks, schedules, last run, state. Feeds the Allocator Org Tracker. Test: `python tests/test_audit.py`. |
 Apify tasks are an input, not a master: their firm lists and exclusions should come from the files above. Snapshot of the older tasks' inputs (as of 2026-11-19): `apify/archive/current_tasks_2026-11-19.json`.
 Tests: `python tests/test_master.py` (firm list + filter files), `python tests/test_sync.py` (task generator, against a fake Apify).
 

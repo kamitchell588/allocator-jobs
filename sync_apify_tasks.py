@@ -212,6 +212,8 @@ def main(argv):
     if "--backfill" in argv:
         tasks = tasks + backfill_tasks(tasks)
     all_names = [t["name"] for t in tasks]
+    if "--custom-only" in argv:            # just the hand-designed tasks in data/custom_tasks.json
+        tasks = [t for t in tasks if t.get("custom")]
     if "--only" in argv:
         only = {n.strip() for n in argv[argv.index("--only") + 1].split(",") if n.strip()}
         unknown = only - set(all_names)
