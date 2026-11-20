@@ -2367,6 +2367,14 @@ def main():
     print(f"  Dropped {before - len(csv_jobs)} jobs older than {JOB_MAX_AGE_DAYS} days from CSV.")
     # Strip out old Manual/supplemental entries from CSV — they'll be re-fetched fresh
     csv_apify_jobs = [j for j in csv_jobs if j["source"] not in NON_APIFY_SOURCES]
+    # History is re-checked against the current title rules, so a new exclusion also clears old rows
+    def _title_still_ok(j: dict) -> bool:
+        sc = scope_for(j["company"])
+        return scope_title_ok(sc, j["title"]) if sc else passes_exclusions({"title": j["title"]})
+    n_h = len(csv_apify_jobs)
+    csv_apify_jobs = [j for j in csv_apify_jobs if _title_still_ok(j)]
+    if len(csv_apify_jobs) < n_h:
+        print(f"  Removed {n_h - len(csv_apify_jobs)} history job(s) whose title now matches data/title_exclude.txt.")
 
     # Merge: recent + backfill take precedence over CSV (placed first for dedup)
     apify_jobs = _dedup(recent_jobs + backfill_jobs + csv_apify_jobs)

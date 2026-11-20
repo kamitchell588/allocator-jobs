@@ -93,4 +93,13 @@ rb = s.sync(two, bf, apply=True, schedule=True)
 check("backfill tasks are 6m, named fram-backfill-*, and never scheduled",
       all(t["input"]["timeRange"] == "6m" and t["name"].startswith("fram-backfill-") for t in bf) and not two.scheds and len(rb["created"]) == len(tasks))
 check("daily tasks stay 24h", all(t["input"]["timeRange"] == "24h" for t in tasks))
+# align older tasks with the shared title exclusions (adds only, touches nothing else)
+old = Fake(); tid = old._add("pilot-p1", {"organizationSearch": ["X"], "limit": 100, "titleExclusionSearch": ["my own phrase"]})
+old._add("fram-private-equity-1", {"organizationSearch": ["Y"], "titleExclusionSearch": []}); old._add("not-ours", {"foo": 1})
+dry = s.align_old_tasks(old, apply=False, out=lambda *_: None)
+check("align-old dry run changes nothing", dry == ["pilot-p1"] and not old.writes)
+s.align_old_tasks(old, apply=True, out=lambda *_: None)
+new = old.inputs[tid]
+check("align-old adds the shared list, keeps the task's own phrases and other settings",
+      "my own phrase" in new["titleExclusionSearch"] and "scientist" in new["titleExclusionSearch"] and new["limit"] == 100 and len(old.writes) == 1)
 print("\n%d failure(s)" % len(fails)); sys.exit(1 if fails else 0)
