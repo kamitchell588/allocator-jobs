@@ -1,0 +1,6 @@
+# Big firms where only one division is wanted (e.g. alternatives inside a bank).
+# company = matched as whole words in the company name. require_any / exclude_any = phrases separated by |
+# (a leading = means whole word only). A scoped firm skips the generic title_include / title_exclude lists
+# and uses these instead. cap = most roles kept for the firm (newest first).
+company,require_any,exclude_any,cap
+Goldman Sachs,alternative|private equity|private credit|private markets|private investing|private secondaries|secondaries|external invest|=xig|hybrid capital|hedge fund|growth equity|tactical opportunities|infrastructure|real estate portfolio|capital formation|gp coverage|platform management|liquid alternatives,private bank|ayco|family office|software|engineer|design|change management|administrative|fund accounting|controllers|talent|private wealth|trust company|summer analyst|internship|insurance|product management|operational risk|compliance|legal|counsel|recruit|human resources|marketing|sales,15
