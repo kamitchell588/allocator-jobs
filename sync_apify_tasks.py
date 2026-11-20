@@ -199,6 +199,31 @@ def sync(api, tasks, apply=False, schedule=False, all_names=None, out=print) -> 
     return result
 
 
+def align_old_tasks(api, apply=False, out=print) -> list:
+    """Bring the older hand-built tasks (not named fram-*) in line with data/title_exclude.txt: their title
+    exclusions become the shared list plus whatever they already had (nothing is removed). Only
+    titleExclusionSearch is written; every other setting is left alone. Dry run unless apply."""
+    shared = title_exclusions()
+    changed = []
+    for t in _items(api.call("GET", "/actor-tasks?limit=1000")):
+        if t["name"].startswith(PREFIX):
+            continue
+        inp = api.call("GET", f"/actor-tasks/{t['id']}/input")
+        inp = inp.get("data", inp) if isinstance(inp, dict) else inp
+        if not isinstance(inp, dict) or "organizationSearch" not in inp:      # not one of our job-search tasks
+            continue
+        have = list(inp.get("titleExclusionSearch") or [])
+        low = {x.lower() for x in have}
+        new = have + [x for x in shared if x.lower() not in low]
+        out(f"  {t['name']:24s} title exclusions {len(have)} -> {len(new)}")
+        if len(new) != len(have):
+            changed.append(t["name"])
+            if apply:
+                api.call("PUT", f"/actor-tasks/{t['id']}/input", {**inp, "titleExclusionSearch": new})
+    out(("APPLIED" if apply else "DRY RUN (nothing changed)") + f": {len(changed)} older task(s) updated")
+    return changed
+
+
 def report(tasks, result, apply, out=print):
     out(f"{'APPLIED' if apply else 'DRY RUN (nothing changed)'}: {len(tasks)} task(s) from {sum(len(t['firms']) for t in tasks)} firms not yet in an older task")
     worst = 0.0
@@ -213,6 +238,10 @@ def report(tasks, result, apply, out=print):
 
 def main(argv):
     apply = "--apply" in argv
+    if "--align-old" in argv:
+        token = os.environ.get("APIFY_TOKEN") or sys.exit("APIFY_TOKEN is not set")
+        align_old_tasks(Apify(token), apply)
+        return
     prio = tuple(x.strip() for x in argv[argv.index("--priority") + 1].split(",")) if "--priority" in argv else ("P1",)
     tasks = build_tasks(prio)
     if "--backfill" in argv:

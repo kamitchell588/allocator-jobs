@@ -164,3 +164,16 @@ volunteer
 =oil
 =gas
 =grant
+
+# Science / lab roles (biotech-focused firms such as Flagship Pioneering)
+scientist
+biologist
+biology
+chemist
+chemistry
+bioinformatic
+genomic
+pharmacolog
+protein
+assay
+clinical
