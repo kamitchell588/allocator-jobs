@@ -467,6 +467,65 @@ def _load_org_domains() -> dict:
     return _ORG_DOMAINS
 
 
+# ── Scoped firms: only one division wanted (data/scoped_orgs.csv) ──────────────
+_SCOPES = None
+
+
+def _load_scopes() -> list[dict]:
+    global _SCOPES
+    if _SCOPES is None:
+        _SCOPES = []
+        path = pathlib.Path(__file__).parent / "data" / "scoped_orgs.csv"
+        try:
+            lines = [l for l in path.read_text(encoding="utf-8").splitlines() if l.strip() and not l.lstrip().startswith("#")]
+        except OSError:
+            lines = []
+        for r in csv.DictReader(lines):
+            name = (r.get("company") or "").strip().lower()
+            if not name:
+                continue
+            split = lambda v: [x.strip().lower() for x in (v or "").split("|") if x.strip()]
+            try:
+                cap = int(r.get("cap") or 0)
+            except ValueError:
+                cap = 0
+            _SCOPES.append({"name": name,
+                            "name_re": _re.compile(r"(?<![a-z0-9])" + _re.escape(name) + r"(?![a-z0-9])"),
+                            "require": _phrase_regex(split(r.get("require_any"))) if split(r.get("require_any")) else None,
+                            "exclude": _phrase_regex(split(r.get("exclude_any"))) if split(r.get("exclude_any")) else None,
+                            "cap": cap})
+    return _SCOPES
+
+
+def scope_for(company: str):
+    c = (company or "").strip().lower()
+    for sc in _load_scopes():
+        if sc["name_re"].search(c):
+            return sc
+    return None
+
+
+def scope_title_ok(sc: dict, title: str) -> bool:
+    t = (title or "").lower()
+    if sc["require"] and not sc["require"].search(t):
+        return False
+    return not (sc["exclude"] and sc["exclude"].search(t))
+
+
+def apply_scope_caps(jobs: list[dict]) -> list[dict]:
+    """Keep each scoped firm's newest `cap` jobs (cap 0 = no cap). Other firms are untouched."""
+    kept, counts = [], {}
+    for j in sorted(jobs, key=lambda j: j.get("date_posted") or "", reverse=True):
+        sc = scope_for(j.get("company"))
+        if sc and sc["cap"]:
+            if counts.get(sc["name"], 0) >= sc["cap"]:
+                continue
+            counts[sc["name"]] = counts.get(sc["name"], 0) + 1
+        kept.append(j)
+    kept_ids = {id(j) for j in kept}
+    return [j for j in jobs if id(j) in kept_ids]       # original order
+
+
 def passes_layer1(item: dict) -> bool:
     """Layer 1: domain allowlist. If the job's company name matches a firm in
     data/orgs.csv that has a locked domain, the job's domain must equal it
@@ -561,6 +620,14 @@ def filter_jobs(items: list[dict]) -> list[dict]:
         if not passes_layer1(item):
             continue
         after_l1.append(item)
+        sc = scope_for(item.get("organization") or item.get("company") or item.get("companyName"))
+        if sc:                                   # scoped firm: its own keyword rules replace Layer 2 + exclusions
+            if not scope_title_ok(sc, _title_from_item(item)):
+                continue
+            after_l2.append(item); after_ex.append(item)
+            if passes_geo(item):
+                after_geo.append(item)
+            continue
         if not passes_layer2(item):
             continue
         after_l2.append(item)
@@ -2323,6 +2390,10 @@ def main():
 
     # Merge: recent + backfill take precedence over CSV (placed first for dedup)
     apify_jobs = _dedup(recent_jobs + backfill_jobs + csv_apify_jobs)
+    n_sc = len(apify_jobs)
+    apify_jobs = apply_scope_caps(apify_jobs)
+    if len(apify_jobs) < n_sc:
+        print(f"  Scoped-firm cap (data/scoped_orgs.csv) removed {n_sc - len(apify_jobs)} job(s).")
     print(f"  [Apify] {len(apify_jobs)} total after merging with historical CSV.")
 
     # ── 2. Supplemental sources ───────────────────────────────────

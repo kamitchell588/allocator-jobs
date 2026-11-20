@@ -1,7 +1,7 @@
 [
   {
     "name": "fram-custom-goldman-test",
-    "note": "One-off test for Goldman Sachs Alternatives (AWM roles only). Run once by hand, send the dataset, then we tighten the filter. Never scheduled.",
+    "note": "Goldman Sachs Alternatives: AWM roles, US/Canada only. The scraper then keeps only alternatives titles and the 15 newest (data/scoped_orgs.csv).",
     "firms": [
       "Goldman Sachs Alternatives"
     ],
@@ -15,7 +15,7 @@
         "Asset & Wealth Management"
       ],
       "timeRange": "6m",
-      "limit": 150,
+      "limit": 300,
       "titleExclusionSearch": [
         "software engineer",
         "engineer",
