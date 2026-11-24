@@ -29,7 +29,7 @@ Lightspeed Venture Partners,pilot-p1; pilot-task-input-retest,pilot-p1-schedule,
 Ribbit Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
 Greenoaks,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
 Flagship Pioneering,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
-Apollo Global Management,batch1; fram-custom-apollo-test,fram-custom-apollo-test-schedule,fram-custom-apollo-test-schedule=6m,2026-11-24,SUCCEEDED,scheduled
+Apollo Global Management,batch1; fram-custom-apollo-test,fram-custom-apollo-test-schedule,fram-custom-apollo-test-schedule=24h,2026-11-24,SUCCEEDED,scheduled
 KKR,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
 Ares Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
 AQR Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
@@ -887,6 +887,6 @@ Nextech Invest,,,,,,no task
 Sierra Ventures,,,,,,no task
 ICONIQ Growth,,,,,,no task
 Seven Seven Six,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
-Morgan Stanley Investment Management (Alternatives),fram-custom-morganstanley-test,fram-custom-morganstanley-schedule,fram-custom-morganstanley-schedule=6m,2026-11-24,SUCCEEDED,scheduled
+Morgan Stanley Investment Management (Alternatives),fram-custom-morganstanley-test,fram-custom-morganstanley-schedule,fram-custom-morganstanley-schedule=24h,2026-11-24,SUCCEEDED,scheduled
 BlackRock Private Markets,fram-custom-blackrock-test,fram-custom-blackrock-test-schedule,fram-custom-blackrock-test-schedule=6m,2026-11-24,SUCCEEDED,scheduled
 J.P. Morgan Asset Management (Alternatives),fram-custom-jpmorgan; fram-custom-jpmorgan-test,fram-custom-jpmorgan-schedule,fram-custom-jpmorgan-schedule=24h,2026-11-24,SUCCEEDED,scheduled

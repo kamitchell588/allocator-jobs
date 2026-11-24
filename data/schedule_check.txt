@@ -1,8 +1,6 @@
 1) SCHEDULES THAT DO NOT LOOK BACK 24 HOURS (a scheduled task should never pull 6 months)
-   fram-custom-apollo-test-schedule  ->  task fram-custom-apollo-test  window 6m
    fram-custom-blackrock-test-schedule  ->  task fram-custom-blackrock-test  window 6m
    fram-custom-millennium-test-schedule  ->  task fram-custom-millennium-test  window 6m
-   fram-custom-morganstanley-schedule  ->  task fram-custom-morganstanley-test  window 6m
    fram-custom-test-batch-a-schedule  ->  task fram-custom-test-batch-a  window 6m
 
 2) FIRMS ON MORE THAN ONE SCHEDULE
