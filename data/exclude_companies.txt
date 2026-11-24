@@ -10,3 +10,12 @@ imco carbide tool
 # not Citadel LLC (Citadel's website is citadel.com)
 citadel credit union
 citadel federal solutions
+
+# not Apollo Global Management (Apollo is listed as "Apollo" on athene.wd5.myworkdayjobs.com)
+apollo behavior
+apollo hospitals
+apollo tyres
+apollo education
+apollo medical
+apollomd
+apollo graph
