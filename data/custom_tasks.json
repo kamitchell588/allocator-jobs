@@ -342,5 +342,51 @@
       "timeRange": "6m",
       "limit": 250
     }
+  },
+  {
+    "name": "fram-custom-deshaw-test",
+    "note": "D. E. Shaw (deshaw.com only). The batch task searches the name 'D. E. Shaw' and has never returned a job. One-off 6-month test by website to see whether Apify indexes D. E. Shaw's own careers site at all (0 results = it does not; then a direct scraper or manual add). Never scheduled.",
+    "firms": [
+      "D.E. Shaw & Co."
+    ],
+    "schedule": false,
+    "keep_titles": [],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "facilities",
+      "internship",
+      "analyst program"
+    ],
+    "input": {
+      "domainFilter": [
+        "deshaw.com"
+      ],
+      "titleSearch": [
+        "analyst",
+        "portfolio",
+        "investment",
+        "investing",
+        "trader",
+        "trading",
+        "research",
+        "quantitative",
+        "strategist",
+        "principal",
+        "associate",
+        "credit",
+        "equity",
+        "macro",
+        "commodities",
+        "fixed income"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ],
+      "timeRange": "6m",
+      "limit": 250
+    }
   }
 ]
