@@ -388,5 +388,51 @@
       "timeRange": "6m",
       "limit": 250
     }
+  },
+  {
+    "name": "fram-custom-twosigma-test",
+    "note": "Two Sigma (twosigma.com only). The batch task searches the name 'Two Sigma' and has never returned a job, although careers.twosigma.com lists roles. One-off 6-month test by website to see whether Apify indexes their careers site at all (0 results = it does not). Never scheduled.",
+    "firms": [
+      "Two Sigma"
+    ],
+    "schedule": false,
+    "keep_titles": [],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "facilities",
+      "internship",
+      "analyst program"
+    ],
+    "input": {
+      "domainFilter": [
+        "twosigma.com"
+      ],
+      "titleSearch": [
+        "analyst",
+        "portfolio",
+        "investment",
+        "investing",
+        "trader",
+        "trading",
+        "research",
+        "quantitative",
+        "strategist",
+        "principal",
+        "associate",
+        "credit",
+        "equity",
+        "macro",
+        "commodities",
+        "fixed income"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ],
+      "timeRange": "6m",
+      "limit": 250
+    }
   }
 ]
