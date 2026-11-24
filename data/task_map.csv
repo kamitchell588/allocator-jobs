@@ -1,891 +1,892 @@
-org_name,tasks,schedules,last_run,last_run_status,state
-Summit Partners,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-TCV,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Citadel,,,,,no task
-Millennium Management,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Point72 Asset Management,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Coatue,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Viking Global Investors,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Pershing Square Capital Management,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Blue Owl Capital,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Bain Capital,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Churchill Asset Management,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Onex Credit,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Arcmont Asset Management,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-AGL Credit Management,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Strategic Value Partners,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Quantum Capital Group,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-TowerBrook Capital Partners,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-IK Partners,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Grain Management,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-JLL Partners,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Goldman Sachs Alternatives,fram-custom-goldman; fram-custom-goldman-test; pilot-p1,fram-daily-custom-goldman; pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Affinius Capital,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-BGO (BentallGreenOak),pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Stockbridge Capital Group,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Berkshire Residential Investments,pilot-p1; pilot-task-input-retest,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Founders Fund,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Lightspeed Venture Partners,pilot-p1; pilot-task-input-retest,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Ribbit Capital,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Greenoaks,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Flagship Pioneering,pilot-p1,pilot-p1-schedule,2026-11-23,SUCCEEDED,scheduled
-Apollo Global Management,batch1; career-site-job-listing-api-task-6; fram-custom-apollo-test,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-KKR,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Ares Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-AQR Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Two Sigma,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Schonfeld Strategic Advisors,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-The Carlyle Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Balyasny Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-KKR Credit,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-D.E. Shaw & Co.,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Oaktree Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Thoma Bravo,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-ExodusPoint Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-HPS Investment Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-NB Alternatives (Neuberger Berman Private Markets),batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Bridgewater Associates,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Blackstone,batch1,,2026-11-18,SUCCEEDED,"task, not scheduled"
-Global Infrastructure Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Verition Fund Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Blackstone Real Estate,batch1,,2026-11-18,SUCCEEDED,"task, not scheduled"
-Golub Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-General Atlantic,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Silver Lake,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Warburg Pincus,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Hellman & Friedman,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Andreessen Horowitz,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Vista Equity Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Tiger Global Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Oak Hill Advisors,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Renaissance Technologies,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Insight Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Advent International,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-"Clayton, Dubilier & Rice",batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Leonard Green & Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Clearlake Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Sequoia Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Starwood Capital Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-PineBridge Investments,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Clarion Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-GoldenTree Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Stone Point Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Carlyle Global Credit,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Blue Owl Real Estate,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Davidson Kempner Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Bayview Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Farallon Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Valor Equity Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Bridge Investment Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,2026-11-23,SUCCEEDED,scheduled
-Blackstone Private Credit,batch1,,2026-11-18,SUCCEEDED,"task, not scheduled"
-CPP Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-PSP Investments (Public Sector Pension Investment Board),career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Ontario Teachers' Pension Plan,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-British Columbia Investment Management (BCI),career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-CalSTRS,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Teacher Retirement System of Texas,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Texas Municipal Retirement System,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Florida State Board of Administration,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Washington State Investment Board,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-State of Wisconsin Investment Board,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-LACERA,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Oregon State Treasury,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Mass PRIM,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-New Mexico State Investment Council,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-University of California Office of the President,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Harvard Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-UTIMCO,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Stanford Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Princeton University Investment Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-MIT Investment Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-University of Pennsylvania Office of Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Duke University Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-University of Chicago Investment Office,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-University of Virginia Investment Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Walton Enterprises,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-ICONIQ,career-site-job-listing-api-task-2; career-site-job-listing-api-task-5,List1-career-site-job-listing-api-task-2-schedule; List5-career-site-job-listing-api-task-5-schedule,2026-11-23,SUCCEEDED,scheduled
-Ford Foundation,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Cambridge Associates,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Partners Capital,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Wilshire,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-FEG,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-2; career-site-job-listing-api-task-3,List1-career-site-job-listing-api-task-2-schedule; List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Adams Street Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-2; career-site-job-listing-api-task-3,List1-career-site-job-listing-api-task-2-schedule; List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-LGT Capital Partners,career-site-job-listing-api-task-2; career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule; List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Aksia,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-StepStone Group,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Hamilton Lane,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-TIFF Investment Management,career-site-job-listing-api-task-2; career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule; List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Investure,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-HighVista Strategies,career-site-job-listing-api-task-2; career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule; List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Commonfund,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Makena Capital Management,career-site-job-listing-api-task-2; career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule; List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Fidelity Institutional,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Alphacore Capital,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-ICG (Intermediate Capital Group),career-site-job-listing-api-task-2; career-site-job-listing-api-task-5,List1-career-site-job-listing-api-task-2-schedule; List5-career-site-job-listing-api-task-5-schedule,2026-11-23,SUCCEEDED,scheduled
-Main Street Advisors,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-TrueBridge Capital Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-2; career-site-job-listing-api-task-3,List1-career-site-job-listing-api-task-2-schedule; List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-JMI Equity,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-TPG,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-ADIA,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-GIC,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Temasek,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-Liberty Mutual Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-New York Life Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,2026-11-23,SUCCEEDED,scheduled
-OMERS,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-HOOPP (Healthcare of Ontario Pension Plan),career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-IMCO (Investment Management Corporation of Ontario),career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Ontario Pension Board,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-OPTrust,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Alberta Heritage Savings Trust Fund,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-NEPC,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Callan,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Meketa,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Strategic Investment Group,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Hirtle Callaghan,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Spider Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Global Endowment Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Summit Rock Advisors,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-ICG Advisors,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Pathway Capital Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3; career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule; List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-CF Private Equity,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Russell Investments,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-MAI Capital Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Cerity Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Glenmede,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,2026-11-23,SUCCEEDED,scheduled
-Mubadala,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Public Investment Fund,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Norges Bank Investment Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Korea Investment Corporation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Kuwait Investment Authority,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Wafra,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Caisse de dépôt et placement du Québec (CDPQ),career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Wallace Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Rockefeller Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Gates Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Lilly Endowment,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-J. Paul Getty Trust,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Robert Wood Johnson Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-William and Flora Hewlett Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Andrew W. Mellon Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-John D. and Catherine T. MacArthur Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Gordon and Betty Moore Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-David and Lucile Packard Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-W.K. Kellogg Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Leona M. and Harry B. Helmsley Charitable Trust,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-The California Endowment,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-The Kresge Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Doris Duke Charitable Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Alfred P. Sloan Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Brown Advisory,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-HarbourVest Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Lexington Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Lombard Odier,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Blue Pool Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-JFG Advisors,career-site-job-listing-api-task-4; career-site-job-listing-api-task-5,List-4-career-site-job-listing-api-task-4-schedule; List5-career-site-job-listing-api-task-5-schedule,2026-11-23,SUCCEEDED,scheduled
-AlTi Tiedemann Global,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Homrich Berg,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-WE Family Offices,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Tolleson Wealth Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Bow River Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-IEQ Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Jasper Ridge Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Lincoln Financial Group,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,2026-11-23,SUCCEEDED,scheduled
-Bayshore Global Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,2026-11-23,SUCCEEDED,scheduled
-Willett Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,2026-11-23,SUCCEEDED,scheduled
-Soros Fund Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,2026-11-23,SUCCEEDED,scheduled
-NewEdge Capital Group,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,2026-11-23,SUCCEEDED,scheduled
-Beacon Pointe Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,2026-11-23,SUCCEEDED,scheduled
-HB Wealth,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,2026-11-23,SUCCEEDED,scheduled
-Cascade Asset Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,2026-11-23,SUCCEEDED,scheduled
-PSG Equity,fram-private-equity-3,,,,"task, not scheduled"
-FTV Capital,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Stripes,,,,,no task
-Spectrum Equity,,,,,no task
-Silversmith Capital Partners,,,,,no task
-Lead Edge Capital,,,,,no task
-Level Equity,,,,,no task
-Glade Brook Capital Partners,,,,,no task
-Mainsail Partners,,,,,no task
-Verdane,,,,,no task
-Edison Partners,,,,,no task
-SageView Capital,,,,,no task
-Volition Capital,,,,,no task
-Long Ridge Equity Partners,,,,,no task
-Qube Research & Technologies,,,,,no task
-Capula Investment Management,,,,,no task
-Symmetry Investments,,,,,no task
-LMR Partners,,,,,no task
-Arrowstreet Capital,,,,,no task
-Marshall Wace,,,,,no task
-Brevan Howard,,,,,no task
-Squarepoint,,,,,no task
-Rokos Capital Management,,,,,no task
-Garda Capital Partners,,,,,no task
-Mariner Investment Group,,,,,no task
-Alphadyne Asset Management,,,,,no task
-TPG Angelo Gordon,,,,,no task
-Bracebridge Capital,,,,,no task
-Lighthouse Investment Partners,,,,,no task
-Tudor Investment Corporation,,,,,no task
-Kedalion Capital Management,,,,,no task
-Capstone Investment Advisors,,,,,no task
-III Capital Management,,,,,no task
-TCI Fund Management,,,,,no task
-OC Investment Management,,,,,no task
-Caxton Associates,,,,,no task
-Adage Capital Management,,,,,no task
-Fulcrum Asset Management,,,,,no task
-Man Group (AHL),,,,,no task
-Elan Capital Management,,,,,no task
-Tenaron Capital Management,,,,,no task
-Walleye Capital,,,,,no task
-Holocene Advisors,,,,,no task
-Element Capital Management,,,,,no task
-Graham Capital Management,,,,,no task
-Alyeska Investment Group,,,,,no task
-Hudson Bay Capital Management,,,,,no task
-Linden Advisors,,,,,no task
-Polar Asset Management Partners,,,,,no task
-Woodline Partners,,,,,no task
-Select Equity Group,,,,,no task
-Voloridge Investment Management,,,,,no task
-HBK Capital Management,,,,,no task
-King Street Capital Management,,,,,no task
-Alkeon Capital Management,,,,,no task
-Pacific Way Capital Management,,,,,no task
-Jain Global,,,,,no task
-Magnetar Capital,,,,,no task
-Paloma Partners,,,,,no task
-Voleon Capital Management,,,,,no task
-Third Point,fram-hedge-funds-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Baker Brothers Investments,,,,,no task
-Compass Rose Asset Management,,,,,no task
-Algebris Investments,,,,,no task
-Kirkoswald Asset Management,,,,,no task
-Lone Pine Capital,fram-hedge-funds-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-The Baupost Group,fram-hedge-funds-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Systematica Investments,,,,,no task
-Soroban Capital Partners,,,,,no task
-Engineers Gate,,,,,no task
-Himalaya Capital,,,,,no task
-Universa Investments,,,,,no task
-Ellington Management Group,,,,,no task
-Centiva Capital,,,,,no task
-PDT Partners,,,,,no task
-Pentwater Capital Management,,,,,no task
-Deerfield Management,,,,,no task
-Egerton Capital,,,,,no task
-JJJ Capital Management,,,,,no task
-Durable Capital Partners,,,,,no task
-Saba Capital Management,fram-hedge-funds-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Boothbay Fund Management,,,,,no task
-Cevian Capital,,,,,no task
-Darsana Capital Partners,,,,,no task
-Freestone Grove Partners,,,,,no task
-Jericho Capital Asset Management,,,,,no task
-Maverick Capital,,,,,no task
-Whitebox Advisors,,,,,no task
-Weiss Asset Management,,,,,no task
-Wolverine Asset Management,,,,,no task
-Capital Fund Management (CFM),,,,,no task
-Pharo Management,,,,,no task
-Maplecap Partners,,,,,no task
-SRS Investment Management,,,,,no task
-Abrams Capital Management,,,,,no task
-Avoro Capital Advisors,,,,,no task
-Haidar Capital Management,,,,,no task
-AKO Capital,,,,,no task
-Atreides Management,fram-hedge-funds-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Lansdowne Partners,,,,,no task
-Winton,,,,,no task
-Stonepeak,,,,,no task
-I Squared Capital,,,,,no task
-DigitalBridge,,,,,no task
-Brookfield Asset Management,,,,,no task
-Elliott Investment Management,,,,,no task
-Sixth Street,,,,,no task
-Fortress Investment Group,,,,,no task
-Cerberus Capital Management,,,,,no task
-Blue Owl GP Strategic Capital,,,,,no task
-H.I.G. Capital,,,,,no task
-Sculptor Capital,,,,,no task
-Ardian,,,,,no task
-Eldridge Industries,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Silver Point Capital,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Crescent Capital Group,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Antares Capital,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Blue Owl Credit,,,,,no task
-CIFC Asset Management,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Cheyne Capital,,,,,no task
-Sound Point Capital Management,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Arini Capital Management,,,,,no task
-Castlelake,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Octagon Credit Investors,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Monarch Alternative Capital,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Sona Asset Management,,,,,no task
-Redding Ridge Asset Management,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Brigade Capital Management,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Muzinich & Co.,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Marathon Asset Management,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Diameter Capital Partners,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Beach Point Capital Management,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Benefit Street Partners,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Anchorage Capital,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-The Palisades Group,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Audax Private Debt,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Palmer Square Capital Management,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Park Square Capital,,,,,no task
-Crestline Investors,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Prime Finance,,,,,no task
-Waterfall Asset Management,,,,,no task
-Hildene Capital Management,,,,,no task
-Knighthead Capital Management,,,,,no task
-AB CarVal Investors,,,,,no task
-Acore Capital,,,,,no task
-LibreMax Capital,,,,,no task
-Fiera Capital,,,,,no task
-Varde Partners,,,,,no task
-Napier Park Global Capital,,,,,no task
-Permira Credit,,,,,no task
-Kayne Anderson Capital Advisors,,,,,no task
-Eagle Point Credit Management,,,,,no task
-Post Advisory Group,,,,,no task
-Tikehau Capital,,,,,no task
-Canyon Partners,,,,,no task
-Chatham Asset Management,,,,,no task
-Kennedy Lewis Investment Management,,,,,no task
-400 Capital Management,,,,,no task
-"Christofferson, Robb & Company",,,,,no task
-Guggenheim Investments (Corporate Funding),,,,,no task
-One William Street Capital Management,,,,,no task
-Redwood Capital Management,,,,,no task
-Pemberton Asset Management,,,,,no task
-Axonic Capital,,,,,no task
-MJX Asset Management,,,,,no task
-SLR Capital Partners,,,,,no task
-Comvest Partners,,,,,no task
-Ogam,,,,,no task
-Blue Torch Capital,,,,,no task
-MidOcean Partners (Credit),,,,,no task
-Balbec Capital,,,,,no task
-MGG Investment Group,,,,,no task
-Arbour Lane Capital Management,,,,,no task
-Invictus Capital Partners,,,,,no task
-Caspian Capital,,,,,no task
-Cross Ocean Partners,,,,,no task
-NXT Capital,,,,,no task
-Nassau Global Credit,,,,,no task
-Brightwood Capital Advisors,,,,,no task
-Brinley Partners,,,,,no task
-PennantPark Investment Advisers,,,,,no task
-Aperture Investors,,,,,no task
-MC Credit Partners,,,,,no task
-Fasanara Capital,,,,,no task
-Saluda Grade,,,,,no task
-Obra Capital,,,,,no task
-Avenue Capital Group,,,,,no task
-Polus Capital Management,,,,,no task
-ZAIS Group,,,,,no task
-Bear Creek Asset Management,,,,,no task
-White Oak Global Advisors,,,,,no task
-Taconic Capital Advisors,,,,,no task
-Contrarian Capital Management,,,,,no task
-3650 Capital,,,,,no task
-ACRES Capital,,,,,no task
-Prophet Capital Asset Management,,,,,no task
-Star Mountain Capital,,,,,no task
-Evolution Credit Partners,,,,,no task
-Freeport Financial Partners,,,,,no task
-Fundamental Advisors,,,,,no task
-Kartesia,,,,,no task
-Leucadia Asset Management,,,,,no task
-Hudson Structured Capital Management,,,,,no task
-Sycamore Tree Capital Partners,,,,,no task
-Tree Line Capital Partners,,,,,no task
-Axar Capital Management,,,,,no task
-Victory Park Capital,,,,,no task
-Falcon Investment Advisors,,,,,no task
-Mudrick Capital,,,,,no task
-Maxim Capital Group,,,,,no task
-Oberland Capital,,,,,no task
-Apera Asset Management,,,,,no task
-Pharmakon Advisors,,,,,no task
-Colbeck Capital Management,,,,,no task
-Marblegate Asset Management,,,,,no task
-Newmarket Investment Management,,,,,no task
-Pearl Diver Capital,,,,,no task
-Chorus Capital,,,,,no task
-LL Funds,,,,,no task
-Brevet Capital,,,,,no task
-Oxford Finance,,,,,no task
-P Capital Partners,,,,,no task
-Crayhill Capital Management,,,,,no task
-Medalist Partners,,,,,no task
-Sandton Capital Partners,,,,,no task
-Varadero Capital,,,,,no task
-Whitehawk Capital Partners,,,,,no task
-Clear Haven Capital Management,,,,,no task
-CRG,,,,,no task
-Western Technology Investment,,,,,no task
-Barings,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Churchill / Nuveen Private Capital,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Hayfin Capital Management,,,,,no task
-PGIM Private Capital,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Partners Group,,,,,no task
-CVC Capital Partners,,,,,no task
-EQT,,,,,no task
-Permira,,,,,no task
-Hg,,,,,no task
-TA Associates,fram-private-equity-3,,,,"task, not scheduled"
-Veritas Capital,fram-private-equity-3,,,,"task, not scheduled"
-SoftBank Investment Advisers (US),,,,,no task
-L Catterton,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Genstar Capital,,,,,no task
-Platinum Equity,fram-private-equity-3,,,,"task, not scheduled"
-Francisco Partners,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-New Mountain Capital,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Cinven,,,,,no task
-Lone Star Funds,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Morgan Stanley Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Nordic Capital,,,,,no task
-26North,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-CapVest Partners,,,,,no task
-BC Partners,,,,,no task
-TJC (The Jordan Company),fram-private-equity-3,,,,"task, not scheduled"
-Astorg,,,,,no task
-Apax Partners,,,,,no task
-Vitruvian Partners,,,,,no task
-Arcline Investment Management,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-K1 Investment Management,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Bridgepoint,,,,,no task
-TDR Capital,,,,,no task
-Onex Partners,fram-private-equity-3,,,,"task, not scheduled"
-Triton Partners,,,,,no task
-Harvest Partners,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-RCP Advisors,fram-private-equity-3,,,,"task, not scheduled"
-KPS Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Alpine Investors,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-American Securities,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Arlington Capital Partners,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Atlas Holdings,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-3i,,,,,no task
-Searchlight Capital Partners,fram-private-equity-3,,,,"task, not scheduled"
-Inflexion,,,,,no task
-American Industrial Partners,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Patient Square Capital,fram-private-equity-3,,,,"task, not scheduled"
-Kohlberg & Company,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Niobrara Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Kelso & Company,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-3G Capital,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Greenbriar Equity Group,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-OEP Capital Advisors,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Waterland Private Equity,,,,,no task
-AEA Investors,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-"Welsh, Carson, Anderson & Stowe",fram-private-equity-3,,,,"task, not scheduled"
-JAB,,,,,no task
-PAI Partners,,,,,no task
-Sycamore Partners,fram-private-equity-3,,,,"task, not scheduled"
-TSG Consumer Partners,fram-private-equity-3,,,,"task, not scheduled"
-Great Hill Partners,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-STG Partners,fram-private-equity-3,,,,"task, not scheduled"
-RedBird Capital Partners,fram-private-equity-3,,,,"task, not scheduled"
-The Riverside Company,fram-private-equity-3,,,,"task, not scheduled"
-Parthenon Capital,fram-private-equity-3,,,,"task, not scheduled"
-Novacap,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-The Energy & Minerals Group,fram-private-equity-3,,,,"task, not scheduled"
-Aquiline Capital Partners,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Goldberg Lindsay & Co.,,,,,no task
-Levine Leichtman Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Kinderhook Industries,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Golden Gate Capital,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-NGP,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-HGGC,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Ridgemont Equity Partners,fram-private-equity-3,,,,"task, not scheduled"
-Court Square Capital Partners,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Arsenal Capital Partners,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-One Rock Capital Partners,fram-private-equity-3,,,,"task, not scheduled"
-Gridiron Capital,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Altaris,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Gryphon Investors,,,,,no task
-Olympus Partners,,,,,no task
-Montagu Private Equity,,,,,no task
-J.F. Lehman & Company,,,,,no task
-Littlejohn & Co.,,,,,no task
-Marlin Equity Partners,,,,,no task
-Norvestor,,,,,no task
-Sentinel Capital Partners,,,,,no task
-The Sterling Group,,,,,no task
-Seidler Equity Partners,,,,,no task
-SK Capital Partners,,,,,no task
-Flexpoint Ford,,,,,no task
-Investindustrial,,,,,no task
-Charterhouse Capital Partners,,,,,no task
-Rhone Group,,,,,no task
-Lightyear Capital,,,,,no task
-Trive Capital,,,,,no task
-ARA Partners,,,,,no task
-Odyssey Investment Partners,,,,,no task
-Butterfly Equity,,,,,no task
-AE Industrial Partners,,,,,no task
-Corsair Capital,,,,,no task
-Archimed,,,,,no task
-LLR Partners,,,,,no task
-Peak Rock Capital,,,,,no task
-Westcap,,,,,no task
-A&M Capital,,,,,no task
-Certares,,,,,no task
-Revelstoke Capital Partners,,,,,no task
-Crestview Partners,,,,,no task
-Five Point Energy,,,,,no task
-First Reserve,,,,,no task
-Keensight Capital,,,,,no task
-Windrose Health Investors,,,,,no task
-Oceansound Partners,,,,,no task
-Prysm Capital,,,,,no task
-Stellex Capital,,,,,no task
-Silver Rock Capital Partners,,,,,no task
-Avista Healthcare Partners,,,,,no task
-Leeds Equity Partners,,,,,no task
-Shamrock Capital,,,,,no task
-Cortec Group,,,,,no task
-Turn/River Capital,,,,,no task
-Investcorp,,,,,no task
-J.C. Flowers & Co.,,,,,no task
-Pollen Street Capital,,,,,no task
-Development Partners International,,,,,no task
-Aurora Capital Partners,,,,,no task
-Cornell Capital,,,,,no task
-Freeman Spogli & Co.,,,,,no task
-Riverwood Capital,,,,,no task
-Tomales Bay Capital,,,,,no task
-Warren Equity Partners,,,,,no task
-Haveli Investments,,,,,no task
-Lovell Minnick Partners,,,,,no task
-Trivest Partners,,,,,no task
-EMK Capital,,,,,no task
-Trilantic North America,,,,,no task
-LEE Equity Partners,,,,,no task
-Sun Capital Partners,,,,,no task
-Main Capital Partners,,,,,no task
-Bansk Group,,,,,no task
-Integrum Holdings,,,,,no task
-Lime Rock Partners,,,,,no task
-Monomoy Capital Partners,,,,,no task
-Motive Partners,,,,,no task
-Tailwind Capital,,,,,no task
-MHR Fund Management,,,,,no task
-Pamlico Capital,,,,,no task
-ACON Investments,,,,,no task
-Paine Schwartz Partners,,,,,no task
-Gemspring Capital,,,,,no task
-Nexus Capital Management,,,,,no task
-Percheron Capital,,,,,no task
-Serent Capital,,,,,no task
-FSN Capital,,,,,no task
-MSouth / MSR Capital Partners,,,,,no task
-Bregal Unternehmerkapital,,,,,no task
-MML Capital,,,,,no task
-Brightstar Capital Partners,,,,,no task
-Eagletree Capital,,,,,no task
-Rubicon Technology Partners,,,,,no task
-Siris Capital Group,,,,,no task
-QHP Capital,,,,,no task
-Washington Harbour Partners,,,,,no task
-Altas Partners,,,,,no task
-Hull Street Energy,,,,,no task
-Seven2,,,,,no task
-Tenex Capital Management,,,,,no task
-Thompson Street Capital Partners,,,,,no task
-Brighton Park Capital,,,,,no task
-Bertram Capital,,,,,no task
-Revelar Capital,,,,,no task
-Skyknight Capital,,,,,no task
-Andera Partners,,,,,no task
-Quilvest Capital Partners,,,,,no task
-Altamont Capital Partners,,,,,no task
-Garnett Station Partners,,,,,no task
-Tailwater Capital,,,,,no task
-Tinicum,,,,,no task
-TruelinkCapital,,,,,no task
-Blue Wolf Capital Partners,,,,,no task
-Castik Capital,,,,,no task
-FFL Partners,,,,,no task
-Terra Firma Capital Partners,,,,,no task
-Brentwood Associates,,,,,no task
-Exponent Private Equity,,,,,no task
-Truarc Partners,,,,,no task
-Centre Lane Partners,,,,,no task
-Epiris,,,,,no task
-Hildred Capital Management,,,,,no task
-Latour Capital,,,,,no task
-Bedford Ridge Capital,,,,,no task
-Birch Hill Equity Partners,,,,,no task
-ECI Partners,,,,,no task
-Kingswood Capital Management,,,,,no task
-Luminate Capital Partners,,,,,no task
-Neos Partners,,,,,no task
-Vector Capital,,,,,no task
-Argosy Private Equity,,,,,no task
-Falfurrias Capital Partners,,,,,no task
-Oncap,,,,,no task
-HitecVision,,,,,no task
-Livingbridge,,,,,no task
-Palladium Equity Partners,,,,,no task
-Arbor Investments,,,,,no task
-Georgian,,,,,no task
-Liberty Strategic Capital,,,,,no task
-Main Post Partners,,,,,no task
-Mill Point Capital,,,,,no task
-Banneker Partners,,,,,no task
-Diversis Capital,,,,,no task
-Gauge Capital,,,,,no task
-Knox Lane,,,,,no task
-Star Capital,,,,,no task
-Sumeru Equity Partners,,,,,no task
-Fremman Capital,,,,,no task
-NewSpring Capital,,,,,no task
-Recognize Partners,,,,,no task
-Avesi Partners,,,,,no task
-Chequers Capital,,,,,no task
-Greenbelt Capital Partners,,,,,no task
-Ufenau Capital Partners,,,,,no task
-Vance Street Capital,,,,,no task
-VMG Partners,,,,,no task
-Calera Capital,,,,,no task
-DPE Deutsche Private Equity,,,,,no task
-Kingsway Capital,,,,,no task
-Windjammer Capital,,,,,no task
-Gamut Capital Management,,,,,no task
-Pacific Avenue Capital Partners,,,,,no task
-Trinity Hunt Partners,,,,,no task
-DFW Capital Partners,,,,,no task
-CapitalSpring,,,,,no task
-EIV Capital,,,,,no task
-Pamplona Capital Management,,,,,no task
-1789 Capital,,,,,no task
-Equistone Partners Europe,,,,,no task
-Paceline Equity Partners,,,,,no task
-Rivean Capital,,,,,no task
-Sprints Capital,,,,,no task
-Yorktown Partners,,,,,no task
-Renovus Capital Partners,,,,,no task
-The Catalyst Capital Group,,,,,no task
-Updata Partners,,,,,no task
-Vestar Capital Partners,,,,,no task
-ZMC,,,,,no task
-Amulet Capital Partners,,,,,no task
-Metalmark Capital,,,,,no task
-Stirling Square Capital Partners,,,,,no task
-Summa Equity,,,,,no task
-TZP Group,,,,,no task
-Align Capital Partners,,,,,no task
-Bowmark Capital,,,,,no task
-G Square Capital,,,,,no task
-Valeas Capital Partners,,,,,no task
-Excellere Partners,,,,,no task
-TorQuest Partners,,,,,no task
-Carnelian Energy Capital,,,,,no task
-Enlightenment Capital,,,,,no task
-Further Global Capital Management,,,,,no task
-LongRange Capital,,,,,no task
-Blue Water Energy,,,,,no task
-Carrick Capital Partners,,,,,no task
-Klar Partners,,,,,no task
-Nexphase Capital,,,,,no task
-Southfield Capital,,,,,no task
-True Wind Capital,,,,,no task
-Brynwood Partners,,,,,no task
-CenterOak Partners,,,,,no task
-Clearview Capital,,,,,no task
-Freshstream,,,,,no task
-Kainos Capital,,,,,no task
-L Squared Capital Partners,,,,,no task
-Miura Partners,,,,,no task
-New State Capital Partners,,,,,no task
-Sole Source Capital,,,,,no task
-BNP Paribas Real Estate Investment Management,,,,,no task
-CBRE Investment Management,,,,,no task
-Greystar Investment Group,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Exeter Property Group,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Kayne Anderson Real Estate,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Rialto Capital Management,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-PCCP,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-TPG Real Estate,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Divco West,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Tishman Speyer,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Aermont Capital,,,,,no task
-Related Fund Management,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Rockpoint,fram-credit-real-assets-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Urban Partners,,,,,no task
-Artemis Real Estate Partners,,,,,no task
-Realterm,,,,,no task
-Rockwood Capital,,,,,no task
-AXA IM Alts (Real Estate),,,,,no task
-Bain Capital Real Estate,,,,,no task
-Walton Street Capital,,,,,no task
-Cabot Properties,,,,,no task
-Hines,,,,,no task
-Northwood Investors,,,,,no task
-Asana Partners,,,,,no task
-Carmel Partners,,,,,no task
-Elmtree Funds,,,,,no task
-Corum Asset Management,,,,,no task
-Abacus Capital Group,,,,,no task
-Crescent Real Estate,,,,,no task
-NIAM,,,,,no task
-GEM Realty Capital,,,,,no task
-Madison International Realty,,,,,no task
-Beacon Capital Partners,,,,,no task
-Fairfield Residential,,,,,no task
-Bell Partners,,,,,no task
-Heitman,,,,,no task
-Meadow Partners,,,,,no task
-GID Investment Advisers,,,,,no task
-Sabal Investment Holdings,,,,,no task
-Cortland,,,,,no task
-Longpoint Partners,,,,,no task
-Areim,,,,,no task
-Rockbridge,,,,,no task
-Pennybacker Capital,,,,,no task
-ACRE,,,,,no task
-Menlo Equities,,,,,no task
-MCR,,,,,no task
-Banner Oak Capital Partners,,,,,no task
-Waterton,,,,,no task
-Sentinel Real Estate,,,,,no task
-Avanath Capital Management,,,,,no task
-TGM Associates,,,,,no task
-Patron Capital,,,,,no task
-Proprium Capital Partners,,,,,no task
-RXR,,,,,no task
-Lubert-Adler,,,,,no task
-AJ Capital Partners,,,,,no task
-Orion Capital Managers,,,,,no task
-Dune Real Estate Partners,,,,,no task
-The Davis Companies,,,,,no task
-Thrive Capital,fram-private-equity-3,,,,"task, not scheduled"
-General Catalyst,,,,,no task
-Accel,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-New Enterprise Associates (NEA),fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Index Ventures,,,,,no task
-Y Combinator,fram-private-equity-3,,,,"task, not scheduled"
-Khosla Ventures,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Kleiner Perkins,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Bessemer Venture Partners,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Impresa Management,,,,,no task
-DFJ Growth,,,,,no task
-Battery Ventures,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Spark Capital,fram-private-equity-3,,,,"task, not scheduled"
-Gigafund,,,,,no task
-Paradigm,fram-private-equity-3,,,,"task, not scheduled"
-Columbia Capital,,,,,no task
-8VC,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Draper Fisher Jurvetson (DFJ),,,,,no task
-Lux Capital,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Menlo Ventures,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-ARCH Venture Partners,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Greylock Partners,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Sapphire Ventures,fram-private-equity-3,,,,"task, not scheduled"
-Notable Capital,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Bain Capital Ventures,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Oak HC/FT,fram-private-equity-2,fram-daily-private-equity-2,2026-11-23,SUCCEEDED,scheduled
-Addition,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-DBL Partners,,,,,no task
-Crosspoint Capital Partners,,,,,no task
-Balderton Capital,,,,,no task
-B Capital,,,,,no task
-Bond,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-CRV,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Redpoint Ventures,fram-private-equity-3,,,,"task, not scheduled"
-Benchmark,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Eclipse,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-HOF Capital,,,,,no task
-Craft Ventures,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Hedosophia,,,,,no task
-Forbion,,,,,no task
-Felicis Ventures,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Future Ventures,,,,,no task
-Matrix Partners,,,,,no task
-Amplify Partners,,,,,no task
-Breakthrough Energy Ventures,,,,,no task
-K5 Global,,,,,no task
-Canaan Partners,,,,,no task
-Goodwater Capital,,,,,no task
-Quiet Capital,,,,,no task
-FirstMark Capital,,,,,no task
-Energy Impact Partners,,,,,no task
-Foundation Capital,,,,,no task
-Meritech Capital,,,,,no task
-Greycroft,,,,,no task
-SignalFire,,,,,no task
-Venrock,,,,,no task
-Drive Capital,,,,,no task
-Human Capital,,,,,no task
-HV Capital,,,,,no task
-Madrona Venture Group,,,,,no task
-Mayfield,,,,,no task
-Forerunner Ventures,,,,,no task
-Lowercase Capital,,,,,no task
-Valar Ventures,,,,,no task
-Zeev Ventures,,,,,no task
-Avenir,,,,,no task
-Caffeinated Capital,,,,,no task
-Crosslink Capital,,,,,no task
-DCVC,,,,,no task
-NewView Capital,,,,,no task
-True Ventures,,,,,no task
-Versant Ventures,,,,,no task
-Emergence Capital,,,,,no task
-First Round Capital,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-IVP (Institutional Venture Partners),,,,,no task
-Left Lane Capital,,,,,no task
-Norwest Venture Partners,,,,,no task
-Tribe Capital,,,,,no task
-Sutter Hill Ventures,fram-private-equity-3,,,,"task, not scheduled"
-Dragonfly,,,,,no task
-Upfront Ventures,,,,,no task
-Playground Global,,,,,no task
-QED Investors,,,,,no task
-The Column Group,,,,,no task
-Foresite Capital,,,,,no task
-Union Square Ventures,fram-private-equity-3,,,,"task, not scheduled"
-Initialized Capital,,,,,no task
-Primary Venture Partners,,,,,no task
-Transformation Capital,,,,,no task
-Anthos Capital,,,,,no task
-Atlas Venture,fram-private-equity-1,,2026-11-19,SUCCEEDED,"task, not scheduled"
-BoxGroup,,,,,no task
-Optum Ventures,,,,,no task
-Blockchain Capital,,,,,no task
-Electric Capital,,,,,no task
-Owl Ventures,,,,,no task
-Partech,,,,,no task
-Scale Venture Partners,,,,,no task
-Project A Ventures,,,,,no task
-DCM Ventures,,,,,no task
-Wing Venture Capital,,,,,no task
-Atomico,,,,,no task
-Bedrock Capital,,,,,no task
-Costanoa Ventures,,,,,no task
-March Capital,,,,,no task
-PeakSpan Capital,,,,,no task
-Haun Ventures,,,,,no task
-Section 32,,,,,no task
-Accomplice,,,,,no task
-Gilde Healthcare,,,,,no task
-Longitude Capital,,,,,no task
-Medicxi,,,,,no task
-SR One,,,,,no task
-Creandum,,,,,no task
-Evolution Equity Partners,,,,,no task
-NFX,,,,,no task
-RRE Ventures,,,,,no task
-Felix Capital,,,,,no task
-500 Global,,,,,no task
-Dawn Capital,,,,,no task
-Nextech Invest,,,,,no task
-Sierra Ventures,,,,,no task
-ICONIQ Growth,,,,,no task
-Seven Seven Six,fram-private-equity-3,,,,"task, not scheduled"
-Morgan Stanley Investment Management (Alternatives),fram-custom-morganstanley-test,fram-custom-morganstanley-schedule,2026-11-23,SUCCEEDED,scheduled
-BlackRock Private Markets,fram-custom-blackrock-test,,,,"task, not scheduled"
+org_name,tasks,schedules,schedule_windows,last_run,last_run_status,state
+Summit Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+TCV,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Citadel,,,,,,no task
+Millennium Management,,,,,,no task
+Point72 Asset Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Coatue,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Viking Global Investors,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Pershing Square Capital Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Blue Owl Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Bain Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Churchill Asset Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Onex Credit,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Arcmont Asset Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+AGL Credit Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Strategic Value Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Quantum Capital Group,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+TowerBrook Capital Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+IK Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Grain Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+JLL Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Goldman Sachs Alternatives,fram-custom-goldman; fram-custom-goldman-test,fram-daily-custom-goldman,fram-daily-custom-goldman=24h,2026-11-24,SUCCEEDED,scheduled
+Affinius Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+BGO (BentallGreenOak),pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Stockbridge Capital Group,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Berkshire Residential Investments,pilot-p1; pilot-task-input-retest,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Founders Fund,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Lightspeed Venture Partners,pilot-p1; pilot-task-input-retest,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Ribbit Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Greenoaks,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Flagship Pioneering,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Apollo Global Management,batch1; fram-custom-apollo-test,fram-custom-apollo-test-schedule,fram-custom-apollo-test-schedule=6m,2026-11-24,SUCCEEDED,scheduled
+KKR,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Ares Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+AQR Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Two Sigma,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Schonfeld Strategic Advisors,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+The Carlyle Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Balyasny Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+KKR Credit,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+D.E. Shaw & Co.,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Oaktree Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Thoma Bravo,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+ExodusPoint Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+HPS Investment Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+NB Alternatives (Neuberger Berman Private Markets),batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Bridgewater Associates,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Blackstone,batch1,,,2026-11-18,SUCCEEDED,"task, not scheduled"
+Global Infrastructure Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Verition Fund Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Blackstone Real Estate,batch1,,,2026-11-18,SUCCEEDED,"task, not scheduled"
+Golub Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+General Atlantic,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Silver Lake,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Warburg Pincus,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Hellman & Friedman,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Andreessen Horowitz,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Vista Equity Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Tiger Global Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Oak Hill Advisors,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Renaissance Technologies,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Insight Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Advent International,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+"Clayton, Dubilier & Rice",batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Leonard Green & Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Clearlake Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Sequoia Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Starwood Capital Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+PineBridge Investments,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Clarion Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+GoldenTree Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Stone Point Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Carlyle Global Credit,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Blue Owl Real Estate,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Davidson Kempner Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Bayview Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Farallon Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Valor Equity Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Bridge Investment Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-24,SUCCEEDED,scheduled
+Blackstone Private Credit,batch1,,,2026-11-18,SUCCEEDED,"task, not scheduled"
+CPP Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+PSP Investments (Public Sector Pension Investment Board),career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Ontario Teachers' Pension Plan,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+British Columbia Investment Management (BCI),career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+CalSTRS,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Teacher Retirement System of Texas,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Texas Municipal Retirement System,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Florida State Board of Administration,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Washington State Investment Board,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+State of Wisconsin Investment Board,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+LACERA,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Oregon State Treasury,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Mass PRIM,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+New Mexico State Investment Council,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+University of California Office of the President,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Harvard Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+UTIMCO,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Stanford Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Princeton University Investment Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+MIT Investment Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+University of Pennsylvania Office of Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Duke University Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+University of Chicago Investment Office,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+University of Virginia Investment Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Walton Enterprises,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+ICONIQ,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Ford Foundation,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Cambridge Associates,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Partners Capital,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Wilshire,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+FEG,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Adams Street Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+LGT Capital Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Aksia,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+StepStone Group,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Hamilton Lane,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+TIFF Investment Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Investure,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+HighVista Strategies,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Commonfund,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Makena Capital Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Fidelity Institutional,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Alphacore Capital,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+ICG (Intermediate Capital Group),career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Main Street Advisors,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+TrueBridge Capital Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+JMI Equity,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+TPG,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+ADIA,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+GIC,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Temasek,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Liberty Mutual Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+New York Life Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+OMERS,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+HOOPP (Healthcare of Ontario Pension Plan),career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+IMCO (Investment Management Corporation of Ontario),career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Ontario Pension Board,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+OPTrust,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Alberta Heritage Savings Trust Fund,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+NEPC,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Callan,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Meketa,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Strategic Investment Group,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Hirtle Callaghan,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Spider Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Global Endowment Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Summit Rock Advisors,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+ICG Advisors,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Pathway Capital Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+CF Private Equity,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Russell Investments,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+MAI Capital Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Cerity Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Glenmede,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Mubadala,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Public Investment Fund,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Norges Bank Investment Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Korea Investment Corporation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Kuwait Investment Authority,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Wafra,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Caisse de dépôt et placement du Québec (CDPQ),career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Wallace Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Rockefeller Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Gates Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Lilly Endowment,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+J. Paul Getty Trust,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Robert Wood Johnson Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+William and Flora Hewlett Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Andrew W. Mellon Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+John D. and Catherine T. MacArthur Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Gordon and Betty Moore Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+David and Lucile Packard Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+W.K. Kellogg Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Leona M. and Harry B. Helmsley Charitable Trust,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+The California Endowment,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+The Kresge Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Doris Duke Charitable Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Alfred P. Sloan Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Brown Advisory,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+HarbourVest Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Lexington Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Lombard Odier,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Blue Pool Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+JFG Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+AlTi Tiedemann Global,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Homrich Berg,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+WE Family Offices,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Tolleson Wealth Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Bow River Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+IEQ Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Jasper Ridge Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Lincoln Financial Group,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Bayshore Global Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Willett Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Soros Fund Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+NewEdge Capital Group,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Beacon Pointe Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+HB Wealth,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+Cascade Asset Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-24,SUCCEEDED,scheduled
+PSG Equity,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+FTV Capital,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Stripes,,,,,,no task
+Spectrum Equity,,,,,,no task
+Silversmith Capital Partners,,,,,,no task
+Lead Edge Capital,,,,,,no task
+Level Equity,,,,,,no task
+Glade Brook Capital Partners,,,,,,no task
+Mainsail Partners,,,,,,no task
+Verdane,,,,,,no task
+Edison Partners,,,,,,no task
+SageView Capital,,,,,,no task
+Volition Capital,,,,,,no task
+Long Ridge Equity Partners,,,,,,no task
+Qube Research & Technologies,,,,,,no task
+Capula Investment Management,,,,,,no task
+Symmetry Investments,,,,,,no task
+LMR Partners,,,,,,no task
+Arrowstreet Capital,,,,,,no task
+Marshall Wace,,,,,,no task
+Brevan Howard,,,,,,no task
+Squarepoint,,,,,,no task
+Rokos Capital Management,,,,,,no task
+Garda Capital Partners,,,,,,no task
+Mariner Investment Group,,,,,,no task
+Alphadyne Asset Management,,,,,,no task
+TPG Angelo Gordon,,,,,,no task
+Bracebridge Capital,,,,,,no task
+Lighthouse Investment Partners,,,,,,no task
+Tudor Investment Corporation,,,,,,no task
+Kedalion Capital Management,,,,,,no task
+Capstone Investment Advisors,,,,,,no task
+III Capital Management,,,,,,no task
+TCI Fund Management,,,,,,no task
+OC Investment Management,,,,,,no task
+Caxton Associates,,,,,,no task
+Adage Capital Management,,,,,,no task
+Fulcrum Asset Management,,,,,,no task
+Man Group (AHL),,,,,,no task
+Elan Capital Management,,,,,,no task
+Tenaron Capital Management,,,,,,no task
+Walleye Capital,,,,,,no task
+Holocene Advisors,,,,,,no task
+Element Capital Management,,,,,,no task
+Graham Capital Management,,,,,,no task
+Alyeska Investment Group,,,,,,no task
+Hudson Bay Capital Management,,,,,,no task
+Linden Advisors,,,,,,no task
+Polar Asset Management Partners,,,,,,no task
+Woodline Partners,,,,,,no task
+Select Equity Group,,,,,,no task
+Voloridge Investment Management,,,,,,no task
+HBK Capital Management,,,,,,no task
+King Street Capital Management,,,,,,no task
+Alkeon Capital Management,,,,,,no task
+Pacific Way Capital Management,,,,,,no task
+Jain Global,,,,,,no task
+Magnetar Capital,,,,,,no task
+Paloma Partners,,,,,,no task
+Voleon Capital Management,,,,,,no task
+Third Point,fram-hedge-funds-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Baker Brothers Investments,,,,,,no task
+Compass Rose Asset Management,,,,,,no task
+Algebris Investments,,,,,,no task
+Kirkoswald Asset Management,,,,,,no task
+Lone Pine Capital,fram-hedge-funds-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+The Baupost Group,fram-hedge-funds-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Systematica Investments,,,,,,no task
+Soroban Capital Partners,,,,,,no task
+Engineers Gate,,,,,,no task
+Himalaya Capital,,,,,,no task
+Universa Investments,,,,,,no task
+Ellington Management Group,,,,,,no task
+Centiva Capital,,,,,,no task
+PDT Partners,,,,,,no task
+Pentwater Capital Management,,,,,,no task
+Deerfield Management,,,,,,no task
+Egerton Capital,,,,,,no task
+JJJ Capital Management,,,,,,no task
+Durable Capital Partners,,,,,,no task
+Saba Capital Management,fram-hedge-funds-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Boothbay Fund Management,,,,,,no task
+Cevian Capital,,,,,,no task
+Darsana Capital Partners,,,,,,no task
+Freestone Grove Partners,,,,,,no task
+Jericho Capital Asset Management,,,,,,no task
+Maverick Capital,,,,,,no task
+Whitebox Advisors,,,,,,no task
+Weiss Asset Management,,,,,,no task
+Wolverine Asset Management,,,,,,no task
+Capital Fund Management (CFM),,,,,,no task
+Pharo Management,,,,,,no task
+Maplecap Partners,,,,,,no task
+SRS Investment Management,,,,,,no task
+Abrams Capital Management,,,,,,no task
+Avoro Capital Advisors,,,,,,no task
+Haidar Capital Management,,,,,,no task
+AKO Capital,,,,,,no task
+Atreides Management,fram-hedge-funds-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Lansdowne Partners,,,,,,no task
+Winton,,,,,,no task
+Stonepeak,,,,,,no task
+I Squared Capital,,,,,,no task
+DigitalBridge,,,,,,no task
+Brookfield Asset Management,,,,,,no task
+Elliott Investment Management,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-24,SUCCEEDED,scheduled
+Sixth Street,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-24,SUCCEEDED,scheduled
+Fortress Investment Group,,,,,,no task
+Cerberus Capital Management,,,,,,no task
+Blue Owl GP Strategic Capital,,,,,,no task
+H.I.G. Capital,,,,,,no task
+Sculptor Capital,,,,,,no task
+Ardian,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-24,SUCCEEDED,scheduled
+Eldridge Industries,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Silver Point Capital,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Crescent Capital Group,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Antares Capital,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Blue Owl Credit,,,,,,no task
+CIFC Asset Management,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Cheyne Capital,,,,,,no task
+Sound Point Capital Management,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Arini Capital Management,,,,,,no task
+Castlelake,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Octagon Credit Investors,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Monarch Alternative Capital,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Sona Asset Management,,,,,,no task
+Redding Ridge Asset Management,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Brigade Capital Management,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Muzinich & Co.,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Marathon Asset Management,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Diameter Capital Partners,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Beach Point Capital Management,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Benefit Street Partners,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Anchorage Capital,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+The Palisades Group,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Audax Private Debt,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Palmer Square Capital Management,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Park Square Capital,,,,,,no task
+Crestline Investors,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Prime Finance,,,,,,no task
+Waterfall Asset Management,,,,,,no task
+Hildene Capital Management,,,,,,no task
+Knighthead Capital Management,,,,,,no task
+AB CarVal Investors,,,,,,no task
+Acore Capital,,,,,,no task
+LibreMax Capital,,,,,,no task
+Fiera Capital,,,,,,no task
+Varde Partners,,,,,,no task
+Napier Park Global Capital,,,,,,no task
+Permira Credit,,,,,,no task
+Kayne Anderson Capital Advisors,,,,,,no task
+Eagle Point Credit Management,,,,,,no task
+Post Advisory Group,,,,,,no task
+Tikehau Capital,,,,,,no task
+Canyon Partners,,,,,,no task
+Chatham Asset Management,,,,,,no task
+Kennedy Lewis Investment Management,,,,,,no task
+400 Capital Management,,,,,,no task
+"Christofferson, Robb & Company",,,,,,no task
+Guggenheim Investments (Corporate Funding),,,,,,no task
+One William Street Capital Management,,,,,,no task
+Redwood Capital Management,,,,,,no task
+Pemberton Asset Management,,,,,,no task
+Axonic Capital,,,,,,no task
+MJX Asset Management,,,,,,no task
+SLR Capital Partners,,,,,,no task
+Comvest Partners,,,,,,no task
+Ogam,,,,,,no task
+Blue Torch Capital,,,,,,no task
+MidOcean Partners (Credit),,,,,,no task
+Balbec Capital,,,,,,no task
+MGG Investment Group,,,,,,no task
+Arbour Lane Capital Management,,,,,,no task
+Invictus Capital Partners,,,,,,no task
+Caspian Capital,,,,,,no task
+Cross Ocean Partners,,,,,,no task
+NXT Capital,,,,,,no task
+Nassau Global Credit,,,,,,no task
+Brightwood Capital Advisors,,,,,,no task
+Brinley Partners,,,,,,no task
+PennantPark Investment Advisers,,,,,,no task
+Aperture Investors,,,,,,no task
+MC Credit Partners,,,,,,no task
+Fasanara Capital,,,,,,no task
+Saluda Grade,,,,,,no task
+Obra Capital,,,,,,no task
+Avenue Capital Group,,,,,,no task
+Polus Capital Management,,,,,,no task
+ZAIS Group,,,,,,no task
+Bear Creek Asset Management,,,,,,no task
+White Oak Global Advisors,,,,,,no task
+Taconic Capital Advisors,,,,,,no task
+Contrarian Capital Management,,,,,,no task
+3650 Capital,,,,,,no task
+ACRES Capital,,,,,,no task
+Prophet Capital Asset Management,,,,,,no task
+Star Mountain Capital,,,,,,no task
+Evolution Credit Partners,,,,,,no task
+Freeport Financial Partners,,,,,,no task
+Fundamental Advisors,,,,,,no task
+Kartesia,,,,,,no task
+Leucadia Asset Management,,,,,,no task
+Hudson Structured Capital Management,,,,,,no task
+Sycamore Tree Capital Partners,,,,,,no task
+Tree Line Capital Partners,,,,,,no task
+Axar Capital Management,,,,,,no task
+Victory Park Capital,,,,,,no task
+Falcon Investment Advisors,,,,,,no task
+Mudrick Capital,,,,,,no task
+Maxim Capital Group,,,,,,no task
+Oberland Capital,,,,,,no task
+Apera Asset Management,,,,,,no task
+Pharmakon Advisors,,,,,,no task
+Colbeck Capital Management,,,,,,no task
+Marblegate Asset Management,,,,,,no task
+Newmarket Investment Management,,,,,,no task
+Pearl Diver Capital,,,,,,no task
+Chorus Capital,,,,,,no task
+LL Funds,,,,,,no task
+Brevet Capital,,,,,,no task
+Oxford Finance,,,,,,no task
+P Capital Partners,,,,,,no task
+Crayhill Capital Management,,,,,,no task
+Medalist Partners,,,,,,no task
+Sandton Capital Partners,,,,,,no task
+Varadero Capital,,,,,,no task
+Whitehawk Capital Partners,,,,,,no task
+Clear Haven Capital Management,,,,,,no task
+CRG,,,,,,no task
+Western Technology Investment,,,,,,no task
+Barings,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Churchill / Nuveen Private Capital,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Hayfin Capital Management,,,,,,no task
+PGIM Private Capital,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Partners Group,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-24,SUCCEEDED,scheduled
+CVC Capital Partners,,,,,,no task
+EQT,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-24,SUCCEEDED,scheduled
+Permira,,,,,,no task
+Hg,,,,,,no task
+TA Associates,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Veritas Capital,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+SoftBank Investment Advisers (US),,,,,,no task
+L Catterton,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Genstar Capital,,,,,,no task
+Platinum Equity,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Francisco Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+New Mountain Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Cinven,,,,,,no task
+Lone Star Funds,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Morgan Stanley Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Nordic Capital,,,,,,no task
+26North,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+CapVest Partners,,,,,,no task
+BC Partners,,,,,,no task
+TJC (The Jordan Company),fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Astorg,,,,,,no task
+Apax Partners,,,,,,no task
+Vitruvian Partners,,,,,,no task
+Arcline Investment Management,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+K1 Investment Management,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Bridgepoint,,,,,,no task
+TDR Capital,,,,,,no task
+Onex Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Triton Partners,,,,,,no task
+Harvest Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+RCP Advisors,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+KPS Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Alpine Investors,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+American Securities,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Arlington Capital Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Atlas Holdings,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+3i,,,,,,no task
+Searchlight Capital Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Inflexion,,,,,,no task
+American Industrial Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Patient Square Capital,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Kohlberg & Company,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Niobrara Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Kelso & Company,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+3G Capital,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Greenbriar Equity Group,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+OEP Capital Advisors,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Waterland Private Equity,,,,,,no task
+AEA Investors,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+"Welsh, Carson, Anderson & Stowe",fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+JAB,,,,,,no task
+PAI Partners,,,,,,no task
+Sycamore Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+TSG Consumer Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Great Hill Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+STG Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+RedBird Capital Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+The Riverside Company,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Parthenon Capital,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Novacap,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+The Energy & Minerals Group,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Aquiline Capital Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Goldberg Lindsay & Co.,,,,,,no task
+Levine Leichtman Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Kinderhook Industries,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Golden Gate Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+NGP,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+HGGC,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Ridgemont Equity Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Court Square Capital Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Arsenal Capital Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+One Rock Capital Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Gridiron Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Altaris,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Gryphon Investors,,,,,,no task
+Olympus Partners,,,,,,no task
+Montagu Private Equity,,,,,,no task
+J.F. Lehman & Company,,,,,,no task
+Littlejohn & Co.,,,,,,no task
+Marlin Equity Partners,,,,,,no task
+Norvestor,,,,,,no task
+Sentinel Capital Partners,,,,,,no task
+The Sterling Group,,,,,,no task
+Seidler Equity Partners,,,,,,no task
+SK Capital Partners,,,,,,no task
+Flexpoint Ford,,,,,,no task
+Investindustrial,,,,,,no task
+Charterhouse Capital Partners,,,,,,no task
+Rhone Group,,,,,,no task
+Lightyear Capital,,,,,,no task
+Trive Capital,,,,,,no task
+ARA Partners,,,,,,no task
+Odyssey Investment Partners,,,,,,no task
+Butterfly Equity,,,,,,no task
+AE Industrial Partners,,,,,,no task
+Corsair Capital,,,,,,no task
+Archimed,,,,,,no task
+LLR Partners,,,,,,no task
+Peak Rock Capital,,,,,,no task
+Westcap,,,,,,no task
+A&M Capital,,,,,,no task
+Certares,,,,,,no task
+Revelstoke Capital Partners,,,,,,no task
+Crestview Partners,,,,,,no task
+Five Point Energy,,,,,,no task
+First Reserve,,,,,,no task
+Keensight Capital,,,,,,no task
+Windrose Health Investors,,,,,,no task
+Oceansound Partners,,,,,,no task
+Prysm Capital,,,,,,no task
+Stellex Capital,,,,,,no task
+Silver Rock Capital Partners,,,,,,no task
+Avista Healthcare Partners,,,,,,no task
+Leeds Equity Partners,,,,,,no task
+Shamrock Capital,,,,,,no task
+Cortec Group,,,,,,no task
+Turn/River Capital,,,,,,no task
+Investcorp,,,,,,no task
+J.C. Flowers & Co.,,,,,,no task
+Pollen Street Capital,,,,,,no task
+Development Partners International,,,,,,no task
+Aurora Capital Partners,,,,,,no task
+Cornell Capital,,,,,,no task
+Freeman Spogli & Co.,,,,,,no task
+Riverwood Capital,,,,,,no task
+Tomales Bay Capital,,,,,,no task
+Warren Equity Partners,,,,,,no task
+Haveli Investments,,,,,,no task
+Lovell Minnick Partners,,,,,,no task
+Trivest Partners,,,,,,no task
+EMK Capital,,,,,,no task
+Trilantic North America,,,,,,no task
+LEE Equity Partners,,,,,,no task
+Sun Capital Partners,,,,,,no task
+Main Capital Partners,,,,,,no task
+Bansk Group,,,,,,no task
+Integrum Holdings,,,,,,no task
+Lime Rock Partners,,,,,,no task
+Monomoy Capital Partners,,,,,,no task
+Motive Partners,,,,,,no task
+Tailwind Capital,,,,,,no task
+MHR Fund Management,,,,,,no task
+Pamlico Capital,,,,,,no task
+ACON Investments,,,,,,no task
+Paine Schwartz Partners,,,,,,no task
+Gemspring Capital,,,,,,no task
+Nexus Capital Management,,,,,,no task
+Percheron Capital,,,,,,no task
+Serent Capital,,,,,,no task
+FSN Capital,,,,,,no task
+MSouth / MSR Capital Partners,,,,,,no task
+Bregal Unternehmerkapital,,,,,,no task
+MML Capital,,,,,,no task
+Brightstar Capital Partners,,,,,,no task
+Eagletree Capital,,,,,,no task
+Rubicon Technology Partners,,,,,,no task
+Siris Capital Group,,,,,,no task
+QHP Capital,,,,,,no task
+Washington Harbour Partners,,,,,,no task
+Altas Partners,,,,,,no task
+Hull Street Energy,,,,,,no task
+Seven2,,,,,,no task
+Tenex Capital Management,,,,,,no task
+Thompson Street Capital Partners,,,,,,no task
+Brighton Park Capital,,,,,,no task
+Bertram Capital,,,,,,no task
+Revelar Capital,,,,,,no task
+Skyknight Capital,,,,,,no task
+Andera Partners,,,,,,no task
+Quilvest Capital Partners,,,,,,no task
+Altamont Capital Partners,,,,,,no task
+Garnett Station Partners,,,,,,no task
+Tailwater Capital,,,,,,no task
+Tinicum,,,,,,no task
+TruelinkCapital,,,,,,no task
+Blue Wolf Capital Partners,,,,,,no task
+Castik Capital,,,,,,no task
+FFL Partners,,,,,,no task
+Terra Firma Capital Partners,,,,,,no task
+Brentwood Associates,,,,,,no task
+Exponent Private Equity,,,,,,no task
+Truarc Partners,,,,,,no task
+Centre Lane Partners,,,,,,no task
+Epiris,,,,,,no task
+Hildred Capital Management,,,,,,no task
+Latour Capital,,,,,,no task
+Bedford Ridge Capital,,,,,,no task
+Birch Hill Equity Partners,,,,,,no task
+ECI Partners,,,,,,no task
+Kingswood Capital Management,,,,,,no task
+Luminate Capital Partners,,,,,,no task
+Neos Partners,,,,,,no task
+Vector Capital,,,,,,no task
+Argosy Private Equity,,,,,,no task
+Falfurrias Capital Partners,,,,,,no task
+Oncap,,,,,,no task
+HitecVision,,,,,,no task
+Livingbridge,,,,,,no task
+Palladium Equity Partners,,,,,,no task
+Arbor Investments,,,,,,no task
+Georgian,,,,,,no task
+Liberty Strategic Capital,,,,,,no task
+Main Post Partners,,,,,,no task
+Mill Point Capital,,,,,,no task
+Banneker Partners,,,,,,no task
+Diversis Capital,,,,,,no task
+Gauge Capital,,,,,,no task
+Knox Lane,,,,,,no task
+Star Capital,,,,,,no task
+Sumeru Equity Partners,,,,,,no task
+Fremman Capital,,,,,,no task
+NewSpring Capital,,,,,,no task
+Recognize Partners,,,,,,no task
+Avesi Partners,,,,,,no task
+Chequers Capital,,,,,,no task
+Greenbelt Capital Partners,,,,,,no task
+Ufenau Capital Partners,,,,,,no task
+Vance Street Capital,,,,,,no task
+VMG Partners,,,,,,no task
+Calera Capital,,,,,,no task
+DPE Deutsche Private Equity,,,,,,no task
+Kingsway Capital,,,,,,no task
+Windjammer Capital,,,,,,no task
+Gamut Capital Management,,,,,,no task
+Pacific Avenue Capital Partners,,,,,,no task
+Trinity Hunt Partners,,,,,,no task
+DFW Capital Partners,,,,,,no task
+CapitalSpring,,,,,,no task
+EIV Capital,,,,,,no task
+Pamplona Capital Management,,,,,,no task
+1789 Capital,,,,,,no task
+Equistone Partners Europe,,,,,,no task
+Paceline Equity Partners,,,,,,no task
+Rivean Capital,,,,,,no task
+Sprints Capital,,,,,,no task
+Yorktown Partners,,,,,,no task
+Renovus Capital Partners,,,,,,no task
+The Catalyst Capital Group,,,,,,no task
+Updata Partners,,,,,,no task
+Vestar Capital Partners,,,,,,no task
+ZMC,,,,,,no task
+Amulet Capital Partners,,,,,,no task
+Metalmark Capital,,,,,,no task
+Stirling Square Capital Partners,,,,,,no task
+Summa Equity,,,,,,no task
+TZP Group,,,,,,no task
+Align Capital Partners,,,,,,no task
+Bowmark Capital,,,,,,no task
+G Square Capital,,,,,,no task
+Valeas Capital Partners,,,,,,no task
+Excellere Partners,,,,,,no task
+TorQuest Partners,,,,,,no task
+Carnelian Energy Capital,,,,,,no task
+Enlightenment Capital,,,,,,no task
+Further Global Capital Management,,,,,,no task
+LongRange Capital,,,,,,no task
+Blue Water Energy,,,,,,no task
+Carrick Capital Partners,,,,,,no task
+Klar Partners,,,,,,no task
+Nexphase Capital,,,,,,no task
+Southfield Capital,,,,,,no task
+True Wind Capital,,,,,,no task
+Brynwood Partners,,,,,,no task
+CenterOak Partners,,,,,,no task
+Clearview Capital,,,,,,no task
+Freshstream,,,,,,no task
+Kainos Capital,,,,,,no task
+L Squared Capital Partners,,,,,,no task
+Miura Partners,,,,,,no task
+New State Capital Partners,,,,,,no task
+Sole Source Capital,,,,,,no task
+BNP Paribas Real Estate Investment Management,,,,,,no task
+CBRE Investment Management,,,,,,no task
+Greystar Investment Group,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Exeter Property Group,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Kayne Anderson Real Estate,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Rialto Capital Management,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+PCCP,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+TPG Real Estate,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Divco West,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Tishman Speyer,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Aermont Capital,,,,,,no task
+Related Fund Management,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Rockpoint,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Urban Partners,,,,,,no task
+Artemis Real Estate Partners,,,,,,no task
+Realterm,,,,,,no task
+Rockwood Capital,,,,,,no task
+AXA IM Alts (Real Estate),,,,,,no task
+Bain Capital Real Estate,,,,,,no task
+Walton Street Capital,,,,,,no task
+Cabot Properties,,,,,,no task
+Hines,,,,,,no task
+Northwood Investors,,,,,,no task
+Asana Partners,,,,,,no task
+Carmel Partners,,,,,,no task
+Elmtree Funds,,,,,,no task
+Corum Asset Management,,,,,,no task
+Abacus Capital Group,,,,,,no task
+Crescent Real Estate,,,,,,no task
+NIAM,,,,,,no task
+GEM Realty Capital,,,,,,no task
+Madison International Realty,,,,,,no task
+Beacon Capital Partners,,,,,,no task
+Fairfield Residential,,,,,,no task
+Bell Partners,,,,,,no task
+Heitman,,,,,,no task
+Meadow Partners,,,,,,no task
+GID Investment Advisers,,,,,,no task
+Sabal Investment Holdings,,,,,,no task
+Cortland,,,,,,no task
+Longpoint Partners,,,,,,no task
+Areim,,,,,,no task
+Rockbridge,,,,,,no task
+Pennybacker Capital,,,,,,no task
+ACRE,,,,,,no task
+Menlo Equities,,,,,,no task
+MCR,,,,,,no task
+Banner Oak Capital Partners,,,,,,no task
+Waterton,,,,,,no task
+Sentinel Real Estate,,,,,,no task
+Avanath Capital Management,,,,,,no task
+TGM Associates,,,,,,no task
+Patron Capital,,,,,,no task
+Proprium Capital Partners,,,,,,no task
+RXR,,,,,,no task
+Lubert-Adler,,,,,,no task
+AJ Capital Partners,,,,,,no task
+Orion Capital Managers,,,,,,no task
+Dune Real Estate Partners,,,,,,no task
+The Davis Companies,,,,,,no task
+Thrive Capital,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+General Catalyst,,,,,,no task
+Accel,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+New Enterprise Associates (NEA),fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Index Ventures,,,,,,no task
+Y Combinator,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Khosla Ventures,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Kleiner Perkins,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Bessemer Venture Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Impresa Management,,,,,,no task
+DFJ Growth,,,,,,no task
+Battery Ventures,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Spark Capital,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Gigafund,,,,,,no task
+Paradigm,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Columbia Capital,,,,,,no task
+8VC,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Draper Fisher Jurvetson (DFJ),,,,,,no task
+Lux Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Menlo Ventures,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+ARCH Venture Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Greylock Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Sapphire Ventures,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Notable Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Bain Capital Ventures,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Oak HC/FT,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-24,SUCCEEDED,scheduled
+Addition,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+DBL Partners,,,,,,no task
+Crosspoint Capital Partners,,,,,,no task
+Balderton Capital,,,,,,no task
+B Capital,,,,,,no task
+Bond,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+CRV,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Redpoint Ventures,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Benchmark,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Eclipse,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+HOF Capital,,,,,,no task
+Craft Ventures,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Hedosophia,,,,,,no task
+Forbion,,,,,,no task
+Felicis Ventures,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+Future Ventures,,,,,,no task
+Matrix Partners,,,,,,no task
+Amplify Partners,,,,,,no task
+Breakthrough Energy Ventures,,,,,,no task
+K5 Global,,,,,,no task
+Canaan Partners,,,,,,no task
+Goodwater Capital,,,,,,no task
+Quiet Capital,,,,,,no task
+FirstMark Capital,,,,,,no task
+Energy Impact Partners,,,,,,no task
+Foundation Capital,,,,,,no task
+Meritech Capital,,,,,,no task
+Greycroft,,,,,,no task
+SignalFire,,,,,,no task
+Venrock,,,,,,no task
+Drive Capital,,,,,,no task
+Human Capital,,,,,,no task
+HV Capital,,,,,,no task
+Madrona Venture Group,,,,,,no task
+Mayfield,,,,,,no task
+Forerunner Ventures,,,,,,no task
+Lowercase Capital,,,,,,no task
+Valar Ventures,,,,,,no task
+Zeev Ventures,,,,,,no task
+Avenir,,,,,,no task
+Caffeinated Capital,,,,,,no task
+Crosslink Capital,,,,,,no task
+DCVC,,,,,,no task
+NewView Capital,,,,,,no task
+True Ventures,,,,,,no task
+Versant Ventures,,,,,,no task
+Emergence Capital,,,,,,no task
+First Round Capital,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+IVP (Institutional Venture Partners),,,,,,no task
+Left Lane Capital,,,,,,no task
+Norwest Venture Partners,,,,,,no task
+Tribe Capital,,,,,,no task
+Sutter Hill Ventures,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Dragonfly,,,,,,no task
+Upfront Ventures,,,,,,no task
+Playground Global,,,,,,no task
+QED Investors,,,,,,no task
+The Column Group,,,,,,no task
+Foresite Capital,,,,,,no task
+Union Square Ventures,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Initialized Capital,,,,,,no task
+Primary Venture Partners,,,,,,no task
+Transformation Capital,,,,,,no task
+Anthos Capital,,,,,,no task
+Atlas Venture,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
+BoxGroup,,,,,,no task
+Optum Ventures,,,,,,no task
+Blockchain Capital,,,,,,no task
+Electric Capital,,,,,,no task
+Owl Ventures,,,,,,no task
+Partech,,,,,,no task
+Scale Venture Partners,,,,,,no task
+Project A Ventures,,,,,,no task
+DCM Ventures,,,,,,no task
+Wing Venture Capital,,,,,,no task
+Atomico,,,,,,no task
+Bedrock Capital,,,,,,no task
+Costanoa Ventures,,,,,,no task
+March Capital,,,,,,no task
+PeakSpan Capital,,,,,,no task
+Haun Ventures,,,,,,no task
+Section 32,,,,,,no task
+Accomplice,,,,,,no task
+Gilde Healthcare,,,,,,no task
+Longitude Capital,,,,,,no task
+Medicxi,,,,,,no task
+SR One,,,,,,no task
+Creandum,,,,,,no task
+Evolution Equity Partners,,,,,,no task
+NFX,,,,,,no task
+RRE Ventures,,,,,,no task
+Felix Capital,,,,,,no task
+500 Global,,,,,,no task
+Dawn Capital,,,,,,no task
+Nextech Invest,,,,,,no task
+Sierra Ventures,,,,,,no task
+ICONIQ Growth,,,,,,no task
+Seven Seven Six,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
+Morgan Stanley Investment Management (Alternatives),fram-custom-morganstanley-test,fram-custom-morganstanley-schedule,fram-custom-morganstanley-schedule=6m,2026-11-24,SUCCEEDED,scheduled
+BlackRock Private Markets,fram-custom-blackrock-test,fram-custom-blackrock-test-schedule,fram-custom-blackrock-test-schedule=6m,2026-11-24,SUCCEEDED,scheduled
+J.P. Morgan Asset Management (Alternatives),fram-custom-jpmorgan; fram-custom-jpmorgan-test,fram-custom-jpmorgan-schedule,fram-custom-jpmorgan-schedule=24h,2026-11-24,SUCCEEDED,scheduled
