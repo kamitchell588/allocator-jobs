@@ -14,7 +14,7 @@ def load_firms():
     firms = {}
     with open(DATA / "orgs.csv", newline="", encoding="utf-8-sig") as f:
         for r in csv.DictReader(f):
-            names = {r["org_name"], r.get("search_term", "")} | set((r.get("aliases") or "").split("|"))
+            names = {r["org_name"], r.get("search_term", ""), r.get("domain", "")} | set((r.get("aliases") or "").split("|"))   # a task that searches by website maps to the firm too
             firms[r["org_name"]] = {n.strip().lower() for n in names if n.strip()}
     return firms
 
