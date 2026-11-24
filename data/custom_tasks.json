@@ -480,5 +480,70 @@
       "timeRange": "24h",
       "limit": 100
     }
+  },
+  {
+    "name": "fram-custom-test-batch-a",
+    "note": "Test batch A, 6-month one-off, US/Canada, never scheduled. Their job sites: Man Group = Greenhouse (job-boards.eu.greenhouse.io/mangroup), EQT = Greenhouse (eqtpartners), Sixth Street = Workday (sixthstreetcareers): all three read by Apify, so these should return jobs. Partners Group = own site (partnersgroup.com/en/careers), Elliott and Ardian = site not checked: may return nothing. Check the dataset per firm (organization / domain) and lock domains afterwards.",
+    "firms": [
+      "Partners Group",
+      "EQT",
+      "Man Group (AHL)",
+      "Elliott Investment Management",
+      "Sixth Street",
+      "Ardian"
+    ],
+    "schedule": false,
+    "keep_titles": [],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "facilities",
+      "internship",
+      "analyst program"
+    ],
+    "input": {
+      "organizationSearch": [
+        "Partners Group",
+        "EQT Partners",
+        "EQT",
+        "Man Group",
+        "Man AHL",
+        "Elliott Investment Management",
+        "Sixth Street",
+        "Ardian"
+      ],
+      "organizationExclusionSearch": [
+        "EQT Corporation",
+        "EQT Production",
+        "EQT Midstream",
+        "Equitrans",
+        "EQT Corp"
+      ],
+      "titleSearch": [
+        "analyst",
+        "portfolio",
+        "investment",
+        "investing",
+        "trader",
+        "trading",
+        "research",
+        "quantitative",
+        "strategist",
+        "principal",
+        "associate",
+        "credit",
+        "equity",
+        "macro",
+        "fund",
+        "origination"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ],
+      "timeRange": "6m",
+      "limit": 400
+    }
   }
 ]
