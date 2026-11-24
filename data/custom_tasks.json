@@ -299,7 +299,7 @@
   },
   {
     "name": "fram-custom-millennium-test",
-    "note": "Millennium Management (mlp.com only, so no look-alike 'Millennium' companies). One-off 6-month test; never scheduled. Millennium hires on career.mlp.com, so this also tests whether Apify indexes it at all (0 results = it does not; then we need a direct scraper or manual add). After the run, check the domain Apify returns before locking it in data/orgs.csv.",
+    "note": "Millennium BACKFILL: 6 months of postings from mlp.com (Apify indexes career.mlp.com; test returned 28 jobs). Run by hand once; never scheduled.",
     "firms": [
       "Millennium Management"
     ],
@@ -341,6 +341,52 @@
       ],
       "timeRange": "6m",
       "limit": 250
+    }
+  },
+  {
+    "name": "fram-custom-millennium",
+    "note": "Millennium DAILY: last 24h of postings from mlp.com. Scheduled daily as fram-daily-custom-millennium.",
+    "firms": [
+      "Millennium Management"
+    ],
+    "schedule": true,
+    "keep_titles": [],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "facilities",
+      "internship",
+      "analyst program"
+    ],
+    "input": {
+      "domainFilter": [
+        "mlp.com"
+      ],
+      "titleSearch": [
+        "analyst",
+        "portfolio",
+        "investment",
+        "investing",
+        "trader",
+        "trading",
+        "research",
+        "quantitative",
+        "strategist",
+        "principal",
+        "associate",
+        "credit",
+        "equity",
+        "macro",
+        "commodities",
+        "fixed income"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ],
+      "timeRange": "24h",
+      "limit": 100
     }
   }
 ]
