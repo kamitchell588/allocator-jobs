@@ -28,6 +28,9 @@ for bad in ["Investment Management, Project Manager", "Alternatives Platform Off
 print("test_scoped (shared exclusions) OK")
 S_jp = S.scope_for("JPMorganChase")
 assert S_jp and S.scope_for("JPMorgan Chase & Co.") and S.scope_for("J.P. Morgan"), "JPM spellings share one scope"
-assert S.scope_title_ok(S_jp, "Private Equity Group - Associate") and S.scope_title_ok(S_jp, "Infrastructure Investments Group (IIG) Vice President")
-assert not S.scope_title_ok(S_jp, "Software Engineer, Private Markets Platform") and not S.scope_title_ok(S_jp, "Home Lending Advisor")
+assert S.scope_title_ok(S_jp, "Asset Management - Private Equity Investor Relations - Associate")
+assert S.scope_title_ok(S_jp, "Asset Management, U.S. Private Markets Product Expansion Lead VP/ED")
+assert not S.scope_title_ok(S_jp, "Investment Banking - Infrastructure M&A - Vice President"), "needs the Asset Management marker"
+assert not S.scope_title_ok(S_jp, "Director of Infrastructure Engineering - AI"), "IT infrastructure is not alternatives"
+assert not S.scope_title_ok(S_jp, "Home Lending Advisor")
 print("test_scoped (JPM) OK")

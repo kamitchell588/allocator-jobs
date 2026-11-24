@@ -83,8 +83,9 @@ gs = [t for t in cust if t["name"] == "fram-custom-goldman-test"]
 check("Goldman test task searches AWM titles and does not exclude 'wealth management'", gs and "AWM" in gs[0]["input"]["titleSearch"] and not any("wealth management" in x for x in gs[0]["input"]["titleExclusionSearch"]))
 cs = Fake(); rc = s.sync(cs, cust, apply=True, schedule=True)
 want = sorted("fram-daily-" + t["name"][5:] for t in cust if t["schedule_ok"])
-check("only custom tasks marked schedule=true get a schedule (Goldman daily yes, Goldman backfill no)",
-      len(rc["created"]) == len(cust) and sorted(x["name"] for x in cs.scheds.values()) == want == ["fram-daily-custom-goldman"])
+check("only custom tasks marked schedule=true get a schedule (daily yes, test/backfill no)",
+      len(rc["created"]) == len(cust) and sorted(x["name"] for x in cs.scheds.values()) == want
+      and all(n.startswith("fram-daily-custom-") and not n.endswith("-test") for n in want) and "fram-daily-custom-goldman" in want)
 gd = [t for t in cust if t["name"] == "fram-custom-goldman"][0]
 check("Goldman daily is 24h", gd["input"]["timeRange"] == "24h" and gd["input"]["locationSearch"] == ["United States", "Canada"])
 # backfill twins: 6 months, bigger cap, same firms, never scheduled

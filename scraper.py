@@ -493,6 +493,7 @@ def _load_scopes() -> list[dict]:
                             # company may list several spellings separated by |
                             "name_re": _re.compile(r"(?<![a-z0-9])(?:" + "|".join(_re.escape(x.strip()) for x in name.split("|") if x.strip()) + r")(?![a-z0-9])"),
                             "require": _phrase_regex(split(r.get("require_any"))) if split(r.get("require_any")) else None,
+                            "and_any": _phrase_regex(split(r.get("and_any"))) if split(r.get("and_any")) else None,
                             "exclude": _phrase_regex(split(r.get("exclude_any"))) if split(r.get("exclude_any")) else None,
                             "cap": cap})
     return _SCOPES
@@ -509,6 +510,8 @@ def scope_for(company: str):
 def scope_title_ok(sc: dict, title: str) -> bool:
     t = (title or "").lower()
     if sc["require"] and not sc["require"].search(t):
+        return False
+    if sc.get("and_any") and not sc["and_any"].search(t):      # optional second group that must also match
         return False
     if sc["exclude"] and sc["exclude"].search(t):
         return False
