@@ -490,7 +490,8 @@ def _load_scopes() -> list[dict]:
             except ValueError:
                 cap = 0
             _SCOPES.append({"name": name,
-                            "name_re": _re.compile(r"(?<![a-z0-9])" + _re.escape(name) + r"(?![a-z0-9])"),
+                            # company may list several spellings separated by |
+                            "name_re": _re.compile(r"(?<![a-z0-9])(?:" + "|".join(_re.escape(x.strip()) for x in name.split("|") if x.strip()) + r")(?![a-z0-9])"),
                             "require": _phrase_regex(split(r.get("require_any"))) if split(r.get("require_any")) else None,
                             "exclude": _phrase_regex(split(r.get("exclude_any"))) if split(r.get("exclude_any")) else None,
                             "cap": cap})

@@ -199,5 +199,55 @@
       "timeRange": "6m",
       "limit": 200
     }
+  },
+  {
+    "name": "fram-custom-jpmorgan-test",
+    "note": "J.P. Morgan Asset Management, alternatives only. JPMorganChase careers (Oracle HCM). One-off 6-month test, never scheduled. Run by hand, send the dataset, then we tighten (data/scoped_orgs.csv).",
+    "firms": [
+      "J.P. Morgan Asset Management (Alternatives)"
+    ],
+    "schedule": false,
+    "keep_titles": [],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "facilities",
+      "internship",
+      "analyst program",
+      "private bank",
+      "mortgage",
+      "home lending",
+      "branch"
+    ],
+    "input": {
+      "organizationSearch": [
+        "JPMorganChase",
+        "JPMorgan Chase",
+        "J.P. Morgan",
+        "JPMorgan"
+      ],
+      "titleSearch": [
+        "alternative",
+        "private equity",
+        "private credit",
+        "private markets",
+        "infrastructure",
+        "real assets",
+        "real estate investment",
+        "hedge fund",
+        "growth equity",
+        "secondaries",
+        "private capital",
+        "Highbridge",
+        "IIG"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ],
+      "timeRange": "6m",
+      "limit": 250
+    }
   }
 ]
