@@ -10,6 +10,9 @@ PAGES = {
     "deshaw-job": "https://www.deshaw.com/careers/mba-investment-analyst-new-york-summer-2027-6054",
     "deshaw-list": "https://www.deshaw.com/careers",
     "deshaw-internships": "https://www.deshaw.com/careers/internships",
+    "twosigma-list": "https://careers.twosigma.com/careers/SearchJobs",
+    "twosigma-job": "https://careers.twosigma.com/careers/JobDetail/New-York-New-York-United-States-Structured-Credit-Analyst/14350",
+    "balyasny-list": "https://bambusdev.my.site.com/s/",
 }
 OUT = pathlib.Path(__file__).parent / "probe"
 UA = {"User-Agent": "Mozilla/5.0 (compatible; allocator-jobs probe)"}
