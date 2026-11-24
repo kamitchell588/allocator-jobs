@@ -249,5 +249,52 @@
       "timeRange": "6m",
       "limit": 250
     }
+  },
+  {
+    "name": "fram-custom-citadel-test",
+    "note": "Citadel (citadel.com only, so no look-alike 'Citadel' companies and not Citadel Securities). One-off 6-month test of the investing roles; never scheduled. Citadel hires on its own site, so this also tests whether Apify indexes it at all (0 results = it does not; then we need a direct scraper or manual add).",
+    "firms": [
+      "Citadel"
+    ],
+    "schedule": false,
+    "keep_titles": [],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "facilities",
+      "internship",
+      "analyst program"
+    ],
+    "input": {
+      "domainFilter": [
+        "citadel.com"
+      ],
+      "titleSearch": [
+        "analyst",
+        "portfolio",
+        "investment",
+        "investing",
+        "trader",
+        "trading",
+        "research",
+        "credit",
+        "equity",
+        "equities",
+        "commodities",
+        "macro",
+        "fixed income",
+        "quantitative",
+        "strategist",
+        "principal",
+        "associate"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ],
+      "timeRange": "6m",
+      "limit": 250
+    }
   }
 ]
