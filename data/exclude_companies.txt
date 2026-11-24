@@ -19,3 +19,9 @@ apollo education
 apollo medical
 apollomd
 apollo graph
+
+# not EQT Partners (EQT Corporation is a US natural gas producer)
+eqt corporation
+eqt production
+eqt midstream
+equitrans
