@@ -1,0 +1,25 @@
+name: Probe careers pages
+
+# Read-only. Downloads a few public careers pages (listed in probe_careers.py) and saves the raw HTML plus a
+# summary under probe/, so a scraper for sites Apify doesn't cover (Citadel, D. E. Shaw) can be written from the real pages.
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - run: python probe_careers.py
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add probe
+          git diff --cached --quiet || (git commit -m "Careers page probe results [skip ci]" && git pull --rebase origin main && git push)
