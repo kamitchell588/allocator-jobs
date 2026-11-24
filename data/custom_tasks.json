@@ -202,7 +202,7 @@
   },
   {
     "name": "fram-custom-jpmorgan-test",
-    "note": "J.P. Morgan Asset Management, alternatives only. JPMorganChase careers (Oracle HCM). One-off 6-month test, never scheduled. Run by hand, send the dataset, then we tighten (data/scoped_orgs.csv).",
+    "note": "J.P. Morgan Asset Management BACKFILL: 6 months, US/Canada. Test showed Apify lists the company as 'JPMorgan Chase & Co.' (domain jpmorganchase.com) and JPMAM titles start with 'Asset Management'. The dashboard keeps only titles with an Asset Management marker AND an alternatives keyword (data/scoped_orgs.csv). Run by hand once; never scheduled.",
     "firms": [
       "J.P. Morgan Asset Management (Alternatives)"
     ],
@@ -222,19 +222,17 @@
     ],
     "input": {
       "organizationSearch": [
+        "JPMorgan Chase & Co.",
         "JPMorganChase",
-        "JPMorgan Chase",
-        "J.P. Morgan",
-        "JPMorgan"
+        "J.P. Morgan"
       ],
       "titleSearch": [
+        "asset management",
         "alternative",
         "private equity",
         "private credit",
         "private markets",
-        "infrastructure",
         "real assets",
-        "real estate investment",
         "hedge fund",
         "growth equity",
         "secondaries",
@@ -433,6 +431,54 @@
       ],
       "timeRange": "6m",
       "limit": 250
+    }
+  },
+  {
+    "name": "fram-custom-jpmorgan",
+    "note": "J.P. Morgan Asset Management DAILY: last 24h. Scheduled daily as fram-daily-custom-jpmorgan.",
+    "firms": [
+      "J.P. Morgan Asset Management (Alternatives)"
+    ],
+    "schedule": true,
+    "keep_titles": [],
+    "exclude_also": [
+      "developer",
+      "operations",
+      "accountant",
+      "facilities",
+      "internship",
+      "analyst program",
+      "private bank",
+      "mortgage",
+      "home lending",
+      "branch"
+    ],
+    "input": {
+      "organizationSearch": [
+        "JPMorgan Chase & Co.",
+        "JPMorganChase",
+        "J.P. Morgan"
+      ],
+      "titleSearch": [
+        "asset management",
+        "alternative",
+        "private equity",
+        "private credit",
+        "private markets",
+        "real assets",
+        "hedge fund",
+        "growth equity",
+        "secondaries",
+        "private capital",
+        "Highbridge",
+        "IIG"
+      ],
+      "locationSearch": [
+        "United States",
+        "Canada"
+      ],
+      "timeRange": "24h",
+      "limit": 100
     }
   }
 ]
