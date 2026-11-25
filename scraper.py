@@ -1268,6 +1268,46 @@ def enrich(j: dict) -> dict:
     return j
 
 
+_SIDES = None
+
+
+def _load_sides() -> dict:
+    """data/sector_side.csv: sector or company name -> LP (allocator) / GP (manager)."""
+    global _SIDES
+    if _SIDES is None:
+        _SIDES = {}
+        path = pathlib.Path(__file__).parent / "data" / "sector_side.csv"
+        try:
+            with open(path, newline="", encoding="utf-8") as f:
+                for r in csv.DictReader(l for l in f if not l.lstrip().startswith("#")):
+                    k, v = (r.get("key") or "").strip().lower(), (r.get("side") or "").strip().upper()
+                    if k and v in ("LP", "GP"):
+                        _SIDES[k] = v
+        except FileNotFoundError:
+            pass
+    return _SIDES
+
+
+def side_for(j: dict) -> str:
+    """'LP' (allocator), 'GP' (direct manager) or '' (unknown: only shown under All). Company rows win over sector rows."""
+    m = _load_sides()
+    return m.get((j.get("company") or "").strip().lower()) or m.get((j.get("org_sector") or "").strip().lower()) or ""
+
+
+_COUNTRY_TAIL = _re.compile(r",?\s*(United States of America|United States|USA|US|Canada)\s*$", _re.I)
+
+
+def short_location(loc: str) -> str:
+    """'New York, New York, United States' -> 'New York, New York'; 'A; B; C' -> 'A +2'."""
+    parts = [p.strip() for p in (loc or "").split(";") if p.strip()]
+    if not parts:
+        return ""
+    first = parts[0]
+    trimmed = _COUNTRY_TAIL.sub("", first).strip(" ,")
+    first = trimmed or first
+    return first + (f" +{len(parts) - 1}" if len(parts) > 1 else "")
+
+
 def _rows_html(jobs: list[dict]) -> str:
     rows = []
     now = datetime.now(timezone.utc).date()
@@ -1293,13 +1333,19 @@ def _rows_html(jobs: list[dict]) -> str:
         )
         desc = escape(j["description"])
         source = escape(j.get("source") or "")
+        sector = j.get("org_sector") or ""
+        senior = j.get("seniority") or ""
+        tags = "".join(
+            f'<span class="tag">{escape(t)}</span>'
+            for t in (sector if sector != "Not classified" else "", senior if senior != "Not specified" else "")
+            if t
+        )
         rows.append(
-            f'<tr class="age-{age_class}">'
-            f'<td>{title_cell}</td>'
+            f'<tr class="age-{age_class}" data-company="{escape(j["company"])}" data-metro="{escape(j.get("metro") or "")}" '
+            f'data-seniority="{escape(senior)}" data-sector="{escape(sector)}" data-side="{side_for(j)}" data-date="{escape(raw_date)}">'
+            f'<td>{title_cell}<div class="tags">{tags}</div></td>'
             f'<td>{escape(j["company"])}</td>'
-            f'<td data-metro="{escape(j.get("metro") or "")}">{escape(j["location"])}</td>'
-            f'<td>{escape(j.get("seniority") or "")}</td>'
-            f'<td>{escape(j.get("org_sector") or "")}</td>'
+            f'<td title="{escape(j["location"])}">{escape(short_location(j["location"]))}</td>'
             f'<td data-sort="{escape(raw_date)}">{escape(raw_date)}</td>'
             f'</tr>'
         )
@@ -1349,20 +1395,39 @@ def generate_html(jobs: list[dict]) -> None:
   a:hover {{ text-decoration: underline; }}
 
   /* ── Top bar ── */
-  header {{ background: #000; color: #fff; padding: 1.1rem 2rem; }}
+  header {{ background: #000; color: #fff; padding: .65rem 2rem; }}
   .header-inner {{ max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 1.4rem; }}
-  .header-inner .logo-fram {{ height: 32px; display: block; }}
-  .header-inner .divider {{ width: 1px; height: 28px; background: #444; }}
-  .header-inner .logo-ic {{ height: 26px; display: block; }}
+  .header-inner .logo-fram {{ height: 24px; display: block; }}
+  .header-inner .divider {{ width: 1px; height: 22px; background: #444; }}
+  .header-inner .logo-ic {{ height: 20px; display: block; }}
 
   /* ── Hero ── */
-  .hero {{ max-width: 1400px; margin: 0 auto; padding: 4rem 2rem 2.2rem; }}
+  .hero {{ max-width: 1400px; margin: 0 auto; padding: 1.4rem 2rem 1.1rem; }}
   .hero .eyebrow {{ font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }}
-  .hero h1 {{ font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 4.6vw, 3.4rem);
-              line-height: 1.07; letter-spacing: -.02em; margin: 1rem 0 .9rem; max-width: 800px; }}
-  .hero p {{ color: var(--muted); font-size: 1.05rem; max-width: 640px; }}
+  .hero h1 {{ font-family: var(--font-display); font-weight: 500; font-size: clamp(1.5rem, 3vw, 2.1rem);
+              line-height: 1.1; letter-spacing: -.02em; margin: .35rem 0 .35rem; max-width: 800px; }}
+  .hero p {{ color: var(--muted); font-size: .92rem; max-width: 760px; }}
+  .hero p strong {{ color: var(--navy); font-weight: 600; }}
 
-  .container {{ max-width: 1400px; margin: 0 auto; padding: 0 2rem 4rem; }}
+  .container {{ max-width: 1400px; margin: 0 auto; padding: 0 2rem 3rem; }}
+  .pill-row {{ display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; padding: 1rem 1.5rem .2rem; background: var(--white); }}
+  .pill-row.second {{ padding-top: .5rem; padding-bottom: .9rem; }}
+  .pill-label {{ font-size: .68rem; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 600; margin-right: .3rem; }}
+  .pill {{ padding: .45rem .95rem; border: 1px solid #cfcfd6; background: var(--white); color: var(--navy); font-family: var(--font-body);
+           font-size: .82rem; font-weight: 500; cursor: pointer; border-radius: 999px; }}
+  .pill:hover {{ border-color: #000; }}
+  .pill.active {{ background: #000; color: #fff; border-color: #000; }}
+  .pill .n {{ opacity: .6; margin-left: .3rem; font-size: .75rem; }}
+  .seg {{ display: inline-flex; }}
+  .seg .pill {{ border-radius: 0; margin-left: -1px; }}
+  .seg .pill:first-child {{ border-radius: 999px 0 0 999px; margin-left: 0; }}
+  .seg .pill:last-child {{ border-radius: 0 999px 999px 0; }}
+  .result-line {{ display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; padding: .7rem 1.5rem; font-size: .82rem; border-bottom: 1px solid var(--border); background: var(--white); }}
+  .result-line .count {{ font-weight: 600; margin-right: .4rem; }}
+  .fchip {{ display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .4rem .25rem .75rem; border: 1px solid #000; border-radius: 999px; font-size: .78rem; background: var(--white); }}
+  .fchip button {{ border: 0; background: #000; color: #fff; width: 18px; height: 18px; border-radius: 50%; font-size: .7rem; line-height: 1; cursor: pointer; }}
+  .tags {{ margin-top: .35rem; display: flex; gap: .35rem; flex-wrap: wrap; }}
+  .tag {{ font-size: .68rem; font-weight: 500; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: .1rem .55rem; background: var(--cream); }}
 
   /* ── Stat cards ── */
   .stats-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }}
@@ -1372,7 +1437,7 @@ def generate_html(jobs: list[dict]) -> None:
   .stat-card .value {{ font-family: var(--font-display); font-size: 2.6rem; font-weight: 500; letter-spacing: -.02em; }}
 
   /* ── Top organizations ── */
-  .section {{ background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem; }}
+  .section {{ background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin: 2rem 0 0; }}
   .section h2 {{ font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; margin-bottom: 1rem; }}
   .companies-wrap {{ display: flex; flex-wrap: wrap; gap: .5rem; }}
   .company-chip {{ display: flex; align-items: center; gap: .5rem; border: 1px solid #cfcfd6; border-radius: 999px;
@@ -1403,7 +1468,7 @@ def generate_html(jobs: list[dict]) -> None:
   tr:hover td {{ background: var(--cream); }}
   td:first-child a, td:nth-child(2) {{ font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; color: var(--navy); }}
   .row-star {{ color: #7c3aed; margin-right: .35rem; font-size: .95rem; }}
-  #jobsTable.hide-date th[data-col="5"], #jobsTable.hide-date td:nth-child(6) {{ display: none; }}
+  #jobsTable.hide-date th[data-col="3"], #jobsTable.hide-date td:nth-child(4) {{ display: none; }}
   #dateToggle {{ padding: .5rem 1rem; border: 1px solid #cfcfd6; background: var(--white); color: var(--navy);
                  font-family: var(--font-body); font-size: .82rem; font-weight: 500; cursor: pointer; border-radius: 999px; }}
   #dateToggle.active {{ background: #000; color: #fff; border-color: #000; }}
@@ -1411,9 +1476,9 @@ def generate_html(jobs: list[dict]) -> None:
   .desc-cell {{ color: var(--muted); font-size: .78rem; max-width: 320px; }}
 
   /* ── Recency: black and white only ── */
-  tr.age-fresh td:nth-child(6) {{ color: #000; font-weight: 700; }}
-  tr.age-recent td:nth-child(6) {{ color: var(--navy); }}
-  tr.age-old td:nth-child(6) {{ color: var(--muted); }}
+  tr.age-fresh td:nth-child(4) {{ color: #000; font-weight: 700; }}
+  tr.age-recent td:nth-child(4) {{ color: var(--navy); }}
+  tr.age-old td:nth-child(4) {{ color: var(--muted); }}
   tr.age-fresh  {{ border-left: 3px solid #000; }}
   tr.age-recent {{ border-left: 3px solid #9a9aa6; }}
   tr.age-old    {{ border-left: 3px solid var(--border); }}
@@ -1492,34 +1557,19 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
 </header>
 
 <div class="hero">
-  <div class="eyebrow">Allocator Job Board</div>
   <h1>Institutional Allocator Jobs</h1>
-  <p>Endowments, pensions, family offices, sovereign wealth &amp; private markets — US &amp; Canada</p>
+  <p>Endowments, pensions, family offices, sovereign wealth &amp; private markets — US &amp; Canada &nbsp;&middot;&nbsp; <strong>{stats["total"]} open roles</strong></p>
 </div>
 
 <div class="container">
 
-  <!-- Stats cards -->
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="label">Total Roles</div>
-      <div class="value">{stats["total"]}</div>
-    </div>
-  </div>
-
-  <!-- Top companies -->
-  <div class="section">
-    <h2>Top Hiring Organizations</h2>
-    <div class="companies-wrap">
-      {chips if chips else '<span style="color:#94a3b8;font-size:.875rem;">No data</span>'}
-    </div>
-  </div>
-
   <!-- Jobs table -->
   <div class="table-section">
+    <div class="pill-row" id="sectorPills"></div>
+    <div class="pill-row second" id="sidePills"></div>
     <div class="table-toolbar">
       <div style="display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;">
-        <h2>All Roles ({stats["total"]})</h2>
+        <h2>All Roles</h2>
         <div class="ms" id="newJobs">
           <button type="button" class="ms-btn" id="newJobsBtn"><span class="new-star">&#9733;</span> New jobs &#9662;</button>
           <div class="ms-panel" style="min-width:190px;">
@@ -1534,6 +1584,7 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
       </div>
     </div>
     <div class="filter-bar" id="filterBar"></div>
+    <div class="result-line" id="resultLine"></div>
     <div class="table-wrap">
       <table id="jobsTable" class="hide-date">
         <thead>
@@ -1541,16 +1592,22 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
             <th data-col="0">Title <span class="sort-icon"></span></th>
             <th data-col="1">Company <span class="sort-icon"></span></th>
             <th data-col="2">Location <span class="sort-icon"></span></th>
-            <th data-col="3">Seniority <span class="sort-icon"></span></th>
-            <th data-col="4">Sector <span class="sort-icon"></span></th>
-            <th data-col="5">Date Posted <span class="sort-icon"></span></th>
+            <th data-col="3">Date Posted <span class="sort-icon"></span></th>
           </tr>
         </thead>
         <tbody id="tableBody">
-          {rows if rows else '<tr><td colspan="6" style="text-align:center;padding:2rem;color:#94a3b8;">No allocator roles found in dataset.</td></tr>'}
+          {rows if rows else '<tr><td colspan="4" style="text-align:center;padding:2rem;color:#94a3b8;">No allocator roles found in dataset.</td></tr>'}
         </tbody>
       </table>
       <div id="noResults">No results match your search.</div>
+    </div>
+  </div>
+
+  <!-- Top companies -->
+  <div class="section">
+    <h2>Top Hiring Organizations</h2>
+    <div class="companies-wrap">
+      {chips if chips else '<span style="color:#94a3b8;font-size:.875rem;">No data</span>'}
     </div>
   </div>
 
@@ -1566,63 +1623,95 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
 </div>
 
 <script>
-// ── Search + multi-select filters ──
+// ── Search, pills, multi-select filters, chips ──
 const searchBox = document.getElementById("searchBox");
 const tableBody = document.getElementById("tableBody");
 const noResults = document.getElementById("noResults");
 const filterBar = document.getElementById("filterBar");
+const resultLine = document.getElementById("resultLine");
 
 const SENIORITY_ORDER = ["Intern / Entry","Analyst / Associate","Senior Associate / Manager","Director / VP / Principal","Executive / Head","Not specified"];
+const CORE_SECTORS = ["Private Equity", "Growth Equity", "Venture Capital", "Private Credit", "Multi-strategy Alternatives"];
+const SIDES = [["", "All"], ["LP", "Allocator / LP"], ["GP", "Direct / GP"]];
 
-// Each filter: label, how to read a value list from a row, optional fixed option order
+// Dropdown filters: label, how to read a value list from a row, optional fixed option order
 const FILTERS = [
-  {{ key: "company",   label: "Company",   get: r => [r.cells[1].textContent.trim()] }},
-  {{ key: "metro",     label: "Location",  get: r => [r.cells[2].dataset.metro || "Remote / Unknown"], byCount: true, last: ["Other US", "Other Canada", "Remote / Unknown"] }},
-  {{ key: "seniority", label: "Seniority", get: r => [r.cells[3].textContent.trim() || "Not specified"], order: SENIORITY_ORDER }},
-  {{ key: "sector",    label: "Sector",    get: r => [r.cells[4].textContent.trim() || "Not classified"], always: ["Infrastructure", "Secondaries"] }},
+  {{ key: "company",   label: "Company",   get: r => [r.dataset.company || ""] }},
+  {{ key: "metro",     label: "Location",  get: r => [r.dataset.metro || "Remote / Unknown"], byCount: true, last: ["Other US", "Other Canada", "Remote / Unknown"] }},
+  {{ key: "seniority", label: "Seniority", get: r => [r.dataset.seniority || "Not specified"], order: SENIORITY_ORDER }},
 ];
 const selected = {{}};   // key -> Set of chosen values (empty = no restriction)
+let sectorSel = "";    // "" = All, a core sector name, or "Other"
+let sideSel = "";      // "" = All, "LP" or "GP"
+let newRange = 0;      // 0 = all jobs, 7, or 30
 
-// ── "New jobs" filter: windows are measured from the visitor's date when the page loads,
-//    so they stay current between daily rebuilds. Jobs with no readable posted date
-//    never match 7 / 30 days (they only show with no range chosen). ──
-let newRange = 0;   // 0 = all jobs, 7, or 30
+const bucketOf = r => CORE_SECTORS.includes(r.dataset.sector) ? r.dataset.sector : "Other";
+
+// ── "New jobs" windows are measured from the visitor's date at page load, so they stay current between daily rebuilds.
+//    Jobs with no readable posted date never match 7 / 30 days (they only show with no range chosen). ──
 function daysAgo(row) {{
-  const d = (row.cells[5].dataset.sort || "").trim();
+  const d = (row.dataset.date || "").trim();
   const m = d.split("-").map(Number);
-  if (m.length !== 3 || m.some(isNaN) || String(d).length !== 10) return null;
+  if (m.length !== 3 || m.some(isNaN) || d.length !== 10) return null;
   const now = new Date(), today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
   return Math.round((today - Date.UTC(m[0], m[1] - 1, m[2])) / 86400000);
 }}
 function inRange(row, n) {{ const a = daysAgo(row); return a !== null && a >= -1 && a <= n; }}
-function buildNewJobs() {{
-  const wrap = document.getElementById("newJobs"), btn = document.getElementById("newJobsBtn");
-  const rows = Array.from(tableBody.rows);
-  [7, 30].forEach(n => {{ document.getElementById("newCount" + n).textContent = "(" + rows.filter(r => inRange(r, n)).length + ")"; }});
-  function set(n) {{
-    newRange = n;
-    wrap.querySelectorAll("input").forEach(i => i.checked = (+i.value === n));
-    btn.classList.toggle("active", n > 0);
-    filterTable();
+
+function passes(row, ignore) {{
+  const q = searchBox.value.toLowerCase().trim();
+  if (q && !row.textContent.toLowerCase().includes(q)) return false;
+  for (const f of FILTERS) {{
+    const sel = selected[f.key];
+    if (sel && sel.size && !f.get(row).some(v => sel.has(v))) return false;
   }}
-  wrap.querySelectorAll("input").forEach(i => i.addEventListener("change", () => set(+i.value)));
-  document.getElementById("newJobsClear").addEventListener("click", () => set(0));
-  btn.addEventListener("click", e => {{
-    e.stopPropagation();
-    document.querySelectorAll(".ms.open").forEach(m => {{ if (m !== wrap) m.classList.remove("open"); }});
-    wrap.classList.toggle("open");
+  if (ignore !== "sector" && sectorSel && bucketOf(row) !== sectorSel) return false;
+  if (ignore !== "side" && sideSel && row.dataset.side !== sideSel) return false;
+  if (newRange && !inRange(row, newRange)) return false;
+  return true;
+}}
+
+function buildPills() {{
+  const sp = document.getElementById("sectorPills"), dp = document.getElementById("sidePills");
+  sp.innerHTML = '<span class="pill-label">Sector</span>';
+  [["", "All"], ...CORE_SECTORS.map(s => [s, s]), ["Other", "Other"]].forEach(([v, label]) => {{
+    const b = document.createElement("button"); b.type = "button"; b.className = "pill"; b.dataset.v = v;
+    b.innerHTML = label + ' <span class="n"></span>';
+    b.addEventListener("click", () => {{ sectorSel = v; filterTable(); }});
+    sp.appendChild(b);
   }});
-  wrap.querySelector(".ms-panel").addEventListener("click", e => e.stopPropagation());
-  window.resetNewJobs = () => {{ newRange = 0; wrap.querySelectorAll("input").forEach(i => i.checked = false); btn.classList.remove("active"); }};
+  dp.innerHTML = '<span class="pill-label">Focus</span><span class="seg"></span>';
+  SIDES.forEach(([v, label]) => {{
+    const b = document.createElement("button"); b.type = "button"; b.className = "pill"; b.dataset.v = v;
+    b.innerHTML = label + ' <span class="n"></span>';
+    b.addEventListener("click", () => {{ sideSel = v; filterTable(); }});
+    dp.querySelector(".seg").appendChild(b);
+  }});
+}}
+
+function updatePills(rows) {{
+  const bySector = {{}}, bySide = {{}};
+  rows.forEach(r => {{
+    if (passes(r, "sector")) {{ const k = bucketOf(r); bySector[k] = (bySector[k] || 0) + 1; bySector[""] = (bySector[""] || 0) + 1; }}
+    if (passes(r, "side")) {{ const k = r.dataset.side || "none"; bySide[k] = (bySide[k] || 0) + 1; bySide[""] = (bySide[""] || 0) + 1; }}
+  }});
+  document.querySelectorAll("#sectorPills .pill").forEach(b => {{
+    b.classList.toggle("active", b.dataset.v === sectorSel);
+    b.querySelector(".n").textContent = bySector[b.dataset.v] || 0;
+  }});
+  document.querySelectorAll("#sidePills .pill").forEach(b => {{
+    b.classList.toggle("active", b.dataset.v === sideSel);
+    b.querySelector(".n").textContent = bySide[b.dataset.v] || 0;
+  }});
 }}
 
 function buildFilters() {{
   const rows = Array.from(tableBody.rows);
   FILTERS.forEach(f => {{
     selected[f.key] = new Set();
+    f._labs = {{}};
     const counts = {{}};
     rows.forEach(r => {{ f.get(r).forEach(v => {{ if (v) counts[v] = (counts[v] || 0) + 1; }}); }});
-    (f.always || []).forEach(v => {{ if (!(v in counts)) counts[v] = 0; }});
     let opts = Object.keys(counts);
     const lastIdx = o => (f.last || []).indexOf(o);
     opts = f.order ? opts.filter(o => f.order.includes(o)).sort((a, b) => f.order.indexOf(a) - f.order.indexOf(b))
@@ -1641,24 +1730,21 @@ function buildFilters() {{
     opts.forEach(o => {{
       const lab = document.createElement("label"); lab.className = "ms-opt"; lab.dataset.v = o.toLowerCase();
       const cb = document.createElement("input"); cb.type = "checkbox";
-      cb.addEventListener("change", () => {{
-        cb.checked ? selected[f.key].add(o) : selected[f.key].delete(o);
-        updateBtn(); filterTable();
-      }});
+      cb.addEventListener("change", () => {{ cb.checked ? selected[f.key].add(o) : selected[f.key].delete(o); filterTable(); }});
       lab.appendChild(cb); lab.appendChild(document.createTextNode(o + " (" + counts[o] + ")"));
-      lab._cb = cb; list.appendChild(lab);
+      lab._cb = cb; f._labs[o] = lab; list.appendChild(lab);
     }});
     panel.appendChild(list);
     const foot = document.createElement("div"); foot.className = "ms-foot";
     const clr = document.createElement("a"); clr.textContent = "Clear";
-    clr.addEventListener("click", () => {{ selected[f.key].clear(); list.querySelectorAll("input").forEach(c => c.checked = false); updateBtn(); filterTable(); }});
+    clr.addEventListener("click", () => {{ f._reset(); filterTable(); }});
     foot.appendChild(clr); panel.appendChild(foot);
-    function updateBtn() {{
+    f._update = () => {{
       const n = selected[f.key].size;
       btn.textContent = f.label + (n ? " (" + n + ")" : "") + " ▾";
       btn.classList.toggle("active", n > 0);
-    }}
-    updateBtn();
+    }};
+    f._update();
     btn.addEventListener("click", e => {{
       e.stopPropagation();
       document.querySelectorAll(".ms.open").forEach(m => {{ if (m !== wrap) m.classList.remove("open"); }});
@@ -1670,33 +1756,78 @@ function buildFilters() {{
       list.querySelectorAll(".ms-opt").forEach(l => l.style.display = l.dataset.v.includes(q) ? "" : "none");
     }});
     wrap.appendChild(btn); wrap.appendChild(panel); filterBar.appendChild(wrap);
-    f._reset = () => {{ selected[f.key].clear(); list.querySelectorAll("input").forEach(c => c.checked = false); updateBtn(); }};
+    f._reset = () => {{ selected[f.key].clear(); list.querySelectorAll("input").forEach(c => c.checked = false); }};
+    f._remove = v => {{ selected[f.key].delete(v); if (f._labs[v]) f._labs[v]._cb.checked = false; }};
   }});
-  const all = document.createElement("button"); all.type = "button"; all.id = "clearAll"; all.textContent = "Clear all filters";
-  all.addEventListener("click", () => {{ FILTERS.forEach(f => f._reset && f._reset()); window.resetNewJobs && window.resetNewJobs(); searchBox.value = ""; filterTable(); }});
-  filterBar.appendChild(all);
   document.addEventListener("click", () => document.querySelectorAll(".ms.open").forEach(m => m.classList.remove("open")));
 }}
 
+function buildNewJobs() {{
+  const wrap = document.getElementById("newJobs"), btn = document.getElementById("newJobsBtn");
+  const rows = Array.from(tableBody.rows);
+  [7, 30].forEach(n => {{ document.getElementById("newCount" + n).textContent = "(" + rows.filter(r => inRange(r, n)).length + ")"; }});
+  window.setNewRange = n => {{
+    newRange = n;
+    wrap.querySelectorAll("input").forEach(i => i.checked = (+i.value === n));
+    btn.classList.toggle("active", n > 0);
+  }};
+  wrap.querySelectorAll("input").forEach(i => i.addEventListener("change", () => {{ window.setNewRange(+i.value); filterTable(); }}));
+  document.getElementById("newJobsClear").addEventListener("click", () => {{ window.setNewRange(0); filterTable(); }});
+  btn.addEventListener("click", e => {{
+    e.stopPropagation();
+    document.querySelectorAll(".ms.open").forEach(m => {{ if (m !== wrap) m.classList.remove("open"); }});
+    wrap.classList.toggle("open");
+  }});
+  wrap.querySelector(".ms-panel").addEventListener("click", e => e.stopPropagation());
+}}
+
+function clearEverything() {{
+  FILTERS.forEach(f => f._reset && f._reset());
+  FILTERS.forEach(f => f._update && f._update());
+  window.setNewRange(0); sectorSel = ""; sideSel = ""; searchBox.value = "";
+  filterTable();
+}}
+
+function renderChips(visible) {{
+  const chips = [];
+  if (sectorSel) chips.push([sectorSel, () => {{ sectorSel = ""; }}]);
+  if (sideSel) chips.push([sideSel === "LP" ? "Allocator / LP" : "Direct / GP", () => {{ sideSel = ""; }}]);
+  if (newRange) chips.push(["New jobs: past " + newRange + " days", () => window.setNewRange(0)]);
+  FILTERS.forEach(f => selected[f.key].forEach(v => chips.push([v, () => f._remove(v)])));
+  const q = searchBox.value.trim();
+  if (q) chips.push(["“" + q + "”", () => {{ searchBox.value = ""; }}]);
+  resultLine.innerHTML = "";
+  const c = document.createElement("span"); c.className = "count";
+  c.textContent = "Showing " + visible + (visible === 1 ? " role" : " roles");
+  resultLine.appendChild(c);
+  chips.forEach(([label, remove]) => {{
+    const el = document.createElement("span"); el.className = "fchip"; el.appendChild(document.createTextNode(label));
+    const x = document.createElement("button"); x.type = "button"; x.textContent = "✕"; x.setAttribute("aria-label", "Remove " + label);
+    x.addEventListener("click", () => {{ remove(); filterTable(); }});
+    el.appendChild(x); resultLine.appendChild(el);
+  }});
+  if (chips.length > 1) {{
+    const all = document.createElement("button"); all.type = "button"; all.id = "clearAll"; all.textContent = "Clear all";
+    all.addEventListener("click", clearEverything); resultLine.appendChild(all);
+  }}
+}}
+
 function filterTable() {{
-  const q = searchBox.value.toLowerCase().trim();
+  const rows = Array.from(tableBody.rows).filter(r => r.dataset.company !== undefined);
   let visible = 0;
-  Array.from(tableBody.rows).forEach(row => {{
-    let show = !q || row.textContent.toLowerCase().includes(q);
-    if (show) {{
-      for (const f of FILTERS) {{
-        const sel = selected[f.key];
-        if (sel && sel.size && !f.get(row).some(v => sel.has(v))) {{ show = false; break; }}
-      }}
-    }}
-    if (show && newRange && !inRange(row, newRange)) show = false;
+  rows.forEach(row => {{
+    const show = passes(row, null);
     row.style.display = show ? "" : "none";
     if (show) visible++;
   }});
+  FILTERS.forEach(f => f._update && f._update());
+  updatePills(rows);
+  renderChips(visible);
   noResults.style.display = visible === 0 ? "block" : "none";
 }}
 
 searchBox.addEventListener("input", filterTable);
+buildPills();
 buildFilters();
 buildNewJobs();
 
@@ -1709,15 +1840,16 @@ buildNewJobs();
     btn.classList.toggle("active", !hidden);
     btn.textContent = hidden ? "Show date posted" : "Hide date posted";
   }});
-  filterBar.insertBefore(btn, document.getElementById("clearAll"));
+  filterBar.appendChild(btn);
 }})();
 
 // ── Purple star on roles posted in the past 30 days (measured from the visitor's date) ──
 Array.from(tableBody.rows).forEach(r => {{
-  if (!r.cells[0] || !inRange(r, 30)) return;
-  const star = document.createElement("span"); star.className = "row-star"; star.textContent = "\u2605"; star.title = "Posted in the past 30 days";
+  if (r.dataset.company === undefined || !inRange(r, 30)) return;
+  const star = document.createElement("span"); star.className = "row-star"; star.textContent = "★"; star.title = "Posted in the past 30 days";
   r.cells[0].insertBefore(star, r.cells[0].firstChild);
 }});
+filterTable();
 
 // ── Column sort ──
 let sortCol = -1, sortAsc = true;
