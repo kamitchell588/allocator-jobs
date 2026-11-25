@@ -1322,12 +1322,12 @@ def _fram_strip_html(picks: list[dict]) -> str:
         return ""
     cards = "".join(
         '<div class="fram-card">'
-        f'<a class="fram-title" href="{escape(p["job"]["url"])}" target="_blank" rel="noopener"><span class="new-star">&#9733;</span> {escape(p["job"]["title"])}</a>'
+        f'<a class="fram-title" href="{escape(p["job"]["url"])}" target="_blank" rel="noopener"><span class="fram-key">&#128273;</span> {escape(p["job"]["title"])}</a>'
         f'<div class="fram-firm">{escape(p["job"]["company"])}</div>'
         f'<p class="fram-blurb">{escape(p["blurb"])}</p></div>'
         for p in picks
     )
-    return (f'<div class="fram-strip"><div class="fram-head"><span class="new-star">&#9733;</span> Fram Selections '
+    return (f'<div class="fram-strip"><div class="fram-head"><span class="fram-key">&#128273;</span> Fram Selections '
             f'<span class="fram-sub">Roles our team thinks merit a closer look</span></div><div class="fram-cards">{cards}</div></div>')
 
 
@@ -1492,6 +1492,7 @@ def generate_html(jobs: list[dict]) -> None:
   .fchip {{ display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .4rem .25rem .75rem; border: 1px solid #000; border-radius: 999px; font-size: .78rem; background: var(--white); }}
   .fchip button {{ border: 0; background: #000; color: #fff; width: 18px; height: 18px; border-radius: 50%; font-size: .7rem; line-height: 1; cursor: pointer; }}
   .fram-strip {{ padding: 1.1rem 1.5rem 1rem; background: #faf8ff; border-bottom: 1px solid #e4dcf7; }}
+  .fram-key {{ font-size: .9em; margin-right: .1rem; }}
   .fram-head {{ font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; margin-bottom: .7rem; }}
   .fram-sub {{ font-family: var(--font-body); font-size: .78rem; color: var(--muted); margin-left: .6rem; font-weight: 400; }}
   .fram-cards {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: .8rem; }}
@@ -1771,7 +1772,7 @@ function buildPills() {{
   }});
   if (tableBody.querySelector('tr[data-fram="1"]')) {{
     const fb = document.createElement("button"); fb.type = "button"; fb.className = "pill"; fb.id = "framBtn";
-    fb.innerHTML = '<span class="new-star">★</span> Fram Selections';
+    fb.innerHTML = '<span class="fram-key">🔑</span> Fram Selections';
     fb.addEventListener("click", () => {{ framOnly = !framOnly; filterTable(); }});
     dp.appendChild(fb);
   }}
@@ -2247,7 +2248,7 @@ def generate_admin_html(jobs: list[dict]) -> None:
     <button id="refreshBtn" onclick="triggerRefresh()" style="padding:.45rem 1.2rem;background:var(--navy);color:#fff;border:none;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;letter-spacing:.04em;white-space:nowrap;">
       ↻ Refresh Jobs
     </button>
-    <button id="savePicksBtn" onclick="savePicks()" style="padding:.45rem 1.2rem;background:#7c3aed;color:#fff;border:none;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;white-space:nowrap;">★ Save picks</button>
+    <button id="savePicksBtn" onclick="savePicks()" style="padding:.45rem 1.2rem;background:#7c3aed;color:#fff;border:none;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;white-space:nowrap;">🔑 Save picks</button>
     <span id="pickCount" style="font-size:.78rem;color:var(--muted);"></span>
     <span id="refreshStatus" style="font-size:.78rem;color:var(--muted);"></span>
   </div>
