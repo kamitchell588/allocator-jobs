@@ -1401,7 +1401,12 @@ def generate_html(jobs: list[dict]) -> None:
   td {{ padding: 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }}
   tr:last-child td {{ border-bottom: none; }}
   tr:hover td {{ background: var(--cream); }}
-  td:first-child a {{ font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; color: var(--navy); }}
+  td:first-child a, td:nth-child(2) {{ font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; color: var(--navy); }}
+  .row-star {{ color: #7c3aed; margin-right: .35rem; font-size: .95rem; }}
+  #jobsTable.hide-date th[data-col="5"], #jobsTable.hide-date td:nth-child(6) {{ display: none; }}
+  #dateToggle {{ padding: .5rem 1rem; border: 1px solid #cfcfd6; background: var(--white); color: var(--navy);
+                 font-family: var(--font-body); font-size: .82rem; font-weight: 500; cursor: pointer; border-radius: 999px; }}
+  #dateToggle.active {{ background: #000; color: #fff; border-color: #000; }}
   td:first-child a:hover {{ text-decoration: underline; }}
   .desc-cell {{ color: var(--muted); font-size: .78rem; max-width: 320px; }}
 
@@ -1530,7 +1535,7 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
     </div>
     <div class="filter-bar" id="filterBar"></div>
     <div class="table-wrap">
-      <table id="jobsTable">
+      <table id="jobsTable" class="hide-date">
         <thead>
           <tr>
             <th data-col="0">Title <span class="sort-icon"></span></th>
@@ -1694,6 +1699,25 @@ function filterTable() {{
 searchBox.addEventListener("input", filterTable);
 buildFilters();
 buildNewJobs();
+
+// ── Show / hide the Date Posted column (hidden by default) ──
+(function() {{
+  const table = document.getElementById("jobsTable");
+  const btn = document.createElement("button"); btn.type = "button"; btn.id = "dateToggle"; btn.textContent = "Show date posted";
+  btn.addEventListener("click", () => {{
+    const hidden = table.classList.toggle("hide-date");
+    btn.classList.toggle("active", !hidden);
+    btn.textContent = hidden ? "Show date posted" : "Hide date posted";
+  }});
+  filterBar.insertBefore(btn, document.getElementById("clearAll"));
+}})();
+
+// ── Purple star on roles posted in the past 30 days (measured from the visitor's date) ──
+Array.from(tableBody.rows).forEach(r => {{
+  if (!r.cells[0] || !inRange(r, 30)) return;
+  const star = document.createElement("span"); star.className = "row-star"; star.textContent = "\u2605"; star.title = "Posted in the past 30 days";
+  r.cells[0].insertBefore(star, r.cells[0].firstChild);
+}});
 
 // ── Column sort ──
 let sortCol = -1, sortAsc = true;
