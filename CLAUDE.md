@@ -48,7 +48,8 @@ To add a new dataset: add its ID to this list in `scraper.py`. All datasets go t
 3. Manual Google Sheet — pre-vetted jobs added manually
 
 ## Dashboard
-- Public dashboard shows: Total Roles stat card, Top Hiring Organizations, jobs table
+- Public dashboard layout (top to bottom): compact header + open-roles count; Sector pills (All, PE, Growth Equity, VC, Private Credit, Multi-strategy Alternatives, Other); Focus buttons (All / Allocator-LP / Direct-GP); New jobs (7/30 days) + search; Company/Location/Seniority dropdowns + Show date posted toggle; removable filter chips with "Showing N roles"; jobs table (title + firm emphasised, sector/seniority as tags, shortened location, date hidden by default, purple star = posted within 30 days); Top Hiring Organizations below the table
+- Type column is admin-only. LP/GP comes from `data/sector_side.csv` (a sector or a company name -> LP or GP; company rows win; blank = shown only under All). Tests: `python tests/test_dashboard.py`
 - Date stat cards (Last Updated, Earliest Posted, Latest Posted) intentionally removed
 - Admin panel login requires password + GitHub token (entered at login screen)
 

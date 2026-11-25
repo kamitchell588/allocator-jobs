@@ -1,0 +1,17 @@
+key,side
+# key = a sector name or a company name (company rows win). side: LP (allocator) or GP (manager). Blank/missing = shows only under "All".
+Endowment / Foundation,LP
+Pension / Retirement,LP
+Sovereign Wealth,LP
+Family Office,LP
+Insurance,LP
+Investment Consultant / OCIO,LP
+Private Equity,GP
+Growth Equity,GP
+Venture Capital,GP
+Private Credit,GP
+Hedge Fund,GP
+Real Estate,GP
+Infrastructure,GP
+Secondaries,GP
+Multi-strategy Alternatives,GP
