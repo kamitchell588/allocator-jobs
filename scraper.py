@@ -1441,6 +1441,8 @@ def generate_html(jobs: list[dict]) -> None:
   .ms-btn {{ padding: .5rem 1rem; border: 1px solid #cfcfd6; background: var(--white); color: var(--navy);
              font-family: var(--font-body); font-size: .82rem; font-weight: 500; cursor: pointer; border-radius: 999px; }}
   .new-star {{ color: #7c3aed; }}
+  #newJobsBtn {{ border: 1.5px solid #7c3aed; font-weight: 700; }}
+  #newJobsBtn.active {{ background: #7c3aed; border-color: #7c3aed; color: #fff; }}
   .ms-btn.active .new-star {{ color: #c4b5fd; }}
   .ms-btn.active {{ background: #000; color: #fff; border-color: #000; }}
   .ms-panel {{ display: none; position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; min-width: 240px; max-width: 320px;
