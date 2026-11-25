@@ -1130,20 +1130,34 @@ def _stats(jobs: list[dict]) -> dict:
 SENIORITY_LEVELS = ["Intern / Entry", "Analyst / Associate", "Senior Associate / Manager",
                     "Director / VP / Principal", "Executive / Head"]
 
+_SEN_EXEC = _re.compile(r"\b(chief|president|evp|executive vp|head of|managing director|general partner|managing partner|senior partner)\b")
+# C-suite acronyms are often a department ("CIO Office", "Outsourced CIO", "Office of the COO"): only the job itself when no lower-level word is present
+_SEN_ACRONYM = _re.compile(r"\b(cio|ceo|cfo|coo|cto|cro)\b")
+_SEN_NOT_EXEC_WORDS = _re.compile(r"\b(associate|analyst|analyste|developer|engineer|director|vp|svp|manager|office|outsourced)\b")
+# "Partner" is a senior title only when it is the job itself, not a function ("Business Partner") or a program ("Partnerships")
+_SEN_PARTNER = _re.compile(r"\b(?<!business )(?<!strategic )(?<!client )(?<!talent )(?<!hr )(?<!people )(?<!finance )(?<!sales )(?<!solutions )partner\b")
+_SEN_AVP = _re.compile(r"\b(avp|assistant vp|associate vp)\b")
+_SEN_DIRECTOR = _re.compile(r"\b(director|principal|vp|svp)\b")
+_SEN_SENIOR = _re.compile(r"\b(senior|sr|lead|manager|head)\b")
+_SEN_JUNIOR = _re.compile(r"\b(associate|analyst|analyste|junior|entry)\b")
+
+
 def seniority_label(title: str, years: str = "") -> str:
-    """Best-effort seniority from the job title; falls back to Apify's years-of-experience bucket."""
-    t = f" {title.lower()} "
-    def has(*words): return any(w in t for w in words)
-    if has(" intern", "internship", " summer analyst", " co-op", " trainee", " graduate program"):
+    """Best-effort seniority from the job title; falls back to Apify's years-of-experience bucket.
+    'Vice President' is normalised to 'VP' first so it is never read as 'President' (Executive)."""
+    t = _re.sub(r"\bvice[- ]president\b", "vp", title.lower())
+    t = f" {_re.sub(r'[^a-z0-9&]+', ' ', t.replace('chief of staff', 'chiefofstaff'))} "
+    if _re.search(r"\b(intern|internship|summer analyst|co op|trainee|graduate program)\b", t):
         return SENIORITY_LEVELS[0]
-    if has(" chief ", " cio", " ceo", " cfo", " coo", " president", " head of", " managing director",
-           " general partner", " managing partner", " partner,", " partner "):
+    if _SEN_EXEC.search(t) or _SEN_PARTNER.search(t) or (_SEN_ACRONYM.search(t) and not _SEN_NOT_EXEC_WORDS.search(t)):
         return SENIORITY_LEVELS[4]
-    if has(" director", " principal", " vice president", " vp,", " vp ", " svp", " evp"):
-        return SENIORITY_LEVELS[3]
-    if has(" senior", " sr.", " sr ", " lead", " manager", " head "):
+    if _SEN_AVP.search(t):
         return SENIORITY_LEVELS[2]
-    if has(" associate", " analyst", " junior", " entry"):
+    if _SEN_DIRECTOR.search(t):
+        return SENIORITY_LEVELS[3]
+    if _SEN_SENIOR.search(t):
+        return SENIORITY_LEVELS[2]
+    if _SEN_JUNIOR.search(t):
         return SENIORITY_LEVELS[1]
     return {"0-2": SENIORITY_LEVELS[0], "2-5": SENIORITY_LEVELS[1],
             "5-10": SENIORITY_LEVELS[2], "10+": SENIORITY_LEVELS[3]}.get((years or "").strip(), "Not specified")
