@@ -1301,7 +1301,6 @@ def _rows_html(jobs: list[dict]) -> str:
             f'<td>{escape(j.get("seniority") or "")}</td>'
             f'<td>{escape(j.get("org_sector") or "")}</td>'
             f'<td data-sort="{escape(raw_date)}">{escape(raw_date)}</td>'
-            f'<td>{escape(j["job_type"])}</td>'
             f'</tr>'
         )
     return "\n".join(rows)
@@ -1441,6 +1440,10 @@ def generate_html(jobs: list[dict]) -> None:
   .ms {{ position: relative; }}
   .ms-btn {{ padding: .5rem 1rem; border: 1px solid #cfcfd6; background: var(--white); color: var(--navy);
              font-family: var(--font-body); font-size: .82rem; font-weight: 500; cursor: pointer; border-radius: 999px; }}
+  .new-star {{ color: #7c3aed; }}
+  #newJobsBtn {{ border: 1.5px solid #7c3aed; font-weight: 700; }}
+  #newJobsBtn.active {{ background: #7c3aed; border-color: #7c3aed; color: #fff; }}
+  .ms-btn.active .new-star {{ color: #c4b5fd; }}
   .ms-btn.active {{ background: #000; color: #fff; border-color: #000; }}
   .ms-panel {{ display: none; position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; min-width: 240px; max-width: 320px;
                background: var(--white); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 12px 32px rgba(20,22,31,.14); overflow: hidden; }}
@@ -1510,7 +1513,17 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
   <!-- Jobs table -->
   <div class="table-section">
     <div class="table-toolbar">
-      <h2>All Roles ({stats["total"]})</h2>
+      <div style="display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;">
+        <h2>All Roles ({stats["total"]})</h2>
+        <div class="ms" id="newJobs">
+          <button type="button" class="ms-btn" id="newJobsBtn"><span class="new-star">&#9733;</span> New jobs &#9662;</button>
+          <div class="ms-panel" style="min-width:190px;">
+            <label class="ms-opt"><input type="radio" name="newJobsRange" value="7"> Past 7 days <span id="newCount7"></span></label>
+            <label class="ms-opt"><input type="radio" name="newJobsRange" value="30"> Past 30 days <span id="newCount30"></span></label>
+            <div class="ms-foot"><a id="newJobsClear">Clear</a></div>
+          </div>
+        </div>
+      </div>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;">
         <input id="searchBox" type="search" placeholder="Search title, company, location …" />
       </div>
@@ -1526,11 +1539,10 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
             <th data-col="3">Seniority <span class="sort-icon"></span></th>
             <th data-col="4">Sector <span class="sort-icon"></span></th>
             <th data-col="5">Date Posted <span class="sort-icon"></span></th>
-            <th data-col="6">Type <span class="sort-icon"></span></th>
           </tr>
         </thead>
         <tbody id="tableBody">
-          {rows if rows else '<tr><td colspan="7" style="text-align:center;padding:2rem;color:#94a3b8;">No allocator roles found in dataset.</td></tr>'}
+          {rows if rows else '<tr><td colspan="6" style="text-align:center;padding:2rem;color:#94a3b8;">No allocator roles found in dataset.</td></tr>'}
         </tbody>
       </table>
       <div id="noResults">No results match your search.</div>
@@ -1563,9 +1575,41 @@ const FILTERS = [
   {{ key: "metro",     label: "Location",  get: r => [r.cells[2].dataset.metro || "Remote / Unknown"], byCount: true, last: ["Other US", "Other Canada", "Remote / Unknown"] }},
   {{ key: "seniority", label: "Seniority", get: r => [r.cells[3].textContent.trim() || "Not specified"], order: SENIORITY_ORDER }},
   {{ key: "sector",    label: "Sector",    get: r => [r.cells[4].textContent.trim() || "Not classified"], always: ["Infrastructure", "Secondaries"] }},
-  {{ key: "type",      label: "Type",      get: r => (r.cells[6].textContent.split(",").map(x => x.trim()).filter(Boolean)) }},
 ];
 const selected = {{}};   // key -> Set of chosen values (empty = no restriction)
+
+// ── "New jobs" filter: windows are measured from the visitor's date when the page loads,
+//    so they stay current between daily rebuilds. Jobs with no readable posted date
+//    never match 7 / 30 days (they only show with no range chosen). ──
+let newRange = 0;   // 0 = all jobs, 7, or 30
+function daysAgo(row) {{
+  const d = (row.cells[5].dataset.sort || "").trim();
+  const m = d.split("-").map(Number);
+  if (m.length !== 3 || m.some(isNaN) || String(d).length !== 10) return null;
+  const now = new Date(), today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+  return Math.round((today - Date.UTC(m[0], m[1] - 1, m[2])) / 86400000);
+}}
+function inRange(row, n) {{ const a = daysAgo(row); return a !== null && a >= -1 && a <= n; }}
+function buildNewJobs() {{
+  const wrap = document.getElementById("newJobs"), btn = document.getElementById("newJobsBtn");
+  const rows = Array.from(tableBody.rows);
+  [7, 30].forEach(n => {{ document.getElementById("newCount" + n).textContent = "(" + rows.filter(r => inRange(r, n)).length + ")"; }});
+  function set(n) {{
+    newRange = n;
+    wrap.querySelectorAll("input").forEach(i => i.checked = (+i.value === n));
+    btn.classList.toggle("active", n > 0);
+    filterTable();
+  }}
+  wrap.querySelectorAll("input").forEach(i => i.addEventListener("change", () => set(+i.value)));
+  document.getElementById("newJobsClear").addEventListener("click", () => set(0));
+  btn.addEventListener("click", e => {{
+    e.stopPropagation();
+    document.querySelectorAll(".ms.open").forEach(m => {{ if (m !== wrap) m.classList.remove("open"); }});
+    wrap.classList.toggle("open");
+  }});
+  wrap.querySelector(".ms-panel").addEventListener("click", e => e.stopPropagation());
+  window.resetNewJobs = () => {{ newRange = 0; wrap.querySelectorAll("input").forEach(i => i.checked = false); btn.classList.remove("active"); }};
+}}
 
 function buildFilters() {{
   const rows = Array.from(tableBody.rows);
@@ -1624,7 +1668,7 @@ function buildFilters() {{
     f._reset = () => {{ selected[f.key].clear(); list.querySelectorAll("input").forEach(c => c.checked = false); updateBtn(); }};
   }});
   const all = document.createElement("button"); all.type = "button"; all.id = "clearAll"; all.textContent = "Clear all filters";
-  all.addEventListener("click", () => {{ FILTERS.forEach(f => f._reset && f._reset()); searchBox.value = ""; filterTable(); }});
+  all.addEventListener("click", () => {{ FILTERS.forEach(f => f._reset && f._reset()); window.resetNewJobs && window.resetNewJobs(); searchBox.value = ""; filterTable(); }});
   filterBar.appendChild(all);
   document.addEventListener("click", () => document.querySelectorAll(".ms.open").forEach(m => m.classList.remove("open")));
 }}
@@ -1640,6 +1684,7 @@ function filterTable() {{
         if (sel && sel.size && !f.get(row).some(v => sel.has(v))) {{ show = false; break; }}
       }}
     }}
+    if (show && newRange && !inRange(row, newRange)) show = false;
     row.style.display = show ? "" : "none";
     if (show) visible++;
   }});
@@ -1648,6 +1693,7 @@ function filterTable() {{
 
 searchBox.addEventListener("input", filterTable);
 buildFilters();
+buildNewJobs();
 
 // ── Column sort ──
 let sortCol = -1, sortAsc = true;
