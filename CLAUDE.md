@@ -40,6 +40,7 @@ To add a new dataset: add its ID to this list in `scraper.py`. All datasets go t
 2. **Exclusions** — title must NOT match a phrase in `data/title_exclude.txt` (receptionist, compliance, etc.)
    Both files: one phrase per line, `#` comments. Edit them directly; the run stops if either is empty.
 3. **Geo** — US or Canada only
+4. **Seniority label** (`seniority_label` in `scraper.py`, recomputed for history on every run): 'Vice President' is read as VP (Director / VP / Principal), AVP as Senior Associate / Manager, 'Partner' counts as Executive only when it is the job (not 'Business Partner'), and C-suite acronyms count only when no lower-level word is in the title. Check with `python tests/test_seniority.py`; list the Executive / Not specified titles with `python tests/seniority_review.py`.
 - Manual Google Sheet entries bypass all filters (pre-vetted)
 
 ## Data sources
