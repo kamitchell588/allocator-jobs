@@ -17,4 +17,11 @@ p = pathlib.Path(tempfile.mkdtemp()) / "m.csv"; A.write(list(rows.values()), p)
 assert next(csv.DictReader(open(p)))["org_name"]
 rep = "\n".join(A.checks(list(rows.values()), A.audit.sched_info))
 assert "fram-daily-x" in rep and "6m" in rep, rep       # the scheduled task looks back 6 months: flagged
+# a schedule that overrides the task's 6m window with 24h must not be flagged
+class Fake2(Fake):
+    def call(self, m, p, body=None):
+        if p.startswith("/schedules"): return {"data": {"items": [{"name": "fram-daily-x", "isEnabled": True, "actions": [{"actorTaskId": "t2", "input": {"timeRange": "24h"}}]}]}}
+        return super().call(m, p, body)
+r2 = list(A.audit(Fake2())); rep2 = "\n".join(A.checks(r2, A.audit.sched_info))
+assert "fram-daily-x  ->" not in rep2, rep2
 print("test_audit OK")
