@@ -1282,6 +1282,55 @@ def enrich(j: dict) -> dict:
     return j
 
 
+FRAM_MAX = 5
+
+
+def _norm_url(u: str) -> str:
+    return (u or "").strip().lower().rstrip("/")
+
+
+def load_fram_picks() -> list[tuple[str, str]]:
+    """data/fram_selections.csv (url,comment) in file order. A row without a blurb is ignored; duplicates keep the first."""
+    path = pathlib.Path(__file__).parent / "data" / "fram_selections.csv"
+    out, seen = [], set()
+    try:
+        with open(path, newline="", encoding="utf-8-sig") as f:
+            for r in csv.DictReader(f):
+                u, c = (r.get("url") or "").strip(), " ".join((r.get("comment") or "").split())
+                if u and c and _norm_url(u) not in seen:
+                    seen.add(_norm_url(u)); out.append((u, c))
+    except FileNotFoundError:
+        pass
+    return out
+
+
+def fram_picks_for(jobs: list[dict]) -> list[dict]:
+    """Picks that are still on the (public) board, in file order, capped at FRAM_MAX. A hidden or expired role is not in `jobs`, so it drops off."""
+    by_url = {_norm_url(j.get("url")): j for j in jobs if j.get("url")}
+    picks = []
+    for u, c in load_fram_picks():
+        j = by_url.get(_norm_url(u))
+        if j:
+            picks.append({"job": j, "blurb": c})
+        if len(picks) >= FRAM_MAX:
+            break
+    return picks
+
+
+def _fram_strip_html(picks: list[dict]) -> str:
+    if not picks:
+        return ""
+    cards = "".join(
+        '<div class="fram-card">'
+        f'<a class="fram-title" href="{escape(p["job"]["url"])}" target="_blank" rel="noopener"><span class="new-star">&#9733;</span> {escape(p["job"]["title"])}</a>'
+        f'<div class="fram-firm">{escape(p["job"]["company"])}</div>'
+        f'<p class="fram-blurb">{escape(p["blurb"])}</p></div>'
+        for p in picks
+    )
+    return (f'<div class="fram-strip"><div class="fram-head"><span class="new-star">&#9733;</span> Fram Selections '
+            f'<span class="fram-sub">Roles our team thinks merit a closer look</span></div><div class="fram-cards">{cards}</div></div>')
+
+
 _SIDES = None
 
 
@@ -1322,7 +1371,7 @@ def short_location(loc: str) -> str:
     return first + (f" +{len(parts) - 1}" if len(parts) > 1 else "")
 
 
-def _rows_html(jobs: list[dict]) -> str:
+def _rows_html(jobs: list[dict], fram_urls: set | None = None) -> str:
     rows = []
     now = datetime.now(timezone.utc).date()
     for j in jobs:
@@ -1356,7 +1405,7 @@ def _rows_html(jobs: list[dict]) -> str:
         )
         rows.append(
             f'<tr class="age-{age_class}" data-company="{escape(j["company"])}" data-metro="{escape(j.get("metro") or "")}" '
-            f'data-seniority="{escape(senior)}" data-sector="{escape(sector)}" data-side="{side_for(j)}" data-date="{escape(raw_date)}">'
+            f'data-seniority="{escape(senior)}" data-sector="{escape(sector)}" data-side="{side_for(j)}" data-date="{escape(raw_date)}" data-fram="{1 if _norm_url(j.get("url")) in (fram_urls or ()) else 0}">'
             f'<td>{title_cell}<div class="tags">{tags}</div></td>'
             f'<td>{escape(j["company"])}</td>'
             f'<td title="{escape(j["location"])}">{escape(short_location(j["location"]))}</td>'
@@ -1377,7 +1426,9 @@ def _top_companies_html(top: list[tuple]) -> str:
 
 def generate_html(jobs: list[dict]) -> None:
     stats    = _stats(jobs)
-    rows     = _rows_html(jobs)
+    fram     = fram_picks_for(jobs)
+    rows     = _rows_html(jobs, {_norm_url(p["job"]["url"]) for p in fram})
+    fram_html = _fram_strip_html(fram)
     chips    = _top_companies_html(stats["top_companies"])
     updated  = datetime.now().strftime("%B %d, %Y at %I:%M %p")
 
@@ -1440,6 +1491,14 @@ def generate_html(jobs: list[dict]) -> None:
   .result-line .count {{ font-weight: 600; margin-right: .4rem; }}
   .fchip {{ display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .4rem .25rem .75rem; border: 1px solid #000; border-radius: 999px; font-size: .78rem; background: var(--white); }}
   .fchip button {{ border: 0; background: #000; color: #fff; width: 18px; height: 18px; border-radius: 50%; font-size: .7rem; line-height: 1; cursor: pointer; }}
+  .fram-strip {{ padding: 1.1rem 1.5rem 1rem; background: #faf8ff; border-bottom: 1px solid #e4dcf7; }}
+  .fram-head {{ font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; margin-bottom: .7rem; }}
+  .fram-sub {{ font-family: var(--font-body); font-size: .78rem; color: var(--muted); margin-left: .6rem; font-weight: 400; }}
+  .fram-cards {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: .8rem; }}
+  .fram-card {{ background: var(--white); border: 1px solid #e4dcf7; border-radius: 10px; padding: .8rem 1rem; }}
+  .fram-title {{ font-family: var(--font-display); font-size: 1.02rem; font-weight: 500; color: var(--navy); }}
+  .fram-firm {{ font-size: .8rem; color: var(--muted); margin: .15rem 0 .45rem; }}
+  .fram-blurb {{ font-size: .82rem; line-height: 1.4; }}
   .tags {{ margin-top: .35rem; display: flex; gap: .35rem; flex-wrap: wrap; }}
   .tag {{ font-size: .68rem; font-weight: 500; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: .1rem .55rem; background: var(--cream); }}
 
@@ -1579,6 +1638,7 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
 
   <!-- Jobs table -->
   <div class="table-section">
+    {fram_html}
     <div class="pill-row" id="sectorPills"></div>
     <div class="pill-row second" id="sidePills"></div>
     <div class="table-toolbar">
@@ -1655,8 +1715,9 @@ const FILTERS = [
   {{ key: "seniority", label: "Seniority", get: r => [r.dataset.seniority || "Not specified"], order: SENIORITY_ORDER }},
 ];
 const selected = {{}};   // key -> Set of chosen values (empty = no restriction)
-let sectorSel = "";    // "" = All, a core sector name, or "Other"
-let sideSel = "";      // "" = All, "LP" or "GP"
+const sectorSel = new Set();   // empty = All; otherwise any of the core sector names / "Other" (multi-select)
+const sideSel = new Set();     // empty = All; "LP" and/or "GP" (multi-select)
+let framOnly = false;          // true = only the Fram Selections roles
 let newRange = 0;      // 0 = all jobs, 7, or 30
 
 const bucketOf = r => CORE_SECTORS.includes(r.dataset.sector) ? r.dataset.sector : "Other";
@@ -1679,8 +1740,9 @@ function passes(row, ignore) {{
     const sel = selected[f.key];
     if (sel && sel.size && !f.get(row).some(v => sel.has(v))) return false;
   }}
-  if (ignore !== "sector" && sectorSel && bucketOf(row) !== sectorSel) return false;
-  if (ignore !== "side" && sideSel && row.dataset.side !== sideSel) return false;
+  if (ignore !== "sector" && sectorSel.size && !sectorSel.has(bucketOf(row))) return false;
+  if (ignore !== "side" && sideSel.size && !sideSel.has(row.dataset.side)) return false;
+  if (framOnly && row.dataset.fram !== "1") return false;
   if (newRange && !inRange(row, newRange)) return false;
   return true;
 }}
@@ -1691,16 +1753,28 @@ function buildPills() {{
   [["", "All"], ...CORE_SECTORS.map(s => [s, s]), ["Other", "Other"]].forEach(([v, label]) => {{
     const b = document.createElement("button"); b.type = "button"; b.className = "pill"; b.dataset.v = v;
     b.innerHTML = label + ' <span class="n"></span>';
-    b.addEventListener("click", () => {{ sectorSel = v; filterTable(); }});
+    b.addEventListener("click", () => {{
+      if (v === "") sectorSel.clear(); else if (sectorSel.has(v)) sectorSel.delete(v); else sectorSel.add(v);
+      filterTable();
+    }});
     sp.appendChild(b);
   }});
   dp.innerHTML = '<span class="pill-label">Focus</span><span class="seg"></span>';
   SIDES.forEach(([v, label]) => {{
     const b = document.createElement("button"); b.type = "button"; b.className = "pill"; b.dataset.v = v;
     b.innerHTML = label + ' <span class="n"></span>';
-    b.addEventListener("click", () => {{ sideSel = v; filterTable(); }});
+    b.addEventListener("click", () => {{
+      if (v === "") sideSel.clear(); else if (sideSel.has(v)) sideSel.delete(v); else sideSel.add(v);
+      filterTable();
+    }});
     dp.querySelector(".seg").appendChild(b);
   }});
+  if (tableBody.querySelector('tr[data-fram="1"]')) {{
+    const fb = document.createElement("button"); fb.type = "button"; fb.className = "pill"; fb.id = "framBtn";
+    fb.innerHTML = '<span class="new-star">★</span> Fram Selections';
+    fb.addEventListener("click", () => {{ framOnly = !framOnly; filterTable(); }});
+    dp.appendChild(fb);
+  }}
 }}
 
 function updatePills(rows) {{
@@ -1710,11 +1784,12 @@ function updatePills(rows) {{
     if (passes(r, "side")) {{ const k = r.dataset.side || "none"; bySide[k] = (bySide[k] || 0) + 1; bySide[""] = (bySide[""] || 0) + 1; }}
   }});
   document.querySelectorAll("#sectorPills .pill").forEach(b => {{
-    b.classList.toggle("active", b.dataset.v === sectorSel);
+    b.classList.toggle("active", b.dataset.v === "" ? sectorSel.size === 0 : sectorSel.has(b.dataset.v));
     b.querySelector(".n").textContent = bySector[b.dataset.v] || 0;
   }});
-  document.querySelectorAll("#sidePills .pill").forEach(b => {{
-    b.classList.toggle("active", b.dataset.v === sideSel);
+  const fbn = document.getElementById("framBtn"); if (fbn) fbn.classList.toggle("active", framOnly);
+  document.querySelectorAll("#sidePills .pill[data-v]").forEach(b => {{
+    b.classList.toggle("active", b.dataset.v === "" ? sideSel.size === 0 : sideSel.has(b.dataset.v));
     b.querySelector(".n").textContent = bySide[b.dataset.v] || 0;
   }});
 }}
@@ -1798,14 +1873,15 @@ function buildNewJobs() {{
 function clearEverything() {{
   FILTERS.forEach(f => f._reset && f._reset());
   FILTERS.forEach(f => f._update && f._update());
-  window.setNewRange(0); sectorSel = ""; sideSel = ""; searchBox.value = "";
+  window.setNewRange(0); sectorSel.clear(); sideSel.clear(); framOnly = false; searchBox.value = "";
   filterTable();
 }}
 
 function renderChips(visible) {{
   const chips = [];
-  if (sectorSel) chips.push([sectorSel, () => {{ sectorSel = ""; }}]);
-  if (sideSel) chips.push([sideSel === "LP" ? "Allocator / LP" : "Direct / GP", () => {{ sideSel = ""; }}]);
+  sectorSel.forEach(v => chips.push([v, () => sectorSel.delete(v)]));
+  sideSel.forEach(v => chips.push([v === "LP" ? "Allocator / LP" : "Direct / GP", () => sideSel.delete(v)]));
+  if (framOnly) chips.push(["Fram Selections", () => {{ framOnly = false; }}]);
   if (newRange) chips.push(["New jobs: past " + newRange + " days", () => window.setNewRange(0)]);
   FILTERS.forEach(f => selected[f.key].forEach(v => chips.push([v, () => f._remove(v)])));
   const q = searchBox.value.trim();
@@ -1905,6 +1981,7 @@ function sortTableByCol(col, asc) {{
 def generate_admin_html(jobs: list[dict]) -> None:
     hidden  = load_hidden_jobs()
     updated = datetime.now().strftime("%B %d, %Y at %I:%M %p")
+    fram_map = {_norm_url(u): c for u, c in load_fram_picks()}
 
     rows = []
     for j in jobs:
@@ -1922,6 +1999,11 @@ def generate_admin_html(jobs: list[dict]) -> None:
             f'{"Unhide" if is_hidden else "Hide"}</button>'
         )
         date_added = escape(j.get("date_added") or "")
+        pick_blurb = fram_map.get(_norm_url(j["url"]))
+        pick_cells = (
+            f'<td><input type="checkbox" class="pick-cb" data-url="{url}"{" checked" if pick_blurb is not None else ""}></td>'
+            f'<td><input type="text" class="pick-blurb" maxlength="240" placeholder="Why this role merits attention" value="{escape(pick_blurb or "")}"></td>'
+        )
         rows.append(
             f'<tr{row_style}>'
             f'<td>{title_cell}</td>'
@@ -1932,9 +2014,11 @@ def generate_admin_html(jobs: list[dict]) -> None:
             f'<td>{escape(j["job_type"])}</td>'
             f'<td><span class="source-tag">{source}</span></td>'
             f'<td>{hide_btn}</td>'
+            f'{pick_cells}'
             f'</tr>'
         )
     rows_html = "\n".join(rows)
+    fram_order = json.dumps([u for u, _ in load_fram_picks()])
 
     admin_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -2163,6 +2247,8 @@ def generate_admin_html(jobs: list[dict]) -> None:
     <button id="refreshBtn" onclick="triggerRefresh()" style="padding:.45rem 1.2rem;background:var(--navy);color:#fff;border:none;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;letter-spacing:.04em;white-space:nowrap;">
       ↻ Refresh Jobs
     </button>
+    <button id="savePicksBtn" onclick="savePicks()" style="padding:.45rem 1.2rem;background:#7c3aed;color:#fff;border:none;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;white-space:nowrap;">★ Save picks</button>
+    <span id="pickCount" style="font-size:.78rem;color:var(--muted);"></span>
     <span id="refreshStatus" style="font-size:.78rem;color:var(--muted);"></span>
   </div>
 
@@ -2178,6 +2264,8 @@ def generate_admin_html(jobs: list[dict]) -> None:
           <th data-col="5">Type</th>
           <th data-col="6">Source</th>
           <th>Action</th>
+          <th title="Show on the public Fram Selections strip (max 5)">Fram pick</th>
+          <th>Why this role (shown publicly)</th>
         </tr>
       </thead>
       <tbody id="adminBody">
@@ -2301,6 +2389,45 @@ async function hideJob(btn) {{
       : (triggered ? "✓ Job restored — dashboard refreshing (~2 min)" : "✓ Job restored (refresh failed — try the Refresh button)"),
     hiding ? "#1b2232" : "#166534"
   );
+}}
+
+// ── Fram Selections: tick a role, add a blurb, Save picks (max 5, shown in file order; new picks go to the end) ──
+const FRAM_MAX = 5, FRAM_ORDER = {fram_order};
+const FRAM_FILE = "data/fram_selections.csv";
+function _pickRows() {{ return Array.from(document.querySelectorAll("#adminBody tr")).filter(r => r.querySelector(".pick-cb")); }}
+function updatePickCount() {{
+  const n = _pickRows().filter(r => r.querySelector(".pick-cb").checked).length;
+  document.getElementById("pickCount").textContent = n + " of " + FRAM_MAX + " picked";
+}}
+document.addEventListener("change", e => {{
+  if (!e.target.classList || !e.target.classList.contains("pick-cb")) return;
+  const n = _pickRows().filter(r => r.querySelector(".pick-cb").checked).length;
+  if (n > FRAM_MAX) {{ e.target.checked = false; showToast("Max " + FRAM_MAX + " picks: untick one first.", "#b91c1c"); }}
+  updatePickCount();
+}});
+updatePickCount();
+const _csvq = v => '"' + String(v).replace(/\s+/g, " ").trim().replace(/"/g, '""') + '"';
+async function savePicks() {{
+  const picked = _pickRows().filter(r => r.querySelector(".pick-cb").checked)
+    .map(r => ({{ url: r.querySelector(".pick-cb").dataset.url, blurb: r.querySelector(".pick-blurb").value.trim() }}));
+  if (picked.some(p => !p.blurb)) {{ showToast("Every pick needs a short 'why this role' note.", "#b91c1c"); return; }}
+  const byUrl = Object.fromEntries(picked.map(p => [p.url.toLowerCase().replace(/\/+$/, ""), p]));
+  const norm = u => u.toLowerCase().replace(/\/+$/, "");
+  const ordered = [];
+  FRAM_ORDER.forEach(u => {{ const p = byUrl[norm(u)]; if (p && !ordered.includes(p)) ordered.push(p); }});
+  picked.forEach(p => {{ if (!ordered.includes(p)) ordered.push(p); }});
+  const text = "url,comment\\n" + ordered.map(p => _csvq(p.url) + "," + _csvq(p.blurb)).join("\\n") + (ordered.length ? "\\n" : "");
+  const btn = document.getElementById("savePicksBtn"); btn.disabled = true;
+  const g = await fetch(`https://api.github.com/repos/${{REPO}}/contents/${{FRAM_FILE}}`, {{ headers: ghHeaders() }});
+  const sha = g.ok ? (await g.json()).sha : null;
+  const body = {{ message: "Update Fram Selections", content: btoa(unescape(encodeURIComponent(text))), branch: "main" }};
+  if (sha) body.sha = sha;
+  const r = await fetch(`https://api.github.com/repos/${{REPO}}/contents/${{FRAM_FILE}}`, {{ method: "PUT", headers: ghHeaders(), body: JSON.stringify(body) }});
+  btn.disabled = false;
+  if (!r.ok) {{ showToast("Could not save picks — check your token.", "#b91c1c"); return; }}
+  FRAM_ORDER.length = 0; ordered.forEach(p => FRAM_ORDER.push(p.url));
+  const triggered = await triggerWorkflow();
+  showToast(triggered ? "✓ Picks saved — dashboard refreshing (~2 min)" : "✓ Picks saved (refresh failed — try the Refresh button)", "#166534");
 }}
 
 // ── Column sort ──
