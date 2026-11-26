@@ -1569,6 +1569,16 @@ def generate_html(jobs: list[dict]) -> None:
 
   #noResults {{ display: none; text-align: center; padding: 2rem; color: var(--muted); }}
 
+  /* ── Pagination (PAGE_SIZE roles per page) ── */
+  #pager {{ display: flex; gap: .35rem; flex-wrap: wrap; justify-content: center; align-items: center; padding: 1.1rem 1rem; border-top: 1px solid var(--border); }}
+  #pager:empty {{ display: none; }}
+  #pager button {{ min-width: 2.2rem; padding: .4rem .7rem; border: 1px solid #cfcfd6; background: var(--white); color: var(--navy);
+                   font-family: var(--font-body); font-size: .82rem; font-weight: 500; cursor: pointer; border-radius: 999px; }}
+  #pager button:hover:not(:disabled) {{ border-color: #000; }}
+  #pager button.active {{ background: #000; color: #fff; border-color: #000; }}
+  #pager button:disabled {{ opacity: .4; cursor: default; }}
+  #pager .gap {{ color: var(--muted); padding: 0 .2rem; }}
+
   .source-tag {{ display: inline-block; padding: .15rem .6rem; font-size: .7rem; font-weight: 500; border: 1px solid var(--border);
                  border-radius: 999px; color: var(--muted); white-space: nowrap; }}
   .source-tag.manual {{ background: #000; border-color: #000; color: #fff; }}
@@ -1676,6 +1686,7 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
       </table>
       <div id="noResults">No results match your search.</div>
     </div>
+    <nav id="pager" aria-label="Job pages"></nav>
   </div>
 
   <!-- Top companies -->
@@ -1889,7 +1900,9 @@ function renderChips(visible) {{
   if (q) chips.push(["“" + q + "”", () => {{ searchBox.value = ""; }}]);
   resultLine.innerHTML = "";
   const c = document.createElement("span"); c.className = "count";
-  c.textContent = "Showing " + visible + (visible === 1 ? " role" : " roles");
+  const first = (page - 1) * PAGE_SIZE + 1, last = Math.min(page * PAGE_SIZE, visible);
+  c.textContent = visible > PAGE_SIZE ? "Showing " + first + "–" + last + " of " + visible + " roles"
+                                      : "Showing " + visible + (visible === 1 ? " role" : " roles");
   resultLine.appendChild(c);
   chips.forEach(([label, remove]) => {{
     const el = document.createElement("span"); el.className = "fchip"; el.appendChild(document.createTextNode(label));
@@ -1903,17 +1916,60 @@ function renderChips(visible) {{
   }}
 }}
 
+// ── Pagination: at most PAGE_SIZE roles on screen; any filter change goes back to page 1 ──
+const PAGE_SIZE = 25;
+let page = 1;
+const pager = document.getElementById("pager");
+
+function renderPage(scroll) {{
+  const rows = Array.from(tableBody.rows).filter(r => r.dataset.company !== undefined);
+  const matched = rows.filter(r => r._match);
+  const pages = Math.max(1, Math.ceil(matched.length / PAGE_SIZE));
+  page = Math.min(Math.max(1, page), pages);
+  const start = (page - 1) * PAGE_SIZE, end = start + PAGE_SIZE;
+  rows.forEach(r => {{ r.style.display = "none"; }});
+  matched.slice(start, end).forEach(r => {{ r.style.display = ""; }});
+  renderChips(matched.length);
+  renderPager(pages);
+  if (scroll) document.querySelector(".table-toolbar").scrollIntoView({{ behavior: "smooth", block: "start" }});
+}}
+
+function renderPager(pages) {{
+  pager.innerHTML = "";
+  if (pages <= 1) return;
+  const add = (label, target, opts) => {{
+    const b = document.createElement("button"); b.type = "button"; b.textContent = label;
+    if (opts && opts.aria) b.setAttribute("aria-label", opts.aria);
+    if (target === page && !(opts && opts.nav)) {{ b.classList.add("active"); b.setAttribute("aria-current", "page"); }}
+    if (target < 1 || target > pages || (opts && opts.nav && target === page)) b.disabled = true;
+    b.addEventListener("click", () => {{ page = target; renderPage(true); }});
+    pager.appendChild(b);
+  }};
+  const gap = () => {{ const s = document.createElement("span"); s.className = "gap"; s.textContent = "…"; pager.appendChild(s); }};
+  add("‹ Prev", page - 1, {{ nav: true, aria: "Previous page" }});
+  // first, last, and the pages around the current one; "…" for the rest
+  const show = new Set([1, pages, page - 1, page, page + 1]);
+  let prev = 0;
+  for (let p = 1; p <= pages; p++) {{
+    if (!show.has(p)) continue;
+    if (p - prev > 1) gap();
+    add(String(p), p, {{ aria: "Page " + p }});
+    prev = p;
+  }}
+  add("Next ›", page + 1, {{ nav: true, aria: "Next page" }});
+}}
+
 function filterTable() {{
   const rows = Array.from(tableBody.rows).filter(r => r.dataset.company !== undefined);
   let visible = 0;
   rows.forEach(row => {{
-    const show = passes(row, null);
-    row.style.display = show ? "" : "none";
-    if (show) visible++;
+    row._match = passes(row, null);
+    if (row._match) visible++;
   }});
   FILTERS.forEach(f => f._update && f._update());
   updatePills(rows);
-  renderChips(visible);
+  page = 1;
+  renderPage(false);
   noResults.style.display = visible === 0 ? "block" : "none";
 }}
 
@@ -1967,6 +2023,8 @@ function sortTableByCol(col, asc) {{
     return asc ? ta.localeCompare(tb) : tb.localeCompare(ta);
   }});
   rows.forEach(r => tableBody.appendChild(r));
+  page = 1;
+  renderPage(false);
 }}
 </script>
 
