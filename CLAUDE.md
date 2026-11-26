@@ -51,6 +51,7 @@ To add a new dataset: add its ID to this list in `scraper.py`. All datasets go t
 
 ## Dashboard
 - Public dashboard layout (top to bottom): compact header + open-roles count; Sector pills (All, PE, Growth Equity, VC, Private Credit, Multi-strategy Alternatives, Other); Focus buttons (All / Allocator-LP / Direct-GP, plus 🔑 Fram Selections); Sector and Focus buttons are multi-select (several can be on at once, All clears them); Fram Selections strip above the pills; New jobs (7/30 days) + search; Company/Location/Seniority dropdowns + Show date posted toggle; removable filter chips with "Showing N roles"; jobs table (title + firm emphasised, sector/seniority as tags, shortened location, date hidden by default, purple star = posted within 30 days); Top Hiring Organizations below the table
+- Firm names: the public board and Organization Directory show one name per firm (`firm_name` in `scraper.py`): a feed name maps to the firm's `org_name` in `data/orgs.csv` when it equals its search_term or an alias, or contains the search_term plus only filler words (Careers at, Campus, LLC, Inc …). To merge another spelling, add it to that firm's `aliases`. The CSV and admin keep the feed's name.
 - Type column is admin-only. LP/GP comes from `data/sector_side.csv` (a sector or a company name -> LP or GP; company rows win; blank = shown only under All). Tests: `python tests/test_dashboard.py`
 - Date stat cards (Last Updated, Earliest Posted, Latest Posted) intentionally removed
 - Admin panel login requires password + GitHub token (entered at login screen)

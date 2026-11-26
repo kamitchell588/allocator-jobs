@@ -423,6 +423,32 @@ def _load_org_meta() -> dict:
     return _ORG_META
 
 
+# Words a job feed tacks onto a firm's name ("Careers at KKR", "General Atlantic - Campus", "NEPC, LLC").
+_NAME_FILLER = set("""careers career jobs job internships internship campus recruiting university student students early talent
+page site at the of inc incorporated llc l l c lp l p llp ltd limited co corp corporation company ag sa plc nv
+trust""".split())   # not "group": "The Wilshire Group" is a different company from Wilshire
+
+
+def firm_name(company: str) -> str:
+    """One display name per firm for the public board and Organization Directory.
+    A company name maps to the firm's org_name in data/orgs.csv when it equals the firm's search_term or an alias,
+    or when it contains the search_term and everything else in it is filler ('Careers at KKR' -> 'KKR',
+    'Bridgewater Associates Campus Recruiting' -> 'Bridgewater Associates'). Anything else keeps the feed's name,
+    so 'Apollo Information Systems' is not shown as Apollo. To merge another spelling, add it to that firm's aliases."""
+    raw = (company or "").strip()
+    meta = _load_org_meta()
+    c = raw.lower()
+    r = meta.get(c)
+    if r is None:
+        r = _match_org(meta, c)
+        if r is not None:
+            terms = [t for t, row in meta.items() if row is r and _re.search(r"(?<![a-z0-9])" + _re.escape(t) + r"(?![a-z0-9])", c)]
+            rest = c.replace(max(terms, key=len), " ") if terms else c
+            if any(w not in _NAME_FILLER for w in _re.findall(r"[a-z0-9]+", rest)):
+                r = None
+    return ((r or {}).get("org_name") or "").strip() or raw
+
+
 def write_run_report(raw: list[dict], kept: list[dict]) -> None:
     """Per-firm coverage: jobs returned by Apify vs jobs kept. Flags firms with zero."""
     from collections import Counter
@@ -1109,7 +1135,7 @@ def _stats(jobs: list[dict]) -> dict:
     companies = {}
     dates = []
     for j in jobs:
-        c = j["company"]
+        c = j.get("firm") or j["company"]
         companies[c] = companies.get(c, 0) + 1
         if j["date_posted"]:
             dates.append(j["date_posted"])
@@ -1279,6 +1305,7 @@ def enrich(j: dict) -> dict:
         j["seniority"] = seniority_label(j.get("title", ""), j.get("experience_years", ""))
     j["org_sector"] = sector_label(j)
     j["metro"] = metro_label(j.get("location", ""))
+    j["firm"] = firm_name(j.get("company", ""))   # display only; the CSV keeps the feed's company name
     return j
 
 
@@ -1323,7 +1350,7 @@ def _fram_strip_html(picks: list[dict]) -> str:
     cards = "".join(
         '<div class="fram-card">'
         f'<a class="fram-title" href="{escape(p["job"]["url"])}" target="_blank" rel="noopener"><span class="fram-key">&#128273;</span> {escape(p["job"]["title"])}</a>'
-        f'<div class="fram-firm">{escape(p["job"]["company"])}</div>'
+        f'<div class="fram-firm">{escape(p["job"].get("firm") or p["job"]["company"])}</div>'
         f'<p class="fram-blurb">{escape(p["blurb"])}</p></div>'
         for p in picks
     )
@@ -1398,16 +1425,17 @@ def _rows_html(jobs: list[dict], fram_urls: set | None = None) -> str:
         source = escape(j.get("source") or "")
         sector = j.get("org_sector") or ""
         senior = j.get("seniority") or ""
+        firm = j.get("firm") or firm_name(j["company"])
         tags = "".join(
             f'<span class="tag">{escape(t)}</span>'
             for t in (sector if sector != "Not classified" else "", senior if senior != "Not specified" else "")
             if t
         )
         rows.append(
-            f'<tr class="age-{age_class}" data-company="{escape(j["company"])}" data-metro="{escape(j.get("metro") or "")}" '
+            f'<tr class="age-{age_class}" data-company="{escape(firm)}" data-metro="{escape(j.get("metro") or "")}" '
             f'data-seniority="{escape(senior)}" data-sector="{escape(sector)}" data-side="{side_for(j)}" data-date="{escape(raw_date)}" data-fram="{1 if _norm_url(j.get("url")) in (fram_urls or ()) else 0}">'
             f'<td>{title_cell}<div class="tags">{tags}</div></td>'
-            f'<td>{escape(j["company"])}</td>'
+            f'<td>{escape(firm)}</td>'
             f'<td title="{escape(j["location"])}">{escape(short_location(j["location"]))}</td>'
             f'<td data-sort="{escape(raw_date)}">{escape(raw_date)}</td>'
             f'</tr>'
