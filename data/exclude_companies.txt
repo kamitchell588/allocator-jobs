@@ -19,9 +19,13 @@ apollo education
 apollo medical
 apollomd
 apollo graph
+apollo information systems
 
 # not EQT Partners (EQT Corporation is a US natural gas producer)
 eqt corporation
 eqt production
 eqt midstream
 equitrans
+
+# not Wilshire (Wilshire Advisors); The Wilshire Group is a healthcare company
+wilshire group

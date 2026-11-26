@@ -423,6 +423,32 @@ def _load_org_meta() -> dict:
     return _ORG_META
 
 
+# Words a job feed tacks onto a firm's name ("Careers at KKR", "General Atlantic - Campus", "NEPC, LLC").
+_NAME_FILLER = set("""careers career jobs job internships internship campus recruiting university student students early talent
+page site at the of inc incorporated llc l l c lp l p llp ltd limited co corp corporation company ag sa plc nv
+trust""".split())   # not "group": "The Wilshire Group" is a different company from Wilshire
+
+
+def firm_name(company: str) -> str:
+    """One display name per firm for the public board and Organization Directory.
+    A company name maps to the firm's org_name in data/orgs.csv when it equals the firm's search_term or an alias,
+    or when it contains the search_term and everything else in it is filler ('Careers at KKR' -> 'KKR',
+    'Bridgewater Associates Campus Recruiting' -> 'Bridgewater Associates'). Anything else keeps the feed's name,
+    so 'Apollo Information Systems' is not shown as Apollo. To merge another spelling, add it to that firm's aliases."""
+    raw = (company or "").strip()
+    meta = _load_org_meta()
+    c = raw.lower()
+    r = meta.get(c)
+    if r is None:
+        r = _match_org(meta, c)
+        if r is not None:
+            terms = [t for t, row in meta.items() if row is r and _re.search(r"(?<![a-z0-9])" + _re.escape(t) + r"(?![a-z0-9])", c)]
+            rest = c.replace(max(terms, key=len), " ") if terms else c
+            if any(w not in _NAME_FILLER for w in _re.findall(r"[a-z0-9]+", rest)):
+                r = None
+    return ((r or {}).get("org_name") or "").strip() or raw
+
+
 def write_run_report(raw: list[dict], kept: list[dict]) -> None:
     """Per-firm coverage: jobs returned by Apify vs jobs kept. Flags firms with zero."""
     from collections import Counter
@@ -1109,7 +1135,7 @@ def _stats(jobs: list[dict]) -> dict:
     companies = {}
     dates = []
     for j in jobs:
-        c = j["company"]
+        c = j.get("firm") or j["company"]
         companies[c] = companies.get(c, 0) + 1
         if j["date_posted"]:
             dates.append(j["date_posted"])
@@ -1279,6 +1305,7 @@ def enrich(j: dict) -> dict:
         j["seniority"] = seniority_label(j.get("title", ""), j.get("experience_years", ""))
     j["org_sector"] = sector_label(j)
     j["metro"] = metro_label(j.get("location", ""))
+    j["firm"] = firm_name(j.get("company", ""))   # display only; the CSV keeps the feed's company name
     return j
 
 
@@ -1323,7 +1350,7 @@ def _fram_strip_html(picks: list[dict]) -> str:
     cards = "".join(
         '<div class="fram-card">'
         f'<a class="fram-title" href="{escape(p["job"]["url"])}" target="_blank" rel="noopener"><span class="fram-key">&#128273;</span> {escape(p["job"]["title"])}</a>'
-        f'<div class="fram-firm">{escape(p["job"]["company"])}</div>'
+        f'<div class="fram-firm">{escape(p["job"].get("firm") or p["job"]["company"])}</div>'
         f'<p class="fram-blurb">{escape(p["blurb"])}</p></div>'
         for p in picks
     )
@@ -1398,16 +1425,17 @@ def _rows_html(jobs: list[dict], fram_urls: set | None = None) -> str:
         source = escape(j.get("source") or "")
         sector = j.get("org_sector") or ""
         senior = j.get("seniority") or ""
+        firm = j.get("firm") or firm_name(j["company"])
         tags = "".join(
             f'<span class="tag">{escape(t)}</span>'
             for t in (sector if sector != "Not classified" else "", senior if senior != "Not specified" else "")
             if t
         )
         rows.append(
-            f'<tr class="age-{age_class}" data-company="{escape(j["company"])}" data-metro="{escape(j.get("metro") or "")}" '
+            f'<tr class="age-{age_class}" data-company="{escape(firm)}" data-metro="{escape(j.get("metro") or "")}" '
             f'data-seniority="{escape(senior)}" data-sector="{escape(sector)}" data-side="{side_for(j)}" data-date="{escape(raw_date)}" data-fram="{1 if _norm_url(j.get("url")) in (fram_urls or ()) else 0}">'
             f'<td>{title_cell}<div class="tags">{tags}</div></td>'
-            f'<td>{escape(j["company"])}</td>'
+            f'<td>{escape(firm)}</td>'
             f'<td title="{escape(j["location"])}">{escape(short_location(j["location"]))}</td>'
             f'<td data-sort="{escape(raw_date)}">{escape(raw_date)}</td>'
             f'</tr>'
@@ -1569,6 +1597,29 @@ def generate_html(jobs: list[dict]) -> None:
 
   #noResults {{ display: none; text-align: center; padding: 2rem; color: var(--muted); }}
 
+  /* ── Jobs / Organization Directory tabs ── */
+  .view-tabs {{ display: flex; gap: 0; padding: 0 1.5rem; border-bottom: 1px solid var(--border); background: var(--white); }}
+  .view-tab {{ padding: 1rem .2rem .85rem; margin-right: 1.6rem; border: 0; border-bottom: 2px solid transparent; background: none;
+               font-family: var(--font-body); font-size: .92rem; font-weight: 600; color: var(--muted); cursor: pointer; }}
+  .view-tab:hover {{ color: var(--navy); }}
+  .view-tab.active {{ color: var(--navy); border-bottom-color: #000; }}
+  body.dir-view .table-wrap, body.dir-view #pager, body.dir-view #framWrap, body.dir-view #dateToggle {{ display: none !important; }}
+
+  /* ── Organization directory ── */
+  #directory {{ padding: .4rem 1.5rem 1.6rem; }}
+  .dir-sector {{ padding-top: 1.3rem; }}
+  .dir-sector h3 {{ font-size: .68rem; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 600;
+                    padding-bottom: .55rem; margin-bottom: .45rem; border-bottom: 1px solid var(--border); }}
+  .dir-sector h3 .n {{ margin-left: .35rem; opacity: .8; }}
+  .dir-list {{ list-style: none; columns: 3 240px; column-gap: 2rem; }}
+  .dir-list li {{ break-inside: avoid; }}
+  .dir-org {{ display: flex; width: 100%; justify-content: space-between; gap: .6rem; align-items: baseline; padding: .4rem .3rem; border: 0;
+              background: none; text-align: left; cursor: pointer; font-family: var(--font-display); font-size: 1rem; color: var(--navy); border-radius: 6px; }}
+  .dir-org:hover {{ background: var(--cream); }}
+  .dir-org:hover .dir-name {{ text-decoration: underline; }}
+  .dir-org .dir-n {{ font-family: var(--font-body); font-size: .75rem; color: var(--muted); white-space: nowrap; }}
+  .dir-empty {{ text-align: center; padding: 2rem; color: var(--muted); }}
+
   /* ── Pagination (PAGE_SIZE roles per page) ── */
   #pager {{ display: flex; gap: .35rem; flex-wrap: wrap; justify-content: center; align-items: center; padding: 1.1rem 1rem; border-top: 1px solid var(--border); }}
   #pager:empty {{ display: none; }}
@@ -1647,14 +1698,18 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
 
 <div class="container">
 
-  <!-- Jobs table -->
+  <!-- Jobs table / Organization directory (same filters drive both views) -->
   <div class="table-section">
-    {fram_html}
+    <div class="view-tabs" role="tablist">
+      <button type="button" class="view-tab active" id="tabJobs" data-view="jobs" role="tab" aria-selected="true">Jobs</button>
+      <button type="button" class="view-tab" id="tabDir" data-view="dir" role="tab" aria-selected="false">Organization Directory</button>
+    </div>
+    <div id="framWrap">{fram_html}</div>
     <div class="pill-row" id="sectorPills"></div>
     <div class="pill-row second" id="sidePills"></div>
     <div class="table-toolbar">
       <div style="display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;">
-        <h2>All Roles</h2>
+        <h2 id="viewTitle">All Roles</h2>
         <div class="ms" id="newJobs">
           <button type="button" class="ms-btn" id="newJobsBtn"><span class="new-star">&#9733;</span> New jobs &#9662;</button>
           <div class="ms-panel" style="min-width:190px;">
@@ -1670,6 +1725,7 @@ document.getElementById("gate-btn").addEventListener("click", openBoard);
     </div>
     <div class="filter-bar" id="filterBar"></div>
     <div class="result-line" id="resultLine"></div>
+    <div id="directory" hidden></div>
     <div class="table-wrap">
       <table id="jobsTable" class="hide-date">
         <thead>
@@ -1901,7 +1957,8 @@ function renderChips(visible) {{
   resultLine.innerHTML = "";
   const c = document.createElement("span"); c.className = "count";
   const first = (page - 1) * PAGE_SIZE + 1, last = Math.min(page * PAGE_SIZE, visible);
-  c.textContent = visible > PAGE_SIZE ? "Showing " + first + "–" + last + " of " + visible + " roles"
+  c.textContent = view === "dir" ? "Showing " + dirOrgs + (dirOrgs === 1 ? " organization" : " organizations") + " · " + visible + (visible === 1 ? " role" : " roles")
+                : visible > PAGE_SIZE ? "Showing " + first + "–" + last + " of " + visible + " roles"
                                       : "Showing " + visible + (visible === 1 ? " role" : " roles");
   resultLine.appendChild(c);
   chips.forEach(([label, remove]) => {{
@@ -1969,9 +2026,78 @@ function filterTable() {{
   FILTERS.forEach(f => f._update && f._update());
   updatePills(rows);
   page = 1;
+  if (view === "dir") renderDirectory(rows);
   renderPage(false);
-  noResults.style.display = visible === 0 ? "block" : "none";
+  noResults.style.display = visible === 0 && view === "jobs" ? "block" : "none";
 }}
+
+// ── Organization directory: organizations with at least one role passing the current filters,
+//    grouped by sector (core sectors first, then the rest A–Z, "Not classified" last), names A–Z.
+//    Clicking a name sets the Company filter to that organization and switches to the Jobs view. ──
+let view = "jobs";
+let dirOrgs = 0;
+const directory = document.getElementById("directory");
+const SECTOR_RANK = s => {{ const i = CORE_SECTORS.indexOf(s); return i >= 0 ? i : (s === "Not classified" || !s) ? 99 : 50; }};
+
+function renderDirectory(rows) {{
+  const groups = {{}};   // sector -> company -> role count
+  const orgs = new Set();
+  rows.forEach(r => {{
+    if (!r._match) return;
+    const s = r.dataset.sector || "Not classified", c = r.dataset.company;
+    if (!c) return;
+    (groups[s] = groups[s] || {{}})[c] = (groups[s][c] || 0) + 1;
+    orgs.add(c);
+  }});
+  dirOrgs = orgs.size;
+  directory.innerHTML = "";
+  const sectors = Object.keys(groups).sort((a, b) => SECTOR_RANK(a) - SECTOR_RANK(b) || a.localeCompare(b));
+  if (!sectors.length) {{
+    const e = document.createElement("div"); e.className = "dir-empty"; e.textContent = "No organizations match these filters.";
+    directory.appendChild(e); return;
+  }}
+  sectors.forEach(s => {{
+    const names = Object.keys(groups[s]).sort((a, b) => a.localeCompare(b, undefined, {{ sensitivity: "base" }}));
+    const sec = document.createElement("section"); sec.className = "dir-sector";
+    const h = document.createElement("h3"); h.textContent = s;
+    const n = document.createElement("span"); n.className = "n"; n.textContent = "· " + names.length;
+    h.appendChild(n); sec.appendChild(h);
+    const ul = document.createElement("ul"); ul.className = "dir-list";
+    names.forEach(name => {{
+      const li = document.createElement("li");
+      const b = document.createElement("button"); b.type = "button"; b.className = "dir-org";
+      b.title = "Show roles at " + name;
+      const nm = document.createElement("span"); nm.className = "dir-name"; nm.textContent = name;
+      const ct = document.createElement("span"); ct.className = "dir-n"; ct.textContent = groups[s][name] + (groups[s][name] === 1 ? " role" : " roles");
+      b.appendChild(nm); b.appendChild(ct);
+      b.addEventListener("click", () => showOrg(name));
+      li.appendChild(b); ul.appendChild(li);
+    }});
+    sec.appendChild(ul); directory.appendChild(sec);
+  }});
+}}
+
+function showOrg(name) {{
+  const f = FILTERS.find(x => x.key === "company");
+  f._reset();
+  selected.company.add(name);
+  if (f._labs[name]) f._labs[name]._cb.checked = true;
+  setView("jobs");
+  document.querySelector(".table-toolbar").scrollIntoView({{ behavior: "smooth", block: "start" }});
+}}
+
+function setView(v) {{
+  view = v;
+  document.body.classList.toggle("dir-view", v === "dir");
+  directory.hidden = v !== "dir";
+  document.querySelectorAll(".view-tab").forEach(t => {{
+    const on = t.dataset.view === v; t.classList.toggle("active", on); t.setAttribute("aria-selected", on);
+  }});
+  document.getElementById("viewTitle").textContent = v === "dir" ? "Organization Directory" : "All Roles";
+  try {{ history.replaceState(null, "", v === "dir" ? "#directory" : location.pathname + location.search); }} catch (e) {{}}
+  filterTable();
+}}
+document.querySelectorAll(".view-tab").forEach(t => t.addEventListener("click", () => setView(t.dataset.view)));
 
 searchBox.addEventListener("input", filterTable);
 buildPills();
@@ -1996,7 +2122,7 @@ Array.from(tableBody.rows).forEach(r => {{
   const star = document.createElement("span"); star.className = "row-star"; star.textContent = "★"; star.title = "Posted in the past 30 days";
   r.cells[0].insertBefore(star, r.cells[0].firstChild);
 }});
-filterTable();
+if (location.hash === "#directory") setView("dir"); else filterTable();
 
 // ── Column sort ──
 let sortCol = -1, sortAsc = true;
