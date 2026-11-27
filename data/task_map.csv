@@ -1,202 +1,202 @@
 org_name,tasks,schedules,schedule_windows,last_run,last_run_status,state
-Summit Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-TCV,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
+Summit Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+TCV,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
 Citadel,,,,,,no task
 Millennium Management,,,,,,no task
-Point72 Asset Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Coatue,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Viking Global Investors,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Pershing Square Capital Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Blue Owl Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Bain Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Churchill Asset Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Onex Credit,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Arcmont Asset Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-AGL Credit Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Strategic Value Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Quantum Capital Group,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-TowerBrook Capital Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-IK Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Grain Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-JLL Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Goldman Sachs Alternatives,fram-custom-goldman; fram-custom-goldman-test,fram-daily-custom-goldman,fram-daily-custom-goldman=24h,2026-11-26,SUCCEEDED,scheduled
-Affinius Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-BGO (BentallGreenOak),pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Stockbridge Capital Group,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Berkshire Residential Investments,pilot-p1; pilot-task-input-retest,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Founders Fund,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Lightspeed Venture Partners,pilot-p1; pilot-task-input-retest,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Ribbit Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Greenoaks,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Flagship Pioneering,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Apollo Global Management,batch1; fram-custom-apollo-test,fram-custom-apollo-test-schedule,fram-custom-apollo-test-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-KKR,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Ares Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-AQR Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Two Sigma,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Schonfeld Strategic Advisors,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-The Carlyle Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Balyasny Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-KKR Credit,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-D.E. Shaw & Co.,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Oaktree Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Thoma Bravo,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-ExodusPoint Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-HPS Investment Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-NB Alternatives (Neuberger Berman Private Markets),batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Bridgewater Associates,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
+Point72 Asset Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Coatue,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Viking Global Investors,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Pershing Square Capital Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Blue Owl Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Bain Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Churchill Asset Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Onex Credit,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Arcmont Asset Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+AGL Credit Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Strategic Value Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Quantum Capital Group,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+TowerBrook Capital Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+IK Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Grain Management,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+JLL Partners,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Goldman Sachs Alternatives,fram-custom-goldman; fram-custom-goldman-test,fram-daily-custom-goldman,fram-daily-custom-goldman=24h,2026-11-27,SUCCEEDED,scheduled
+Affinius Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+BGO (BentallGreenOak),pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Stockbridge Capital Group,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Berkshire Residential Investments,pilot-p1; pilot-task-input-retest,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Founders Fund,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Lightspeed Venture Partners,pilot-p1; pilot-task-input-retest,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Ribbit Capital,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Greenoaks,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Flagship Pioneering,pilot-p1,pilot-p1-schedule,pilot-p1-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Apollo Global Management,batch1; fram-custom-apollo-test,fram-custom-apollo-test-schedule,fram-custom-apollo-test-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+KKR,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Ares Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+AQR Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Two Sigma,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Schonfeld Strategic Advisors,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+The Carlyle Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Balyasny Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+KKR Credit,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+D.E. Shaw & Co.,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Oaktree Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Thoma Bravo,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+ExodusPoint Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+HPS Investment Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+NB Alternatives (Neuberger Berman Private Markets),batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Bridgewater Associates,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
 Blackstone,batch1,,,2026-11-18,SUCCEEDED,"task, not scheduled"
-Global Infrastructure Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Verition Fund Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
+Global Infrastructure Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Verition Fund Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
 Blackstone Real Estate,batch1,,,2026-11-18,SUCCEEDED,"task, not scheduled"
-Golub Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-General Atlantic,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Silver Lake,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Warburg Pincus,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Hellman & Friedman,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Andreessen Horowitz,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Vista Equity Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Tiger Global Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Oak Hill Advisors,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Renaissance Technologies,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Insight Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Advent International,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-"Clayton, Dubilier & Rice",batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Leonard Green & Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Clearlake Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Sequoia Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Starwood Capital Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-PineBridge Investments,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Clarion Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-GoldenTree Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Stone Point Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Carlyle Global Credit,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Blue Owl Real Estate,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Davidson Kempner Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Bayview Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Farallon Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Valor Equity Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
-Bridge Investment Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-26,SUCCEEDED,scheduled
+Golub Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+General Atlantic,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Silver Lake,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Warburg Pincus,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Hellman & Friedman,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Andreessen Horowitz,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Vista Equity Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Tiger Global Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Oak Hill Advisors,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Renaissance Technologies,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Insight Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Advent International,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+"Clayton, Dubilier & Rice",batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Leonard Green & Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Clearlake Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Sequoia Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Starwood Capital Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+PineBridge Investments,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Clarion Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+GoldenTree Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Stone Point Capital,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Carlyle Global Credit,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Blue Owl Real Estate,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Davidson Kempner Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Bayview Asset Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Farallon Capital Management,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Valor Equity Partners,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
+Bridge Investment Group,batch1; career-site-job-listing-api-task-6,Batch1DailyRun,Batch1DailyRun=24h,2026-11-27,SUCCEEDED,scheduled
 Blackstone Private Credit,batch1,,,2026-11-18,SUCCEEDED,"task, not scheduled"
-CPP Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-PSP Investments (Public Sector Pension Investment Board),career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Ontario Teachers' Pension Plan,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-British Columbia Investment Management (BCI),career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-CalSTRS,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Teacher Retirement System of Texas,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Texas Municipal Retirement System,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Florida State Board of Administration,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Washington State Investment Board,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-State of Wisconsin Investment Board,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-LACERA,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Oregon State Treasury,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Mass PRIM,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-New Mexico State Investment Council,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-University of California Office of the President,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Harvard Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-UTIMCO,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Stanford Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Princeton University Investment Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-MIT Investment Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-University of Pennsylvania Office of Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Duke University Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-University of Chicago Investment Office,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-University of Virginia Investment Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Walton Enterprises,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-ICONIQ,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Ford Foundation,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Cambridge Associates,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Partners Capital,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Wilshire,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-FEG,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Adams Street Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-LGT Capital Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Aksia,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-StepStone Group,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Hamilton Lane,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-TIFF Investment Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Investure,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-HighVista Strategies,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Commonfund,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Makena Capital Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Fidelity Institutional,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Alphacore Capital,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-ICG (Intermediate Capital Group),career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Main Street Advisors,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-TrueBridge Capital Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-JMI Equity,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-TPG,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-ADIA,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-GIC,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Temasek,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Liberty Mutual Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-New York Life Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-OMERS,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-HOOPP (Healthcare of Ontario Pension Plan),career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-IMCO (Investment Management Corporation of Ontario),career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Ontario Pension Board,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-OPTrust,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Alberta Heritage Savings Trust Fund,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-NEPC,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Callan,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Meketa,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Strategic Investment Group,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Hirtle Callaghan,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Spider Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Global Endowment Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Summit Rock Advisors,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-ICG Advisors,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Pathway Capital Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-CF Private Equity,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Russell Investments,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-MAI Capital Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Cerity Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Glenmede,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Mubadala,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Public Investment Fund,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Norges Bank Investment Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Korea Investment Corporation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Kuwait Investment Authority,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Wafra,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Caisse de dépôt et placement du Québec (CDPQ),career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Wallace Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Rockefeller Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Gates Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Lilly Endowment,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-J. Paul Getty Trust,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Robert Wood Johnson Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-William and Flora Hewlett Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Andrew W. Mellon Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-John D. and Catherine T. MacArthur Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Gordon and Betty Moore Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-David and Lucile Packard Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-W.K. Kellogg Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Leona M. and Harry B. Helmsley Charitable Trust,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-The California Endowment,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-The Kresge Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Doris Duke Charitable Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Alfred P. Sloan Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Brown Advisory,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-HarbourVest Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Lexington Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Lombard Odier,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Blue Pool Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-JFG Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-AlTi Tiedemann Global,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Homrich Berg,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-WE Family Offices,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Tolleson Wealth Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Bow River Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-IEQ Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Jasper Ridge Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Lincoln Financial Group,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Bayshore Global Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Willett Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Soros Fund Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-NewEdge Capital Group,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Beacon Pointe Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-HB Wealth,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-Cascade Asset Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-26,SUCCEEDED,scheduled
+CPP Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+PSP Investments (Public Sector Pension Investment Board),career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Ontario Teachers' Pension Plan,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+British Columbia Investment Management (BCI),career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+CalSTRS,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Teacher Retirement System of Texas,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Texas Municipal Retirement System,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Florida State Board of Administration,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Washington State Investment Board,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+State of Wisconsin Investment Board,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+LACERA,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Oregon State Treasury,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Mass PRIM,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+New Mexico State Investment Council,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+University of California Office of the President,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Harvard Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+UTIMCO,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Stanford Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Princeton University Investment Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+MIT Investment Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+University of Pennsylvania Office of Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Duke University Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+University of Chicago Investment Office,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+University of Virginia Investment Management Company,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Walton Enterprises,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+ICONIQ,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Ford Foundation,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Cambridge Associates,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Partners Capital,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Wilshire,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+FEG,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Adams Street Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+LGT Capital Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Aksia,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+StepStone Group,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Hamilton Lane,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+TIFF Investment Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Investure,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+HighVista Strategies,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Commonfund,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Makena Capital Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Fidelity Institutional,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Alphacore Capital,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+ICG (Intermediate Capital Group),career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Main Street Advisors,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+TrueBridge Capital Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+JMI Equity,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+TPG,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+ADIA,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+GIC,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Temasek,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Liberty Mutual Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+New York Life Investments,career-site-job-listing-api-task-2,List1-career-site-job-listing-api-task-2-schedule,List1-career-site-job-listing-api-task-2-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+OMERS,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+HOOPP (Healthcare of Ontario Pension Plan),career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+IMCO (Investment Management Corporation of Ontario),career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Ontario Pension Board,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+OPTrust,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Alberta Heritage Savings Trust Fund,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+NEPC,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Callan,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Meketa,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Strategic Investment Group,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Hirtle Callaghan,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Spider Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Global Endowment Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Summit Rock Advisors,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+ICG Advisors,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Pathway Capital Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+CF Private Equity,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Russell Investments,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+MAI Capital Management,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Cerity Partners,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Glenmede,career-site-job-listing-api-task; career-site-job-listing-api-task-1; career-site-job-listing-api-task-3,List2-career-site-job-listing-api-task-3-schedule,List2-career-site-job-listing-api-task-3-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Mubadala,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Public Investment Fund,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Norges Bank Investment Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Korea Investment Corporation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Kuwait Investment Authority,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Wafra,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Caisse de dépôt et placement du Québec (CDPQ),career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Wallace Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Rockefeller Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Gates Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Lilly Endowment,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+J. Paul Getty Trust,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Robert Wood Johnson Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+William and Flora Hewlett Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Andrew W. Mellon Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+John D. and Catherine T. MacArthur Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Gordon and Betty Moore Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+David and Lucile Packard Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+W.K. Kellogg Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Leona M. and Harry B. Helmsley Charitable Trust,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+The California Endowment,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+The Kresge Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Doris Duke Charitable Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Alfred P. Sloan Foundation,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Brown Advisory,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+HarbourVest Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Lexington Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Lombard Odier,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Blue Pool Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+JFG Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+AlTi Tiedemann Global,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Homrich Berg,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+WE Family Offices,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Tolleson Wealth Management,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Bow River Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+IEQ Capital,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Jasper Ridge Partners,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Lincoln Financial Group,career-site-job-listing-api-task-4,List-4-career-site-job-listing-api-task-4-schedule,List-4-career-site-job-listing-api-task-4-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Bayshore Global Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Willett Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Soros Fund Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+NewEdge Capital Group,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Beacon Pointe Advisors,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+HB Wealth,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+Cascade Asset Management,career-site-job-listing-api-task-5,List5-career-site-job-listing-api-task-5-schedule,List5-career-site-job-listing-api-task-5-schedule=24h,2026-11-27,SUCCEEDED,scheduled
 PSG Equity,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 FTV Capital,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Stripes,,,,,,no task
@@ -302,14 +302,14 @@ Stonepeak,,,,,,no task
 I Squared Capital,,,,,,no task
 DigitalBridge,,,,,,no task
 Brookfield Asset Management,,,,,,no task
-Elliott Investment Management,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-26,SUCCEEDED,scheduled
-Sixth Street,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-26,SUCCEEDED,scheduled
+Elliott Investment Management,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-27,SUCCEEDED,scheduled
+Sixth Street,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-27,SUCCEEDED,scheduled
 Fortress Investment Group,,,,,,no task
 Cerberus Capital Management,,,,,,no task
 Blue Owl GP Strategic Capital,,,,,,no task
 H.I.G. Capital,,,,,,no task
 Sculptor Capital,,,,,,no task
-Ardian,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-26,SUCCEEDED,scheduled
+Ardian,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-27,SUCCEEDED,scheduled
 Eldridge Industries,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Silver Point Capital,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Crescent Capital Group,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
@@ -431,22 +431,22 @@ Barings,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Churchill / Nuveen Private Capital,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Hayfin Capital Management,,,,,,no task
 PGIM Private Capital,fram-credit-real-assets-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Partners Group,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-26,SUCCEEDED,scheduled
+Partners Group,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-27,SUCCEEDED,scheduled
 CVC Capital Partners,,,,,,no task
-EQT,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-26,SUCCEEDED,scheduled
+EQT,fram-custom-test-batch-a,fram-custom-test-batch-a-schedule,fram-custom-test-batch-a-schedule=6m,2026-11-27,SUCCEEDED,scheduled
 Permira,,,,,,no task
 Hg,,,,,,no task
 TA Associates,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 Veritas Capital,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 SoftBank Investment Advisers (US),,,,,,no task
-L Catterton,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+L Catterton,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Genstar Capital,,,,,,no task
 Platinum Equity,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 Francisco Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
-New Mountain Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+New Mountain Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Cinven,,,,,,no task
-Lone Star Funds,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
-Morgan Stanley Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Lone Star Funds,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
+Morgan Stanley Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Nordic Capital,,,,,,no task
 26North,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 CapVest Partners,,,,,,no task
@@ -456,14 +456,14 @@ Astorg,,,,,,no task
 Apax Partners,,,,,,no task
 Vitruvian Partners,,,,,,no task
 Arcline Investment Management,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
-K1 Investment Management,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+K1 Investment Management,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Bridgepoint,,,,,,no task
 TDR Capital,,,,,,no task
 Onex Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 Triton Partners,,,,,,no task
-Harvest Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Harvest Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 RCP Advisors,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
-KPS Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+KPS Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Alpine Investors,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 American Securities,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Arlington Capital Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
@@ -473,12 +473,12 @@ Searchlight Capital Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task,
 Inflexion,,,,,,no task
 American Industrial Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Patient Square Capital,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
-Kohlberg & Company,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
-Niobrara Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
-Kelso & Company,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Kohlberg & Company,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
+Niobrara Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
+Kelso & Company,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 3G Capital,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Greenbriar Equity Group,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
-OEP Capital Advisors,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Greenbriar Equity Group,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
+OEP Capital Advisors,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Waterland Private Equity,,,,,,no task
 AEA Investors,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 "Welsh, Carson, Anderson & Stowe",fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
@@ -486,25 +486,25 @@ JAB,,,,,,no task
 PAI Partners,,,,,,no task
 Sycamore Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 TSG Consumer Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
-Great Hill Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Great Hill Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 STG Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 RedBird Capital Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 The Riverside Company,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 Parthenon Capital,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
-Novacap,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Novacap,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 The Energy & Minerals Group,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 Aquiline Capital Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Goldberg Lindsay & Co.,,,,,,no task
-Levine Leichtman Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
-Kinderhook Industries,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
-Golden Gate Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
-NGP,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
-HGGC,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Levine Leichtman Capital Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
+Kinderhook Industries,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
+Golden Gate Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
+NGP,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
+HGGC,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Ridgemont Equity Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 Court Square Capital Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Arsenal Capital Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 One Rock Capital Partners,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
-Gridiron Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Gridiron Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Altaris,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Gryphon Investors,,,,,,no task
 Olympus Partners,,,,,,no task
@@ -766,11 +766,11 @@ The Davis Companies,,,,,,no task
 Thrive Capital,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 General Catalyst,,,,,,no task
 Accel,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
-New Enterprise Associates (NEA),fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+New Enterprise Associates (NEA),fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Index Ventures,,,,,,no task
 Y Combinator,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
-Khosla Ventures,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
-Kleiner Perkins,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Khosla Ventures,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
+Kleiner Perkins,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Bessemer Venture Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Impresa Management,,,,,,no task
 DFJ Growth,,,,,,no task
@@ -781,14 +781,14 @@ Paradigm,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
 Columbia Capital,,,,,,no task
 8VC,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 Draper Fisher Jurvetson (DFJ),,,,,,no task
-Lux Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
-Menlo Ventures,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Lux Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
+Menlo Ventures,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 ARCH Venture Partners,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Greylock Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Greylock Partners,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Sapphire Ventures,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
-Notable Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Notable Capital,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Bain Capital Ventures,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
-Oak HC/FT,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-26,SUCCEEDED,scheduled
+Oak HC/FT,fram-private-equity-2,fram-daily-private-equity-2,fram-daily-private-equity-2=24h,2026-11-27,SUCCEEDED,scheduled
 Addition,fram-private-equity-1,,,2026-11-19,SUCCEEDED,"task, not scheduled"
 DBL Partners,,,,,,no task
 Crosspoint Capital Partners,,,,,,no task
@@ -887,6 +887,6 @@ Nextech Invest,,,,,,no task
 Sierra Ventures,,,,,,no task
 ICONIQ Growth,,,,,,no task
 Seven Seven Six,fram-private-equity-3,,,2026-11-24,SUCCEEDED,"task, not scheduled"
-Morgan Stanley Investment Management (Alternatives),fram-custom-morganstanley-test,fram-custom-morganstanley-schedule,fram-custom-morganstanley-schedule=24h,2026-11-26,SUCCEEDED,scheduled
-BlackRock Private Markets,fram-custom-blackrock-test,fram-custom-blackrock-test-schedule,fram-custom-blackrock-test-schedule=6m,2026-11-26,SUCCEEDED,scheduled
-J.P. Morgan Asset Management (Alternatives),fram-custom-jpmorgan; fram-custom-jpmorgan-test,fram-custom-jpmorgan-schedule,fram-custom-jpmorgan-schedule=24h,2026-11-26,SUCCEEDED,scheduled
+Morgan Stanley Investment Management (Alternatives),fram-custom-morganstanley-test,fram-custom-morganstanley-schedule,fram-custom-morganstanley-schedule=24h,2026-11-27,SUCCEEDED,scheduled
+BlackRock Private Markets,fram-custom-blackrock-test,fram-custom-blackrock-test-schedule,fram-custom-blackrock-test-schedule=6m,2026-11-27,SUCCEEDED,scheduled
+J.P. Morgan Asset Management (Alternatives),fram-custom-jpmorgan; fram-custom-jpmorgan-test,fram-custom-jpmorgan-schedule,fram-custom-jpmorgan-schedule=24h,2026-11-27,SUCCEEDED,scheduled
